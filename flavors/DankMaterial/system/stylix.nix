@@ -1,11 +1,26 @@
 { config, pkgs, ... }:
 
+let
+  base16Scheme = builtins.fetchurl {
+    url = "https://raw.githubusercontent.com/base16-project/base16-schemes/main/catppuccin-mocha.yaml";
+    sha256 = "sha256:0ncxr9rl3mv0shwsz6jb5nrfhxlwnyps3izyjixjmvi5x4mwg238";
+  };
+in
 {
+
+  environment.variables = {
+    XCURSOR_THEME = "catppuccin-mocha-dark-cursors";
+    XCURSOR_SIZE = "24";
+  };
 
   stylix = {
     enable = true;
+    polarity = "dark";
+    autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${base16Scheme}";
+
+    image = ../../../wallpaper.png;
 
     fonts = {
       monospace = {
@@ -33,18 +48,16 @@
     };
 
     cursor = {
-      package = pkgs.bibata-cursors;
+      package = pkgs.catppuccin-cursors.mochaDark;
       name = "Bibata-Modern-Classic";
       size = 24;
     };
 
     opacity = {
-      terminal = 0.9;
-      applications = 1.0;
-      desktop = 1.0;
+      applications = 0.8;
+      desktop = 0.8;
+      terminal = 0.8;
       popups = 1.0;
     };
-
-    polarity = "dark";
   };
 }

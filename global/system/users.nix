@@ -1,11 +1,21 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  # User Configuration
+
   users.users.sultonov = {
     isNormalUser = true;
+    description = "sultonov";
     extraGroups = [
-      "wheel"
       "networkmanager"
+      "wheel"
+      "vboxsf"
+      "docker"
+      "podman"
+      "kvm"
+      "libvirtd"
     ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [ ];
   };
 }

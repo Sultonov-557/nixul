@@ -1,20 +1,44 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  # Desktop Applications and Utilities
+  # DankMaterialShell configuration and apps
 
-  home.packages = with pkgs; [
-    # Screenshot tools
-    swappy
+  programs.dankMaterialShell = {
+    enable = true;
+    enableSystemd = true;
+    enableSystemMonitoring = true;
+    enableClipboard = true;
+    enableVPN = true;
+    enableBrightnessControl = true;
+    enableColorPicker = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+    enableSystemSound = true;
+  };
 
-    # Color picker
-    hyprpicker
-
-    # Clipboard manager
-    wl-clipboard
-    cliphist
-
-    # Wallpaper
-    hyprpaper
-  ];
+  # Nixcord (Discord) configuration
+  programs.nixcord = {
+    enable = true;
+    discord.enable = false;
+    vesktop.enable = true;
+    config = {
+      plugins = {
+        alwaysAnimate.enable = true;
+        anonymiseFileNames.enable = true;
+        silentTyping.enable = true;
+        typingIndicator.enable = true;
+        typingTweaks.enable = true;
+        whoReacted.enable = true;
+        betterFolders.enable = true;
+        betterSettings.enable = true;
+        messageClickActions.enable = true;
+        ignoreActivities = {
+          enable = true;
+          ignorePlaying = true;
+          ignoreWatching = true;
+        };
+      };
+    };
+  };
 }

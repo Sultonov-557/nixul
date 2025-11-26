@@ -9,6 +9,8 @@
     ./users.nix
     ./networking.nix
     ./packages.nix
+    ./boot.nix
+    ./xdg.nix
   ];
 
   # System state version
