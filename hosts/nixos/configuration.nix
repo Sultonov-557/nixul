@@ -1,6 +1,6 @@
 {
   config,
-  pkgs,
+
   inputs,
   ...
 }:
@@ -19,14 +19,33 @@
     enable32Bit = true;
   };
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.uinput.enable = true;
+  hardware.enableAllFirmware = true;
+  zramSwap.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
   services.blueman.enable = true;
 
+  # XServer configuration
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+  };
+
   # NVIDIA Configuration
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # Home-manager configuration
   home-manager = {
