@@ -1,15 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  # Hyprland + AGS Flavor - System Configuration
-  # Imports building blocks and adds flavor-specific settings
-
-  imports = [
-    ../../modules/system/hyprland.nix
-    ../../modules/system/audio.nix
-    ../../modules/system/fonts.nix
-    ../../modules/shared/stylix.nix
-  ];
+  # Desktop Environment Configuration
+  # Display manager, system packages, and services
 
   # Display manager (greetd with tuigreet)
   services.greetd = {
@@ -22,7 +15,7 @@
     };
   };
 
-  # Additional Wayland/Hyprland utilities
+  # Desktop environment packages
   environment.systemPackages = with pkgs; [
     # File manager
     xfce.thunar
@@ -40,7 +33,7 @@
     zathura
   ];
 
-  # Enable Bluetooth
+  # Bluetooth support
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 }

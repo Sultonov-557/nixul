@@ -1,22 +1,9 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
-  # Hyprland + AGS Flavor - Home Configuration
-  # Imports building blocks and adds flavor-specific settings
+  # Hyprland-specific Configuration
+  # Window manager settings, appearance, animations
 
-  imports = [
-    ../../modules/home/hyprland-keybinds.nix
-    ../../modules/home/ags.nix
-    ../../modules/home/kitty.nix
-    ../../modules/home/firefox.nix
-  ];
-
-  # Additional Hyprland configuration
   wayland.windowManager.hyprland = {
     settings = {
       # General settings
@@ -80,23 +67,6 @@
       ];
     };
   };
-
-  # Stylix handles GTK/Qt theming automatically
-  # Additional desktop packages
-  home.packages = with pkgs; [
-    # Screenshot annotation
-    swappy
-
-    # Color picker
-    hyprpicker
-
-    # Clipboard manager
-    wl-clipboard
-    cliphist
-
-    # Wallpaper
-    hyprpaper
-  ];
 
   # Wallpaper service
   services.hyprpaper = {
