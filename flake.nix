@@ -100,6 +100,33 @@
           configuration = flavor.specialisation;
         }) flavors;
 
+      mkSystem =
+        {
+          hostname,
+          system ? "x86_64-linux",
+          user ? "sultonov",
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            {
+              specialisation = mkSpecialisations flavors;
+              # Global home-manager config
+              home-manager.users.${user} = {
+                imports = [
+                  # Stylix is handled globally via the nixosModule, but we might need to ensure
+                  # home-manager integration is active if not automatically handled.
+                  # However, specific apps are removed from here.
+                ];
+              };
+            }
+          ];
+        };
+
       # Pre-commit checks
       preCommit = inputs.pre-commit-hooks.lib.${system};
       preCommitCheck = preCommit.run {
@@ -116,34 +143,7 @@
     in
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          inherit system;
-
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./hosts/nixos/configuration.nix
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            {
-              specialisation = mkSpecialisations flavors;
-
-              # Global home-manager config for inputs
-              home-manager.users.sultonov = {
-                imports = [
-                  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-                  inputs.zen-browser.homeModules.beta
-                  inputs.zen-nebula.homeModules.default
-                  inputs.xmcl.homeModules.xmcl
-                  inputs.nixcord.homeModules.nixcord
-                  inputs.nix-flatpak.homeManagerModules.nix-flatpak
-                ];
-              };
-            }
-          ];
-        };
+        nixos = mkSystem { hostname = "nixos"; };
       };
 
       checks.${system}.pre-commit = preCommitCheck;

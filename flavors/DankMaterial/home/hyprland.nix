@@ -8,10 +8,7 @@
 
   # Import hyprland configuration modules
   imports = [
-    ./hyprland-config/keybindings.nix
-    ./hyprland-config/monitors.nix
-    ./hyprland-config/settings.nix
-    ./hyprland-config/plugins.nix
+    ../assets/hyprland/
   ];
 
   wayland.windowManager.hyprland = {
