@@ -20,7 +20,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    users.nixuser = {
+    users.sultonov = {
       imports = [
         ../../global/home
       ];

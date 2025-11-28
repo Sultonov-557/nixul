@@ -6,7 +6,7 @@
   programs.firefox = {
     enable = true;
 
-    profiles.nixuser = {
+    profiles.sultonov = {
       isDefault = true;
 
       settings = {

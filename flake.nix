@@ -143,7 +143,8 @@
     in
     {
       nixosConfigurations = {
-        nixos = mkSystem { hostname = "nixos"; };
+        home-pc = mkSystem { hostname = "home-pc"; };
+        laptop = mkSystem { hostname = "laptop"; };
       };
 
       checks.${system}.pre-commit = preCommitCheck;
