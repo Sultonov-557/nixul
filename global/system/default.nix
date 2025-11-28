@@ -3,6 +3,10 @@
 {
   # Minimal Global System Configuration
 
+  imports = [
+    ./boot.nix
+  ];
+
   # Nix Configuration
   nix.settings.experimental-features = [
     "nix-command"

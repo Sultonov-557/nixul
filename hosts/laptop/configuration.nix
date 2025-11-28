@@ -11,11 +11,6 @@
 
   networking.hostName = "laptop";
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
