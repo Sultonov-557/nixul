@@ -20,7 +20,7 @@ in
 
     base16Scheme = "${base16Scheme}";
 
-    image = ../../../wallpaper.png;
+    image = ../assets/wallpaper.png
 
     fonts = {
       monospace = {
