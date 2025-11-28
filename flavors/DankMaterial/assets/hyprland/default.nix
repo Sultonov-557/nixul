@@ -1,10 +1,10 @@
 { ... }:
 {
   imports = [
-    ./hyprland-config/keybindings.nix
-    ./hyprland-config/monitors.nix
-    ./hyprland-config/settings.nix
-    ./hyprland-config/plugins.nix
+    ./keybindings.nix
+    ./monitors.nix
+    ./settings.nix
+    ./plugins.nix
   ];
 
 }
