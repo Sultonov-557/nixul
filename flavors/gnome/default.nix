@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ ... }:
 
 {
   # Flavor metadata
@@ -9,7 +6,7 @@
   description = "Minimal GNOME Desktop";
 
   specialisation =
-    { ... }:
+    { pkgs, ... }:
     {
       services.xserver = {
         enable = true;
