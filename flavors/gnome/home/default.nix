@@ -9,4 +9,12 @@
       color-scheme = "prefer-dark";
     };
   };
+
+  programs.nixvim = {
+    colorschemes.gruvbox.enable = true;
+    plugins = {
+      lualine.enable = true;
+      treesitter.enable = true;
+    };
+  };
 }
