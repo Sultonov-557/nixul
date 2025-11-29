@@ -1,12 +1,14 @@
 { pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [
-    vim-colors-xcode
-  ];
+  programs.nixvim = {
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-colors-xcode
+    ];
 
-  colorschemes.catppuccin.enable = false;
+    colorschemes.catppuccin.enable = false;
 
-  extraConfigLua = ''
-    vim.cmd.colorscheme("xcodedark")
-  '';
+    extraConfigLua = ''
+      vim.cmd.colorscheme("xcodedark")
+    '';
+  };
 }
