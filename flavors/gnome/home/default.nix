@@ -1,6 +1,10 @@
 { ... }:
 
 {
+  imports = [
+    ../../../modules/home/nixvim.nix
+  ];
+
   home.stateVersion = "24.05";
 
   dconf.settings = {

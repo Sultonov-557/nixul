@@ -10,6 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #Apps/Tools
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Dev tools
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
@@ -41,6 +47,7 @@
         flavors:
         builtins.mapAttrs (name: flavor: {
           inheritParentConfig = true;
+          name = name;
           configuration = flavor.specialisation;
         }) flavors;
 
