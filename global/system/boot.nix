@@ -1,6 +1,7 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+
   boot = {
     loader = {
       grub = {
@@ -9,8 +10,13 @@
         efiSupport = true;
         device = "nodev";
       };
-      efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot";
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
     };
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ "uinput" ];
+    supportedFilesystems = [ "ntfs" ];
   };
 }
