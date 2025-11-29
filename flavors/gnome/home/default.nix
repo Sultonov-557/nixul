@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../../modules/home/nixvim.nix
+    ../../../modules/home/nixvim
   ];
 
   home.stateVersion = "24.05";
