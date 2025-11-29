@@ -7,7 +7,7 @@ pkgs.stdenv.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "MarianArlt";
     repo = "sddm-sugar-light";
-    rev = "v1.2";
+    rev = "master";
     sha256 = "sha256-5xCLoj+3yqnXedRh+6pPt+XOBX0SY8FJN8CpPjIdGyA=";
   };
 
