@@ -47,7 +47,6 @@
         flavors:
         builtins.mapAttrs (name: flavor: {
           inheritParentConfig = true;
-          name = name;
           configuration = flavor.specialisation;
         }) flavors;
 
