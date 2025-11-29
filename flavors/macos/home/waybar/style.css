@@ -76,18 +76,6 @@ window#waybar {
 
 #battery.critical:not(.charging) {
 	color: #ff3b30;
-	animation: blink 1s linear infinite;
-}
-
-@keyframes blink {
-	0%,
-	100% {
-		opacity: 1;
-	}
-
-	50% {
-		opacity: 0.5;
-	}
 }
 
 #network.disconnected {
