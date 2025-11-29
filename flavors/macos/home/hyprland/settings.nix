@@ -35,10 +35,6 @@
         vibrancy = 0.15;
       };
 
-      drop_shadow = true;
-      shadow_range = 20;
-      shadow_render_power = 3;
-      "col.shadow" = "rgba(00000033)";
     };
 
     animations = {
@@ -62,10 +58,6 @@
 
     master = {
       new_is_master = true;
-    };
-
-    gestures = {
-      workspace_swipe = true;
     };
 
     misc = {
