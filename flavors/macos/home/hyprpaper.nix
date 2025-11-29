@@ -4,8 +4,8 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "/home/sultonov/nixos2/flavors/macos/assets/wallpaper.jpg" ];
-      wallpaper = [ ",/home/sultonov/nixos2/flavors/macos/assets/wallpaper.jpg" ];
+      preload = [ ../assets/wallpaper.jpg ];
+      wallpaper = [ ../assets/wallpaper.jpg ];
       splash = false;
     };
   };
