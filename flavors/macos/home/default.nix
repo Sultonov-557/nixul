@@ -12,7 +12,6 @@
     ../../../modules/home/notifications.nix
 
     ./ghostty.nix
-    ./nixvim.nix
     ./gtk.nix
     ./rofi.nix
     ./hyprpaper.nix
