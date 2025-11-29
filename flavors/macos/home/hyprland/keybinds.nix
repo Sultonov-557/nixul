@@ -8,6 +8,7 @@
       "$mod, M, exit"
       "$mod, E, exec, nautilus"
       "$mod, V, togglefloating"
+      "$mod, Space, exec, rofi -show drun"
       "$mod, D, exec, rofi -show drun"
       "$mod, P, pseudo"
       "$mod, J, togglesplit"
@@ -49,6 +50,19 @@
 
       "$mod, mouse_down, workspace, e+1"
       "$mod, mouse_up, workspace, e-1"
+
+      ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+      ", XF86AudioLowerVolume, exec, pamixer -d 5"
+      ", XF86AudioMute, exec, pamixer -t"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
+
+      ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+      ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+
+      "$mod SHIFT, 3, exec, grim -g \"$(slurp)\" - | wl-copy"
+      "$mod SHIFT, 4, exec, grim -g \"$(slurp)\" - | swappy -f -"
     ];
 
     bindm = [

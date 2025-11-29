@@ -5,6 +5,7 @@
 
   imports = [
     ./boot.nix
+    ../../modules/system/audio.nix
   ];
 
   # Nix Configuration
@@ -31,7 +32,7 @@
       "networkmanager"
       "wheel"
     ];
-    shell = pkgs.bash; # Reverting to bash for minimal, user can enable zsh later
+    shell = pkgs.zsh;
   };
 
   # System State Version

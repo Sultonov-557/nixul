@@ -1,7 +1,9 @@
 {
   programs.ghostty.settings = {
-    theme = "catppuccin-mocha";
-    background-opacity = 0.95;
-    background-blur-radius = 20;
+    theme = "light:GruvboxLight,dark:GruvboxDark";
+    background = "#FFFFFF";
+    foreground = "#1E1E1E";
+    background-opacity = 0.90;
+    background-blur-radius = 15;
   };
 }
