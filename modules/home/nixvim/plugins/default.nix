@@ -3,7 +3,6 @@
     ./autopairs.nix
     ./blink.nix
     ./bufferline.nix
-    ./colorscheme.nix
     ./development.nix
     ./editing.nix
     ./formatting.nix
