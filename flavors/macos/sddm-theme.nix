@@ -17,7 +17,7 @@ pkgs.stdenv.mkDerivation {
         
         cat > $out/share/sddm/themes/macos/theme.conf << EOF
     [General]
-    Background="${../../assets/wallpaper.jpg}"
+    Background="${./assets/wallpaper.jpg}"
     ScaleImageCropped=true
     FullBlur=true
     PartialBlur=false
