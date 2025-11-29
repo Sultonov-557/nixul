@@ -8,7 +8,7 @@ pkgs.stdenv.mkDerivation {
     owner = "MarianArlt";
     repo = "sddm-sugar-light";
     rev = "master";
-    sha256 = "sha256-Kdd2tCTion2ntQPD8ttXhHFL218b1NsawG9qbjuI1fc=";
+    sha256 = "sha256-KddZtCTion2ntQPD8ttXhHFLZ18b1NsawG9qbjuI1fc=";
   };
 
   installPhase = ''
