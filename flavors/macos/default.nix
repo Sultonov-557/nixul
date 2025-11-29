@@ -14,7 +14,7 @@
 
       environment.systemPackages = with pkgs; [
         waybar
-        rofi-wayland
+        rofi
         hyprpaper
         nautilus
         brightnessctl
