@@ -3,11 +3,13 @@
 {
   programs.gh = {
     enable = true;
-    gitCredentialHelper = { enable = true; };
+    gitCredentialHelper = {
+      enable = true;
+    };
   };
   programs.git = {
     enable = true;
-    userName = "sultonov-557";
+    userName = "Sultonov-557";
     userEmail = "sultonovzerifboy@gmail.com";
 
     delta = {
@@ -35,8 +37,7 @@
       ci = "commit";
       unstage = "reset HEAD --";
       last = "log -1 HEAD";
-      lg =
-        "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
   };
 }
