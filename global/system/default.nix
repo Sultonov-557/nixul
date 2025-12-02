@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  system.nixos.label = null;
 
   imports = [
     ./boot.nix
@@ -23,5 +24,5 @@
   };
 
   # System State Version
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

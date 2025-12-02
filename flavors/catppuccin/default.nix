@@ -7,6 +7,8 @@
   specialisation =
     { pkgs, ... }:
     {
+      system.nixos.label = "Catppuccin";
+
       programs.hyprland = {
         enable = true;
         xwayland.enable = true;
