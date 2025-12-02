@@ -94,12 +94,13 @@
     {
       self,
       nixpkgs,
-      home-manager,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      lib = import ./lib { inherit inputs; };
 
       flavorsDir = ./flavors;
       flavorNames = builtins.attrNames (builtins.readDir flavorsDir);
@@ -111,37 +112,8 @@
         }) flavorNames
       );
 
-      mkSpecialisations =
-        flavors:
-        builtins.mapAttrs (_: flavor: {
-          inheritParentConfig = true;
-          configuration = flavor.specialisation;
-        }) flavors;
-
       hostsDir = ./hosts;
       hostNames = builtins.attrNames (builtins.readDir hostsDir);
-
-      mkSystem =
-        {
-          hostname,
-          system ? "x86_64-linux",
-          user ? "sultonov",
-        }:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            (hostsDir + "/${hostname}/configuration.nix")
-            home-manager.nixosModules.home-manager
-            inputs.nur.modules.nixos.default
-            {
-              specialisation = mkSpecialisations flavors;
-              home-manager.users.${user} = {
-                imports = [ ];
-              };
-            }
-          ];
-        };
 
       preCommit = inputs.pre-commit-hooks.lib.${system};
       preCommitCheck = preCommit.run {
@@ -160,7 +132,7 @@
       nixosConfigurations = builtins.listToAttrs (
         map (hostname: {
           name = hostname;
-          value = mkSystem { inherit hostname; };
+          value = lib.mkSystem { inherit hostname hostsDir flavors; };
         }) hostNames
       );
 

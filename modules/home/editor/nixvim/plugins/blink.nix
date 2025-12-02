@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   plugins = {
     # Blink completion extensions

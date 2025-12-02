@@ -35,11 +35,11 @@
       ];
 
       imports = [
-        ../../modules/system/docker.nix
-        ../../modules/system/postgresql.nix
-        ../../modules/system/redis.nix
-        ../../modules/system/power.nix
-        ../../modules/system/usb-automount.nix
+        ../../modules/system/services/docker.nix
+        ../../modules/system/services/postgresql.nix
+        ../../modules/system/services/redis.nix
+        ../../modules/system/hardware/power.nix
+        ../../modules/system/hardware/usb-automount.nix
       ];
 
       home-manager.users.sultonov.imports = [ ./home ];
