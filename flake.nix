@@ -100,9 +100,9 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      lib = import ./lib { inherit inputs; };
+      lib = import ./nix/lib { inherit inputs; };
 
-      flavorsDir = ./flavors;
+      flavorsDir = ./nix/flavors;
       flavorNames = builtins.attrNames (builtins.readDir flavorsDir);
 
       flavors = builtins.listToAttrs (
@@ -112,7 +112,7 @@
         }) flavorNames
       );
 
-      hostsDir = ./hosts;
+      hostsDir = ./nix/hosts;
       hostNames = builtins.attrNames (builtins.readDir hostsDir);
 
       preCommit = inputs.pre-commit-hooks.lib.${system};
