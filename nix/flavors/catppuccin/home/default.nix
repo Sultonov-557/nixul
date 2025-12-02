@@ -3,6 +3,7 @@
 {
   imports = [
     ../../../modules/home/editor/nixvim
+    ../../../modules/home/editor/ai.nix
     ../../../modules/home/terminal/ghostty.nix
     ../../../modules/home/desktop/hyprland.nix
 
@@ -22,6 +23,7 @@
     ../../../modules/home/utils/aseprite.nix
     ../../../modules/home/utils/baobab.nix
     ../../../modules/home/utils/btop.nix
+    ../../../modules/home/utils/yandex.nix
     ../../../modules/home/desktop/cliphist.nix
     ../../../modules/home/desktop/udiskie.nix
     ../../../modules/home/desktop/audio.nix
