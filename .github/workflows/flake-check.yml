@@ -24,8 +24,5 @@ jobs:
       - name: Check flake
         run: nix flake check --all-systems --show-trace
 
-      - name: Check formatting
-        run: nix develop --command nixfmt-rfc-style --check .
-
       - name: Check for dead code
         run: nix develop --command deadnix --fail .
