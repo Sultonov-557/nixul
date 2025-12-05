@@ -119,7 +119,8 @@
       );
 
       hostsDir = ./nix/hosts;
-      hostNames = builtins.attrNames (builtins.readDir hostsDir);
+      allHostNames = builtins.attrNames (builtins.readDir hostsDir);
+      hostNames = builtins.filter (name: name != "iso") allHostNames;
 
       preCommit = inputs.pre-commit-hooks.lib.${system};
       preCommitCheck = preCommit.run {
