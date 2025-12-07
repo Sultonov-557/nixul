@@ -1,0 +1,48 @@
+{ inputs, pkgs, ... }: {
+  imports = [ inputs.stylix.homeModules.stylix ];
+
+  stylix = {
+    enable = true;
+
+    base16Scheme =
+      "${pkgs.base16-schemes}/share/themes/everforest-dark-medium.yaml";
+
+    polarity = "dark";
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
+
+    fonts = {
+      monospace = {
+        package = pkgs.jetbrains-mono;
+        name = "JetBrains Mono";
+      };
+      sansSerif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      serif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      sizes = {
+        applications = 11;
+        terminal = 12;
+        desktop = 10;
+        popups = 10;
+      };
+    };
+
+    targets = {
+      gtk.enable = false;
+      qt.enable = false;
+      rofi.enable = false;
+      neovim.enable = false;
+      nixvim.enable = false;
+      spicetify.enable = false;
+    };
+  };
+}

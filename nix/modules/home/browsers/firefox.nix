@@ -1,5 +1,4 @@
-{ pkgs, inputs, ... }:
-{
+{ pkgs, inputs, ... }: {
   imports = [ inputs.textfox.homeManagerModules.default ];
 
   textfox = {
@@ -51,7 +50,6 @@
         "browser.search.widget.inNavBar" = true;
 
         "browser.shell.checkDefaultBrowser" = false;
-        "browser.startup.homepage" = "https://nixos.org";
         "browser.tabs.loadInBackground" = true;
         "browser.urlbar.placeholderName" = "DuckDuckGo";
         "browser.urlbar.showSearchSuggestionsFirst" = false;

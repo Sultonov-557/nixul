@@ -1,16 +1,13 @@
 { ... }:
 
 {
-  name = "catppuccin";
-  description = "Hyprland with Catppuccin theme and caelestia-shell";
+  name = "evergreen";
+  description = "Niri with evergreen theme and caelestia-shell";
 
   specialisation = { pkgs, ... }: {
-    system.nixos.label = "catppuccin";
+    system.nixos.label = "evergreen";
 
-    programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
+    programs.niri = { enable = true; };
 
     services.xserver.displayManager.gdm = { enable = true; };
 
