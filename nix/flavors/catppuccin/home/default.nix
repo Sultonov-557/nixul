@@ -11,6 +11,7 @@
     ../../../modules/home/terminal/git.nix
     ../../../modules/home/terminal/bun.nix
     ../../../modules/home/terminal/lazydocker.nix
+    ../../../modules/home/terminal/zellij.nix
     ../../../modules/home/desktop/screenshots.nix
     ../../../modules/home/desktop/notifications.nix
     ../../../modules/home/browsers/firefox.nix

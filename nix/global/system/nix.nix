@@ -1,5 +1,4 @@
-{ ... }:
-{
+{ pkgs, ... }: {
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -12,6 +11,8 @@
     separateDebugInfo = false;
   };
 
+  programs.nix-ld.libraries = [ pkgs.jre8 pkgs.temurin-jre-bin-17 ];
+
   nix.settings = {
     max-jobs = "auto";
     cores = 0;
@@ -19,10 +20,7 @@
     keep-outputs = false;
     keep-derivations = false;
 
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = [ "nix-command" "flakes" ];
 
     substituters = [
       "https://cache.nixos.org/"

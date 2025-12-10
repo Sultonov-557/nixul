@@ -1,7 +1,9 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   imports = [
+    inputs.niri.homeModules.niri
+
     ../../../modules/home/editor/nixvim
     ../../../modules/home/editor/ai.nix
     ../../../modules/home/terminal/ghostty.nix
@@ -15,7 +17,6 @@
     ../../../modules/home/desktop/screenshots.nix
     ../../../modules/home/desktop/notifications.nix
     ../../../modules/home/browsers/firefox.nix
-    ../../../modules/home/desktop/DankMaterial.nix
     ../../../modules/home/browsers/spicetify.nix
     ../../../modules/home/utils/archives.nix
     ../../../modules/home/utils/documents.nix
@@ -38,16 +39,12 @@
     ../../../modules/home/productivity/todoist.nix
     ../../../modules/home/gaming/minecraft.nix
 
-    ./ghostty.nix
-    ./gtk.nix
-    ./rofi.nix
-    ./hyprpaper.nix
     ./stylix.nix
-    ./dankMaterial.nix
     ./nixvim.nix
+    ./caelestia.nix
 
-    ./hyprland/settings.nix
-    ./hyprland/keybinds.nix
-    ./hyprland/rules.nix
+    #./niri/settings.nix
+    #./niri/keybinds.nix
+    #./niri/rules.nix
   ];
 }
