@@ -7,25 +7,33 @@
         matches = [
           { app-id = "^pavucontrol$"; }
         ];
-        default-column-width = { proportion = 0.3; };
+        default-column-width = {
+          proportion = 0.3;
+        };
       }
       {
         matches = [
           { app-id = "^nm-connection-editor$"; }
         ];
-        default-column-width = { proportion = 0.3; };
+        default-column-width = {
+          proportion = 0.3;
+        };
       }
       {
         matches = [
           { app-id = "^blueman-manager$"; }
         ];
-        default-column-width = { proportion = 0.3; };
+        default-column-width = {
+          proportion = 0.3;
+        };
       }
       {
         matches = [
           { title = "^Picture-in-Picture$"; }
         ];
-        default-column-width = { proportion = 0.2; };
+        default-column-width = {
+          proportion = 0.2;
+        };
         open-on-output = "eDP-1";
       }
 
@@ -64,7 +72,9 @@
           { title = "^Open File$"; }
           { title = "^Save File$"; }
         ];
-        default-column-width = { proportion = 0.4; };
+        default-column-width = {
+          proportion = 0.4;
+        };
       }
     ];
 

@@ -1,3 +1,8 @@
-{ ... }: {
-  programs.nixvim = { colorschemes.everforest = { enable = true; }; };
+{ ... }:
+{
+  programs.nixvim = {
+    colorschemes.everforest = {
+      enable = true;
+    };
+  };
 }

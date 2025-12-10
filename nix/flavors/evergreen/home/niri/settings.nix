@@ -52,16 +52,16 @@
           layout = "us";
         };
       };
-      
+
       touchpad = {
         natural-scroll = true;
         tap = true;
       };
-      
+
       mouse = {
         accel-speed = 0.0;
       };
-      
+
       focus-follows-mouse = true;
     };
 
@@ -69,26 +69,28 @@
     layout = {
       gaps = 8;
       center-focused-column = "never";
-      
+
       preset-column-widths = [
         { proportion = 0.33333; }
         { proportion = 0.5; }
         { proportion = 0.66667; }
       ];
-      
-      default-column-width = { proportion = 0.5; };
-      
+
+      default-column-width = {
+        proportion = 0.5;
+      };
+
       border = {
         enable = true;
         width = 2;
         active.color = "#7aa2f7";
         inactive.color = "#414868";
       };
-      
+
       focus-ring = {
         enable = false;
       };
-      
+
       struts = {
         left = 0;
         right = 0;
@@ -108,7 +110,7 @@
     # Window decoration and visual settings
     # Note: Niri doesn't have the same granular animation/decoration controls as Hyprland
     # Blur and advanced effects are compositor-level and less configurable
-    
+
     cursor = {
       size = 24;
     };
@@ -116,37 +118,37 @@
     # Animations
     animations = {
       slowdown = 1.0;
-      
+
       window-open = {
         duration-ms = 200;
         curve = "ease-out-quad";
       };
-      
+
       window-close = {
         duration-ms = 150;
         curve = "ease-out-quad";
       };
-      
+
       window-movement = {
         duration-ms = 200;
         curve = "ease-out-cubic";
       };
-      
+
       workspace-switch = {
         duration-ms = 250;
         curve = "ease-out-cubic";
       };
-      
+
       horizontal-view-movement = {
         duration-ms = 250;
         curve = "ease-out-cubic";
       };
-      
+
       window-resize = {
         duration-ms = 200;
         curve = "ease-out-quad";
       };
-      
+
       config-notification-open-close = {
         duration-ms = 150;
         curve = "ease-out-quad";
