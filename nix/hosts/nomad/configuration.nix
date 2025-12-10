@@ -9,7 +9,7 @@
     ../../global/system
   ];
 
-  networking.hostName = "laptop";
+  networking.hostName = "nomad";
 
   home-manager = {
     useGlobalPkgs = true;

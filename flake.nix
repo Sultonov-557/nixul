@@ -1,6 +1,5 @@
 {
-  description =
-    "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
+  description = "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
 
   inputs = {
     # Core
@@ -80,16 +79,12 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    nix-flatpak = { url = "github:gmodena/nix-flatpak/?ref=latest"; };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
 
     xmcl = {
       url = "github:x45iq/xmcl-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # ISO builder
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -100,7 +95,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -110,36 +106,45 @@
       flavorsDir = ./nix/flavors;
       flavorNames = builtins.attrNames (builtins.readDir flavorsDir);
 
-      flavors = builtins.listToAttrs (map (name: {
-        name = name;
-        value = import (flavorsDir + "/${name}") { inherit inputs self; };
-      }) flavorNames);
+      flavors = builtins.listToAttrs (
+        map (name: {
+          name = name;
+          value = import (flavorsDir + "/${name}") { inherit inputs self; };
+        }) flavorNames
+      );
 
       hostsDir = ./nix/hosts;
-      allHostNames = builtins.attrNames (builtins.readDir hostsDir);
-      hostNames = builtins.filter (name: name != "iso") allHostNames;
+      hostNames = builtins.attrNames (builtins.readDir hostsDir);
 
       preCommit = inputs.pre-commit-hooks.lib.${system};
       preCommitCheck = preCommit.run {
         src = ./.;
         hooks = {
-          nixfmt-rfc-style = { enable = true; };
-          deadnix = { enable = true; };
+          nixfmt-rfc-style = {
+            enable = true;
+          };
+          deadnix = {
+            enable = true;
+          };
         };
       };
-    in {
-      nixosConfigurations = builtins.listToAttrs (map (hostname: {
-        name = hostname;
-        value = lib.mkSystem { inherit hostname hostsDir flavors; };
-      }) hostNames);
-
-      packages.${system} =
-        import ./nix/iso/builder.nix { inherit inputs system; };
+    in
+    {
+      nixosConfigurations = builtins.listToAttrs (
+        map (hostname: {
+          name = hostname;
+          value = lib.mkSystem { inherit hostname hostsDir flavors; };
+        }) hostNames
+      );
 
       checks.${system}.pre-commit = preCommitCheck;
       devShells.${system}.default = pkgs.mkShell {
         shellHook = preCommitCheck.shellHook;
-        packages = with pkgs; [ nixfmt-rfc-style deadnix git ];
+        packages = with pkgs; [
+          nixfmt-rfc-style
+          deadnix
+          git
+        ];
       };
 
       formatter.${system} = pkgs.nixfmt-rfc-style;

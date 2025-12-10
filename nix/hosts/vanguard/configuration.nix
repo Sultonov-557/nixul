@@ -11,9 +11,8 @@
     ../../global/system
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "vanguard";
 
-  # Hardware-specific configurations
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -29,7 +28,6 @@
   };
   services.blueman.enable = true;
 
-  # XServer configuration
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
@@ -39,7 +37,6 @@
     };
   };
 
-  # NVIDIA Configuration
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
@@ -47,7 +44,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Home-manager configuration
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
