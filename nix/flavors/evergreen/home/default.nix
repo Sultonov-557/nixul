@@ -2,18 +2,17 @@
 
 {
   imports = [
-    inputs.niri.homeModules.niri
 
     ../../../modules/home/editor/nixvim
     ../../../modules/home/editor/ai.nix
     ../../../modules/home/terminal/ghostty.nix
-    ../../../modules/home/desktop/hyprland.nix
+    ../../../modules/home/desktop/niri.nix
 
     ../../../modules/home/terminal/shell.nix
     ../../../modules/home/terminal/git.nix
     ../../../modules/home/terminal/bun.nix
     ../../../modules/home/terminal/lazydocker.nix
-    ../../../modules/home/terminal/zellij.nix
+    ../../../modules/home/terminal/tmux.nix
     ../../../modules/home/desktop/screenshots.nix
     ../../../modules/home/desktop/notifications.nix
     ../../../modules/home/browsers/firefox.nix
@@ -43,7 +42,7 @@
     ./nixvim.nix
     ./caelestia.nix
 
-    #./niri/settings.nix
+    ./niri/settings.nix
     #./niri/keybinds.nix
     #./niri/rules.nix
   ];

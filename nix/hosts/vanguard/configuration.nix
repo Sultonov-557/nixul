@@ -1,15 +1,9 @@
-{
-  config,
+{ config,
 
-  inputs,
-  ...
-}:
+inputs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../global/system
-  ];
+  imports = [ ./hardware-configuration.nix ../../global/system ];
 
   networking.hostName = "vanguard";
 
@@ -46,12 +40,9 @@
 
   home-manager = {
     useGlobalPkgs = true;
-    useUserPackages = true;
 
     users.sultonov = {
-      imports = [
-        ../../global/home
-      ];
+      imports = [ ../../global/home ];
 
       home.username = "sultonov";
     };
