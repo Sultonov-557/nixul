@@ -41,18 +41,26 @@
     };
 
     # Environment variables
-    environment = { XCURSOR_SIZE = "24"; };
+    environment = {
+      XCURSOR_SIZE = "24";
+    };
 
     # Input configuration
     input = {
-      keyboard = { xkb = { layout = "us"; }; };
+      keyboard = {
+        xkb = {
+          layout = "us";
+        };
+      };
 
       touchpad = {
         natural-scroll = true;
         tap = true;
       };
 
-      mouse = { accel-speed = 0.0; };
+      mouse = {
+        accel-speed = 0.0;
+      };
     };
 
     # Layout configuration
@@ -66,7 +74,9 @@
         { proportion = 0.66667; }
       ];
 
-      default-column-width = { proportion = 1.0; };
+      default-column-width = {
+        proportion = 1.0;
+      };
 
       border = {
         enable = true;
@@ -75,7 +85,9 @@
         inactive.color = "#414868";
       };
 
-      focus-ring = { enable = false; };
+      focus-ring = {
+        enable = false;
+      };
 
       struts = {
         left = 0;
@@ -97,13 +109,16 @@
     # Note: Niri doesn't have the same granular animation/decoration controls as Hyprland
     # Blur and advanced effects are compositor-level and less configurable
 
-    cursor = { size = 24; };
+    cursor = {
+      size = 24;
+    };
 
     # Screenshot path
-    screenshot-path =
-      "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+    screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
     # Hotkey overlay
-    hotkey-overlay = { skip-at-startup = false; };
+    hotkey-overlay = {
+      skip-at-startup = false;
+    };
   };
 }

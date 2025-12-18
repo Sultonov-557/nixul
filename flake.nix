@@ -88,11 +88,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Dev tools
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -115,19 +110,6 @@
 
       hostsDir = ./nix/hosts;
       hostNames = builtins.attrNames (builtins.readDir hostsDir);
-
-      preCommit = inputs.pre-commit-hooks.lib.${system};
-      preCommitCheck = preCommit.run {
-        src = ./.;
-        hooks = {
-          nixfmt-rfc-style = {
-            enable = true;
-          };
-          deadnix = {
-            enable = true;
-          };
-        };
-      };
     in
     {
       nixosConfigurations = builtins.listToAttrs (
@@ -137,9 +119,7 @@
         }) hostNames
       );
 
-      checks.${system}.pre-commit = preCommitCheck;
       devShells.${system}.default = pkgs.mkShell {
-        shellHook = preCommitCheck.shellHook;
         packages = with pkgs; [
           nixfmt-rfc-style
           deadnix
