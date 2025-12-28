@@ -43,53 +43,53 @@
         lspBuf = {
           gd = {
             action = "definition";
-            desc = "Go to definition";
+            desc = "Goto Definition";
           };
           gr = {
             action = "references";
-            desc = "Go to references";
+            desc = "References";
           };
           gD = {
             action = "declaration";
-            desc = "Go to declaration";
+            desc = "Goto Declaration";
           };
           gI = {
             action = "implementation";
-            desc = "Go to implementation";
+            desc = "Goto Implementation";
           };
           gt = {
             action = "type_definition";
-            desc = "Go to type definition";
+            desc = "Goto Type Definition";
           };
           K = {
             action = "hover";
-            desc = "Hover documentation";
+            desc = "Hover";
+          };
+          gK = {
+            action = "signature_help";
+            desc = "Signature Help";
           };
           "<leader>ca" = {
             action = "code_action";
-            desc = "Code action";
+            desc = "Code Action";
           };
-          "<leader>rn" = {
+          "<leader>cr" = {
             action = "rename";
-            desc = "Rename symbol";
+            desc = "Rename";
           };
         };
         diagnostic = {
           "[d" = {
             action = "goto_prev";
-            desc = "Previous diagnostic";
+            desc = "Prev Diagnostic";
           };
           "]d" = {
             action = "goto_next";
-            desc = "Next diagnostic";
+            desc = "Next Diagnostic";
           };
-          "<leader>de" = {
+          "<leader>cd" = {
             action = "open_float";
-            desc = "Show diagnostic";
-          };
-          "<leader>dq" = {
-            action = "setloclist";
-            desc = "Diagnostic loclist";
+            desc = "Line Diagnostics";
           };
         };
       };

@@ -89,15 +89,39 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>tt";
+      key = "<leader>xx";
       action = "<CMD>Trouble diagnostics toggle<CR>";
-      options.desc = "Toggle diagnostics";
+      options.desc = "Diagnostics (Trouble)";
     }
     {
       mode = "n";
-      key = "<leader>td";
+      key = "<leader>xX";
+      action = "<CMD>Trouble diagnostics toggle filter.buf=0<CR>";
+      options.desc = "Buffer Diagnostics (Trouble)";
+    }
+    {
+      mode = "n";
+      key = "<leader>cs";
+      action = "<CMD>Trouble symbols toggle focus=false<CR>";
+      options.desc = "Symbols (Trouble)";
+    }
+    {
+      mode = "n";
+      key = "<leader>st";
       action = "<CMD>TodoTelescope<CR>";
-      options.desc = "Find TODOs";
+      options.desc = "Todo (Telescope)";
+    }
+    {
+      mode = "n";
+      key = "<leader>xt";
+      action = "<CMD>TodoTrouble<CR>";
+      options.desc = "Todo (Trouble)";
+    }
+    {
+      mode = "n";
+      key = "<leader>fT";
+      action = "<CMD>ToggleTerm<CR>";
+      options.desc = "Terminal (Floating)";
     }
     {
       mode = "n";

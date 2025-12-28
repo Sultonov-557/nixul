@@ -20,53 +20,103 @@
     };
 
     keymaps = {
-      "<leader>ff" = {
-        action = "find_files";
-        options.desc = "Find files";
+      "<leader>," = {
+        action = "buffers";
+        options.desc = "Switch Buffer";
       };
-      "<leader>fg" = {
+      "<leader>/" = {
         action = "live_grep";
-        options.desc = "Live grep";
+        options.desc = "Grep (Root Dir)";
       };
+      "<leader>:" = {
+        action = "command_history";
+        options.desc = "Command History";
+      };
+      "<leader><space>" = {
+        action = "find_files";
+        options.desc = "Find Files (Root Dir)";
+      };
+
+      # find
       "<leader>fb" = {
         action = "buffers";
-        options.desc = "Find buffers";
+        options.desc = "Buffers";
       };
-      "<leader>fh" = {
-        action = "help_tags";
-        options.desc = "Help tags";
+      "<leader>ff" = {
+        action = "find_files";
+        options.desc = "Find Files (Root Dir)";
       };
-      "<leader>fo" = {
+      "<leader>fr" = {
         action = "oldfiles";
-        options.desc = "Recent files";
+        options.desc = "Recent";
       };
-      "<leader>fw" = {
-        action = "grep_string";
-        options.desc = "Find word";
-      };
+
+      # git
       "<leader>gc" = {
         action = "git_commits";
-        options.desc = "Git commits";
-      };
-      "<leader>gb" = {
-        action = "git_branches";
-        options.desc = "Git branches";
+        options.desc = "Commits";
       };
       "<leader>gs" = {
         action = "git_status";
-        options.desc = "Git status";
+        options.desc = "Status";
       };
-      "<leader>fr" = {
-        action = "lsp_references";
-        options.desc = "LSP references";
+
+      # search
+      "<leader>sa" = {
+        action = "autocommands";
+        options.desc = "Auto Commands";
       };
-      "<leader>fs" = {
-        action = "lsp_document_symbols";
-        options.desc = "Document symbols";
+      "<leader>sb" = {
+        action = "current_buffer_fuzzy_find";
+        options.desc = "Buffer";
       };
-      "<leader>fS" = {
-        action = "lsp_workspace_symbols";
-        options.desc = "Workspace symbols";
+      "<leader>sc" = {
+        action = "command_history";
+        options.desc = "Command History";
+      };
+      "<leader>sC" = {
+        action = "commands";
+        options.desc = "Commands";
+      };
+      "<leader>sd" = {
+        action = "diagnostics";
+        options.desc = "Document Diagnostics";
+      };
+      "<leader>sG" = {
+        action = "live_grep";
+        options.desc = "Grep (Root Dir)";
+      };
+      "<leader>sh" = {
+        action = "help_tags";
+        options.desc = "Help Pages";
+      };
+      "<leader>sH" = {
+        action = "highlights";
+        options.desc = "Search Highlight Groups";
+      };
+      "<leader>sk" = {
+        action = "keymaps";
+        options.desc = "Key Maps";
+      };
+      "<leader>sM" = {
+        action = "man_pages";
+        options.desc = "Man Pages";
+      };
+      "<leader>sm" = {
+        action = "marks";
+        options.desc = "Jump to Mark";
+      };
+      "<leader>so" = {
+        action = "vim_options";
+        options.desc = "Options";
+      };
+      "<leader>sR" = {
+        action = "resume";
+        options.desc = "Resume";
+      };
+      "<leader>sw" = {
+        action = "grep_string";
+        options.desc = "Word (Root Dir)";
       };
     };
   };

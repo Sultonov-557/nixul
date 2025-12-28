@@ -1,96 +1,70 @@
 {
   keymaps = [
+    # Core
     {
       mode = "n";
       key = "<Esc>";
       action = "<cmd>nohlsearch<CR>";
       options.desc = "Clear search highlight";
     }
-
     {
       mode = "n";
       key = "<C-s>";
       action = "<cmd>w<CR>";
       options.desc = "Save file";
     }
-
     {
       mode = "n";
       key = "<C-q>";
-      action = "<cmd>q<CR>";
-      options.desc = "Quit";
+      action = "<cmd>qa<CR>";
+      options.desc = "Quit all";
     }
 
+    # Window Management
     {
       mode = "n";
-      key = "<C-h>";
-      action = "<C-w>h";
-      options.desc = "Move to left window";
+      key = "<leader>w";
+      action = "<C-w>";
+      options.desc = "Window";
+    }
+    {
+      mode = "n";
+      key = "<leader>-";
+      action = "<C-w>s";
+      options.desc = "Split window below";
+    }
+    {
+      mode = "n";
+      key = "<leader>|";
+      action = "<C-w>v";
+      options.desc = "Split window right";
+    }
+    {
+      mode = "n";
+      key = "<leader>wd";
+      action = "<C-w>c";
+      options.desc = "Delete window";
     }
 
+    # Buffer Management
     {
       mode = "n";
-      key = "<C-j>";
-      action = "<C-w>j";
-      options.desc = "Move to bottom window";
-    }
-
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<C-w>k";
-      options.desc = "Move to top window";
-    }
-
-    {
-      mode = "n";
-      key = "<C-l>";
-      action = "<C-w>l";
-      options.desc = "Move to right window";
-    }
-
-    {
-      mode = "n";
-      key = "<C-Up>";
-      action = "<cmd>resize +2<CR>";
-      options.desc = "Increase window height";
-    }
-
-    {
-      mode = "n";
-      key = "<C-Down>";
-      action = "<cmd>resize -2<CR>";
-      options.desc = "Decrease window height";
-    }
-
-    {
-      mode = "n";
-      key = "<C-Left>";
-      action = "<cmd>vertical resize -2<CR>";
-      options.desc = "Decrease window width";
-    }
-
-    {
-      mode = "n";
-      key = "<C-Right>";
-      action = "<cmd>vertical resize +2<CR>";
-      options.desc = "Increase window width";
-    }
-
-    {
-      mode = "n";
-      key = "<S-h>";
+      key = "[b";
       action = "<cmd>bprevious<CR>";
-      options.desc = "Previous buffer";
+      options.desc = "Prev buffer";
     }
-
     {
       mode = "n";
-      key = "<S-l>";
+      key = "]b";
       action = "<cmd>bnext<CR>";
       options.desc = "Next buffer";
     }
-
+    {
+      mode = "n";
+      key = "<leader>bb";
+      action = "<cmd>e #<CR>";
+      options.desc = "Switch to Other Buffer";
+    }
     {
       mode = "n";
       key = "<leader>bd";
@@ -98,27 +72,37 @@
       options.desc = "Delete buffer";
     }
 
+    # Move Lines
     {
-      mode = "v";
-      key = "<";
-      action = "<gv";
-      options.desc = "Indent left";
+      mode = "n";
+      key = "<A-j>";
+      action = "<cmd>m .+1<cr>==";
+      options.desc = "Move down";
     }
-
     {
-      mode = "v";
-      key = ">";
-      action = ">gv";
-      options.desc = "Indent right";
+      mode = "n";
+      key = "<A-k>";
+      action = "<cmd>m .-2<cr>==";
+      options.desc = "Move up";
     }
-
+    {
+      mode = "i";
+      key = "<A-j>";
+      action = "<esc><cmd>m .+1<cr>==gi";
+      options.desc = "Move down";
+    }
+    {
+      mode = "i";
+      key = "<A-k>";
+      action = "<esc><cmd>m .-2<cr>==gi";
+      options.desc = "Move up";
+    }
     {
       mode = "v";
       key = "J";
       action = ":m '>+1<CR>gv=gv";
       options.desc = "Move line down";
     }
-
     {
       mode = "v";
       key = "K";
@@ -126,34 +110,27 @@
       options.desc = "Move line up";
     }
 
+    # Better Indenting
     {
-      mode = "n";
-      key = "J";
-      action = "mzJ`z";
-      options.desc = "Join lines keeping cursor";
+      mode = "v";
+      key = "<";
+      action = "<gv";
+      options.desc = "Indent left";
+    }
+    {
+      mode = "v";
+      key = ">";
+      action = ">gv";
+      options.desc = "Indent right";
     }
 
-    {
-      mode = "n";
-      key = "<C-d>";
-      action = "<C-d>zz";
-      options.desc = "Page down centered";
-    }
-
-    {
-      mode = "n";
-      key = "<C-u>";
-      action = "<C-u>zz";
-      options.desc = "Page up centered";
-    }
-
+    # Search & Navigation
     {
       mode = "n";
       key = "n";
       action = "nzzzv";
       options.desc = "Next search centered";
     }
-
     {
       mode = "n";
       key = "N";
@@ -161,33 +138,59 @@
       options.desc = "Previous search centered";
     }
 
+    # Tabs
     {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>y";
-      action = "\"+y";
-      options.desc = "Yank to system clipboard";
+      mode = "n";
+      key = "<leader><tab>l";
+      action = "<cmd>tablast<cr>";
+      options.desc = "Last Tab";
+    }
+    {
+      mode = "n";
+      key = "<leader><tab>f";
+      action = "<cmd>tabfirst<cr>";
+      options.desc = "First Tab";
+    }
+    {
+      mode = "n";
+      key = "<leader><tab><tab>";
+      action = "<cmd>tabnew<cr>";
+      options.desc = "New Tab";
+    }
+    {
+      mode = "n";
+      key = "<leader><tab>]";
+      action = "<cmd>tabnext<cr>";
+      options.desc = "Next Tab";
+    }
+    {
+      mode = "n";
+      key = "<leader><tab>d";
+      action = "<cmd>tabclose<cr>";
+      options.desc = "Close Tab";
+    }
+    {
+      mode = "n";
+      key = "<leader><tab>[";
+      action = "<cmd>tabprevious<cr>";
+      options.desc = "Previous Tab";
     }
 
+    # Clipboard
+    {
+      mode = [ "n" "v" ];
+      key = "<leader>y";
+      action = ''"+y'';
+      options.desc = "Yank to system clipboard";
+    }
     {
       mode = "n";
       key = "<leader>Y";
-      action = "\"+Y";
+      action = ''"+Y'';
       options.desc = "Yank line to system clipboard";
     }
 
-    {
-      mode = [
-        "n"
-        "v"
-      ];
-      key = "<leader>d";
-      action = "\"_d";
-      options.desc = "Delete to void register";
-    }
-
+    # Utils
     {
       mode = "n";
       key = "<leader>x";

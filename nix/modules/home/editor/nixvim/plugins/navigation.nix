@@ -2,7 +2,7 @@
   plugins = {
     # File tree
     nvim-tree = {
-      enable = true;
+      enable = false;
       settings = {
         disableNetrw = true;
         updateFocusedFile.enable = true;
@@ -29,6 +29,26 @@
       };
     };
 
+    neo-tree = {
+      enable = true;
+      settings = {
+        enableDiagnostics = true;
+        enableGitStatus = true;
+        enableModifiedMarkers = true;
+        enableRefreshOnWrite = true;
+        closeIfLastWindow = true;
+        popupBorderStyle = "rounded";
+
+        sources = [ "filesystem" "buffers" "git_status" ];
+
+        filesystem = {
+          bindToCwd = false;
+          followCurrentFile.enabled = true;
+          useLibuvFileWatcher = true;
+        };
+      };
+    };
+
     # Harpoon - Quick file navigation (harpoon2)
     harpoon = {
       enable = true;
@@ -40,9 +60,7 @@
       enable = true;
       settings = {
         columns = [ "icon" ];
-        view_options = {
-          show_hidden = true;
-        };
+        view_options = { show_hidden = true; };
         keymaps = {
           "g?" = "actions.show_help";
           "<CR>" = "actions.select";
@@ -86,14 +104,26 @@
     {
       mode = "n";
       key = "<leader>e";
-      action = "<cmd>NvimTreeToggle<CR>";
-      options.desc = "Toggle file tree";
+      action = "<cmd>Neotree toggle<CR>";
+      options.desc = "Explorer NeoTree (Root Dir)";
     }
     {
       mode = "n";
       key = "<leader>E";
-      action = "<cmd>NvimTreeFindFile<CR>";
-      options.desc = "Find file in tree";
+      action = "<cmd>Neotree focus<CR>";
+      options.desc = "Explorer NeoTree (cwd)";
+    }
+    {
+      mode = "n";
+      key = "<leader>fe";
+      action = "<cmd>Neotree toggle<CR>";
+      options.desc = "Explorer NeoTree (Root Dir)";
+    }
+    {
+      mode = "n";
+      key = "<leader>fE";
+      action = "<cmd>Neotree focus<CR>";
+      options.desc = "Explorer NeoTree (cwd)";
     }
 
     # Oil keybind
@@ -122,7 +152,8 @@
     {
       mode = "n";
       key = "<leader>hh";
-      action.__raw = "function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end";
+      action.__raw =
+        "function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end";
       options.desc = "Harpoon menu";
     }
     {

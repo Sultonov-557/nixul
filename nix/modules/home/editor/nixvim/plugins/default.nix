@@ -8,8 +8,10 @@
     ./formatting.nix
     ./git.nix
     ./lsp.nix
+    ./markdown.nix
     ./navigation.nix
     ./persistence.nix
+    ./snacks.nix
     ./telescope.nix
     ./terminal.nix
     ./todo-comments.nix

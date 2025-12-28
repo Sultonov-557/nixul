@@ -19,22 +19,44 @@
           };
           globalstatus = true;
         };
-        sections = {
-          lualine_a = [ "mode" ];
-          lualine_b = [
-            "branch"
-            "diff"
-            "diagnostics"
-          ];
-          lualine_c = [ "filename" ];
-          lualine_x = [
-            "encoding"
-            "fileformat"
-            "filetype"
-          ];
-          lualine_y = [ "progress" ];
-          lualine_z = [ "location" ];
-        };
+          sections = {
+            lualine_a = [ "mode" ];
+            lualine_b = [
+              "branch"
+              "diff"
+              "diagnostics"
+            ];
+            lualine_c = [
+              "filename"
+              {
+                __unkeyed-1 = "searchcount";
+                maxcount = 999;
+                timeout = 500;
+              }
+            ];
+            lualine_x = [
+              {
+                __unkeyed-1 = "lsp_progress";
+                display_components = [
+                  "lsp_client_name"
+                  "spinner"
+                  {
+                    __unkeyed-1 = "title";
+                    "percentage" = true;
+                  }
+                ];
+                timer = {
+                  progress_enddelay = 500;
+                  spinner_array = [ "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ];
+                };
+              }
+              "encoding"
+              "fileformat"
+              "filetype"
+            ];
+            lualine_y = [ "progress" ];
+            lualine_z = [ "location" ];
+          };
       };
     };
 
@@ -45,39 +67,39 @@
         spec = [
           {
             __unkeyed-1 = "<leader>f";
-            group = "Find";
+            group = "file/find";
           }
           {
             __unkeyed-1 = "<leader>g";
-            group = "Git";
+            group = "git";
           }
           {
             __unkeyed-1 = "<leader>b";
-            group = "Buffer";
+            group = "buffer";
           }
           {
             __unkeyed-1 = "<leader>c";
-            group = "Code";
+            group = "code";
           }
           {
-            __unkeyed-1 = "<leader>h";
-            group = "Harpoon";
-          }
-          {
-            __unkeyed-1 = "<leader>t";
-            group = "Terminal/Todo";
+            __unkeyed-1 = "<leader>s";
+            group = "search";
           }
           {
             __unkeyed-1 = "<leader>x";
-            group = "Diagnostics/Trouble";
+            group = "diagnostics/quickfix";
+          }
+          {
+            __unkeyed-1 = "<leader>w";
+            group = "window";
           }
           {
             __unkeyed-1 = "<leader>q";
-            group = "Session/Quit";
+            group = "session";
           }
           {
-            __unkeyed-1 = "<leader>d";
-            group = "Diagnostics";
+            __unkeyed-1 = "<leader><tab>";
+            group = "tabs";
           }
         ];
       };
@@ -87,11 +109,7 @@
       enable = true;
       settings = {
         indent.char = "│";
-        scope = {
-          enabled = true;
-          show_start = true;
-          show_end = false;
-        };
+        scope.enabled = false; # Handled by snacks.scope
       };
     };
 
@@ -127,14 +145,40 @@
       enable = true;
     };
 
-    notify = {
+    notify.enable = false; # Handled by snacks.notifier
+
+    neoscroll = {
       enable = true;
       settings = {
-        backgroundColour = "#000000";
-        fps = 60;
-        render = "default";
-        timeout = 3000;
-        topDown = true;
+        mappings = [
+          "<C-u>"
+          "<C-d>"
+          "<C-b>"
+          "<C-f>"
+          "<C-y>"
+          "<C-e>"
+          "zt"
+          "zz"
+          "zb"
+        ];
+        stop_eof = true;
+        hide_cursor = true;
+        respect_scrolloff = false;
+        cursor_scrolls_alone = true;
+      };
+    };
+
+    mini = {
+      enable = true;
+      modules = {
+        indentscope.enabled = false; # Handled by snacks.scope
+        animate = {
+          cursor.enable = false; # Often distracting, but can be enabled if desired
+          scroll.enable = false; # Handled by snacks.scroll or neoscroll
+          window = {
+            enable = true;
+          };
+        };
       };
     };
   };

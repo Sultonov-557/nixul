@@ -35,25 +35,31 @@
       mode = "n";
       key = "<leader>gg";
       action = "<CMD>LazyGit<CR>";
-      options.desc = "Open LazyGit";
+      options.desc = "LazyGit (Root Dir)";
+    }
+    {
+      mode = "n";
+      key = "<leader>gG";
+      action = "<CMD>LazyGitCurrentFile<CR>";
+      options.desc = "LazyGit (cwd)";
+    }
+    {
+      mode = "n";
+      key = "<leader>gb";
+      action = "<cmd>GITSIGNS blame_line<cr>";
+      options.desc = "Blame Line";
     }
     {
       mode = "n";
       key = "<leader>gd";
       action = "<CMD>DiffviewOpen<CR>";
-      options.desc = "Open diff view";
+      options.desc = "Diffview Open";
     }
     {
       mode = "n";
       key = "<leader>gh";
       action = "<CMD>DiffviewFileHistory<CR>";
-      options.desc = "File history";
-    }
-    {
-      mode = "n";
-      key = "<leader>gf";
-      action = "<CMD>DiffviewFileHistory %<CR>";
-      options.desc = "Current file history";
+      options.desc = "Diffview File History";
     }
   ];
 }

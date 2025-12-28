@@ -29,9 +29,9 @@
         '';
         offsets = [
           {
-            filetype = "nvim-tree";
-            text = "File Explorer";
-            text_align = "center";
+            filetype = "neo-tree";
+            text = "Neo-tree";
+            text_align = "left";
             separator = true;
           }
         ];
