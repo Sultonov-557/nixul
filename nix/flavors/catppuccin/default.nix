@@ -13,7 +13,7 @@
       xwayland.enable = true;
     };
 
-    services.displayManager.gdm = { enable = true; };
+    modules.system.services.desktop.displayManager.gdm.enable = true;
 
     environment.systemPackages = with pkgs; [
       rofi

@@ -1,12 +1,12 @@
-{ inputs, ... }:
-{
-  imports = [ inputs.dankMaterialShell.homeModules.dankMaterialShell.default ];
+{ inputs, ... }: {
+  imports = [ inputs.dms.homeModules.dankMaterialShell.default ];
 
   programs.dankMaterialShell = {
     enable = true;
     systemd = {
       enable = true; # Systemd service for auto-start
-      restartIfChanged = true; # Auto-restart dms.service when dankMaterialShell changes
+      restartIfChanged =
+        true; # Auto-restart dms.service when dankMaterialShell changes
     };
 
     # Core features
