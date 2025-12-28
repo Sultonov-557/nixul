@@ -24,7 +24,7 @@ in
       inherit system;
       specialArgs = { inherit inputs user; };
       modules = [
-        (hostsDir + "/${hostname}/configuration.nix")
+        (hostsDir + "/${hostname}")
         home-manager.nixosModules.home-manager
         inputs.nur.modules.nixos.default
         inputs.sops-nix.nixosModules.sops
@@ -33,6 +33,7 @@ in
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit inputs user; };
           };
         }
       ];

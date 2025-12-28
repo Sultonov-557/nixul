@@ -1,9 +1,4 @@
-{
-  config,
-  inputs,
-  user,
-  ...
-}:
+{ config, user, ... }:
 
 {
   imports = [
@@ -44,13 +39,5 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  home-manager = {
-    users.${user} = {
-      imports = [ ../../global/home ];
-
-      home.username = user;
-    };
-
-    extraSpecialArgs = { inherit inputs user; };
-  };
+  home-manager.users.${user}.imports = [ ./home.nix ];
 }

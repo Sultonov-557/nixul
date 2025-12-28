@@ -1,16 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-let
-  cfg = config.modules.terminal.shells.zsh;
-in
-{
-  options.modules.terminal.shells.zsh = {
-    enable = lib.mkEnableOption "zsh";
-  };
+{ pkgs, lib, config, ... }:
+let cfg = config.modules.terminal.shells.zsh;
+in {
+  options.modules.terminal.shells.zsh = { enable = lib.mkEnableOption "zsh"; };
 
   config = lib.mkIf cfg.enable {
     programs.zsh = {
@@ -39,10 +30,6 @@ in
         ll = "ls -lah";
         la = "ls -A";
         l = "ls -CF";
-
-        rebuild = "sudo nixos-rebuild switch --flake /home/sultonov/nixos2";
-        update = "nix flake update /home/sultonov/nixos2";
-
         cat = "bat";
         find = "fd";
         grep = "rg";
@@ -86,17 +73,10 @@ in
 
     programs.pay-respects = {
       enable = true;
-      options = [
-        "--alias"
-        "f"
-      ];
+      options = [ "--alias" "f" ];
       enableZshIntegration = true;
     };
 
-    home.packages = with pkgs; [
-      ripgrep
-      fd
-      eza
-    ];
+    home.packages = with pkgs; [ ripgrep fd eza ];
   };
 }

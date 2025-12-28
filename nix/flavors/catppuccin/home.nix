@@ -26,7 +26,7 @@
     desktop = {
       wms = {
         niri.enable = true;
-        hyprland.enable = true;
+        hyprland.enable = false;
       };
       services = {
         audio.enable = true;
@@ -71,12 +71,12 @@
   };
 
   imports = [
-    ./stylix.nix
-    ./nixvim.nix
-    ./DMShell.nix
+    ./home/stylix.nix
+    ./home/nixvim.nix
+    ./home/DMShell.nix
 
-    ./hyprland/keybinds.nix
-    ./hyprland/rules.nix
-    ./hyprland/settings.nix
+    ./home/hyprland/keybinds.nix
+    ./home/hyprland/rules.nix
+    ./home/hyprland/settings.nix
   ];
 }
