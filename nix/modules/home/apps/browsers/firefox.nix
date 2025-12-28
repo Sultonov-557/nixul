@@ -1,14 +1,6 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  config,
-  ...
-}:
-let
-  cfg = config.modules.apps.browsers.firefox;
-in
-{
+{ pkgs, inputs, lib, config, ... }:
+let cfg = config.modules.apps.browsers.firefox;
+in {
   imports = [ inputs.textfox.homeManagerModules.default ];
 
   options.modules.apps.browsers.firefox = {
@@ -19,8 +11,7 @@ in
     textfox = {
       enable = true;
       profile = "default";
-      config = {
-      };
+      config = { };
     };
 
     programs.firefox = {
@@ -86,7 +77,8 @@ in
 
           "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
 
-          "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+          "extensions.extensions.activeThemeID" =
+            "firefox-alpenglow@mozilla.org";
           "extensions.update.enabled" = false;
           "extensions.webcompat.enable_picture_in_picture_overrides" = true;
           "extensions.webcompat.enable_shims" = true;

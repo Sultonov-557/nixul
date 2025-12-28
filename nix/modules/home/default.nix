@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./ai/gemini.nix
-    ./ai/cursor.nix
+    ./ai/default.nix
     ./apps/browsers/firefox.nix
     ./apps/communication/discord.nix
     ./apps/communication/telegram.nix
