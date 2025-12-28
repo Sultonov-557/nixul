@@ -9,11 +9,11 @@ keybinds clear-defaults=true {
           GoToNextTab;
         }
 
-        bind "Ctrl T" {
+        bind "Ctrl Shift T" {
           NewTab;
         }
 
-        bind "Ctrl W" {
+        bind "Ctrl Shift W" {
           CloseTab;
         }
 

@@ -5,6 +5,7 @@
     ../../../modules/home/editor/nixvim
     ../../../modules/home/editor/ai.nix
     ../../../modules/home/terminal/foot.nix
+    ../../../modules/home/terminal/kitty.nix
     ../../../modules/home/desktop/hyprland.nix
     ../../../modules/home/desktop/niri.nix
 
