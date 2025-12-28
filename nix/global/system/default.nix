@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
   imports = [
+    ../../modules/system
     ./boot.nix
     ./locale.nix
     ./network.nix
@@ -10,9 +11,9 @@
   ];
 
   # User Configuration
-  users.users.sultonov = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "sultonov";
+    description = user;
     extraGroups = [
       "networkmanager"
       "wheel"

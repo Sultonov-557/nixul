@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  user,
   ...
 }:
 
@@ -44,12 +45,12 @@
   };
 
   home-manager = {
-    users.sultonov = {
+    users.${user} = {
       imports = [ ../../global/home ];
 
-      home.username = "sultonov";
+      home.username = user;
     };
 
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs user; };
   };
 }

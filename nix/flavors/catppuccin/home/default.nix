@@ -1,43 +1,76 @@
 { ... }:
 
 {
+  modules = {
+    ai = {
+      gemini.enable = true;
+      cursor.enable = true;
+    };
+    editor = {
+      nixvim.enable = true;
+      ide.antigravity.enable = true;
+    };
+    terminal = {
+      shells.zsh.enable = true;
+      vcs.git.enable = true;
+      emulators = {
+        kitty.enable = true;
+        foot.enable = true;
+        ghostty.enable = true;
+      };
+      env.direnv.enable = true;
+      runtime.bun.enable = true;
+      container.lazydocker.enable = true;
+      multiplexers.zellij.enable = true;
+    };
+    desktop = {
+      wms = {
+        niri.enable = true;
+        hyprland.enable = true;
+      };
+      services = {
+        audio.enable = true;
+        cliphist.enable = true;
+        notifications.enable = true;
+        udiskie.enable = true;
+      };
+      tools.screenshots.enable = true;
+    };
+    apps = {
+      browsers.firefox.enable = true;
+      communication = {
+        discord.enable = true;
+        telegram.enable = true;
+        thunderbird.enable = true;
+      };
+      productivity = {
+        libreoffice.enable = true;
+        obsidian.enable = true;
+        khal.enable = true;
+        todoist.enable = true;
+      };
+      gaming.minecraft.enable = true;
+    };
+    utils = {
+      files = {
+        archives.enable = true;
+        documents.enable = true;
+      };
+      media = {
+        mpv.enable = true;
+        spicetify.enable = true;
+        yandex.enable = true;
+      };
+      database.dbeaver.enable = true;
+      graphics.gimp.enable = true;
+      system = {
+        baobab.enable = true;
+        btop.enable = true;
+      };
+    };
+  };
+
   imports = [
-    ../../../modules/home/editor/nixvim
-    ../../../modules/home/editor/ai.nix
-    ../../../modules/home/terminal/foot.nix
-    ../../../modules/home/terminal/kitty.nix
-    ../../../modules/home/desktop/hyprland.nix
-    ../../../modules/home/desktop/niri.nix
-
-    ../../../modules/home/terminal/zsh.nix
-    ../../../modules/home/terminal/git.nix
-    ../../../modules/home/terminal/bun.nix
-    ../../../modules/home/terminal/lazydocker.nix
-    ../../../modules/home/terminal/zellij.nix
-    ../../../modules/home/desktop/screenshots.nix
-    ../../../modules/home/desktop/notifications.nix
-    ../../../modules/home/browsers/firefox.nix
-    ../../../modules/home/browsers/spicetify.nix
-    ../../../modules/home/utils/archives.nix
-    ../../../modules/home/utils/documents.nix
-    ../../../modules/home/utils/media.nix
-    ../../../modules/home/utils/dbeaver.nix
-    ../../../modules/home/utils/gimp.nix
-    ../../../modules/home/utils/baobab.nix
-    ../../../modules/home/utils/btop.nix
-    ../../../modules/home/utils/yandex.nix
-    ../../../modules/home/desktop/cliphist.nix
-    ../../../modules/home/desktop/udiskie.nix
-    ../../../modules/home/desktop/audio.nix
-    ../../../modules/home/communication/discord.nix
-    ../../../modules/home/communication/telegram.nix
-    ../../../modules/home/communication/thunderbird.nix
-    ../../../modules/home/productivity/libreoffice.nix
-    ../../../modules/home/productivity/obsidian.nix
-    ../../../modules/home/productivity/khal.nix
-    ../../../modules/home/productivity/todoist.nix
-    ../../../modules/home/gaming/minecraft.nix
-
     ./stylix.nix
     ./nixvim.nix
     ./DMShell.nix

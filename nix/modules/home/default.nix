@@ -1,0 +1,44 @@
+{ ... }:
+
+{
+  imports = [
+    ./ai/gemini.nix
+    ./ai/cursor.nix
+    ./apps/browsers/firefox.nix
+    ./apps/communication/discord.nix
+    ./apps/communication/telegram.nix
+    ./apps/communication/thunderbird.nix
+    ./apps/gaming/minecraft.nix
+    ./apps/productivity/khal.nix
+    ./apps/productivity/libreoffice.nix
+    ./apps/productivity/obsidian.nix
+    ./apps/productivity/todoist.nix
+    ./desktop/services/audio.nix
+    ./desktop/services/cliphist.nix
+    ./desktop/services/notifications.nix
+    ./desktop/services/udiskie.nix
+    ./desktop/tools/screenshots.nix
+    ./desktop/wms/hyprland.nix
+    ./desktop/wms/niri.nix
+    ./editor/ide/antigravity.nix
+    ./editor/nixvim
+    ./terminal/container/lazydocker.nix
+    ./terminal/emulators/foot.nix
+    ./terminal/emulators/ghostty.nix
+    ./terminal/emulators/kitty.nix
+    ./terminal/env/direnv.nix
+    ./terminal/multiplexers/zellij.nix
+    ./terminal/runtime/bun.nix
+    ./terminal/shells/zsh.nix
+    ./terminal/vcs/git.nix
+    ./utils/database/dbeaver.nix
+    ./utils/files/archives.nix
+    ./utils/files/documents.nix
+    ./utils/graphics/gimp.nix
+    ./utils/media/mpv.nix
+    ./utils/media/spicetify.nix
+    ./utils/media/yandex.nix
+    ./utils/system/baobab.nix
+    ./utils/system/btop.nix
+  ];
+}

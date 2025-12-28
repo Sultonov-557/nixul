@@ -77,12 +77,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      user = "sultonov";
 
       lib = import ./nix/lib { inherit inputs; };
 
@@ -96,13 +106,24 @@
 
       hostsDir = ./nix/hosts;
       hostNames = builtins.attrNames (builtins.readDir hostsDir);
+
+      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          deadnix.enable = true;
+          nixfmt-rfc-style.enable = true;
+          statix.enable = true;
+        };
+      };
     in {
       nixosConfigurations = builtins.listToAttrs (map (hostname: {
         name = hostname;
-        value = lib.mkSystem { inherit hostname hostsDir flavors; };
+        value = lib.mkSystem { inherit hostname hostsDir flavors user; };
       }) hostNames);
 
       devShells.${system}.default = pkgs.mkShell {
+        inherit (pre-commit-check) shellHook;
+        buildInputs = pre-commit-check.enabledPackages;
         packages = with pkgs; [ nixfmt-rfc-style deadnix git ];
       };
 

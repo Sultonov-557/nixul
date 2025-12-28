@@ -1,20 +1,32 @@
-{ inputs, ... }:
 {
-  imports = [
-    inputs.nixvim.homeModules.nixvim
-  ];
+  inputs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.modules.editor.nixvim;
+in
+{
+  imports = [ inputs.nixvim.homeModules.nixvim ];
 
-  programs.nixvim = {
-    enable = true;
-    defaultEditor = true;
-    enableMan = true;
-    imports = [
-      ./options.nix
-      ./keymaps.nix
-      ./plugins
-    ];
+  options.modules.editor.nixvim = {
+    enable = lib.mkEnableOption "nixvim";
+  };
 
-    #Language Servers
-    withNodeJs = true;
+  config = lib.mkIf cfg.enable {
+    programs.nixvim = {
+      enable = true;
+      defaultEditor = true;
+      enableMan = true;
+      imports = [
+        ./options.nix
+        ./keymaps.nix
+        ./plugins
+      ];
+
+      #Language Servers
+      withNodeJs = true;
+    };
   };
 }
