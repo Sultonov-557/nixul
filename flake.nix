@@ -105,7 +105,7 @@
               flavorsDir = ./nix/flavors;
             };
         };
-
+      };
 
       perSystem =
         {
