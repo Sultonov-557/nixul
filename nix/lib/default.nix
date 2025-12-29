@@ -5,7 +5,7 @@ let
 
   # Helper to get subdirectories
   getDirs =
-    dir: builtins.attrNames (builtins.filterAttrs (n: v: v == "directory") (builtins.readDir dir));
+    dir: builtins.attrNames (builtins.filterAttrs (_: v: v == "directory") (builtins.readDir dir));
 
   mkSpecialisations =
     flavorsDir:

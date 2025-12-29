@@ -1,6 +1,8 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.modules.system.services.desktop.displayManager;
-in {
+{ lib, config, ... }:
+let
+  cfg = config.modules.system.services.desktop.displayManager;
+in
+{
   options.modules.system.services.desktop.displayManager = {
     gdm.enable = lib.mkEnableOption "GDM display manager";
   };
