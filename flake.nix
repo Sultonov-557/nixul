@@ -118,24 +118,6 @@
         }:
         {
           formatter = pkgs.nixfmt-rfc-style;
-
-          devShells.default = pkgs.mkShell {
-            inherit (config.pre-commit.settings) shellHook;
-            buildInputs = config.pre-commit.settings.enabledPackages;
-            packages = with pkgs; [
-              nixfmt-rfc-style
-              deadnix
-              git
-            ];
-          };
-
-          pre-commit = {
-            settings.hooks = {
-              deadnix.enable = true;
-              nixfmt-rfc-style.enable = true;
-              statix.enable = true;
-            };
-          };
         };
       imports = [
         inputs.pre-commit-hooks.flakeModule
