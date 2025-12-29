@@ -1,41 +1,67 @@
 { inputs }:
+
 let
-  inherit (inputs) nixpkgs home-manager;
+  inherit (inputs) nixpkgs;
+
+  # Helper to get subdirectories
+  getDirs =
+    dir: builtins.attrNames (builtins.filterAttrs (n: v: v == "directory") (builtins.readDir dir));
 
   mkSpecialisations =
-    flavors:
-    builtins.mapAttrs (_: flavor: {
-      inheritParentConfig = true;
-      configuration = flavor.specialisation;
-    }) flavors;
-in
-{
-  inherit mkSpecialisations;
+    flavorsDir:
+    let
+      flavors = getDirs flavorsDir;
+    in
+    builtins.listToAttrs (
+      map (flavor: {
+        name = flavor;
+        value = {
+          inheritParentConfig = true;
+          configuration =
+            (import (flavorsDir + "/${flavor}") {
+              inherit inputs;
+              self = inputs.self;
+            }).specialisation;
+        };
+      }) flavors
+    );
 
   mkSystem =
     {
       hostname,
-      system ? "x86_64-linux",
-      user,
       hostsDir,
-      flavors,
+      flavorsDir,
+      system ? "x86_64-linux",
     }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs user; };
+      specialArgs = { inherit inputs; };
       modules = [
         (hostsDir + "/${hostname}")
-        home-manager.nixosModules.home-manager
+        inputs.home-manager.nixosModules.home-manager
         inputs.nur.modules.nixos.default
         inputs.sops-nix.nixosModules.sops
         {
-          specialisation = mkSpecialisations flavors;
+          specialisation = mkSpecialisations flavorsDir;
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit inputs user; };
+            extraSpecialArgs = { inherit inputs; };
           };
         }
       ];
     };
+in
+{
+  mkSystems =
+    { hostsDir, flavorsDir }:
+    let
+      hosts = getDirs hostsDir;
+    in
+    builtins.listToAttrs (
+      map (hostname: {
+        name = hostname;
+        value = mkSystem { inherit hostname hostsDir flavorsDir; };
+      }) hosts
+    );
 }

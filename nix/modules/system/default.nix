@@ -9,5 +9,6 @@
     ./services/databases/redis.nix
     ./services/security/sops.nix
     ./services/virtualisation/docker.nix
+    ./user.nix
   ];
 }

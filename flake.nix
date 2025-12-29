@@ -1,6 +1,5 @@
 {
-  description =
-    "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
+  description = "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
 
   inputs = {
     # Core
@@ -22,7 +21,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    #Styling
+    # Styling
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +29,7 @@
       inputs.nur.follows = "nur";
     };
 
-    #WM/DM
+    # WM/DM
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,13 +40,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #Bar/Shell
+    # Bar/Shell
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #Apps/Tools
+    # Apps/Tools
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,7 +69,9 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    nix-flatpak = { url = "github:gmodena/nix-flatpak/?ref=latest"; };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
 
     xmcl = {
       url = "github:x45iq/xmcl-nix";
@@ -88,45 +89,56 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      user = "sultonov";
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
 
-      lib = import ./nix/lib { inherit inputs; };
-
-      flavorsDir = ./nix/flavors;
-      flavorNames = builtins.attrNames (builtins.readDir flavorsDir);
-
-      flavors = builtins.listToAttrs (map (name: {
-        name = name;
-        value = import (flavorsDir + "/${name}") { inherit inputs self; };
-      }) flavorNames);
-
-      hostsDir = ./nix/hosts;
-      hostNames = builtins.attrNames (builtins.readDir hostsDir);
-
-      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          deadnix.enable = true;
-          nixfmt-rfc-style.enable = true;
-          statix.enable = true;
+      flake = {
+        flake = {
+          nixosConfigurations =
+            let
+              lib = import ./nix/lib { inherit inputs; };
+            in
+            lib.mkSystems {
+              hostsDir = ./nix/hosts;
+              flavorsDir = ./nix/flavors;
+            };
         };
-      };
-    in {
-      nixosConfigurations = builtins.listToAttrs (map (hostname: {
-        name = hostname;
-        value = lib.mkSystem { inherit hostname hostsDir flavors user; };
-      }) hostNames);
 
-      devShells.${system}.default = pkgs.mkShell {
-        inherit (pre-commit-check) shellHook;
-        buildInputs = pre-commit-check.enabledPackages;
-        packages = with pkgs; [ nixfmt-rfc-style deadnix git ];
-      };
 
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      perSystem =
+        {
+          config,
+          self',
+          inputs',
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+
+          devShells.default = pkgs.mkShell {
+            inherit (config.pre-commit.settings) shellHook;
+            buildInputs = config.pre-commit.settings.enabledPackages;
+            packages = with pkgs; [
+              nixfmt-rfc-style
+              deadnix
+              git
+            ];
+          };
+
+          pre-commit = {
+            settings.hooks = {
+              deadnix.enable = true;
+              nixfmt-rfc-style.enable = true;
+              statix.enable = true;
+            };
+          };
+        };
+      imports = [
+        inputs.pre-commit-hooks.flakeModule
+      ];
     };
 }

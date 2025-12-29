@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -11,9 +11,9 @@
   ];
 
   # User Configuration
-  users.users.${user} = {
+  users.users.${config.nixul.user} = {
     isNormalUser = true;
-    description = user;
+    description = config.nixul.user;
     extraGroups = [
       "networkmanager"
       "wheel"
