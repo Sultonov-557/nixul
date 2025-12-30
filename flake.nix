@@ -95,16 +95,14 @@
       systems = [ "x86_64-linux" ];
 
       flake = {
-        flake = {
-          nixosConfigurations =
-            let
-              lib = import ./nix/lib { inherit inputs; };
-            in
-            lib.mkSystems {
-              hostsDir = ./nix/hosts;
-              flavorsDir = ./nix/flavors;
-            };
-        };
+        nixosConfigurations =
+          let
+            lib = import ./nix/lib { inherit inputs; };
+          in
+          lib.mkSystems {
+            hostsDir = ./nix/hosts;
+            flavorsDir = ./nix/flavors;
+          };
       };
 
       perSystem =
