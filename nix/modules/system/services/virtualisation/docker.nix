@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  user,
   ...
 }:
 let
@@ -18,6 +17,6 @@ in
       enableOnBoot = true;
     };
 
-    users.users.${user}.extraGroups = [ "docker" ];
+    users.users.${config.nixul.user}.extraGroups = [ "docker" ];
   };
 }

@@ -31,6 +31,7 @@ let
       hostname,
       hostsDir,
       flavorsDir,
+      modulesDir,
       system ? "x86_64-linux",
     }:
     nixpkgs.lib.nixosSystem {
@@ -38,6 +39,7 @@ let
       specialArgs = { inherit inputs; };
       modules = [
         (hostsDir + "/${hostname}")
+        (modulesDir + "/system")
         inputs.home-manager.nixosModules.home-manager
         inputs.nur.modules.nixos.default
         inputs.sops-nix.nixosModules.sops
@@ -54,14 +56,25 @@ let
 in
 {
   mkSystems =
-    { hostsDir, flavorsDir }:
+    {
+      hostsDir,
+      flavorsDir,
+      modulesDir,
+    }:
     let
       hosts = getDirs hostsDir;
     in
     builtins.listToAttrs (
       map (hostname: {
         name = hostname;
-        value = mkSystem { inherit hostname hostsDir flavorsDir; };
+        value = mkSystem {
+          inherit
+            hostname
+            hostsDir
+            flavorsDir
+            modulesDir
+            ;
+        };
       }) hosts
     );
 }

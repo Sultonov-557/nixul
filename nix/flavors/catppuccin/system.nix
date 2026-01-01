@@ -1,4 +1,9 @@
-{ pkgs, user, ... }:
+{
+  pkgs,
+  user,
+  config,
+  ...
+}:
 
 {
   system.nixos.label = "catppuccin";
@@ -35,5 +40,5 @@
     hyprpicker
   ];
 
-  home-manager.users.${user}.imports = [ ./home.nix ];
+  home-manager.users.${config.nixul.user}.imports = [ ./home.nix ];
 }

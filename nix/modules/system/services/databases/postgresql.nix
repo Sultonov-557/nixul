@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  user,
   ...
 }:
 let
@@ -17,10 +16,10 @@ in
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql_16;
-      ensureDatabases = [ user ];
+      ensureDatabases = [ config.nixul.user ];
       ensureUsers = [
         {
-          name = user;
+          name = config.nixul.user;
           ensureDBOwnership = true;
         }
       ];

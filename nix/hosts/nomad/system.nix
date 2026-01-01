@@ -1,4 +1,4 @@
-{ user, ... }:
+{ config, ... }:
 
 {
   imports = [
@@ -8,5 +8,5 @@
 
   networking.hostName = "nomad";
 
-  home-manager.users.${user}.imports = [ ./home.nix ];
+  home-manager.users.${config.nixul.user}.imports = [ ./home.nix ];
 }

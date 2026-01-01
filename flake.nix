@@ -102,6 +102,7 @@
           lib.mkSystems {
             hostsDir = ./nix/hosts;
             flavorsDir = ./nix/flavors;
+            modulesDir = ./nix/modules;
           };
       };
 
