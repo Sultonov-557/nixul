@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware/management/power.nix
+    ./hardware/bluetooth.nix
     ./hardware/storage/usb-automount.nix
     ./services/display-manager/gdm.nix
     ./services/databases/postgresql.nix

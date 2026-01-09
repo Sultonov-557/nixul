@@ -77,6 +77,6 @@ in {
       enableZshIntegration = true;
     };
 
-    home.packages = with pkgs; [ ripgrep fd eza ];
+    home.packages = with pkgs; [ ripgrep fd eza nmap ];
   };
 }

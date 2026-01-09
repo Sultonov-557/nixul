@@ -101,16 +101,20 @@
       "Mod+Shift+S".action.screenshot-screen = [ ]; # Niri native screenshot
       "Print".action.screenshot = [ ];
 
+      # Media keys (playerctl)
+      "XF86AudioPlay".action = spawn "playerctl play-pause";
+      "XF86AudioPause".action = spawn "playerctl play-pause";
+      "XF86AudioNext".action = spawn "playerctl next";
+      "XF86AudioPrev".action = spawn "playerctl previous";
+      "XF86AudioStop".action = spawn "playerctl stop";
+
+      # Brightness keys (brightnessctl)
+      "XF86MonBrightnessUp".action = spawn "brightnessctl set +5%";
+      "XF86MonBrightnessDown".action = spawn "brightnessctl set 5%-";
+
       # -- Celestia Placeholders --
       # "Mod+Ctrl+C".action = spawn "caelestia:clearNotifs";
-      # "XF86AudioPlay".action = spawn "caelestia:mediaToggle";
-      # "XF86AudioPause".action = spawn "caelestia:mediaToggle";
-      # "XF86AudioNext".action = spawn "caelestia:mediaNext";
-      # "XF86AudioPrev".action = spawn "caelestia:mediaPrev";
-      # "XF86AudioStop".action = spawn "caelestia:mediaStop";
       # "Print".action = spawn "caelestia:screenshot"; # Overrides niri default if enabled
-      # "XF86MonBrightnessUp".action = spawn "caelestia:brightnessUp";
-      # "XF86MonBrightnessDown".action = spawn "caelestia:brightnessDown";
       # "Mod+Ctrl+Space".action = spawn "caelestia:mediaToggle";
       # "Mod+Ctrl+Equal".action = spawn "caelestia:mediaNext";
       # "Mod+Ctrl+Minus".action = spawn "caelestia:mediaPrev";

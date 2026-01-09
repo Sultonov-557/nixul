@@ -1,9 +1,11 @@
 {
+  services.blueman.enable = true;
   hardware = {
-    bluetooth.enable = true;
-    bluetooth.input.General = {
-      ClassicBondedOnly = false;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
     };
+
     graphics = {
       enable = true;
       enable32Bit = true;
