@@ -36,6 +36,7 @@
         yamlls.enable = true;
         dockerls.enable = true;
         marksman.enable = true;
+        jdtls.enable = true;
       };
 
       keymaps = {
