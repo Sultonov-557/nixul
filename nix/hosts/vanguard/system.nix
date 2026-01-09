@@ -1,10 +1,7 @@
-{ config, user, ... }:
+{ config, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../global/system
-  ];
+  imports = [ ./hardware-configuration.nix ../../global/system ];
 
   networking.hostName = "vanguard";
 
@@ -39,5 +36,5 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  home-manager.users.${user}.imports = [ ./home.nix ];
+  home-manager.users.${config.nixul.user}.imports = [ ./home.nix ];
 }
