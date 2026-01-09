@@ -1,18 +1,11 @@
-{
-  pkgs,
-  user,
-  config,
-  ...
-}:
+{ pkgs, user, config, inputs, ... }:
 
 {
   system.nixos.label = "catppuccin";
 
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.hyprland;
-    xwayland.enable = true;
-  };
+  #imports = [ inputs.niri.nixosModules.niri ];
+
+  programs.niri = { enable = true; };
 
   modules.system = {
     services = {
@@ -31,8 +24,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    rofi
-    hyprpaper
+    niri
     nautilus
     brightnessctl
     pamixer

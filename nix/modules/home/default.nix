@@ -39,5 +39,6 @@
     ./utils/media/yandex.nix
     ./utils/system/baobab.nix
     ./utils/system/btop.nix
+    ./utils/system/mission-center.nix
   ];
 }

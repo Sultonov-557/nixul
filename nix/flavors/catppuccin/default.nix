@@ -2,7 +2,7 @@
 
 {
   name = "catppuccin";
-  description = "Hyprland with Catppuccin theme and caelestia-shell";
+  description = "niri with Catppuccin theme and DankMaterial-shell";
 
   specialisation = import ./system.nix;
 }

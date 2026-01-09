@@ -66,17 +66,11 @@
       system = {
         baobab.enable = true;
         btop.enable = true;
+        mission-center.enable = true;
       };
     };
   };
 
-  imports = [
-    ./home/stylix.nix
-    ./home/nixvim.nix
-    ./home/DMShell.nix
-
-    ./home/hyprland/keybinds.nix
-    ./home/hyprland/rules.nix
-    ./home/hyprland/settings.nix
-  ];
+  imports =
+    [ ./home/stylix.nix ./home/nixvim.nix ./home/DMShell.nix ./home/niri.nix ];
 }
