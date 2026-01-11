@@ -1,12 +1,6 @@
-{
-  lib,
-  config,
-  ...
-}:
-let
-  cfg = config.modules.terminal.emulators.ghostty;
-in
-{
+{ lib, config, ... }:
+let cfg = config.modules.terminal.emulators.ghostty;
+in {
   options.modules.terminal.emulators.ghostty = {
     enable = lib.mkEnableOption "ghostty";
   };
@@ -21,7 +15,7 @@ in
         font-family = "JetBrainsMono Nerd Font";
         font-size = 12;
 
-        window-decoration = true;
+        window-decoration = false;
         window-padding-x = 8;
         window-padding-y = 8;
 
