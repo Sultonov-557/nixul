@@ -12,7 +12,7 @@
   programs.niri.settings.outputs."eDP-1" = {
     mode = {
       height = 1080;
-      refresh = 60;
+      refresh = 60.0;
       width = 1920;
     };
   };
