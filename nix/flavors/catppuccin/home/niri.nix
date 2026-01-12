@@ -13,6 +13,8 @@
       };
     };
 
+    prefer-no-csd = true;
+
     layout = {
       gaps = 16;
       center-focused-column = "never";
