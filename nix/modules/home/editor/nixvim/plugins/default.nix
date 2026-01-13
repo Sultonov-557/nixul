@@ -8,6 +8,7 @@
     ./formatting.nix
     ./git.nix
     ./lsp.nix
+    ./lint.nix
     ./markdown.nix
     ./navigation.nix
     ./persistence.nix

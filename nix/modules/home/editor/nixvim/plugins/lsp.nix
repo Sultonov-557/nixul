@@ -98,15 +98,11 @@
 
     lsp-format.enable = true;
 
-    lsp-lines = {
-      enable = true;
-    };
+    lsp-lines = { enable = true; };
 
     fidget = {
       enable = true;
-      settings = {
-        notification.window.winblend = 0;
-      };
+      settings = { notification.window.winblend = 0; };
     };
   };
 }
