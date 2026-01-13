@@ -12,6 +12,7 @@
     ./apps/productivity/libreoffice.nix
     ./apps/productivity/obsidian.nix
     ./apps/productivity/todoist.nix
+    ./apps/development/nodejs.nix
     ./desktop/services/audio.nix
     ./desktop/services/cliphist.nix
     ./desktop/services/notifications.nix
