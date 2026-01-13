@@ -37,6 +37,8 @@
       "Mod+Return".action.spawn = "ghostty";
       "Mod+E".action.spawn = "nautilus"; # File Manager
       "Mod+W".action.spawn = "firefox"; # Browser
+      "Mod+T".action.spawn = "Telegram"; # Telegram
+      "Mod+M".action.spawn = "yandex-music"; # Telegram
       "Mod+Shift+C".action.spawn = [ "hyprpicker" "-a" ]; # Color Picker
 
       # DMS / Shell
