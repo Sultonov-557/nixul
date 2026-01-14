@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../global/system ];
+  imports = [ ./hardware-configuration.nix ../../modules/system ];
 
   networking.hostName = "nomad";
 

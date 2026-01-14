@@ -1,15 +1,8 @@
-{ ... }:
+{ lib, ... }: {
+  options.nixul.user = lib.mkOption {
+    type = lib.types.str;
+    description = "The primary user of the system";
+  };
 
-{
-  imports = [
-    ./hardware/management/power.nix
-    ./hardware/bluetooth.nix
-    ./hardware/storage/usb-automount.nix
-    ./services/display-manager/gdm.nix
-    ./services/databases/postgresql.nix
-    ./services/databases/redis.nix
-    ./services/security/sops.nix
-    ./services/virtualisation/docker.nix
-    ./user.nix
-  ];
+  imports = [ ./programs ./hardware ./software ./services ];
 }

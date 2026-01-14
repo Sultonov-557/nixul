@@ -1,5 +1,6 @@
 {
-  description = "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
+  description =
+    "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
 
   inputs = {
     # Core
@@ -24,9 +25,11 @@
     # Styling
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nur.follows = "nur";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        nur.follows = "nur";
+      };
     };
 
     # WM/DM
@@ -69,9 +72,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak/?ref=latest";
-    };
+    nix-flatpak = { url = "github:gmodena/nix-flatpak/?ref=latest"; };
 
     xmcl = {
       url = "github:x45iq/xmcl-nix";
@@ -89,45 +90,29 @@
     };
   };
 
-  outputs =
-    inputs@{ flake-parts, ... }:
+  outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
       flake = {
-        nixosConfigurations =
-          let
-            lib = import ./nix/lib { inherit inputs; };
-          in
-          lib.mkSystems {
-            hostsDir = ./nix/hosts;
-            flavorsDir = ./nix/flavors;
-            modulesDir = ./nix/modules;
-          };
+        nixosConfigurations = let lib = import ./nix/lib { inherit inputs; };
+        in lib.mkSystems {
+          hostsDir = ./nix/hosts;
+          flavorsDir = ./nix/flavors;
+          modulesDir = ./nix/modules;
+        };
       };
 
-      perSystem =
-        {
-          config,
-          pkgs,
-          ...
-        }:
-        {
-          formatter = pkgs.nixfmt-rfc-style;
+      perSystem = { config, pkgs, ... }: {
+        formatter = pkgs.nixfmt-rfc-style;
 
-          devShells.default = pkgs.mkShell {
-            inherit (config.pre-commit.settings) shellHook;
-            buildInputs = config.pre-commit.settings.enabledPackages;
-            packages = with pkgs; [
-              nixfmt-rfc-style
-              deadnix
-              git
-            ];
-          };
-
+        devShells.default = pkgs.mkShell {
+          inherit (config.pre-commit.settings) shellHook;
+          buildInputs = config.pre-commit.settings.enabledPackages;
+          packages = with pkgs; [ nixfmt-rfc-style deadnix git ];
         };
-      imports = [
-        inputs.pre-commit-hooks.flakeModule
-      ];
+
+      };
+      imports = [ inputs.pre-commit-hooks.flakeModule ];
     };
 }

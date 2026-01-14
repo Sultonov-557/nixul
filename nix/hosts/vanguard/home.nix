@@ -1,7 +1,7 @@
 { osConfig, ... }:
 
 {
-  imports = [ ../../global/home ];
+  imports = [ ../../modules/home ];
 
   home.username = osConfig.nixul.user;
 
