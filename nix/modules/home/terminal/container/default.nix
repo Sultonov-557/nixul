@@ -1,0 +1,1 @@
+{ ... }: { imports = [ ./lazydocker.nix ]; }

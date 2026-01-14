@@ -1,5 +1,1 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; [ kotatogram-desktop ];
-}
+{ pkgs, ... }: { home.packages = with pkgs; [ kotatogram-desktop ]; }

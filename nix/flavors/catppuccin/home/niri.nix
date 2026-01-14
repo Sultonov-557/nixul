@@ -40,6 +40,7 @@
       "Mod+T".action.spawn = "Telegram"; # Telegram
       "Mod+M".action.spawn = "yandex-music"; # Telegram
       "Mod+Shift+C".action.spawn = [ "hyprpicker" "-a" ]; # Color Picker
+      "Mod+Shift+V".action.spawn = "dms ipc call clipboard toggle";
 
       # DMS / Shell
       "Mod+Space".action.spawn = [ "dms" "ipc" "call" "spotlight" "toggle" ];
@@ -49,7 +50,6 @@
       "Mod+Q".action = close-window;
       "Mod+F".action = fullscreen-window;
       "Mod+V".action = toggle-window-floating;
-      # "Mod+P".action = pin-window; # Niri doesn't have a direct pin equivalent in standard actions usually
       "Mod+Ctrl+C".action = center-column;
 
       # -- Focus --
@@ -106,24 +106,15 @@
       "Print".action.screenshot = [ ];
 
       # Media keys (playerctl)
-      "XF86AudioPlay".action = spawn "playerctl play-pause";
-      "XF86AudioPause".action = spawn "playerctl play-pause";
-      "XF86AudioNext".action = spawn "playerctl next";
-      "XF86AudioPrev".action = spawn "playerctl previous";
-      "XF86AudioStop".action = spawn "playerctl stop";
+      "XF86AudioPlay".action.spawn = "playerctl play-pause";
+      "XF86AudioPause".action.spawn = "playerctl play-pause";
+      "XF86AudioNext".action.spawn = "playerctl next";
+      "XF86AudioPrev".action.spawn = "playerctl previous";
+      "XF86AudioStop".action.spawn = "playerctl stop";
 
       # Brightness keys (brightnessctl)
-      "XF86MonBrightnessUp".action = spawn "brightnessctl set +5%";
-      "XF86MonBrightnessDown".action = spawn "brightnessctl set 5%-";
-
-      # -- Celestia Placeholders --
-      # "Mod+Ctrl+C".action = spawn "caelestia:clearNotifs";
-      # "Print".action = spawn "caelestia:screenshot"; # Overrides niri default if enabled
-      # "Mod+Ctrl+Space".action = spawn "caelestia:mediaToggle";
-      # "Mod+Ctrl+Equal".action = spawn "caelestia:mediaNext";
-      # "Mod+Ctrl+Minus".action = spawn "caelestia:mediaPrev";
-      # "Mod+Shift+S".action = spawn "caelestia:screenshotFreeze"; # Overrides niri default if enabled
-      # "Mod+Shift+Alt+S".action = spawn "caelestia:screenshot";
+      "XF86MonBrightnessUp".action.spawn = "brightnessctl set +5%";
+      "XF86MonBrightnessDown".action.spawn = "brightnessctl set 5%-";
     };
 
     # Animations

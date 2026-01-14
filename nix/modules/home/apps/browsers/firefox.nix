@@ -1,104 +1,95 @@
-{ pkgs, inputs, lib, config, ... }:
-let cfg = config.modules.apps.browsers.firefox;
-in {
+{ pkgs, inputs, ... }: {
   imports = [ inputs.textfox.homeManagerModules.default ];
 
-  options.modules.apps.browsers.firefox = {
-    enable = lib.mkEnableOption "firefox";
+  textfox = {
+    enable = true;
+    profile = "default";
+    config = { };
   };
 
-  config = lib.mkIf cfg.enable {
-    textfox = {
-      enable = true;
-      profile = "default";
-      config = { };
-    };
+  programs.firefox = {
+    enable = true;
+    profiles."default" = {
+      id = 0;
 
-    programs.firefox = {
-      enable = true;
-      profiles."default" = {
-        id = 0;
+      extensions = {
+        packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          bitwarden
+          darkreader
+          ff2mpv
+          istilldontcareaboutcookies
+          languagetool
+          link-cleaner
+          privacy-badger
+          simple-tab-groups
+          ublock-origin
+          unpaywall
+          vimium
+        ];
+      };
 
-        extensions = {
-          packages = with pkgs.nur.repos.rycee.firefox-addons; [
-            bitwarden
-            darkreader
-            ff2mpv
-            istilldontcareaboutcookies
-            languagetool
-            link-cleaner
-            privacy-badger
-            simple-tab-groups
-            ublock-origin
-            unpaywall
-            vimium
-          ];
-        };
+      settings = {
+        "app.normandy.first_run" = false;
+        "app.shield.optoutstudies.enabled" = false;
 
-        settings = {
-          "app.normandy.first_run" = false;
-          "app.shield.optoutstudies.enabled" = false;
+        "app.update.channel" = "default";
 
-          "app.update.channel" = "default";
+        "browser.contentblocking.category" = "standard"; # "strict"
+        "browser.ctrlTab.recentlyUsedOrder" = false;
 
-          "browser.contentblocking.category" = "standard"; # "strict"
-          "browser.ctrlTab.recentlyUsedOrder" = false;
+        "browser.download.useDownloadDir" = false;
+        "browser.download.viewableInternally.typeWasRegistered.svg" = true;
+        "browser.download.viewableInternally.typeWasRegistered.webp" = true;
+        "browser.download.viewableInternally.typeWasRegistered.xml" = true;
 
-          "browser.download.useDownloadDir" = false;
-          "browser.download.viewableInternally.typeWasRegistered.svg" = true;
-          "browser.download.viewableInternally.typeWasRegistered.webp" = true;
-          "browser.download.viewableInternally.typeWasRegistered.xml" = true;
+        "browser.link.open_newwindow" = true;
 
-          "browser.link.open_newwindow" = true;
+        "browser.search.region" = "PL";
+        "browser.search.widget.inNavBar" = true;
 
-          "browser.search.region" = "PL";
-          "browser.search.widget.inNavBar" = true;
+        "browser.shell.checkDefaultBrowser" = false;
+        "browser.tabs.loadInBackground" = true;
+        "browser.urlbar.placeholderName" = "DuckDuckGo";
+        "browser.urlbar.showSearchSuggestionsFirst" = false;
 
-          "browser.shell.checkDefaultBrowser" = false;
-          "browser.tabs.loadInBackground" = true;
-          "browser.urlbar.placeholderName" = "DuckDuckGo";
-          "browser.urlbar.showSearchSuggestionsFirst" = false;
+        # disable all the annoying quick actions
+        "browser.urlbar.quickactions.enabled" = false;
+        "browser.urlbar.quickactions.showPrefs" = false;
+        "browser.urlbar.shortcuts.quickactions" = false;
+        "browser.urlbar.suggest.quickactions" = false;
 
-          # disable all the annoying quick actions
-          "browser.urlbar.quickactions.enabled" = false;
-          "browser.urlbar.quickactions.showPrefs" = false;
-          "browser.urlbar.shortcuts.quickactions" = false;
-          "browser.urlbar.suggest.quickactions" = false;
+        "distribution.searchplugins.defaultLocale" = "en-US";
 
-          "distribution.searchplugins.defaultLocale" = "en-US";
+        "doh-rollout.balrog-migration-done" = true;
+        "doh-rollout.doneFirstRun" = true;
 
-          "doh-rollout.balrog-migration-done" = true;
-          "doh-rollout.doneFirstRun" = true;
+        "dom.forms.autocomplete.formautofill" = false;
 
-          "dom.forms.autocomplete.formautofill" = false;
+        "general.autoScroll" = true;
+        "general.useragent.locale" = "en-US";
 
-          "general.autoScroll" = true;
-          "general.useragent.locale" = "en-US";
+        "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
 
-          "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        "extensions.update.enabled" = false;
+        "extensions.webcompat.enable_picture_in_picture_overrides" = true;
+        "extensions.webcompat.enable_shims" = true;
+        "extensions.webcompat.perform_injections" = true;
+        "extensions.webcompat.perform_ua_overrides" = true;
 
-          "extensions.extensions.activeThemeID" =
-            "firefox-alpenglow@mozilla.org";
-          "extensions.update.enabled" = false;
-          "extensions.webcompat.enable_picture_in_picture_overrides" = true;
-          "extensions.webcompat.enable_shims" = true;
-          "extensions.webcompat.perform_injections" = true;
-          "extensions.webcompat.perform_ua_overrides" = true;
+        "print.print_footerleft" = "";
+        "print.print_footerright" = "";
+        "print.print_headerleft" = "";
+        "print.print_headerright" = "";
 
-          "print.print_footerleft" = "";
-          "print.print_footerright" = "";
-          "print.print_headerleft" = "";
-          "print.print_headerright" = "";
+        "privacy.donottrackheader.enabled" = true;
 
-          "privacy.donottrackheader.enabled" = true;
+        "security.webauth.u2f" = true;
+        "security.webauth.webauthn" = true;
+        "security.webauth.webauthn_enable_softtoken" = true;
+        "security.webauth.webauthn_enable_usbtoken" = true;
 
-          "security.webauth.u2f" = true;
-          "security.webauth.webauthn" = true;
-          "security.webauth.webauthn_enable_softtoken" = true;
-          "security.webauth.webauthn_enable_usbtoken" = true;
-
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        };
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
     };
   };

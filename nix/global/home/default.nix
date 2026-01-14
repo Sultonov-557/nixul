@@ -2,7 +2,6 @@
 
 {
 
-  home.packages = with pkgs; [ nmap bruno ];
   # Basic configuration can go here
   programs.home-manager.enable = true;
 

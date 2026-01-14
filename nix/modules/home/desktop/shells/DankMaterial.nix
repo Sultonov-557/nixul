@@ -2,7 +2,6 @@
   imports = [ inputs.dms.homeModules.dankMaterialShell.default ];
 
   programs.dankMaterialShell = {
-    enable = true;
     systemd = {
       enable = true; # Systemd service for auto-start
       restartIfChanged =
