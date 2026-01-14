@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./minecraft.nix ]; }
+{ ... }: { imports = [ ./minecraft.nix ./lutris.nix ]; }
