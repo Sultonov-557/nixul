@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./antigravity.nix ]; }
+{ ... }: { imports = [ ./antigravity.nix ./cursor.nix ]; }

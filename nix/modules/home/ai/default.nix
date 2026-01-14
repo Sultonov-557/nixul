@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./cursor.nix ./gemini.nix ./opencode.nix ]; }
+{ ... }: { imports = [ ./gemini.nix ./opencode.nix ]; }
