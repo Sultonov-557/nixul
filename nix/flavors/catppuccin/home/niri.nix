@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, ... }: {
   programs.niri.settings = {
     input = {
       keyboard = {

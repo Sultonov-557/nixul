@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./user.nix ./locale.nix ./boot.nix ]; }
+{ ... }: { imports = [ ./user.nix ./locale.nix ./boot.nix ./audio.nix ]; }

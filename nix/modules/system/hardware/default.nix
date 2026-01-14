@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./storage ./software ./management ./connection ]; }
+{ ... }: { imports = [ ./storage ./management ./connection ]; }
