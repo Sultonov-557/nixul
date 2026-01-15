@@ -6,6 +6,8 @@
     flake = "${../..}";
   };
 
+  environment.defaultPackages = with pkgs; [ deadnix ];
+
   nixpkgs.config = {
     allowUnfree = true;
     separateDebugInfo = false;
@@ -39,7 +41,5 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "niri:7kPRy+bwoMP2GiLMR20qHUUiQ1Tg96YapZFsyvokm90="
     ];
-
   };
-
 }
