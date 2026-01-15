@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   plugins = {
     none-ls = {
       enable = true;
@@ -7,7 +6,7 @@
       settings.update_in_insert = false;
       sources = {
         formatting = {
-          nixfmt.enable = true;
+          nixfmt = { enable = true; };
           prettier = {
             enable = true;
             disableTsServerFormatter = true;

@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./firefox.nix ./zen-browser.nix ]; }
+{ ... }: { imports = [ ./firefox.nix ./zen-browser.nix ./chrome.nix ]; }

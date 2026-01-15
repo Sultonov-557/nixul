@@ -1,3 +1,1 @@
-{ ... }: {
-  imports = [ ./discord.nix ./kotatogram.nix ./telegram.nix ./thunderbird.nix ];
-}
+{ ... }: { imports = [ ./discord.nix ./telegram.nix ./thunderbird.nix ]; }

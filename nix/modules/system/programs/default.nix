@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./gaming.nix ./nix.nix ]; }
+{ ... }: { imports = [ ./gaming.nix ./nix.nix ./steam.nix ]; }
