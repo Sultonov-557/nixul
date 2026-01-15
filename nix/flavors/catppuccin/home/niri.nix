@@ -91,16 +91,16 @@
       "Mod+Shift+9".action.move-column-to-workspace = 9;
 
       # -- Media & System (Standard) --
-      "XF86AudioRaiseVolume".action = {
-        spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" ];
+      "XF86AudioRaiseVolume" = {
+        action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" ];
         allow-when-locked = true;
       };
-      "XF86AudioLowerVolume".action = {
-        spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-" ];
+      "XF86AudioLowerVolume" = {
+        action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-" ];
         allow-when-locked = true;
       };
-      "XF86AudioMute".action = {
-        spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
+      "XF86AudioMute" = {
+        action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
         allow-when-locked = true;
       };
       "Mod+Shift+M".action.spawn =
@@ -112,34 +112,34 @@
       "Print".action.screenshot = [ ];
 
       # Media keys (playerctl)
-      "XF86AudioPlay".action = {
-        spawn = [ "playerctl" "play-pause" ];
+      "XF86AudioPlay" = {
+        action.spawn = [ "playerctl" "play-pause" ];
         allow-when-locked = true;
       };
-      "XF86AudioPause".action = {
-        spawn = [ "playerctl" "play-pause" ];
+      "XF86AudioPause" = {
+        action.spawn = [ "playerctl" "play-pause" ];
         allow-when-locked = true;
       };
-      "XF86AudioNext".action = {
-        spawn = [ "playerctl" "next" ];
+      "XF86AudioNext" = {
+        action.spawn = [ "playerctl" "next" ];
         allow-when-locked = true;
       };
-      "XF86AudioPrev".action = {
-        spawn = [ "playerctl" "previous" ];
+      "XF86AudioPrev" = {
+        action.spawn = [ "playerctl" "previous" ];
         allow-when-locked = true;
       };
-      "XF86AudioStop".action = {
-        spawn = [ "playerctl" "stop" ];
+      "XF86AudioStop" = {
+        action.spawn = [ "playerctl" "stop" ];
         allow-when-locked = true;
       };
 
       # Brightness keys (brightnessctl)
-      "XF86MonBrightnessUp".action = {
-        spawn = [ "brightnessctl" "set" "+5%" ];
+      "XF86MonBrightnessUp" = {
+        action.spawn = [ "brightnessctl" "set" "+5%" ];
         allow-when-locked = true;
       };
-      "XF86MonBrightnessDown".action = {
-        spawn = [ "brightnessctl" "set" "5%-" ];
+      "XF86MonBrightnessDown" = {
+        action.spawn = [ "brightnessctl" "set" "5%-" ];
         allow-when-locked = true;
       };
     };
