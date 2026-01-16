@@ -2,7 +2,6 @@
   programs.niri = {
     enable = true;
     settings = {
-      enable = true;
 
       binds = with config.lib.niri.actions; {
         # -- Applications --
