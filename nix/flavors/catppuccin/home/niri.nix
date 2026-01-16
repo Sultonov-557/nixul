@@ -2,6 +2,8 @@
   programs.niri = {
     enable = true;
     settings = {
+      spawn-at-startup =
+        [{ argv = [ "swaybg" "--image" "${../assets/wallpaper.png}" ]; }];
 
       binds = with config.lib.niri.actions; {
         # -- Applications --

@@ -1,7 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   security.rtkit.enable = true;
+  environment.defaultPackages = with pkgs; [ brightnessctl pamixer playerctl ];
 
   services.pipewire = {
     enable = true;
