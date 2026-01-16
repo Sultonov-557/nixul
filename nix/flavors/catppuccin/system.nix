@@ -3,7 +3,11 @@
 {
   system.nixos.label = "catppuccin";
 
-  programs.niri = { enable = true; };
+  programs.niri.enable = true;
+  programs.dank-material-shell.greeter = {
+    enable = true;
+    compositor.name = "niri";
+  };
 
   environment.systemPackages = with pkgs; [
     niri
