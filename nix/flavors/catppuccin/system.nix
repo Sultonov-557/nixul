@@ -4,10 +4,7 @@
   system.nixos.label = "catppuccin";
 
   programs.niri.enable = true;
-  programs.dank-material-shell.greeter = {
-    enable = true;
-    compositor.name = "niri";
-  };
+  services.displayManager.gdm.enable = true;
 
   environment.systemPackages = with pkgs; [
     niri
