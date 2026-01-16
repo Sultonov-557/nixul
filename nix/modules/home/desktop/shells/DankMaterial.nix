@@ -1,7 +1,7 @@
 { inputs, ... }: {
   imports = [ inputs.dms.homeModules.dank-material-shell ];
 
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     systemd = {
       enable = true; # Systemd service for auto-start
       restartIfChanged =
