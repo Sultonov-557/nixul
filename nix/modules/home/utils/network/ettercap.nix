@@ -1,1 +1,1 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ ettercap ]; }
+{ pkgs, ... }: { home.packages = with pkgs; [ ettercap ethtool ]; }
