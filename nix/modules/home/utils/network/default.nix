@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ./wifite2.nix
     ./bruno.nix
     ./nmap.nix
     ./ettercap.nix
