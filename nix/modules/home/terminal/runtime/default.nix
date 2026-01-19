@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./prisma.nix ./bun.nix ./nodejs.nix ]; }
+{ ... }: { imports = [ ./prisma.nix ./bun.nix ./nodejs.nix ./biome.nix ]; }

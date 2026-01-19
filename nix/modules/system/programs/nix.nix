@@ -13,7 +13,10 @@
     separateDebugInfo = false;
   };
 
-  programs.nix-ld.libraries = [ pkgs.jre8 pkgs.temurin-jre-bin-17 ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = [ pkgs.jre8 pkgs.temurin-jre-bin-17 pkgs.bun ];
+  };
 
   environment.pathsToLink =
     [ "/share/applications" "/share/xdg-desktop-portal" ];
