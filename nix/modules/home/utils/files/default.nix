@@ -1,1 +1,3 @@
-{ ... }: { imports = [ ./archives.nix ./documents.nix ./nautilus.nix ]; }
+{ ... }: {
+  imports = [ ./archives.nix ./documents.nix ./nautilus.nix ./yazi.nix ];
+}

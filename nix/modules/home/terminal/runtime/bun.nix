@@ -1,1 +1,5 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ bun ]; }
+{ pkgs, ... }: {
+  programs.bun = { enable = true; };
+
+  home.packages = with pkgs; [ bun ];
+}
