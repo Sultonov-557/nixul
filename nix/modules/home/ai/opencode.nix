@@ -1,1 +1,6 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ opencode ]; }
+{ ... }: {
+  opencode = {
+    enable = true;
+    settings = { theme = "catppuccin"; };
+  };
+}
