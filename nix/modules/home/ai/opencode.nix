@@ -1,6 +1,1 @@
-{ ... }: {
-  programs.opencode = {
-    enable = true;
-    settings = { theme = "catppuccin"; };
-  };
-}
+{ ... }: { programs.opencode = { enable = true; }; }
