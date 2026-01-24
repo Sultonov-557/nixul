@@ -13,11 +13,14 @@
         "Mod+T".action.spawn = "Telegram"; # Telegram
         "Mod+M".action.spawn = "yandex-music"; # Telegram
         "Mod+Shift+C".action.spawn = [ "hyprpicker" "-a" ]; # Color Picker
-        "Mod+Shift+V".action.spawn = "dms ipc call clipboard toggle";
+        "Mod+Shift+V".action.spawn =
+          [ "noctalia-shell" "ipc" "call" "launcher" "clipboard" ];
 
         # DMS / Shell
-        "Mod+Space".action.spawn = [ "dms" "ipc" "call" "spotlight" "toggle" ];
-        "Mod+Shift+L".action.spawn = [ "dms" "ipc" "call" "lock" "lock" ];
+        "Mod+Space".action.spawn =
+          [ "noctalia-shell" "ipc" "call" "launcher" "toggle" ];
+        "Mod+Shift+L".action.spawn =
+          [ "noctalia-shell" "ipc" "call" "lockScreen" "lock" ];
       };
 
     };
