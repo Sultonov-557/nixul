@@ -4,12 +4,10 @@
       enable = true;
 
       servers = {
-        nixd = {
-          enable = true;
-          settings.formatting.command = [ "nixfmt" ];
-        };
+        nixd = { enable = true; };
 
-        ts_ls.enable = true;
+        # replaced by typescript-tools
+        # ts_ls.enable = true;
 
         lua_ls = {
           enable = true;

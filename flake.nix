@@ -113,6 +113,25 @@
           hostsDir = ./nix/hosts;
           flavorsDir = ./nix/flavors;
           modulesDir = ./nix/modules;
+        } // {
+          _nixd = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./nix/modules/system
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users._nixd = {
+                    imports = [ ./nix/modules/home ];
+                    home.username = "_nixd";
+                    home.homeDirectory = "/tmp/nixd";
+                  };
+                };
+              }
+            ];
+          };
         };
       };
 

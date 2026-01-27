@@ -45,6 +45,30 @@
       action = "<C-w>c";
       options.desc = "Delete window";
     }
+    {
+      mode = "n";
+      key = "<C-h>";
+      action = "<C-w>h";
+      options.desc = "Move to left window";
+    }
+    {
+      mode = "n";
+      key = "<C-j>";
+      action = "<C-w>j";
+      options.desc = "Move to lower window";
+    }
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = "<C-w>k";
+      options.desc = "Move to upper window";
+    }
+    {
+      mode = "n";
+      key = "<C-l>";
+      action = "<C-w>l";
+      options.desc = "Move to right window";
+    }
 
     # Buffer Management
     {
@@ -64,12 +88,6 @@
       key = "<leader>bb";
       action = "<cmd>e #<CR>";
       options.desc = "Switch to Other Buffer";
-    }
-    {
-      mode = "n";
-      key = "<leader>bd";
-      action = "<cmd>bdelete<CR>";
-      options.desc = "Delete buffer";
     }
 
     # Move Lines

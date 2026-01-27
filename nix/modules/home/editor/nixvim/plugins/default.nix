@@ -1,5 +1,6 @@
 {
   imports = [
+    ./typescipt-tools.nix
     ./autopairs.nix
     ./blink.nix
     ./bufferline.nix

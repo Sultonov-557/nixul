@@ -32,19 +32,23 @@
     neo-tree = {
       enable = true;
       settings = {
-        enableDiagnostics = true;
-        enableGitStatus = true;
-        enableModifiedMarkers = true;
-        enableRefreshOnWrite = true;
-        closeIfLastWindow = true;
-        popupBorderStyle = "rounded";
+        enable_diagnostics = true;
+        enable_git_status = true;
+        enable_modified_markers = true;
+        enable_refresh_on_write = true;
+        close_if_last_window = true;
+        popup_border_style = "rounded";
 
-        sources = [ "filesystem" "buffers" "git_status" ];
+        sources = [
+          "filesystem"
+          "buffers"
+          "git_status"
+        ];
 
         filesystem = {
-          bindToCwd = false;
-          followCurrentFile.enabled = true;
-          useLibuvFileWatcher = true;
+          bind_to_cwd = false;
+          follow_current_file.enabled = true;
+          use_libuv_file_watcher = true;
         };
       };
     };
@@ -60,7 +64,9 @@
       enable = true;
       settings = {
         columns = [ "icon" ];
-        view_options = { show_hidden = true; };
+        view_options = {
+          show_hidden = true;
+        };
         keymaps = {
           "g?" = "actions.show_help";
           "<CR>" = "actions.select";
@@ -152,8 +158,7 @@
     {
       mode = "n";
       key = "<leader>hh";
-      action.__raw =
-        "function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end";
+      action.__raw = "function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end";
       options.desc = "Harpoon menu";
     }
     {

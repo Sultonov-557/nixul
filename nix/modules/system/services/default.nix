@@ -1,3 +1,1 @@
-{ ... }: {
-  imports = [ ./virtualisation ./security ./display-manager ./databases ];
-}
+{ ... }: { imports = [ ./virtualisation ./display-manager ./databases ]; }
