@@ -3,6 +3,7 @@
 
   programs.nixvim = {
     enable = true;
+    extraSpecialArgs = { inherit inputs; };
     defaultEditor = true;
     enableMan = true;
     imports = [ ./options.nix ./keymaps.nix ./plugins ];

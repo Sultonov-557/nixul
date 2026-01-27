@@ -1,6 +1,7 @@
 { ... }: {
   programs.opencode = {
     enable = true;
+
     settings = {
       plugin = [ "opencode-antigravity-auth@latest" ];
       permission = {

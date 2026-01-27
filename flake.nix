@@ -103,7 +103,7 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs = inputs@{ self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
@@ -116,6 +116,7 @@
         } // {
           _nixd = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
             modules = [
               ./nix/modules/system
               inputs.home-manager.nixosModules.home-manager
@@ -123,6 +124,7 @@
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs; };
                   users._nixd = {
                     imports = [ ./nix/modules/home ];
                     home.username = "_nixd";
