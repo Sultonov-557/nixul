@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./gimp.nix ./aseprite.nix ]; }
+{ ... }: { imports = [ ./gimp.nix ./aseprite.nix ./ffmpeg.nix ]; }
