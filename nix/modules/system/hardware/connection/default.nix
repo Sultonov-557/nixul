@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./bluetooth.nix ./network.nix ]; }
+{ ... }: { imports = [ ./bluetooth.nix ./network.nix ./keyboard.nix ]; }
