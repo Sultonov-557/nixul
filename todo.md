@@ -10,13 +10,7 @@
 
 ## Priority Improvements
 
-### 1. Enhance Development Workflow
-
-- [ ] Implement `treefmt` for consistent formatting across different tools
-- [ ] Add CI checks for specific module quality metrics
-- [ ] Set up automated benchmarking for build performance
-
-### 2. Improve Module Organization
+### 1. Improve Module Organization
 
 - [ ] Group related modules better (e.g., combine `system/hardware/` submodules)
 - [ ] Add module documentation with descriptions in `default.nix` files
@@ -24,7 +18,7 @@
 - [ ] Create module versioning and migration system
 - [ ] Add module dependency visualization
 
-### 3. Add Missing Core Features
+### 2. Add Missing Core Features
 
 - [ ] **Security hardening** module (firewall, AppArmor, SELinux)
 - [ ] **Backup and recovery** system (restic, borgbackup)
@@ -32,7 +26,7 @@
 - [ ] **Power management** profiles for different use cases
 - [ ] **Security audit** tools and regular scanning
 
-### 4. Enhance Flavor System
+### 3. Enhance Flavor System
 
 - [ ] **More flavor variants** (e.g., minimal, gaming, server, developer)
 - [ ] **Theme consistency** across all flavors
@@ -40,7 +34,7 @@
 - [ ] **Flavor testing** matrix for validation
 - [ ] **Flavor documentation** and usage examples
 
-### 5. Improve Host Management
+### 4. Improve Host Management
 
 - [ ] **Template generation** for new hosts
 - [ ] **Hardware auto-detection** modules
@@ -48,7 +42,7 @@
 - [ ] **Host-specific optimization** profiles
 - [ ] **Automated host provisioning** scripts
 
-### 6. Add Development/DevOps Features
+### 5. Add Development/DevOps Features
 
 - [ ] **Containerization** improvements (podman, docker-compose)
 - [ ] **CI/CD integration** for automated testing
@@ -57,7 +51,7 @@
 - [ ] **Development environment** standardization
 - [ ] **Code quality** tools integration
 
-### 7. Quality of Life Improvements
+### 6. Quality of Life Improvements
 
 - [ ] **Dotfiles management** for non-Nix config files
 - [ ] **System health checks** and diagnostics
@@ -66,7 +60,7 @@
 - [ ] **System cleanup** and maintenance automation
 - [ ] **User experience** enhancements
 
-### 8. Documentation and Testing
+### 7. Documentation and Testing
 
 - [ ] **Comprehensive README** with setup instructions
 - [ ] **Module examples** and usage guides
@@ -102,9 +96,6 @@
 
 ### Dependencies to Add
 
-- `statix` - Additional linting
-- `treefmt` - Consistent formatting
-- `agenix` - Enhanced secret management
 - `nix-index` - Package database
 - `nix-tree` - Dependency visualization
 
