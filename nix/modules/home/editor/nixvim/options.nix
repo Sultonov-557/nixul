@@ -34,11 +34,7 @@
     updatetime = 250;
     timeoutlen = 300;
 
-    completeopt = [
-      "menu"
-      "menuone"
-      "noselect"
-    ];
+    completeopt = [ "menu" "menuone" "noselect" ];
 
     conceallevel = 0;
     fileencoding = "utf-8";

@@ -96,14 +96,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs@{ self, flake-parts, ... }:
+  outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
@@ -136,17 +131,5 @@
           };
         };
       };
-
-      perSystem = { config, pkgs, ... }: {
-        formatter = pkgs.nixfmt-rfc-style;
-
-        devShells.default = pkgs.mkShell {
-          inherit (config.pre-commit.settings) shellHook;
-          buildInputs = config.pre-commit.settings.enabledPackages;
-          packages = with pkgs; [ nixfmt-rfc-style deadnix git ];
-        };
-
-      };
-      imports = [ inputs.pre-commit-hooks.flakeModule ];
     };
 }

@@ -69,6 +69,30 @@
       action = "<C-w>l";
       options.desc = "Move to right window";
     }
+    {
+      mode = "n";
+      key = "<C-left>";
+      action = "<C-w><";
+      options.desc = "Resize window left";
+    }
+    {
+      mode = "n";
+      key = "<C-right>";
+      action = "<C-w>>";
+      options.desc = "Resize window right";
+    }
+    {
+      mode = "n";
+      key = "<C-up>";
+      action = "<C-w>+";
+      options.desc = "Resize window up";
+    }
+    {
+      mode = "n";
+      key = "<C-down>";
+      action = "<C-w>-";
+      options.desc = "Resize window down";
+    }
 
     # Buffer Management
     {

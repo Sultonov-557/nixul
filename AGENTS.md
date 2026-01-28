@@ -17,3 +17,4 @@
 - **Commits:** Follow conventional commit standards.
 - **Comments:** Add comments to explain complex logic, not to describe what the code does.
 - **Error Handling:** Ensure that Nix expressions fail gracefully with `builtins.tryEval` or provide meaningful error messages using `throw`.
+- **TODO list:** after task is done look at the ./todo.md to check if that task is in todo list and update that task as complate
