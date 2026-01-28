@@ -1,5 +1,6 @@
 {
   plugins = {
+    oil.enable = true;
     comment = {
       enable = true;
       settings = {
@@ -10,9 +11,7 @@
       };
     };
 
-    nvim-surround = {
-      enable = true;
-    };
+    nvim-surround = { enable = true; };
 
     flash = {
       enable = true;
@@ -37,35 +36,21 @@
 
     mini = {
       enable = true;
-      modules = {
-        ai = {
-          n_lines = 500;
-        };
-      };
+      modules = { ai = { n_lines = 500; }; };
     };
 
-    ts-context-commentstring = {
-      enable = true;
-    };
+    ts-context-commentstring = { enable = true; };
   };
 
   keymaps = [
     {
-      mode = [
-        "n"
-        "x"
-        "o"
-      ];
+      mode = [ "n" "x" "o" ];
       key = "s";
       action.__raw = "require('flash').jump";
       options.desc = "Flash";
     }
     {
-      mode = [
-        "n"
-        "x"
-        "o"
-      ];
+      mode = [ "n" "x" "o" ];
       key = "S";
       action.__raw = "require('flash').treesitter";
       options.desc = "Flash Treesitter";

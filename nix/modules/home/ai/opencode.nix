@@ -3,7 +3,10 @@
     enable = true;
 
     settings = {
-      plugin = [ "opencode-antigravity-auth@latest" ];
+      plugin = [
+        "opencode-antigravity-auth@latest"
+        "opencode-openai-codex-auth@latest"
+      ];
       permission = {
         bash = "ask";
         edit = "ask";
