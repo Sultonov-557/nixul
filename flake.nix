@@ -119,7 +119,6 @@
                   users._nixd = {
                     imports = [ ./nix/modules/home ];
                     home.username = "_nixd";
-                    home.homeDirectory = "/tmp/nixd";
                   };
                 };
               }

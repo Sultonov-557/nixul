@@ -14,25 +14,18 @@
 
 - [ ] Group related modules better (e.g., combine `system/hardware/` submodules)
 - [ ] Add module documentation with descriptions in `default.nix` files
-- [ ] Implement module options for more granular control over features
-- [ ] Create module versioning and migration system
 - [ ] Add module dependency visualization
 
 ### 2. Add Missing Core Features
 
 - [ ] **Security hardening** module (firewall, AppArmor, SELinux)
-- [ ] **Backup and recovery** system (restic, borgbackup)
 - [ ] **System monitoring** and logging (prometheus, grafana, loki)
 - [ ] **Power management** profiles for different use cases
-- [ ] **Security audit** tools and regular scanning
 
 ### 3. Enhance Flavor System
 
 - [ ] **More flavor variants** (e.g., minimal, gaming, server, developer)
 - [ ] **Theme consistency** across all flavors
-- [ ] **Dynamic configuration** based on hardware detection
-- [ ] **Flavor testing** matrix for validation
-- [ ] **Flavor documentation** and usage examples
 
 ### 4. Improve Host Management
 
