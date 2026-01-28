@@ -106,6 +106,7 @@
           _nixd = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
+            nixul.user = "_nixd";
             modules = [
               ./nix/modules/system
               inputs.home-manager.nixosModules.home-manager
