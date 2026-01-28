@@ -102,28 +102,6 @@
           hostsDir = ./nix/hosts;
           flavorsDir = ./nix/flavors;
           modulesDir = ./nix/modules;
-        } // {
-          _nixd = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./nix/modules/system
-              inputs.home-manager.nixosModules.home-manager
-              inputs.nur.modules.nixos.default
-              {
-                nixul.user = "_nixd";
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
-                  users._nixd = {
-                    imports = [ ./nix/modules/home ];
-                    home.username = "_nixd";
-                  };
-                };
-              }
-            ];
-          };
         };
       };
     };
