@@ -4,7 +4,7 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
 
     polarity = "dark";
 
@@ -35,9 +35,6 @@
       };
     };
 
-    targets = {
-      nixvim.enable = false;
-      zen-browser.profileNames = [ "default" ];
-    };
+    targets = { nixvim.enable = false; };
   };
 }

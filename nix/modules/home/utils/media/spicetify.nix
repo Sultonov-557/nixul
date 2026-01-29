@@ -14,7 +14,5 @@ in {
     ];
 
     enabledCustomApps = with spicePkgs.apps; [ marketplace ];
-
-    theme = spicePkgs.themes.catppuccin;
   };
 }

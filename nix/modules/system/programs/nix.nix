@@ -45,4 +45,6 @@
       "niri:7kPRy+bwoMP2GiLMR20qHUUiQ1Tg96YapZFsyvokm90="
     ];
   };
+
+  system.stateVersion = "25.11";
 }

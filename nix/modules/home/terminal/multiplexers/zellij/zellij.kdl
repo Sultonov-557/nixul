@@ -246,7 +246,7 @@ web_client {
     font "monospace"
 }
 
-theme "catppuccin-mocha"
+theme "default"
 
 default_mode "locked"
 default_layout "default"
