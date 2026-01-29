@@ -35,9 +35,6 @@
       };
     };
 
-    targets = {
-      nixvim.enable = false;
-      zen-browser.profileNames = [ "default" ];
-    };
+    targets = { nixvim.enable = false; };
   };
 }
