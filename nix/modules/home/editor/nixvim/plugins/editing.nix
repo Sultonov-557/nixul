@@ -11,25 +11,18 @@
       };
     };
 
-    nvim-surround = { enable = true; };
-
-    flash = {
+    mini-surround = {
       enable = true;
       settings = {
-        labels = "asdfghjklqwertyuiopzxcvbnm";
-        search = {
-          multi_window = true;
-          forward = true;
-          wrap = true;
-        };
-        jump.autojump = false;
-        label = {
-          uppercase = false;
-          rainbow.enabled = true;
-        };
-        modes = {
-          search.enabled = true;
-          char.enabled = false;
+        mappings = {
+          add = "sa";
+          delete = "sd";
+          find = "sf";
+          find_left = "sF";
+          highlight = "sh";
+          replace = "sr";
+          suffix_last = "l";
+          suffix_next = "n";
         };
       };
     };
@@ -41,19 +34,4 @@
 
     ts-context-commentstring = { enable = true; };
   };
-
-  keymaps = [
-    {
-      mode = [ "n" "x" "o" ];
-      key = "s";
-      action.__raw = "require('flash').jump";
-      options.desc = "Flash";
-    }
-    {
-      mode = [ "n" "x" "o" ];
-      key = "S";
-      action.__raw = "require('flash').treesitter";
-      options.desc = "Flash Treesitter";
-    }
-  ];
 }
