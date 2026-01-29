@@ -105,10 +105,20 @@
     animations = { slowdown = 1.0; };
 
     # Windows rules
-    window-rules = [{
-      matches = [{ app-id = "^org\\.keepassxc\\.KeePassXC$"; }];
-      block-out-from = "screen-capture";
-    }];
+    window-rules = [
+      {
+        matches = [{ app-id = "^org\\.keepassxc\\.KeePassXC$"; }];
+        block-out-from = "screen-capture";
+      }
+      {
+        geometry-corner-radius = {
+          top-left = 20.0;
+          bottom-left = 20.0;
+          top-right = 20.0;
+          bottom-right = 20.0;
+        };
+      }
+    ];
 
     input = {
       keyboard = {
@@ -132,12 +142,14 @@
       default-column-width = { proportion = 1.0; };
 
       focus-ring = {
-        enable = true;
+        enable = false;
         width = 2;
       };
 
+      shadow = { enable = false; };
+
       border = {
-        enable = true;
+        enable = false;
         width = 2;
       };
     };
