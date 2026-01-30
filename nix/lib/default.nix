@@ -12,11 +12,18 @@ let
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
+
       modules = [
+        ({ lib, ... }: {
+          options.nixul.user = lib.mkOption {
+            type = lib.types.str;
+            description = "name of the user";
+          };
+        })
         (hostsDir + "/${hostname}")
-        (modulesDir + "/system")
         inputs.home-manager.nixosModules.home-manager
         inputs.nur.modules.nixos.default
+        (modulesDir + "")
         {
           home-manager = {
             useGlobalPkgs = true;

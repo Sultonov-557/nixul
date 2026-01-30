@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../modules/system ];
+  imports = [ ./hardware-configuration.nix ];
 
   networking.hostName = "vanguard";
 

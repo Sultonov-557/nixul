@@ -1,0 +1,18 @@
+{ config, ... }: {
+  home-manager.users.${config.nixul.user} = { inputs, ... }: {
+    imports = [ inputs.nixvim.homeModules.nixvim ];
+
+    programs.nixvim = {
+      enable = true;
+      extraSpecialArgs = { inherit inputs; };
+      defaultEditor = true;
+      enableMan = true;
+      imports = [ ./options.nix ./keymaps.nix ./plugins ];
+
+      colorschemes.gruvbox.enable = true;
+
+      #Language Servers
+      withNodeJs = true;
+    };
+  };
+}

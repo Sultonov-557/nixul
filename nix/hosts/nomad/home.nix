@@ -1,9 +1,9 @@
 { osConfig, ... }:
 
 {
-  imports = [ ../../modules/home ];
 
   home.username = osConfig.nixul.user;
+  home.stateVersion = "25.11";
 
   # Host-specific monitor configurations
   wayland.windowManager.hyprland.settings.monitor =

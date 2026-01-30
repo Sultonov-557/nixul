@@ -1,0 +1,7 @@
+{ config, ... }: {
+  home-manager.users.${config.nixul.user} = { inputs, ... }: {
+    imports = [ inputs.nixcord.homeModules.nixcord ];
+
+    programs.nixcord = { enable = true; };
+  };
+}
