@@ -1,117 +1,38 @@
-# NixOS Configuration Improvements
+# NixOS Configuration Roadmap
 
-## Current Configuration Analysis
+## � Phase 1: Foundation & Security (Immediate)
+- [ ] **Secret Management**: Implement `sops-nix` or `agenix` to encrypt secrets (API keys, passwords, tokens). Do not store them in plain text in the repo.
+- [ ] **Formatting & Linting**: Add `alejandra` or `nixfmt` to `flake.nix` `formatter`. Run it ensuring consistent style.
+- [ ] **Fix Hardcoded Values**: Remove hardcoded UIDs in `hardware-configuration.nix` to prevent permission issues during migration/reinstalls.
 
-- **Modular architecture** using flake-parts with clear separation of concerns
-- **Flavor system** for different desktop environments (Catppuccin theme)
-- **Multi-host support** (Vanguard, Nomad)
-- **Home-manager integration** with proper user management
-- **Good development tools** (pre-commit hooks, deadnix, formatting)
+## 🏗️ Phase 2: Architecture (Short-term)
+- [ ] **Standardize Modules**: Even with the hybrid approach, ensure your custom modules use `lib.mkOption` to define their interface. This adds type checking and documentation (e.g., `man configuration.nix` will show your options).
+- [ ] **Refactor "Monoliths"**: Break down large files like `noctalia.nix` into logical components (e.g., `theme.nix`, `layout.nix`) imported by the main module.
 
-## Priority Improvements
+## 🛠️ Phase 3: The "Modern Unix" Experience (Programs to Add)
+Enhance your terminal workflow with modern Rust-based replacements:
 
-### 1. Improve Module Organization
+- [ ] **Shell Enhancements**:
+    - `starship`: Fast, customizable cross-shell prompt.
+    - `zoxide`: Smarter `cd` command that learns your habits.
+    - `atuin`: Sync & search shell history (Ctrl+R replacement).
+- [ ] **CLI Tools**:
+    - `bat`: `cat` clone with syntax highlighting and git integration.
+    - `eza`: Modern replacement for `ls`.
+    - `ripgrep` (`rg`) & `fd`: Faster replacements for `grep` and `find`.
+    - `fzf`: General-purpose fuzzy finder (essential for scripts).
+- [ ] **TUI Workflows**:
+    - `yazi` or `superfile`: Niri is keyboard-centric; a terminal file manager fits perfectly.
+    - `lazygit`: powerful TUI for git operations.
+    - `zellij` or `tmux`: Terminal multiplexer for persistent sessions.
 
-- [ ] Group related modules better (e.g., combine `system/hardware/` submodules)
-- [ ] Add module documentation with descriptions in `default.nix` files
-- [ ] Add module dependency visualization
+## 🎨 Phase 4: Niri & Wayland Polish (Long-term)
+- [ ] **Lock Screen**: Implement `swaylock-effects` or `hyprlock` for a beautiful lock screen experience.
+- [ ] **Logout Menu**: Add `wlogout` for a graphical shutdown/reboot menu.
+- [ ] **Notifications**: Evaluate `swaync` (Sway Notification Center) for a control center experience if `mako` feels too simple.
+- [ ] **Clipboard**: Ensure `cliphist` or `wl-clipboard` is set up with a history viewer (`rofi` or `fuzzel`).
 
-### 2. Add Missing Core Features
-
-- [ ] **Security hardening** module (firewall, AppArmor, SELinux)
-- [ ] **System monitoring** and logging (prometheus, grafana, loki)
-- [ ] **Power management** profiles for different use cases
-
-### 3. Enhance Flavor System
-
-- [ ] **More flavor variants** (e.g., minimal, gaming, server, developer)
-- [ ] **Theme consistency** across all flavors
-
-### 4. Improve Host Management
-
-- [ ] **Template generation** for new hosts
-- [ ] **Hardware auto-detection** modules
-- [ ] **Network configuration profiles** (home, office, mobile)
-- [ ] **Host-specific optimization** profiles
-- [ ] **Automated host provisioning** scripts
-
-### 5. Add Development/DevOps Features
-
-- [ ] **Containerization** improvements (podman, docker-compose)
-- [ ] **CI/CD integration** for automated testing
-- [ ] **Secret management** enhancements (age, agenix integration)
-- [ ] **Package optimization** (cachix, binary cache setup)
-- [ ] **Development environment** standardization
-- [ ] **Code quality** tools integration
-
-### 6. Quality of Life Improvements
-
-- [ ] **Dotfiles management** for non-Nix config files
-- [ ] **System health checks** and diagnostics
-- [ ] **Automated updates** with stability tracking
-- [ ] **Performance profiling** tools
-- [ ] **System cleanup** and maintenance automation
-- [ ] **User experience** enhancements
-
-### 7. Documentation and Testing
-
-- [ ] **Comprehensive README** with setup instructions
-- [ ] **Module examples** and usage guides
-- [ ] **Automated testing** for configuration validation
-- [ ] **Migration guides** for version updates
-- [ ] **Video tutorials** for complex setups
-- [ ] **API documentation** for module interfaces
-
-## Implementation Strategy
-
-### Phase 1: Foundation (High Priority)
-
-- Security hardening module
-- Enhanced development workflow
-- Better module organization
-- Core documentation
-
-### Phase 2: Enhanced Features (Medium Priority)
-
-- Backup and recovery system
-- Monitoring and logging
-- Flavor system expansion
-- Host management improvements
-
-### Phase 3: Advanced Features (Lower Priority)
-
-- DevOps tooling
-- Quality of life improvements
-- Testing infrastructure
-- Performance optimization
-
-## Technical Considerations
-
-### Dependencies to Add
-
-- `nix-index` - Package database
-- `nix-tree` - Dependency visualization
-
-### Architecture Improvements
-
-- **Modular options system** for granular control
-- **Plugin architecture** for extensibility
-- **Configuration validation** with schemas
-- **Rollback mechanisms** for safe updates
-- **Multi-platform support** beyond x86_64
-
-### Monitoring and Maintenance
-
-- **Build time tracking** and optimization
-- **Configuration drift detection**
-- **Automated backup testing**
-- **Security vulnerability scanning**
-- **Performance benchmarking**
-
-## Success Metrics
-
-- Reduced build times by 30%
-- 100% test coverage for critical modules
-- Automated security scanning
-- Improved documentation coverage
-- Better developer experience metrics
+## �️ Phase 5: Hardening
+- [ ] **Firewall**: Explicitly define allowed ports in a central networking module.
+- [ ] **DNS/Privacy**: Consider `dns-over-https` or `unbound` for privacy.
+- [ ] **Sandboxing**: Explore `firejail` for untrusted applications.
