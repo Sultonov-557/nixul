@@ -8,6 +8,8 @@
     enableMan = true;
     imports = [ ./options.nix ./keymaps.nix ./plugins ];
 
+    colorschemes.gruvbox.enable = true;
+
     #Language Servers
     withNodeJs = true;
   };

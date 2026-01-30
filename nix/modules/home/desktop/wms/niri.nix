@@ -1,6 +1,7 @@
 { inputs, config, ... }: {
   imports = [ inputs.niri.homeModules.niri ];
 
+  programs.niri.enable = true;
   programs.niri.settings = {
     binds = with config.lib.niri.actions; {
       # -- Applications --
