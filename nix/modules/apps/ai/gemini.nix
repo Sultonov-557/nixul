@@ -1,6 +1,8 @@
 { config, ... }: {
-
-  home-manager.users.${config.nixul.user} = { pkgs, ... }: {
-    home.packages = with pkgs; [ gemini-cli ];
+  home-manager.users.${config.nixul.user} = { ... }: {
+    programs.gemini-cli = {
+      enable = true;
+      settings = { };
+    };
   };
 }

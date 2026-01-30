@@ -1,1 +1,6 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ thunderbird ]; }
+{ ... }: {
+  programs.thunderbird = {
+    enable = true;
+    preferences = { };
+  };
+}
