@@ -36,8 +36,9 @@
     };
 
     targets = {
-      nixvim.enable = false;
+      #nixvim.enable = false;
       firefox.profileNames = [ "default" ];
     };
   };
 }
+

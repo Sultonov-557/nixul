@@ -5,5 +5,5 @@
   home.packages = with pkgs; [ home-manager ];
   home.stateVersion = "25.11";
 
-  imports = [ ./utils ./terminal ./editor ./desktop ./apps ./ai ];
+  imports = [ ./utils ./terminal ./editor ./desktop ./apps ./ai ./themes ];
 }

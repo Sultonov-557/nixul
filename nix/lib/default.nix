@@ -8,21 +8,7 @@ let
     builtins.attrNames
     (nixpkgs.lib.filterAttrs (_: v: v == "directory") (builtins.readDir dir));
 
-  mkSpecialisations = flavorsDir:
-    let flavors = getDirs flavorsDir;
-    in builtins.listToAttrs (map (flavor: {
-      name = flavor;
-      value = {
-        inheritParentConfig = true;
-        configuration = (import (flavorsDir + "/${flavor}") {
-          inherit inputs;
-          self = inputs.self;
-        }).specialisation;
-      };
-    }) flavors);
-
-  mkSystem =
-    { hostname, hostsDir, flavorsDir, modulesDir, system ? "x86_64-linux", }:
+  mkSystem = { hostname, hostsDir, modulesDir, system ? "x86_64-linux", }:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
@@ -32,7 +18,6 @@ let
         inputs.home-manager.nixosModules.home-manager
         inputs.nur.modules.nixos.default
         {
-          specialisation = mkSpecialisations flavorsDir;
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
@@ -42,10 +27,10 @@ let
       ];
     };
 in {
-  mkSystems = { hostsDir, flavorsDir, modulesDir, }:
+  mkSystems = { hostsDir, modulesDir, }:
     let hosts = getDirs hostsDir;
     in builtins.listToAttrs (map (hostname: {
       name = hostname;
-      value = mkSystem { inherit hostname hostsDir flavorsDir modulesDir; };
+      value = mkSystem { inherit hostname hostsDir modulesDir; };
     }) hosts);
 }

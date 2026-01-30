@@ -100,7 +100,6 @@
         nixosConfigurations = let lib = import ./nix/lib { inherit inputs; };
         in lib.mkSystems {
           hostsDir = ./nix/hosts;
-          flavorsDir = ./nix/flavors;
           modulesDir = ./nix/modules;
         };
       };
