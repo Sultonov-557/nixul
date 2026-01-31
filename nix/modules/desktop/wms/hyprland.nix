@@ -1,5 +1,6 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
 
+  environment.defaultPackages = with pkgs; [ hyprland ];
   programs.hyprland.enable = true;
   home-manager.users.${config.nixul.user} = {
     wayland.windowManager.hyprland = {
