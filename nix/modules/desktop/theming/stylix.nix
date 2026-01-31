@@ -35,14 +35,14 @@
       base07 = "#ffffff"; # Bright foreground (rare highlights)
 
       # === Accent colors ===
-      base08 = "#f38ba8"; # Red      (errors, danger)
-      base09 = "#fab387"; # Orange   (warnings, numbers)
-      base0A = "#f9e2af"; # Yellow   (attention, search)
-      base0B = "#a6e3a1"; # Green    (success)
-      base0C = "#94e2d5"; # Cyan     (info, hints)
-      base0D = "#89b4fa"; # Blue     (primary accent)
-      base0E = "#cba6f7"; # Purple   (secondary accent)
-      base0F = "#f2cdcd"; # Special  (rare / decorative)
+      base08 = "#FF0800"; # Red      (errors, danger)
+      base09 = "#FF4F00"; # Orange   (warnings, numbers)
+      base0A = "#FDEE00"; # Yellow   (attention, search)
+      base0B = "#66FF00"; # Green    (success)
+      base0C = "#6CB4EE"; # Blue     (info, hints)
+      base0D = "#8B0000"; # Blood red     (primary accent)
+      base0E = "#00FF00"; # Black   (secondary accent)
+      base0F = "#8A2BE2"; # Purple  (rare / decorative)
     };
 
     image = ../../../assets/wallpaper.png;
