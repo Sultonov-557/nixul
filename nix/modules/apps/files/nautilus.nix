@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ nautilus ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ nautilus ];
+}

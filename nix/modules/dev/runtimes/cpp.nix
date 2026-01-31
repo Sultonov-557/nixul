@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ gcc ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ gcc ];
+}

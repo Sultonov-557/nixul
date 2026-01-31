@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+
   environment.defaultPackages = with pkgs; [ prisma prisma-engines ];
   environment.variables = {
     PRISMA_QUERY_ENGINE_LIBRARY =

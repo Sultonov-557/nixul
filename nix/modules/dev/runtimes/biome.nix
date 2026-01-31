@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ biome ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ biome ];
+}

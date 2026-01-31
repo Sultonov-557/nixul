@@ -1,6 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, ... }: {
 
-{
   environment.defaultPackages = [
     (pkgs.antigravity.overrideAttrs (old: {
       postInstall = (old.postInstall or "") + ''

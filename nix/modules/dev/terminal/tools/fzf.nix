@@ -1,9 +1,10 @@
 { config, ... }: {
 
   home-manager.users.${config.nixul.user} = {
-    programs.gemini-cli = {
+
+    programs.fzf = {
       enable = true;
-      settings = { };
+      enableZshIntegration = true;
     };
   };
 }

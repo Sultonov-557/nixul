@@ -9,7 +9,6 @@
         useOSProber = true;
         efiSupport = true;
         device = "nodev";
-        default = 1;
       };
       efi = {
         canTouchEfiVariables = true;

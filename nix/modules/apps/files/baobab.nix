@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ baobab ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ baobab ];
+}

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   security.rtkit.enable = true;
@@ -13,4 +13,11 @@
 
     wireplumber.enable = true;
   };
+
+  home-manager.users.${config.nixul.user} = {
+    services.easyeffects.enable = true;
+
+    home.packages = with pkgs; [ pavucontrol pulsemixer ];
+  };
+
 }

@@ -1,5 +1,6 @@
-{ config, ... }: {
-  home-manager.users.${config.nixul.user} = { inputs, ... }: {
+{ inputs, config, ... }: {
+
+  home-manager.users.${config.nixul.user} = {
     imports = [ inputs.nixvim.homeModules.nixvim ];
 
     programs.nixvim = {

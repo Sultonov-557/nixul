@@ -1,5 +1,6 @@
-{ config, ... }: {
-  home-manager.users.${config.nixul.user} = { pkgs, ... }: {
+{ pkgs, config, ... }: {
+
+  home-manager.users.${config.nixul.user} = {
 
     home = {
       packages = with pkgs; [ grim slurp swappy wl-clipboard ];

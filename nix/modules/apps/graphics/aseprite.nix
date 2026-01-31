@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ aseprite ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ aseprite ];
+}

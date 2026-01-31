@@ -1,5 +1,6 @@
 { config, ... }: {
-  home-manager.users.${config.nixul.user} = { inputs, ... }: {
+
+  home-manager.users.${config.nixul.user} = {
     programs.btop = {
       enable = true;
       settings = {

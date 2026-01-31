@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ yarn ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ yarn ];
+}

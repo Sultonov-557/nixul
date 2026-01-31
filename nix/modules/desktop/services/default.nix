@@ -1,1 +1,1 @@
-{ imports = [ ./audio.nix ./udiskie.nix ./notifications.nix ./cliphist.nix ]; }
+{ imports = [ ./udiskie.nix ./mako.nix ./cliphist.nix ]; }

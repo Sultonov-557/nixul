@@ -1,9 +1,11 @@
 { config, ... }: {
 
   home-manager.users.${config.nixul.user} = {
-    programs.gemini-cli = {
+
+    programs.pay-respects = {
       enable = true;
-      settings = { };
+      options = [ "--alias" "f" ];
+      enableZshIntegration = true;
     };
   };
 }

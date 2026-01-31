@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ google-chrome ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ google-chrome ];
+}

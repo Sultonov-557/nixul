@@ -1,5 +1,6 @@
 { config, ... }: {
-  home-manager.users.${config.nixul.user} = { ... }: {
+
+  home-manager.users.${config.nixul.user} = {
     programs.mpv = {
       enable = true;
       config = {

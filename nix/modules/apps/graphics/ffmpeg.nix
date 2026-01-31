@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ ffmpeg ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ ffmpeg ];
+}

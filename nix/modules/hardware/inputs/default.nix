@@ -1,1 +1,1 @@
-{ imports = [ ./keyboard.nix ]; }
+{ imports = [ ./qmk.nix ]; }

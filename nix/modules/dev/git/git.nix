@@ -1,5 +1,6 @@
-{ config, ... }: {
-  home-manager.users.${config.nixul.user} = { pkgs, ... }: {
+{ pkgs, config, ... }: {
+
+  home-manager.users.${config.nixul.user} = {
     programs.gh = {
       enable = true;
       gitCredentialHelper = { enable = true; };

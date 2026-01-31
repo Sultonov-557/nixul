@@ -1,5 +1,6 @@
-{ config, ... }: {
-  home-manager.users.${config.nixul.user} = { inputs, ... }: {
+{ inputs, config, ... }: {
+
+  home-manager.users.${config.nixul.user} = {
     imports = [ inputs.zen-browser.homeModules.default ];
 
     programs.zen-browser = {

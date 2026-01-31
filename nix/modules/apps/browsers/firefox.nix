@@ -1,5 +1,6 @@
-{ config, ... }: {
-  home-manager.users.${config.nixul.user} = { inputs, pkgs, ... }: {
+{ inputs, pkgs, config, ... }: {
+
+  home-manager.users.${config.nixul.user} = {
     imports = [ inputs.textfox.homeManagerModules.default ];
 
     textfox = {

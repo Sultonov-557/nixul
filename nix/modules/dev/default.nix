@@ -7,6 +7,6 @@
     ./runtimes
     ./terminal
     ./tools
-    ./vcs
+    ./git
   ];
 }

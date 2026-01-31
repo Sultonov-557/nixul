@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ obsidian ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ obsidian ];
+}

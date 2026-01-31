@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ mission-center ]; }
+{ pkgs, ... }: {
+
+  environment.defaultPackages = with pkgs; [ mission-center ];
+}

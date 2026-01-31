@@ -1,9 +1,9 @@
 { inputs, config, ... }: {
-  #imports = [ inputs.niri.nixosModules.niri ];
 
   programs.niri.enable = true;
   home-manager.users.${config.nixul.user} = { config, ... }: {
     imports = [ inputs.niri.homeModules.niri ];
+
     programs.niri = {
       enable = true;
       settings = {
