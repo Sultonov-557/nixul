@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ config, ... }: {
 
   home-manager.users.${config.nixul.user} = {
     programs.zsh = {

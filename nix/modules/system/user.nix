@@ -5,7 +5,7 @@
     description = config.nixul.user;
     extraGroups = [ "networkmanager" "wheel" ];
     ignoreShellProgramCheck = true;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
 }

@@ -6,6 +6,7 @@
       enable = true;
       options = [ "--alias" "f" ];
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
   };
 }

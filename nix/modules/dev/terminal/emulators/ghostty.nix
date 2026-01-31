@@ -4,6 +4,7 @@
     programs.ghostty = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       clearDefaultKeybinds = true;
 
       settings = {
@@ -17,7 +18,6 @@
         cursor-style = "block";
         cursor-style-blink = true;
 
-        shell-integration = "zsh";
         shell-integration-features = "cursor,sudo,title";
 
         confirm-close-surface = false;

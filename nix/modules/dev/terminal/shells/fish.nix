@@ -1,11 +1,10 @@
 { config, ... }: {
 
+  programs.fish.enable = true;
   home-manager.users.${config.nixul.user} = {
-
-    programs.fzf = {
+    programs.fish = {
       enable = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
+      shellInit = "set -U fish_greeting";
     };
   };
 }

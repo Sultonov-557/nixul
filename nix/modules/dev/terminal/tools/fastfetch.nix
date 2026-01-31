@@ -2,10 +2,10 @@
 
   home-manager.users.${config.nixul.user} = {
 
-    programs.fzf = {
+    programs.fastfetch = {
       enable = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
+
+      settings = { };
     };
   };
 }

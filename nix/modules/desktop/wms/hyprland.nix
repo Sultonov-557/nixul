@@ -40,8 +40,8 @@ in {
 
         # General settings
         general = {
-          gaps_in = 16;
-          gaps_out = 16;
+          gaps_in = 10;
+          gaps_out = 10;
           border_size = 0; # Niri had border disabled
           layout = "master"; # Using master layout for column-like behavior
         };

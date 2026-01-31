@@ -4,6 +4,7 @@
     programs.zellij = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     xdg.configFile."zellij/config.kdl".source = ./zellij.kdl;

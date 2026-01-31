@@ -4,7 +4,10 @@
 
     programs.kitty = {
       enable = true;
-      shellIntegration.enableZshIntegration = true;
+      shellIntegration = {
+        enableZshIntegration = true;
+        enableFishIntegration = true;
+      };
 
       settings = {
         enable_audio_bell = false;
