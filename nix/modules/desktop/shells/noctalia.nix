@@ -31,8 +31,8 @@
           density = "default";
           showOutline = false;
           showCapsule = true;
-          useSeparateOpacity = false;
-          floating = false;
+          useSeparateOpacity = true;
+          floating = true;
           marginVertical = 4;
           marginHorizontal = 4;
           outerCorners = true;

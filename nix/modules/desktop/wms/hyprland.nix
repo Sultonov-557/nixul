@@ -51,7 +51,10 @@ in {
         };
 
         # Decoration settings
-        decoration = { rounding = 20; };
+        decoration = {
+          rounding = 20;
+          blur = { passes = 2; };
+        };
 
         # Animations
         animations = {
