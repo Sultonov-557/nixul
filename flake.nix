@@ -38,8 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-virtual-desktops = {
-      url = "github:levnikmyskin/hyprland-virtual-desktops";
+    hyprland = {
+      url = "github:hyprwm/Hyprland/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
