@@ -10,7 +10,10 @@
       enableMan = true;
       imports = [ ./options.nix ./keymaps.nix ./plugins ];
 
-      colorschemes.gruvbox.enable = true;
+      colorschemes.catppuccin = {
+        enable = true;
+        settings = { transparent_background = true; };
+      };
 
       #Language Servers
       withNodeJs = true;

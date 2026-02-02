@@ -1,4 +1,5 @@
 {
+
   plugins = {
     # Icons for file types
     web-devicons.enable = true;
@@ -19,44 +20,40 @@
           };
           globalstatus = true;
         };
-          sections = {
-            lualine_a = [ "mode" ];
-            lualine_b = [
-              "branch"
-              "diff"
-              "diagnostics"
-            ];
-            lualine_c = [
-              "filename"
-              {
-                __unkeyed-1 = "searchcount";
-                maxcount = 999;
-                timeout = 500;
-              }
-            ];
-            lualine_x = [
-              {
-                __unkeyed-1 = "lsp_progress";
-                display_components = [
-                  "lsp_client_name"
-                  "spinner"
-                  {
-                    __unkeyed-1 = "title";
-                    "percentage" = true;
-                  }
-                ];
-                timer = {
-                  progress_enddelay = 500;
-                  spinner_array = [ "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ];
-                };
-              }
-              "encoding"
-              "fileformat"
-              "filetype"
-            ];
-            lualine_y = [ "progress" ];
-            lualine_z = [ "location" ];
-          };
+        sections = {
+          lualine_a = [ "mode" ];
+          lualine_b = [ "branch" "diff" "diagnostics" ];
+          lualine_c = [
+            "filename"
+            {
+              __unkeyed-1 = "searchcount";
+              maxcount = 999;
+              timeout = 500;
+            }
+          ];
+          lualine_x = [
+            {
+              __unkeyed-1 = "lsp_progress";
+              display_components = [
+                "lsp_client_name"
+                "spinner"
+                {
+                  __unkeyed-1 = "title";
+                  "percentage" = true;
+                }
+              ];
+              timer = {
+                progress_enddelay = 500;
+                spinner_array = [ "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ];
+              };
+            }
+            "encoding"
+            "fileformat"
+            "filetype"
+          ];
+          lualine_y = [ "progress" ];
+          lualine_z = [ "location" ];
+        };
       };
     };
 
@@ -141,26 +138,15 @@
       };
     };
 
-    dressing = {
-      enable = true;
-    };
+    dressing = { enable = true; };
 
     notify.enable = false; # Handled by snacks.notifier
 
     neoscroll = {
       enable = true;
       settings = {
-        mappings = [
-          "<C-u>"
-          "<C-d>"
-          "<C-b>"
-          "<C-f>"
-          "<C-y>"
-          "<C-e>"
-          "zt"
-          "zz"
-          "zb"
-        ];
+        mappings =
+          [ "<C-u>" "<C-d>" "<C-b>" "<C-f>" "<C-y>" "<C-e>" "zt" "zz" "zb" ];
         stop_eof = true;
         hide_cursor = true;
         respect_scrolloff = false;
@@ -173,11 +159,10 @@
       modules = {
         indentscope.enabled = false; # Handled by snacks.scope
         animate = {
-          cursor.enable = false; # Often distracting, but can be enabled if desired
+          cursor.enable =
+            false; # Often distracting, but can be enabled if desired
           scroll.enable = false; # Handled by snacks.scroll or neoscroll
-          window = {
-            enable = true;
-          };
+          window = { enable = true; };
         };
       };
     };

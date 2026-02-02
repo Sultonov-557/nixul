@@ -3,16 +3,7 @@
   imports = [ inputs.stylix.nixosModules.stylix ];
 
   home-manager.users.${config.nixul.user} = {
-    stylix.targets = {
-      nixvim = {
-        opacity.enable = true;
-        transparentBackground = {
-          main = true;
-          numberLine = true;
-          signColumn = true;
-        };
-      };
-    };
+    stylix.targets = { nixvim = { enable = false; }; };
   };
 
   stylix = {
@@ -21,30 +12,23 @@
     base16Scheme = {
       scheme = "nixul";
       author = "https://github.com/Sultonov-557/nixul";
-
-      # === Background shades ===
-      base00 = "#1e1e1e"; # Default background
-      base01 = "#181818"; # Darker background (panels, sidebars)
-      base02 = "#323232"; # Selection background
-      base03 = "#454545"; # Comments / subtle UI elements
-
-      # === Foreground shades ===
-      base04 = "#585858"; # Dark foreground (secondary text)
-      base05 = "#cdcdcd"; # Default foreground (main text)
-      base06 = "#f5f5f5"; # Light foreground (high emphasis)
-      base07 = "#ffffff"; # Bright foreground (rare highlights)
-
-      # === Accent colors ===
-      base08 = "#FF0800"; # Red      (errors, danger)
-      base09 = "#FF4F00"; # Orange   (warnings, numbers)
-      base0A = "#FDEE00"; # Yellow   (attention, search)
-      base0B = "#66FF00"; # Green    (success)
-      base0C = "#6CB4EE"; # Blue     (info, hints)
-      base0D = "#8B0000"; # Blood red     (primary accent)
-      base0E = "#00FF00"; # Black   (secondary accent)
-      base0F = "#8A2BE2"; # Purple  (rare / decorative)
+      base00 = "#1e1e2e"; # base
+      base01 = "#181825"; # mantle
+      base02 = "#313244"; # surface0
+      base03 = "#45475a"; # surface1
+      base04 = "#585b70"; # surface2
+      base05 = "#cdd6f4"; # text
+      base06 = "#f5e0dc"; # rosewater
+      base07 = "#b4befe"; # lavender
+      base08 = "#f38ba8"; # red
+      base09 = "#fab387"; # peach
+      base0A = "#f9e2af"; # yellow
+      base0B = "#a6e3a1"; # green
+      base0C = "#94e2d5"; # teal
+      base0D = "#89b4fa"; # blue
+      base0E = "#cba6f7"; # mauve
+      base0F = "#f2cdcd"; # flamingo
     };
-
     image = ../../../assets/wallpaper.png;
 
     polarity = "dark";

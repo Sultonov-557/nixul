@@ -6,8 +6,9 @@
       servers = {
         nixd = { enable = true; };
 
-        # replaced by typescript-tools
-        # ts_ls.enable = true;
+        # TypeScript/React LSP
+        ts_ls.enable = true;
+        tsserver.enable = true;
 
         lua_ls = {
           enable = true;
