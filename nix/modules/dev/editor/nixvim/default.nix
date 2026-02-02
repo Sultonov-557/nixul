@@ -10,7 +10,7 @@
       enableMan = true;
       imports = [ ./options.nix ./keymaps.nix ./plugins ];
 
-      colorschemes.catppuccin = {
+      colorschemes.gruvbox = {
         enable = true;
         settings = { transparent_background = true; };
       };
