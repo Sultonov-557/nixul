@@ -19,6 +19,9 @@
       jre8
       temurin-jre-bin-17
       bun
+      cups
+      mesa
+      libdrm
       glib
       gtk3
       gdk-pixbuf
