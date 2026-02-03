@@ -15,7 +15,36 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = [ pkgs.jre8 pkgs.temurin-jre-bin-17 pkgs.bun ];
+    libraries = with pkgs; [
+      jre8
+      temurin-jre-bin-17
+      bun
+      glib
+      gtk3
+      gdk-pixbuf
+      pango
+      cairo
+      atk
+      at-spi2-atk
+      at-spi2-core
+      dbus
+      nss
+      nspr
+      libdrm
+      mesa
+      libxkbcommon
+      alsa-lib
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXrandr
+      xorg.libxcb
+      xorg.libXi
+      xorg.libXcursor
+      xorg.libXScrnSaver
+    ];
   };
 
   environment.pathsToLink =
