@@ -1,1 +1,1 @@
-{ imports = [ ./nixvim ./antigravity.nix ]; }
+{ imports = [ ./nixvim ./antigravity.nix ./zed.nix ]; }
