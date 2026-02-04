@@ -1,4 +1,10 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
 
-  environment.defaultPackages = with pkgs; [ rustc ];
+  environment.defaultPackages = with pkgs; [
+    rustc
+    cargo
+    rustfmt
+    pkg-config
+    libxkbcommon
+  ];
 }

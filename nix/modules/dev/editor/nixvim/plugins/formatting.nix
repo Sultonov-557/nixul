@@ -6,7 +6,8 @@
       settings.update_in_insert = false;
       sources = {
         formatting = {
-          nixfmt = { enable = true; };
+          nixfmt.enable = true;
+          rustfmt.enable = true;
           prettier = {
             enable = true;
             disableTsServerFormatter = true;
@@ -36,6 +37,7 @@
         };
         formatters_by_ft = {
           nix = [ "nixfmt" ];
+          rust = [ "rustfmt" ];
           javascript = [ "prettier" ];
           typescript = [ "prettier" ];
           javascriptreact = [ "prettier" ];
