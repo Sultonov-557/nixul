@@ -30,7 +30,6 @@
       "windows_names"
       "big_writes"
       "x-gvfs-show"
-      "exec"
     ];
   };
 
