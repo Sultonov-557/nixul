@@ -1,1 +1,1 @@
-{ imports = [ ./wifite2.nix ]; }
+{ imports = [ ./wifite2.nix ./openvpn.nix ]; }
