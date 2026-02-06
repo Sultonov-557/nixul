@@ -7,5 +7,7 @@
 
   environment.defaultPackages = with pkgs; [ acpi ];
 
+  hardware.enableRedistributableFirmware = true;
+
   home-manager.users.${config.nixul.user}.imports = [ ./home.nix ];
 }

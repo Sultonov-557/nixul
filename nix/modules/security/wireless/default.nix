@@ -1,1 +1,1 @@
-{ imports = [ ./wifite2.nix ./netcat.nix ]; }
+{ imports = [ ./wifite2.nix ]; }

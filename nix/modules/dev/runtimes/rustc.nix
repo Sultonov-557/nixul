@@ -6,5 +6,7 @@
     rustfmt
     pkg-config
     libxkbcommon
+    alsa-lib
+    libudev-zero
   ];
 }

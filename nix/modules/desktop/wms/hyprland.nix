@@ -91,7 +91,8 @@ in {
 
           # Niri Specific ported
           "${mod} SHIFT, E, exit," # Exits Hyprland
-          '', PRINT, exec, grim -g "$(slurp)" - | wl-copy"''
+          ''
+            ${mod} SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy'' # Region screenshot
           # -- Applications --
           "${mod}, RETURN, exec, ghostty"
           "${mod}, E, exec, nautilus"
