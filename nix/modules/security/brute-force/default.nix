@@ -1,1 +1,1 @@
-{ imports = [ ./john.nix ./hydra.nix ]; }
+{ imports = [ ./john.nix ./hydra.nix ./wordlists.nix ]; }

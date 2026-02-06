@@ -1,1 +1,1 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ hydra ]; }
+{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ thc-hydra ]; }

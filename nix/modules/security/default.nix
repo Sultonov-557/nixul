@@ -1,1 +1,1 @@
-{ imports = [ ./analysis ./wireless ./scanning ./mitm ]; }
+{ imports = [ ./analysis ./wireless ./scanning ./mitm ./brute-force ]; }

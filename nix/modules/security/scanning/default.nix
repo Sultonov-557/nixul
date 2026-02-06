@@ -1,1 +1,1 @@
-{ imports = [ ./nmap.nix ./bettercap.nix ./netcat.nix ]; }
+{ imports = [ ./nmap.nix ./bettercap.nix ./netcat.nix ./assetfinder.nix ]; }
