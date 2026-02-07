@@ -7,5 +7,6 @@
     ./nodejs.nix
     ./cpp.nix
     ./rustc.nix
+    ./python.nix
   ];
 }
