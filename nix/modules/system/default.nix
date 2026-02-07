@@ -7,5 +7,6 @@
     ./nix.nix
     ./boot.nix
     ./xdg.nix
+    ./gc.nix
   ];
 }

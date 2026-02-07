@@ -5,11 +5,9 @@
 - [x] **Repo structure**: Split into `hosts/`, `modules/system/`, `modules/home/`, `pkgs/`, `lib/`.
 - [x] **Flake outputs sanity**: `nixosConfigurations`, `packages`, `devShells`, `checks`, `formatter`.
 - [x] **Formatting & Linting**: Add `nixfmt` to `flake.nix` `formatter`. Run it ensuring consistent style.
-- [ ] **Pre-commit**: `pre-commit-hooks.nix` (format, statix, deadnix, markdownlint).
 - [x] **CI**: `nix flake check --all-systems` + build your main host.
 - [ ] **Docs**: `README.md` with “how to bootstrap”, “how to rebuild”, “how to add a host/flavor”, “common fixes”.
-- [ ] **Pinned nixpkgs**: Ensure lock is committed and updated intentionally (not randomly).
-- [ ] **Minimal secrets in git**: Confirm no tokens/keys accidentally committed (ripgrep for `BEGIN PRIVATE KEY`, `token=`, etc).
+- [x] **Pinned nixpkgs**: Ensure lock is committed and updated intentionally (not randomly).
 
 ---
 
@@ -50,9 +48,9 @@
 - [x] **Substituters & caches**:
   - [x] Add official cache.
   - [x] Add any extra caches you rely on (and pin keys).
-- [ ] **Garbage collection strategy**:
-  - [ ] Auto GC schedule.
-  - [ ] Keep-generations policy (system + home).
+- [x] **Garbage collection strategy**:
+  - [x] Auto GC schedule.
+  - [x] Keep-generations policy (system + home).
 - [x] **Rollback confidence**:
   - [x] Confirm system rollbacks work from boot menu.
   - [x] Confirm home-manager rollback works (if you use HM).
