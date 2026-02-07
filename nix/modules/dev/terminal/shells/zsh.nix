@@ -19,7 +19,6 @@
           "bun"
           "history-substring-search"
           "colored-man-pages"
-          "command-not-found"
         ];
         theme = "robbyrussell";
       };

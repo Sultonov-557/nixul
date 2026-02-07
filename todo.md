@@ -60,9 +60,9 @@
   - [x] `max-jobs`, `cores`, `keep-outputs`/`keep-derivations` (if useful).
   - [ ] `ccache` for dev workflows (optional).
 - [ ] **nix-index**:
-  - [ ] Enable `nix-index` / `comma` for “what package provides this command”.
-- [ ] **Command-not-found**:
-  - [ ] Enable NixOS module or use `nix-index` integration.
+  - [x] Enable `nix-index` / `comma` for “what package provides this command”.
+- [x] **Command-not-found**:
+  - [x] Enable NixOS module or use `nix-index` integration.
 
 ---
 
