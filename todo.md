@@ -72,8 +72,8 @@
   - [x] NetworkManager (desktop).
 - [ ] **DNS**:
   - [ ] Decide: `systemd-resolved` vs custom (unbound/dnscrypt).
-- [ ] **Time sync**:
-  - [ ] Ensure NTP is on (`systemd-timesyncd` or equivalent).
+- [x] **Time sync**:
+  - [x] Ensure NTP is on (`systemd-timesyncd` or equivalent).
 - [ ] **VPN setup**:
   - [ ] WireGuard profile(s).
   - [ ] “Kill switch” behavior if that matters.
