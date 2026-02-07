@@ -1,1 +1,5 @@
-{ plugins = { supermaven.enable = false; }; }
+{
+  plugins = {
+    supermaven.enable = true;
+  };
+}

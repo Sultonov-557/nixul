@@ -1,14 +1,14 @@
 {
   imports = [
-    ./typescipt-tools.nix
+    ./ai.nix
     ./autopairs.nix
     ./blink.nix
     ./bufferline.nix
     ./editing.nix
     ./formatting.nix
     ./git.nix
-    ./lsp.nix
     ./lint.nix
+    ./lsp.nix
     ./markdown.nix
     ./navigation.nix
     ./snacks.nix
@@ -17,6 +17,7 @@
     ./todo-comments.nix
     ./treesitter.nix
     ./trouble.nix
+    ./typescipt-tools.nix
     ./ui.nix
   ];
 }

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   plugins = {
     blink-cmp-dictionary.enable = true;
     blink-cmp-spell.enable = true;
@@ -7,15 +8,43 @@
       settings = {
         keymap = {
           preset = "default";
-          "<C-space>" = [ "show" "show_documentation" "hide_documentation" ];
-          "<C-e>" = [ "hide" "fallback" ];
-          "<CR>" = [ "accept" "fallback" ];
-          "<Tab>" = [ "select_next" "fallback" ];
-          "<S-Tab>" = [ "select_prev" "fallback" ];
-          "<C-k>" = [ "select_prev" "fallback" ];
-          "<C-j>" = [ "select_next" "fallback" ];
-          "<C-b>" = [ "scroll_documentation_up" "fallback" ];
-          "<C-f>" = [ "scroll_documentation_down" "fallback" ];
+          "<C-space>" = [
+            "show"
+            "show_documentation"
+            "hide_documentation"
+          ];
+          "<C-e>" = [
+            "hide"
+            "fallback"
+          ];
+          "<CR>" = [
+            "accept"
+            "fallback"
+          ];
+          "<Tab>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<S-Tab>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<C-k>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<C-j>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<C-b>" = [
+            "scroll_documentation_up"
+            "fallback"
+          ];
+          "<C-f>" = [
+            "scroll_documentation_down"
+            "fallback"
+          ];
         };
         completion = {
           accept.auto_brackets.enabled = true;
@@ -29,7 +58,10 @@
         };
         signature.enabled = true;
         sources = {
-          default = [ "lsp" "path" ];
+          default = [
+            "lsp"
+            "path"
+          ];
           cmdline = [ ];
         };
       };
