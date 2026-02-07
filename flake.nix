@@ -1,5 +1,5 @@
 {
-  description = "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
+  description = "Nixul: A modular NixOS configuration system";
 
   inputs = {
     # Core
@@ -95,6 +95,16 @@
   };
   outputs =
     inputs@{ flake-parts, ... }:
+    let
+      lib = import ./nix/lib { inherit inputs; };
+
+      nixosConfigurations = lib.mkSystems {
+        hostsDir = ./nix/hosts;
+        modulesDir = ./nix/modules;
+      };
+
+      hostBuilds = builtins.mapAttrs (_: cfg: cfg.config.system.build.toplevel) nixosConfigurations;
+    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
@@ -109,17 +119,14 @@
               nixfmt-rfc-style
             ];
           };
+
+          packages = hostBuilds;
+
+          checks = hostBuilds;
         };
 
       flake = {
-        nixosConfigurations =
-          let
-            lib = import ./nix/lib { inherit inputs; };
-          in
-          lib.mkSystems {
-            hostsDir = ./nix/hosts;
-            modulesDir = ./nix/modules;
-          };
+        inherit nixosConfigurations;
       };
     };
 }
