@@ -66,12 +66,6 @@
     }
     {
       mode = "n";
-      key = "<leader>gg";
-      action.__raw = "function() Snacks.lazygit() end";
-      options.desc = "Lazygit";
-    }
-    {
-      mode = "n";
       key = "<leader>gl";
       action.__raw = "function() Snacks.lazygit.log() end";
       options.desc = "Lazygit Log";
@@ -84,7 +78,7 @@
     }
     {
       mode = "n";
-      key = "<leader>un";
+      key = "<leader>uN";
       action.__raw = "function() Snacks.notifier.hide() end";
       options.desc = "Dismiss All Notifications";
     }

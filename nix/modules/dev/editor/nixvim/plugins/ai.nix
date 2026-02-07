@@ -1,6 +1,1 @@
-{
-  plugins = {
-    opencode.enable = true;
-    supermaven.enable = true;
-  };
-}
+{ plugins = { supermaven.enable = false; }; }

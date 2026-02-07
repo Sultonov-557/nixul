@@ -27,7 +27,7 @@
     splitbelow = true;
     splitright = true;
 
-    swapfile = false;
+    swapfile = true;
     backup = false;
     undofile = true;
 

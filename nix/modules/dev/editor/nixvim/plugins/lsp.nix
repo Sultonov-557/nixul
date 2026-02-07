@@ -6,9 +6,9 @@
       servers = {
         nixd = { enable = true; };
 
-        # TypeScript/React LSP
-        ts_ls.enable = true;
-        tsserver.enable = true;
+        # handled by typescript-tools
+        #ts_ls.enable = true;
+        #tsserver.enable = true;
 
         lua_ls = {
           enable = true;
@@ -35,7 +35,6 @@
         yamlls.enable = true;
         dockerls.enable = true;
         marksman.enable = true;
-        jdtls.enable = true;
       };
 
       keymaps = {
@@ -94,8 +93,6 @@
         };
       };
     };
-
-    lsp-format.enable = true;
 
     lsp-lines = { enable = true; };
 

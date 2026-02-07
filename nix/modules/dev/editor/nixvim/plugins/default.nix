@@ -4,7 +4,6 @@
     ./autopairs.nix
     ./blink.nix
     ./bufferline.nix
-    ./development.nix
     ./editing.nix
     ./formatting.nix
     ./git.nix
@@ -12,7 +11,6 @@
     ./lint.nix
     ./markdown.nix
     ./navigation.nix
-    ./persistence.nix
     ./snacks.nix
     ./telescope.nix
     ./terminal.nix

@@ -1,7 +1,6 @@
 {
 
   plugins = {
-    # Icons for file types
     web-devicons.enable = true;
 
     lualine = {
@@ -22,7 +21,11 @@
         };
         sections = {
           lualine_a = [ "mode" ];
-          lualine_b = [ "branch" "diff" "diagnostics" ];
+          lualine_b = [
+            "branch"
+            "diff"
+            "diagnostics"
+          ];
           lualine_c = [
             "filename"
             {
@@ -44,7 +47,18 @@
               ];
               timer = {
                 progress_enddelay = 500;
-                spinner_array = [ "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ];
+                spinner_array = [
+                  "⠋"
+                  "⠙"
+                  "⠹"
+                  "⠸"
+                  "⠼"
+                  "⠴"
+                  "⠦"
+                  "⠧"
+                  "⠇"
+                  "⠏"
+                ];
               };
             }
             "encoding"
@@ -138,31 +152,22 @@
       };
     };
 
-    dressing = { enable = true; };
+    dressing = {
+      enable = true;
+    };
 
     notify.enable = false; # Handled by snacks.notifier
-
-    neoscroll = {
-      enable = true;
-      settings = {
-        mappings =
-          [ "<C-u>" "<C-d>" "<C-b>" "<C-f>" "<C-y>" "<C-e>" "zt" "zz" "zb" ];
-        stop_eof = true;
-        hide_cursor = true;
-        respect_scrolloff = false;
-        cursor_scrolls_alone = true;
-      };
-    };
 
     mini = {
       enable = true;
       modules = {
         indentscope.enabled = false; # Handled by snacks.scope
         animate = {
-          cursor.enable =
-            false; # Often distracting, but can be enabled if desired
+          cursor.enable = false; # Often distracting, but can be enabled if desired
           scroll.enable = false; # Handled by snacks.scroll or neoscroll
-          window = { enable = true; };
+          window = {
+            enable = true;
+          };
         };
       };
     };

@@ -1,6 +1,5 @@
 {
   plugins = {
-    oil.enable = true;
     comment = {
       enable = true;
       settings = {
@@ -25,11 +24,6 @@
           suffix_next = "n";
         };
       };
-    };
-
-    mini = {
-      enable = true;
-      modules = { ai = { n_lines = 500; }; };
     };
 
     ts-context-commentstring = { enable = true; };

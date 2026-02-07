@@ -19,15 +19,9 @@
       };
     };
 
-    fugitive.enable = true;
+    lazygit = { enable = true; };
 
-    lazygit = {
-      enable = true;
-    };
-
-    diffview = {
-      enable = true;
-    };
+    diffview = { enable = true; };
   };
 
   keymaps = [

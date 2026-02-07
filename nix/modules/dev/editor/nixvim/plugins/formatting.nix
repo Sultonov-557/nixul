@@ -1,39 +1,11 @@
 { pkgs, ... }: {
   plugins = {
-    none-ls = {
-      enable = true;
-      enableLspFormat = true;
-      settings.update_in_insert = false;
-      sources = {
-        formatting = {
-          nixfmt.enable = true;
-          rustfmt.enable = true;
-          prettier = {
-            enable = true;
-            disableTsServerFormatter = true;
-            settings = ''
-              {
-                extra_args = { "--no-semi", "--single-quote" },
-              }
-            '';
-          };
-          stylua.enable = true;
-          black.enable = true;
-        };
-        diagnostics = {
-          statix.enable = true;
-          deadnix.enable = true;
-          pylint.enable = true;
-        };
-      };
-    };
-
     conform-nvim = {
       enable = true;
       settings = {
         format_on_save = {
           lsp_format = "fallback";
-          timeout_ms = 500;
+          timeout_ms = 2000;
         };
         formatters_by_ft = {
           nix = [ "nixfmt" ];
@@ -62,6 +34,5 @@
     statix
     deadnix
     pylint
-    nodePackages.eslint_d
   ];
 }
