@@ -3,7 +3,6 @@
 let
   inherit (inputs) nixpkgs;
 
-  # Helper to get subdirectories
   getDirs =
     dir: builtins.attrNames (nixpkgs.lib.filterAttrs (_: v: v == "directory") (builtins.readDir dir));
 

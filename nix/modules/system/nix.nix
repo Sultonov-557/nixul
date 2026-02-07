@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.nh = {
     enable = true;
@@ -85,4 +85,5 @@
   };
 
   system.stateVersion = "25.11";
+  home-manager.users.${config.nixul.user}.home.stateVersion = "25.11";
 }
