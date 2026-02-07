@@ -2,15 +2,15 @@ name: Nix Flake Check
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   flake-check:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,3 +26,4 @@ jobs:
 
       - name: Check for dead code
         run: nix develop --command deadnix --fail .
+

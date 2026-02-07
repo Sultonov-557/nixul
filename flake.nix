@@ -96,6 +96,17 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
+      perSystem = { pkgs, ... }: {
+        formatter = pkgs.nixfmt-rfc-style;
+
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            deadnix
+            nixfmt-rfc-style
+          ];
+        };
+      };
+
       flake = {
         nixosConfigurations = let lib = import ./nix/lib { inherit inputs; };
         in lib.mkSystems {

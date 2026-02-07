@@ -2,8 +2,7 @@
 
 ## � Phase 1: Foundation & Security (Immediate)
 
-- [ ] **Formatting & Linting**: Add `alejandra` or `nixfmt` to `flake.nix` `formatter`. Run it ensuring consistent style.
-- [ ] **Fix Hardcoded Values**: Remove hardcoded UIDs in `hardware-configuration.nix` to prevent permission issues during migration/reinstalls.
+- [x] **Formatting & Linting**: Add `nixfmt` to `flake.nix` `formatter`. Run it ensuring consistent style.
 
 ## 🏗️ Phase 2: Architecture (Short-term)
 
