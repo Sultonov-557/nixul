@@ -6,8 +6,7 @@
   home.stateVersion = "25.11";
 
   # Host-specific monitor configurations
-  wayland.windowManager.hyprland.settings.monitor =
-    [ "eDP-1,1920x1080@60,0x0,1" ];
+  wayland.windowManager.hyprland.settings.monitor = [ "eDP-1,1920x1080@60,0x0,1" ];
 
   programs.niri.settings.outputs."eDP-1" = {
     mode = {

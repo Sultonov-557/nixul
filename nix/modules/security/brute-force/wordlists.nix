@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ wordlists ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ wordlists ];
+}

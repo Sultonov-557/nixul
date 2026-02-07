@@ -4,22 +4,30 @@ let
   inherit (inputs) nixpkgs;
 
   # Helper to get subdirectories
-  getDirs = dir:
-    builtins.attrNames
-    (nixpkgs.lib.filterAttrs (_: v: v == "directory") (builtins.readDir dir));
+  getDirs =
+    dir: builtins.attrNames (nixpkgs.lib.filterAttrs (_: v: v == "directory") (builtins.readDir dir));
 
-  mkSystem = { hostname, hostsDir, modulesDir, system ? "x86_64-linux", }:
+  mkSystem =
+    {
+      hostname,
+      hostsDir,
+      modulesDir,
+      system ? "x86_64-linux",
+    }:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
 
       modules = [
-        ({ lib, ... }: {
-          options.nixul.user = lib.mkOption {
-            type = lib.types.str;
-            description = "name of the user";
-          };
-        })
+        (
+          { lib, ... }:
+          {
+            options.nixul.user = lib.mkOption {
+              type = lib.types.str;
+              description = "name of the user";
+            };
+          }
+        )
         (hostsDir + "/${hostname}")
         inputs.home-manager.nixosModules.home-manager
         inputs.nur.modules.nixos.default
@@ -33,11 +41,17 @@ let
         }
       ];
     };
-in {
-  mkSystems = { hostsDir, modulesDir, }:
-    let hosts = getDirs hostsDir;
-    in builtins.listToAttrs (map (hostname: {
-      name = hostname;
-      value = mkSystem { inherit hostname hostsDir modulesDir; };
-    }) hosts);
+in
+{
+  mkSystems =
+    { hostsDir, modulesDir }:
+    let
+      hosts = getDirs hostsDir;
+    in
+    builtins.listToAttrs (
+      map (hostname: {
+        name = hostname;
+        value = mkSystem { inherit hostname hostsDir modulesDir; };
+      }) hosts
+    );
 }

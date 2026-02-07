@@ -1,4 +1,12 @@
 {
-  imports =
-    [ ./apps ./system ./desktop ./dev ./gaming ./hardware ./security ./system ];
+  imports = [
+    ./apps
+    ./system
+    ./desktop
+    ./dev
+    ./gaming
+    ./hardware
+    ./security
+    ./system
+  ];
 }

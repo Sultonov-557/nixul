@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ katana ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ katana ];
+}

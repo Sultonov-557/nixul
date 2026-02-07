@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ netcat ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ netcat ];
+}

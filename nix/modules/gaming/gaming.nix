@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
   hardware.graphics = {

@@ -1,1 +1,6 @@
-{ imports = [ ./docker.nix ./lazydocker.nix ]; }
+{
+  imports = [
+    ./docker.nix
+    ./lazydocker.nix
+  ];
+}

@@ -1,2 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ inetutils ]; }
-
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ inetutils ];
+}

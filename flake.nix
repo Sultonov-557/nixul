@@ -1,6 +1,5 @@
 {
-  description =
-    "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
+  description = "Nixul: Your OS, Your Flavor - A modular NixOS configuration system";
 
   inputs = {
     # Core
@@ -85,34 +84,42 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    nix-flatpak = { url = "github:gmodena/nix-flatpak/?ref=latest"; };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
 
     xmcl = {
       url = "github:x45iq/xmcl-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ flake-parts, ... }:
+  outputs =
+    inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
-      perSystem = { pkgs, ... }: {
-        formatter = pkgs.nixfmt-rfc-style;
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
 
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            deadnix
-            nixfmt-rfc-style
-          ];
+          devShells.default = pkgs.mkShell {
+            packages = with pkgs; [
+              deadnix
+              nixfmt-rfc-style
+            ];
+          };
         };
-      };
 
       flake = {
-        nixosConfigurations = let lib = import ./nix/lib { inherit inputs; };
-        in lib.mkSystems {
-          hostsDir = ./nix/hosts;
-          modulesDir = ./nix/modules;
-        };
+        nixosConfigurations =
+          let
+            lib = import ./nix/lib { inherit inputs; };
+          in
+          lib.mkSystems {
+            hostsDir = ./nix/hosts;
+            modulesDir = ./nix/modules;
+          };
       };
     };
 }

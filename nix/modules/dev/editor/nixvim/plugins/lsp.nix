@@ -1,10 +1,13 @@
-{ ... }: {
+{ ... }:
+{
   plugins = {
     lsp = {
       enable = true;
 
       servers = {
-        nixd = { enable = true; };
+        nixd = {
+          enable = true;
+        };
 
         # handled by typescript-tools
         #ts_ls.enable = true;
@@ -94,11 +97,15 @@
       };
     };
 
-    lsp-lines = { enable = true; };
+    lsp-lines = {
+      enable = true;
+    };
 
     fidget = {
       enable = true;
-      settings = { notification.window.winblend = 0; };
+      settings = {
+        notification.window.winblend = 0;
+      };
     };
   };
 }

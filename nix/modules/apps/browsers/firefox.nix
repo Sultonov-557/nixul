@@ -1,4 +1,10 @@
-{ inputs, pkgs, config, ... }: {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+{
 
   home-manager.users.${config.nixul.user} = {
     imports = [ inputs.textfox.homeManagerModules.default ];
@@ -72,8 +78,7 @@
 
           "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
 
-          "extensions.extensions.activeThemeID" =
-            "firefox-alpenglow@mozilla.org";
+          "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
           "extensions.update.enabled" = false;
           "extensions.webcompat.enable_picture_in_picture_overrides" = true;
           "extensions.webcompat.enable_shims" = true;

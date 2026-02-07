@@ -1,4 +1,5 @@
-{ inputs, config, ... }: {
+{ inputs, config, ... }:
+{
 
   home-manager.users.${config.nixul.user} = {
     imports = [ inputs.dms.homeModules.dank-material-shell ];
@@ -6,8 +7,7 @@
     programs.dank-material-shell = {
       systemd = {
         enable = true; # Systemd service for auto-start
-        restartIfChanged =
-          true; # Auto-restart dms.service when dankMaterialShell changes
+        restartIfChanged = true; # Auto-restart dms.service when dankMaterialShell changes
       };
 
       # Core features

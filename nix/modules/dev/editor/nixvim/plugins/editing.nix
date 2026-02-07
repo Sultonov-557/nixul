@@ -26,6 +26,8 @@
       };
     };
 
-    ts-context-commentstring = { enable = true; };
+    ts-context-commentstring = {
+      enable = true;
+    };
   };
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -50,8 +51,10 @@
     ];
   };
 
-  environment.pathsToLink =
-    [ "/share/applications" "/share/xdg-desktop-portal" ];
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 
   nix.settings = {
     max-jobs = "auto";
@@ -60,7 +63,10 @@
     keep-outputs = false;
     keep-derivations = false;
 
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     substituters = [
       "https://cache.nixos.org/"

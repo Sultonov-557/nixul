@@ -1,1 +1,7 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ wine winetricks ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [
+    wine
+    winetricks
+  ];
+}

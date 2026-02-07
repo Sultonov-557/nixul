@@ -1,6 +1,9 @@
-{ config, ... }: {
+{ config, ... }:
+{
 
   home-manager.users.${config.nixul.user} = {
-    programs.lazydocker = { enable = true; };
+    programs.lazydocker = {
+      enable = true;
+    };
   };
 }

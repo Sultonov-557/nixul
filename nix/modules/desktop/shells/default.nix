@@ -1,1 +1,6 @@
-{ imports = [ ./DankMaterial.nix ./noctalia.nix ]; }
+{
+  imports = [
+    ./DankMaterial.nix
+    ./noctalia.nix
+  ];
+}

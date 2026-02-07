@@ -1,3 +1,7 @@
-{ pkgs, ... }: {
-  environment.defaultPackages = with pkgs; [ ettercap ethtool ];
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [
+    ettercap
+    ethtool
+  ];
 }

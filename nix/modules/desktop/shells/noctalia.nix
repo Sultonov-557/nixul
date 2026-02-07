@@ -1,4 +1,5 @@
-{ inputs, config, ... }: {
+{ inputs, config, ... }:
+{
 
   home-manager.users.${config.nixul.user} = {
 
@@ -9,11 +10,13 @@
       systemd.enable = true;
 
       plugins = {
-        sources = [{
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }];
+        sources = [
+          {
+            enabled = true;
+            name = "Official Noctalia Plugins";
+            url = "https://github.com/noctalia-dev/noctalia-plugins";
+          }
+        ];
         states = {
           weather-indicator = {
             enabled = true;
@@ -88,7 +91,7 @@
               { id = "ActiveWindow"; }
               { id = "MediaMini"; }
             ];
-            center = [{ id = "Workspace"; }];
+            center = [ { id = "Workspace"; } ];
             right = [
               { id = "Tray"; }
               { id = "NotificationHistory"; }
@@ -278,10 +281,11 @@
           useCustomColors = false;
           warningColor = "";
           criticalColor = "";
-          externalMonitor =
-            "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor";
+          externalMonitor = "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor";
         };
-        dock = { enabled = false; };
+        dock = {
+          enabled = false;
+        };
         network = {
           wifiEnabled = true;
           bluetoothRssiPollingEnabled = false;
@@ -356,7 +360,11 @@
           location = "top_right";
           autoHideMs = 2000;
           overlayLayer = true;
-          enabledTypes = [ 0 1 2 ];
+          enabledTypes = [
+            0
+            1
+            2
+          ];
           monitors = [ ];
         };
         audio = {

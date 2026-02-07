@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
 
   home-manager.users.${config.nixul.user} = {
     programs.opencode = {
@@ -33,12 +34,20 @@
                   output = 65535;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
                 variants = {
-                  low = { thinkingLevel = "low"; };
-                  high = { thinkingLevel = "high"; };
+                  low = {
+                    thinkingLevel = "low";
+                  };
+                  high = {
+                    thinkingLevel = "high";
+                  };
                 };
               };
               "antigravity-gemini-3-flash" = {
@@ -48,14 +57,26 @@
                   output = 65536;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
                 variants = {
-                  minimal = { thinkingLevel = "minimal"; };
-                  low = { thinkingLevel = "low"; };
-                  medium = { thinkingLevel = "medium"; };
-                  high = { thinkingLevel = "high"; };
+                  minimal = {
+                    thinkingLevel = "minimal";
+                  };
+                  low = {
+                    thinkingLevel = "low";
+                  };
+                  medium = {
+                    thinkingLevel = "medium";
+                  };
+                  high = {
+                    thinkingLevel = "high";
+                  };
                 };
               };
               "antigravity-claude-sonnet-4-5" = {
@@ -65,7 +86,11 @@
                   output = 64000;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
               };
@@ -76,12 +101,24 @@
                   output = 64000;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
                 variants = {
-                  low = { thinkingConfig = { thinkingBudget = 8192; }; };
-                  max = { thinkingConfig = { thinkingBudget = 32768; }; };
+                  low = {
+                    thinkingConfig = {
+                      thinkingBudget = 8192;
+                    };
+                  };
+                  max = {
+                    thinkingConfig = {
+                      thinkingBudget = 32768;
+                    };
+                  };
                 };
               };
               "antigravity-claude-opus-4-5-thinking" = {
@@ -91,12 +128,24 @@
                   output = 64000;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
                 variants = {
-                  low = { thinkingConfig = { thinkingBudget = 8192; }; };
-                  max = { thinkingConfig = { thinkingBudget = 32768; }; };
+                  low = {
+                    thinkingConfig = {
+                      thinkingBudget = 8192;
+                    };
+                  };
+                  max = {
+                    thinkingConfig = {
+                      thinkingBudget = 32768;
+                    };
+                  };
                 };
               };
               "gemini-2.5-flash" = {
@@ -106,7 +155,11 @@
                   output = 65536;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
               };
@@ -117,7 +170,11 @@
                   output = 65536;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
               };
@@ -128,7 +185,11 @@
                   output = 65536;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
               };
@@ -139,7 +200,11 @@
                   output = 65535;
                 };
                 modalities = {
-                  input = [ "text" "image" "pdf" ];
+                  input = [
+                    "text"
+                    "image"
+                    "pdf"
+                  ];
                   output = [ "text" ];
                 };
               };

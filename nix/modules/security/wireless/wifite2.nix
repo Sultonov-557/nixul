@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ wifite2 ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ wifite2 ];
+}

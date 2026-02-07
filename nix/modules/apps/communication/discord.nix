@@ -1,8 +1,13 @@
-{ inputs, config, ... }: {
+{ inputs, config, ... }:
+{
 
-  home-manager.users.${config.nixul.user} = { ... }: {
-    imports = [ inputs.nixcord.homeModules.nixcord ];
+  home-manager.users.${config.nixul.user} =
+    { ... }:
+    {
+      imports = [ inputs.nixcord.homeModules.nixcord ];
 
-    programs.nixcord = { enable = true; };
-  };
+      programs.nixcord = {
+        enable = true;
+      };
+    };
 }

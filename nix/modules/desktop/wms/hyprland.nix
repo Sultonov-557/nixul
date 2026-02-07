@@ -1,9 +1,15 @@
-{ config, pkgs, inputs, ... }:
-let mod = "SUPER";
-in {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  mod = "SUPER";
+in
+{
 
-  environment.defaultPackages = with pkgs;
-    [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
+  environment.defaultPackages = with pkgs; [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -16,8 +22,7 @@ in {
       systemd.enable = true;
 
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      portalPackage =
-        inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 
       settings = {
 
@@ -53,7 +58,9 @@ in {
         # Decoration settings
         decoration = {
           rounding = 20;
-          blur = { passes = 2; };
+          blur = {
+            passes = 2;
+          };
         };
 
         # Animations
@@ -91,8 +98,7 @@ in {
 
           # Niri Specific ported
           "${mod} SHIFT, E, exit," # Exits Hyprland
-          ''
-            ${mod} SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy'' # Region screenshot
+          ''${mod} SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy'' # Region screenshot
           # -- Applications --
           "${mod}, RETURN, exec, ghostty"
           "${mod}, E, exec, nautilus"

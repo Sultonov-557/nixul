@@ -1,1 +1,6 @@
-{ imports = [ ./bruno.nix ./dbeaver.nix ]; }
+{
+  imports = [
+    ./bruno.nix
+    ./dbeaver.nix
+  ];
+}

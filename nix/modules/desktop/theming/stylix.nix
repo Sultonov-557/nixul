@@ -1,9 +1,19 @@
-{ inputs, pkgs, config, ... }: {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+{
 
   imports = [ inputs.stylix.nixosModules.stylix ];
 
   home-manager.users.${config.nixul.user} = {
-    stylix.targets = { nixvim = { enable = false; }; };
+    stylix.targets = {
+      nixvim = {
+        enable = false;
+      };
+    };
   };
 
   stylix = {

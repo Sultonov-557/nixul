@@ -1,1 +1,7 @@
-{ imports = [ ./mpv.nix ./spicetify.nix ./yandex.nix ]; }
+{
+  imports = [
+    ./mpv.nix
+    ./spicetify.nix
+    ./yandex.nix
+  ];
+}

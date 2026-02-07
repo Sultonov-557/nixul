@@ -1,6 +1,13 @@
-{ inputs, pkgs, config, ... }:
-let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+in
+{
 
   home-manager.users.${config.nixul.user} = {
     imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];

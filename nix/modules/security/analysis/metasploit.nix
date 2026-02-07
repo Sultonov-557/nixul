@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ metasploit ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ metasploit ];
+}

@@ -1,1 +1,9 @@
-{ imports = [ ./analysis ./wireless ./scanning ./mitm ./brute-force ]; }
+{
+  imports = [
+    ./analysis
+    ./wireless
+    ./scanning
+    ./mitm
+    ./brute-force
+  ];
+}

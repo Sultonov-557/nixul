@@ -1,1 +1,7 @@
-{ imports = [ ./todoist.nix ./obsidian.nix ./libreoffice.nix ]; }
+{
+  imports = [
+    ./todoist.nix
+    ./obsidian.nix
+    ./libreoffice.nix
+  ];
+}

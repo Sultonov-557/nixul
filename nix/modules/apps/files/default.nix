@@ -1,4 +1,9 @@
 {
-  imports =
-    [ ./archives.nix ./yazi.nix ./nautilus.nix ./zathura.nix ./baobab.nix ];
+  imports = [
+    ./archives.nix
+    ./yazi.nix
+    ./nautilus.nix
+    ./zathura.nix
+    ./baobab.nix
+  ];
 }

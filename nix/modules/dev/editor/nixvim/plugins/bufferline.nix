@@ -15,12 +15,14 @@
         close_icon = "";
         left_trunc_marker = "";
         right_trunc_marker = "";
-        offsets = [{
-          filetype = "neo-tree";
-          text = "Neo-tree";
-          text_align = "left";
-          separator = true;
-        }];
+        offsets = [
+          {
+            filetype = "neo-tree";
+            text = "Neo-tree";
+            text_align = "left";
+            separator = true;
+          }
+        ];
         show_buffer_icons = true;
         show_buffer_close_icons = true;
         show_close_icon = true;

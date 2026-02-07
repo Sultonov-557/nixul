@@ -9,7 +9,11 @@
         close_if_last_window = true;
         popup_border_style = "rounded";
 
-        sources = [ "filesystem" "buffers" "git_status" ];
+        sources = [
+          "filesystem"
+          "buffers"
+          "git_status"
+        ];
 
         filesystem = {
           bind_to_cwd = false;
@@ -24,7 +28,9 @@
       enable = true;
       settings = {
         columns = [ "icon" ];
-        view_options = { show_hidden = true; };
+        view_options = {
+          show_hidden = true;
+        };
         keymaps = {
           "g?" = "actions.show_help";
           "<CR>" = "actions.select";

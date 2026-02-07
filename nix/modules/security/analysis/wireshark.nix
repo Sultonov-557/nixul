@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ wireshark ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ wireshark ];
+}

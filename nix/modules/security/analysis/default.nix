@@ -1,1 +1,7 @@
-{ imports = [ ./wireshark.nix ./metasploit.nix ./inetutils.nix ]; }
+{
+  imports = [
+    ./wireshark.nix
+    ./metasploit.nix
+    ./inetutils.nix
+  ];
+}

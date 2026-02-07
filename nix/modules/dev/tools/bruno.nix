@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ bruno ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ bruno ];
+}

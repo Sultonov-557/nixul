@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ openvpn ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ openvpn ];
+}

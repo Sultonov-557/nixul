@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.defaultPackages = with pkgs; [ dbeaver-bin ]; }
+{ pkgs, ... }:
+{
+  environment.defaultPackages = with pkgs; [ dbeaver-bin ];
+}

@@ -2,7 +2,11 @@
 
 {
   security.rtkit.enable = true;
-  environment.defaultPackages = with pkgs; [ brightnessctl pamixer playerctl ];
+  environment.defaultPackages = with pkgs; [
+    brightnessctl
+    pamixer
+    playerctl
+  ];
 
   services.pipewire = {
     enable = true;
@@ -17,7 +21,10 @@
   home-manager.users.${config.nixul.user} = {
     services.easyeffects.enable = true;
 
-    home.packages = with pkgs; [ pavucontrol pulsemixer ];
+    home.packages = with pkgs; [
+      pavucontrol
+      pulsemixer
+    ];
   };
 
 }

@@ -1,1 +1,7 @@
-{ imports = [ ./udiskie.nix ./mako.nix ./cliphist.nix ]; }
+{
+  imports = [
+    ./udiskie.nix
+    ./mako.nix
+    ./cliphist.nix
+  ];
+}

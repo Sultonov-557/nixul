@@ -1,9 +1,15 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
 
   home-manager.users.${config.nixul.user} = {
 
     home = {
-      packages = with pkgs; [ grim slurp swappy wl-clipboard ];
+      packages = with pkgs; [
+        grim
+        slurp
+        swappy
+        wl-clipboard
+      ];
 
       file.".local/bin/screenshot-full" = {
         executable = true;

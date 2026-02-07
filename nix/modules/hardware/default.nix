@@ -1,1 +1,9 @@
-{ imports = [ ./power ./network ./inputs ./bluetooth ./storage ]; }
+{
+  imports = [
+    ./power
+    ./network
+    ./inputs
+    ./bluetooth
+    ./storage
+  ];
+}
