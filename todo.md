@@ -7,6 +7,7 @@
 - [x] **Formatting & Linting**: Add `nixfmt` to `flake.nix` `formatter`. Run it ensuring consistent style.
 - [x] **CI**: `nix flake check --all-systems` + build your main host.
 - [ ] **Docs**: `README.md` with “how to bootstrap”, “how to rebuild”, “how to add a host/flavor”, “common fixes”.
+- [ ] **Modules layout**: Adopt platform/experience/stacks program-per-file structure under `nix/modules`.
 - [x] **Pinned nixpkgs**: Ensure lock is committed and updated intentionally (not randomly).
 
 ---
