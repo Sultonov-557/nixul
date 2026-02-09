@@ -60,7 +60,7 @@
 - [ ] **Build performance**:
   - [x] `max-jobs`, `cores`, `keep-outputs`/`keep-derivations` (if useful).
   - [ ] `ccache` for dev workflows (optional).
-- [ ] **nix-index**:
+- [x] **nix-index**:
   - [x] Enable `nix-index` / `comma` for “what package provides this command”.
 - [x] **Command-not-found**:
   - [x] Enable NixOS module or use `nix-index` integration.
@@ -152,8 +152,8 @@
 - [x] **PipeWire**:
   - [x] pipewire + wireplumber enabled.
   - [x] PulseAudio compatibility.
-- [ ] **Low-latency / pro audio (optional)**:
-  - [ ] rtkit / limits / qpwgraph tools.
+- [x] **Low-latency / pro audio (optional)**:
+  - [x] rtkit / limits / qpwgraph tools.
 - [ ] **Camera/mic permissions**:
   - [ ] App access works (browser meets portals).
 - [ ] **Codecs**:
@@ -166,14 +166,14 @@
 ## 🧰 Phase 7: Shell, CLI, and Dev Environment
 
 - [x] **Shell**:
-  - [ ] zsh/fish setup + completions.
+  - [x] zsh/fish setup + completions.
   - [x] Starship or prompt of choice.
 - [x] **Terminal emulator**:
   - [x] Foot/kitty/alacritty configured.
 - [x] **CLI essentials**:
   - [x] `ripgrep`, `fd`, `jq`, `yq`, `bat`, `eza`, `fzf`, `tldr`, `tmux/zellij`.
 - [ ] **Git config**:
-  - [ ] user.name/email, gpg/ssh signing if you want.
+  - [x] user.name/email, gpg/ssh signing if you want.
   - [ ] global ignores and aliases.
 - [ ] **Direnv + nix-direnv**:
   - [ ] Auto dev shells per project.
