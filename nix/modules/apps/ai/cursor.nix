@@ -1,5 +1,4 @@
 { pkgs, ... }:
 {
-
-  environment.defaultPackages = with pkgs; [ cursor-cli ];
+  environment.systemPackages = with pkgs; [ cursor-cli ];
 }

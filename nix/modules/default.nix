@@ -1,11 +1,14 @@
+{ lib, ... }:
+let
+  importTree = import ../lib/import-tree.nix { inherit lib; };
+in
 {
-  imports = [
+  imports = builtins.concatMap importTree [
     ./apps
+    ./core
     ./desktop
     ./dev
-    ./gaming
     ./hardware
-    ./security
-    ./system
+    ./services
   ];
 }

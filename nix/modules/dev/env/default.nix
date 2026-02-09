@@ -1,4 +1,0 @@
-{ ... }:
-{
-  imports = [ ./direnv.nix ];
-}
