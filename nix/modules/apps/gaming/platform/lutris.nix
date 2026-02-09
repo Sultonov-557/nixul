@@ -1,8 +1,6 @@
 { config, ... }:
 {
-  home-manager.users.${config.nixul.user} =
-    { ... }:
-    {
-      programs.lutris.enable = true;
-    };
+  home-manager.users.${config.nixul.user} = {
+    programs.lutris.enable = true;
+  };
 }
