@@ -1,13 +1,6 @@
 { pkgs, config, ... }:
 {
-
   home-manager.users.${config.nixul.user} = {
-    programs.gh = {
-      enable = true;
-      gitCredentialHelper = {
-        enable = true;
-      };
-    };
     programs.git = {
       enable = true;
       settings = {
@@ -43,10 +36,5 @@
         };
       };
     };
-
-    home.packages = with pkgs; [
-      lazygit
-      gh
-    ];
   };
 }
