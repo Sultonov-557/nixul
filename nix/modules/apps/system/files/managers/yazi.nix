@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-
   programs.yazi.enable = true;
-  environment.defaultPackages = with pkgs; [ yazi ];
+  environment.systemPackages = with pkgs; [
+    yazi
+    ueberzugpp
+  ];
 }
