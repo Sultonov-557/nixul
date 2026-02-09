@@ -1,9 +1,11 @@
+{ config, ... }:
 {
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper = {
+  home-manager.users.${config.nixul.user} = {
+    programs.gh = {
       enable = true;
+      gitCredentialHelper = {
+        enable = true;
+      };
     };
   };
-
 }
