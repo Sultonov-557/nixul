@@ -3,6 +3,12 @@
     enable = true;
 
     settings = {
+      forward-zone = [
+        {
+          name = "api.local";
+          forward-addr = "127.0.0.1";
+        }
+      ];
       server = {
         interface = [
           "127.0.0.1"

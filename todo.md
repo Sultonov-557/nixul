@@ -177,8 +177,8 @@
 
 ## 🧱 Phase 9: Services & Self-Hosting (Optional but nice)
 
-- [ ] **Reverse proxy**:
-  - [ ] nginx/caddy baseline with sane TLS defaults.
+- [x] **Reverse proxy**:
+  - [x] nginx/caddy baseline with sane TLS defaults.
 - [ ] **TLS**:
   - [ ] ACME/Let’s Encrypt automation (if public).
   - [ ] Internal CA for LAN (if private).
