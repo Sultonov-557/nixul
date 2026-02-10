@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: ./nix/assets/serrets/*\.yaml
+  - age: age1n0e5a3hecpcxzeusgt4hhsg408k6h3jracgy8pae9wcz2m6p69es39t8z9
