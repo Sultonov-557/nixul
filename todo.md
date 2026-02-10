@@ -64,10 +64,6 @@
   - [x] Ensure NTP is on (`systemd-timesyncd` or equivalent).
 - [x] **mDNS / local discovery**:
   - [x] Avahi if you use local stuff/printers.
-- [ ] **Proxy support**:
-  - [ ] System-wide env vars if you’re behind proxies sometimes.
-- [ ] **SSH client config**:
-  - [ ] Host aliases, IdentityFile rules, agent behavior.
 
 ---
 
@@ -93,8 +89,6 @@
   - [x] sane/scan support if you own a scanner.
 - [x] **Input devices**:
   - [x] Touchpad gestures, natural scroll, accel curves.
-- [ ] **Firmware**:
-  - [ ] `fwupd` enabled if you want firmware updates.
 
 ---
 
@@ -123,8 +117,6 @@
   - [x] Wayland clipboard history if you want it.
 - [x] **Screenshots / screen recording**:
   - [x] grim/slurp/wl-clipboard, or your stack.
-- [ ] **IME input**:
-  - [ ] fcitx5/ibus if you type multilingual.
 
 ---
 
@@ -135,10 +127,10 @@
   - [x] PulseAudio compatibility.
 - [x] **Low-latency / pro audio (optional)**:
   - [x] rtkit / limits / qpwgraph tools.
-- [ ] **Camera/mic permissions**:
-  - [ ] App access works (browser meets portals).
-- [ ] **Codecs**:
-  - [ ] Decide on unfree codecs and set policy.
+- [x] **Camera/mic permissions**:
+  - [x] App access works (browser meets portals).
+- [x] **Codecs**:
+  - [x] Decide on unfree codecs and set policy.
 - [x] **Media tools**:
   - [x] ffmpeg, mpv, OBS (if you stream/record).
 
@@ -153,17 +145,17 @@
   - [x] Foot/kitty/alacritty configured.
 - [x] **CLI essentials**:
   - [x] `ripgrep`, `fd`, `jq`, `yq`, `bat`, `eza`, `fzf`, `tldr`, `tmux/zellij`.
-- [ ] **Git config**:
+- [x] **Git config**:
   - [x] user.name/email, gpg/ssh signing if you want.
-  - [ ] global ignores and aliases.
-- [ ] **Direnv + nix-direnv**:
-  - [ ] Auto dev shells per project.
+  - [x] global ignores and aliases.
+- [x] **Direnv + nix-direnv**:
+  - [x] Auto dev shells per project.
 - [x] **Language toolchains** (as you need):
   - [x] Node/Bun, Rust, Go, Python, Java, etc.
 - [x] **LSP + editor**:
   - [x] Neovim/NixVim config: LSP, formatter, treesitter, lint.
-- [ ] **Debugging tools**:
-  - [ ] strace, lsof, tcpdump, gdb/lldb.
+- [x] **Debugging tools**:
+  - [x] strace, lsof, tcpdump, gdb/lldb.
 - [x] **Containers**:
   - [x] Docker or Podman (pick one) + compose.
 
@@ -196,8 +188,6 @@
   - [ ] prometheus/node_exporter + grafana (or a simpler setup).
 - [ ] **Log management**:
   - [ ] journald limits, persistent logs if desired.
-- [ ] **Backups for services**:
-  - [ ] DB dumps + config backups.
 
 ---
 
