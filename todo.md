@@ -88,9 +88,9 @@
 - [x] **Bluetooth**:
   - [x] BlueZ enabled.
   - [x] Audio profiles working (A2DP, HFP if needed).
-- [ ] **Printer/scanner**:
-  - [ ] CUPS + drivers.
-  - [ ] sane/scan support if you own a scanner.
+- [x] **Printer/scanner**:
+  - [x] CUPS + drivers.
+  - [x] sane/scan support if you own a scanner.
 - [x] **Input devices**:
   - [x] Touchpad gestures, natural scroll, accel curves.
 - [ ] **Firmware**:
