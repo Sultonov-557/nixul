@@ -3,12 +3,6 @@
     enable = true;
 
     settings = {
-      forward-zone = [
-        {
-          name = "api.local";
-          forward-addr = "127.0.0.1";
-        }
-      ];
       server = {
         interface = [
           "127.0.0.1"
@@ -17,6 +11,13 @@
         access-control = [
           "127.0.0.0/8 allow"
           "::1 allow"
+        ];
+
+        local-zone = [ "home. static" ];
+
+        local-data = [
+          ''"api.home. A 127.0.0.1"''
+          ''"app.home. A 127.0.0.1"''
         ];
 
         cache-min-ttl = 3600;

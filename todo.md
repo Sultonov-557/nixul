@@ -179,13 +179,8 @@
 
 - [x] **Reverse proxy**:
   - [x] nginx/caddy baseline with sane TLS defaults.
-- [ ] **TLS**:
-  - [ ] ACME/Let’s Encrypt automation (if public).
-  - [ ] Internal CA for LAN (if private).
 - [x] **DBs**:
   - [x] Postgres/Redis with backups + auth.
-- [ ] **Monitoring**:
-  - [ ] prometheus/node_exporter + grafana (or a simpler setup).
 - [ ] **Log management**:
   - [ ] journald limits, persistent logs if desired.
 
