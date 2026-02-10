@@ -26,8 +26,8 @@
   - [ ] `sops-nix` (common W).
   - [ ] `agenix`.
   - [ ] `systemd-credentials` for some cases.
-- [ ] **Kernel/sysctl basics**:
-  - [ ] Enable reasonable sysctls (network hardening, etc) without breaking stuff.
+- [x] **Kernel/sysctl basics**:
+  - [x] Enable reasonable sysctls (network hardening, etc) without breaking stuff.
 - [ ] **Sandboxing**:
   - [ ] Ensure `nix.settings.sandbox = true` (and keep it unless you _really_ need off).
 - [ ] **Audit what runs at boot**:
