@@ -15,10 +15,10 @@
 ## 🔒 Phase 1: Foundation & Security (Immediate)
 
 - [x] **Users & groups**: Main user in needed groups (`wheel`, `networkmanager`, `video`, `audio`, etc).
-- [ ] **SSH hardening**:
-  - [ ] Disable password auth (keys only).
-  - [ ] Disable root login.
-  - [ ] Restrict to LAN/VPN interfaces if possible.
+- [x] **SSH hardening**:
+  - [x] Disable password auth (keys only).
+  - [x] Disable root login.
+  - [x] Restrict to LAN/VPN interfaces if possible.
 - [x] **Firewall**:
   - [x] `networking.firewall.enable = true;`
   - [x] Only open ports you actually use (and per-interface if needed).
@@ -28,11 +28,6 @@
   - [ ] `systemd-credentials` for some cases.
 - [x] **Kernel/sysctl basics**:
   - [x] Enable reasonable sysctls (network hardening, etc) without breaking stuff.
-- [ ] **Sandboxing**:
-  - [ ] Ensure `nix.settings.sandbox = true` (and keep it unless you _really_ need off).
-- [ ] **Audit what runs at boot**:
-  - [ ] List enabled services.
-  - [ ] Kill anything you don’t need.
 
 ---
 
@@ -50,8 +45,6 @@
 - [x] **Rollback confidence**:
   - [x] Confirm system rollbacks work from boot menu.
   - [x] Confirm home-manager rollback works (if you use HM).
-- [ ] **Binary cache hygiene**:
-  - [ ] Document “what breaks if cache is down”.
 - [x] **Build performance**:
   - [x] `max-jobs`, `cores`, `keep-outputs`/`keep-derivations` (if useful).
 - [x] **nix-index**:
