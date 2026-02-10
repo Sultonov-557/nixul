@@ -77,11 +77,10 @@
   - [x] GRUB.
 - [x] **Initrd & filesystem**:
   - [x] Confirm modules needed for your storage controller.
-- [ ] **Microcode**:
-  - [ ] Intel/AMD microcode enabled.
-- [ ] **GPU drivers**:
-  - [ ] NVIDIA/AMD/Intel configured correctly.
-  - [ ] Wayland + Electron quirks addressed (env vars, ozone, portals).
+- [x] **Microcode**:
+  - [x] Intel/AMD microcode enabled.
+- [x] **GPU drivers**:
+  - [x] NVIDIA/AMD/Intel configured correctly.
 - [ ] **Laptop stuff (if applicable)**:
   - [ ] TLP / power-profiles-daemon (pick one).
   - [ ] Suspend/hibernate settings.
