@@ -24,9 +24,6 @@
   - [x] Only open ports you actually use (and per-interface if needed).
 - [ ] **Secure Boot plan** (pick one):
   - [ ] Use secure boot tooling (e.g., lanzaboote) and document recovery steps.
-- [ ] **Disk encryption**:
-  - [ ] LUKS on root (or at least on sensitive partitions).
-  - [ ] Separate encrypted secrets partition if you’re fancy.
 - [ ] **Secrets management** (choose one and commit):
   - [ ] `sops-nix` (common W).
   - [ ] `agenix`.
@@ -57,9 +54,8 @@
   - [x] Confirm home-manager rollback works (if you use HM).
 - [ ] **Binary cache hygiene**:
   - [ ] Document “what breaks if cache is down”.
-- [ ] **Build performance**:
+- [x] **Build performance**:
   - [x] `max-jobs`, `cores`, `keep-outputs`/`keep-derivations` (if useful).
-  - [ ] `ccache` for dev workflows (optional).
 - [x] **nix-index**:
   - [x] Enable `nix-index` / `comma` for “what package provides this command”.
 - [x] **Command-not-found**:
