@@ -85,9 +85,9 @@
   - [x] TLP / power-profiles-daemon (pick one).
   - [x] Suspend/hibernate settings.
   - [x] Lid close behavior.
-- [ ] **Bluetooth**:
-  - [ ] BlueZ enabled.
-  - [ ] Audio profiles working (A2DP, HFP if needed).
+- [x] **Bluetooth**:
+  - [x] BlueZ enabled.
+  - [x] Audio profiles working (A2DP, HFP if needed).
 - [ ] **Printer/scanner**:
   - [ ] CUPS + drivers.
   - [ ] sane/scan support if you own a scanner.
