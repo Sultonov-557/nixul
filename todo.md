@@ -181,8 +181,8 @@
   - [x] nginx/caddy baseline with sane TLS defaults.
 - [x] **DBs**:
   - [x] Postgres/Redis with backups + auth.
-- [ ] **Log management**:
-  - [ ] journald limits, persistent logs if desired.
+- [x] **Log management**:
+  - [x] journald limits, persistent logs if desired.
 
 ---
 
@@ -222,8 +222,8 @@
 
 ## 🧠 Phase 12: Quality-of-Life Automation
 
-- [ ] **Systemd user services**:
-  - [ ] Autostart things the clean way (not random shell hacks).
+- [x] **Systemd user services**:
+  - [x] Autostart things the clean way (not random shell hacks).
 - [ ] **Notifications for failures**:
   - [ ] backup failure notifications.
 - [ ] **Disk cleanup**:
