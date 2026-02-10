@@ -81,10 +81,10 @@
   - [x] Intel/AMD microcode enabled.
 - [x] **GPU drivers**:
   - [x] NVIDIA/AMD/Intel configured correctly.
-- [ ] **Laptop stuff (if applicable)**:
-  - [ ] TLP / power-profiles-daemon (pick one).
-  - [ ] Suspend/hibernate settings.
-  - [ ] Lid close behavior.
+- [x] **Laptop stuff (if applicable)**:
+  - [x] TLP / power-profiles-daemon (pick one).
+  - [x] Suspend/hibernate settings.
+  - [x] Lid close behavior.
 - [ ] **Bluetooth**:
   - [ ] BlueZ enabled.
   - [ ] Audio profiles working (A2DP, HFP if needed).

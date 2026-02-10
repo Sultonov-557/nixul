@@ -1,4 +1,3 @@
 {
   services.thermald.enable = true;
-
 }
