@@ -62,8 +62,8 @@
   - [x] Decide: `systemd-resolved` vs custom (unbound/dnscrypt).
 - [x] **Time sync**:
   - [x] Ensure NTP is on (`systemd-timesyncd` or equivalent).
-- [ ] **mDNS / local discovery**:
-  - [ ] Avahi if you use local stuff/printers.
+- [x] **mDNS / local discovery**:
+  - [x] Avahi if you use local stuff/printers.
 - [ ] **Proxy support**:
   - [ ] System-wide env vars if you’re behind proxies sometimes.
 - [ ] **SSH client config**:
