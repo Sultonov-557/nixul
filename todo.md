@@ -226,8 +226,8 @@
   - [x] Autostart things the clean way (not random shell hacks).
 - [ ] **Notifications for failures**:
   - [ ] backup failure notifications.
-- [ ] **Disk cleanup**:
-  - [ ] Store GC schedule + log size limits.
+- [x] **Disk cleanup**:
+  - [x] Store GC schedule + log size limits.
 - [ ] **Battery/thermal**:
   - [ ] Notifications for low battery, thermal throttling.
 
