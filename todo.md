@@ -22,8 +22,6 @@
 - [x] **Firewall**:
   - [x] `networking.firewall.enable = true;`
   - [x] Only open ports you actually use (and per-interface if needed).
-- [ ] **Secure Boot plan** (pick one):
-  - [ ] Use secure boot tooling (e.g., lanzaboote) and document recovery steps.
 - [ ] **Secrets management** (choose one and commit):
   - [ ] `sops-nix` (common W).
   - [ ] `agenix`.
@@ -67,8 +65,8 @@
 
 - [x] **Network stack choice**:
   - [x] NetworkManager (desktop).
-- [ ] **DNS**:
-  - [ ] Decide: `systemd-resolved` vs custom (unbound/dnscrypt).
+- [x] **DNS**:
+  - [x] Decide: `systemd-resolved` vs custom (unbound/dnscrypt).
 - [x] **Time sync**:
   - [x] Ensure NTP is on (`systemd-timesyncd` or equivalent).
 - [ ] **VPN setup**:
@@ -115,11 +113,11 @@
 
 - [x] **Display server**:
   - [x] Wayland compositor configured (niri/hypr/sway/etc).
-- [ ] **Portals**:
+- [x] **Portals**:
   - [x] Correct `xdg-desktop-portal` backend for your compositor.
-  - [ ] Screen sharing works in browsers + apps.
-- [ ] **Polkit agent**:
-  - [ ] Ensure a polkit agent runs on login.
+  - [x] Screen sharing works in browsers + apps.
+- [x] **Polkit agent**:
+  - [x] Ensure a polkit agent runs on login.
 - [x] **Greeter / login manager**:
   - [x] GDM setup stable.
 - [x] **Theming**:
@@ -136,8 +134,6 @@
   - [x] Wayland clipboard history if you want it.
 - [x] **Screenshots / screen recording**:
   - [x] grim/slurp/wl-clipboard, or your stack.
-- [ ] **Keyring**:
-  - [ ] GNOME keyring / KWallet (or decide to avoid them).
 - [ ] **IME input**:
   - [ ] fcitx5/ibus if you type multilingual.
 
