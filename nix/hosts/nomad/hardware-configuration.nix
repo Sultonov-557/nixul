@@ -31,6 +31,11 @@
     ];
   };
 
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/de01545c-b4a1-4dd7-8aef-65fc07833d9f";
+    fsType = "ext4";
+  };
+
   fileSystems."/mnt/d" = {
     device = "/dev/nvme0n1p5";
     fsType = "ntfs";
