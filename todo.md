@@ -22,9 +22,8 @@
 - [x] **Firewall**:
   - [x] `networking.firewall.enable = true;`
   - [x] Only open ports you actually use (and per-interface if needed).
-- [ ] **Secrets management** (choose one and commit):
+- [x] **Secrets management** (choose one and commit):
   - [x] `sops-nix` (common W).
-  - [ ] `systemd-credentials` for some cases.
 - [x] **Kernel/sysctl basics**:
   - [x] Enable reasonable sysctls (network hardening, etc) without breaking stuff.
 
@@ -162,15 +161,10 @@
 
 ## 🧪 Phase 8: Reproducible Dev & Builds
 
-- [ ] **DevShells**:
-  - [ ] Per-language shells with pinned tools.
-  - [ ] `shellHook` for env vars + helpful info.
-- [ ] **Templates**:
-  - [ ] `nix flake init -t ...` templates for your common stacks (TS backend, Rust, etc).
-- [ ] **Build checks**:
-  - [ ] `nix flake check` covers formatting + unit tests + type checks where possible.
-- [ ] **Local cache**:
-  - [ ] Optional: `nix-serve` / attic / cachix for your own builds.
+- [x] **Build checks**:
+  - [x] `nix flake check` covers formatting + config tests
+- [x] **Local cache**:
+  - [x] cachix for your own builds.
 
 ---
 

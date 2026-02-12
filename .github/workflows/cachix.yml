@@ -1,0 +1,26 @@
+name: Build & Push to Cachix
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v13
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+
+      - name: Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: YOUR_CACHIX_CACHE_NAME
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Build checks (also pushes to Cachix)
+        run: nix flake check -L
