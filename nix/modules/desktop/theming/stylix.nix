@@ -21,7 +21,7 @@
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark.yaml";
 
-    image = ../../../assets/wallpaper.png;
+    image = ../../../assets/public/wallpaper.png;
 
     polarity = "dark";
 

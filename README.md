@@ -1,6 +1,6 @@
 # nixul
 
-![Nixul logo](nix/assets/logo.png)
+![Nixul logo](nix/assets/public/logo.png)
 
 Modular NixOS + Home Manager configs that keep hosts thin and the shared module tree rich. Built to be fast, reversible, and calm enough for 3 AM fixes.
 

@@ -16,8 +16,8 @@
         local-zone = [ "home. static" ];
 
         local-data = [
-          ''"api.home. A 127.0.0.1"''
-          ''"app.home. A 127.0.0.1"''
+          ''"dashy.home. A 127.0.0.1"''
+          ''"public.home. A 127.0.0.1"''
         ];
 
         cache-min-ttl = 3600;
