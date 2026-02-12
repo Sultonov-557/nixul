@@ -181,15 +181,6 @@
 
 ## 💾 Phase 10: Backups, Recovery, and “Oh no” Plan
 
-- [ ] **Backups**:
-  - [ ] Borg/Restic + schedule.
-  - [ ] Off-device location (NAS/cloud/external drive).
-- [ ] **Snapshot strategy**:
-  - [ ] btrfs snapshots or ZFS snapshots if you use them.
-- [ ] **Impermanence (optional)**:
-  - [ ] Decide if you want ephemeral root + persisted dirs.
-- [ ] **Restore drill**:
-  - [ ] Actually test restoring one file and one full config.
 - [ ] **Rescue media**:
   - [ ] Build a minimal NixOS ISO from your flake.
   - [ ] Document: how to decrypt/mount and recover.
@@ -217,12 +208,8 @@
 
 - [x] **Systemd user services**:
   - [x] Autostart things the clean way (not random shell hacks).
-- [ ] **Notifications for failures**:
-  - [ ] backup failure notifications.
 - [x] **Disk cleanup**:
   - [x] Store GC schedule + log size limits.
-- [ ] **Battery/thermal**:
-  - [ ] Notifications for low battery, thermal throttling.
 
 ---
 
@@ -230,22 +217,18 @@
 
 - [x] **Host modules**:
   - [x] Shared core module + per-host overrides.
-- [ ] **Secrets per-host**:
-  - [ ] Separate secrets per machine and per environment (dev vs prod).
 
 ---
 
 ## ✅ Phase 14: Final “Am I done?” Checklist
 
 - [ ] **Fresh install test**: Can you install from zero using your flake?
-- [ ] **Rebuild test**: `nixos-rebuild switch --flake .#HOST` works without manual steps.
+- [x] **Rebuild test**: `nixos-rebuild switch --flake .#HOST` works without manual steps.
 - [x] **Rollback test**: Rollback works from boot and from CLI.
-- [ ] **Network test**: Wi-Fi/Ethernet/VPN all stable.
-- [ ] **Portal test**: Screen share works (browser + apps).
+- [x] **Network test**: Wi-Fi/Ethernet/VPN all stable.
+- [x] **Portal test**: Screen share works (browser + apps).
 - [x] **Audio test**: Mic + output devices + Bluetooth headset.
-- [ ] **Sleep test**: Suspend/resume doesn’t break input/audio/network.
-- [ ] **Printing test** (if needed): Print a page.
-- [ ] **Security scan vibe-check**: No open ports you didn’t choose. No secrets in git.
+- [x] **Security scan vibe-check**: No open ports you didn’t choose. No secrets in git.
 - [ ] **Docs done**: “How to recover” is written like you’ll forget everything in 6 months (because you will).
 
 ---

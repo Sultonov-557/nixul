@@ -7,10 +7,6 @@
       80 # http
       443 # https
     ];
-    allowedUDPPorts = [
-      22 # ssh
-      80 # http
-      443 # https
-    ];
+    allowedUDPPorts = [ ];
   };
 }
