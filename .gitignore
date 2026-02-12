@@ -1,5 +1,6 @@
 # Nix build results
 result*
+node_modules/
 
 # IDE files
 .vscode/
