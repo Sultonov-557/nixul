@@ -63,4 +63,4 @@ into junk drawers.
 - Home Manager vs NixOS: both live here; keep host-specific overrides under
   `nix/hosts/`.
 - Naming: use kebab-case filenames and directories; keep modules small,
-  composable attribute-set functions (`{ config, lib, pkgs, ... }:`).\*\*\* End Patch
+  composable attribute-set functions (`{ config, lib, pkgs, ... }:`).
