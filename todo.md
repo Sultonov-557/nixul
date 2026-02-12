@@ -23,8 +23,7 @@
   - [x] `networking.firewall.enable = true;`
   - [x] Only open ports you actually use (and per-interface if needed).
 - [ ] **Secrets management** (choose one and commit):
-  - [ ] `sops-nix` (common W).
-  - [ ] `agenix`.
+  - [x] `sops-nix` (common W).
   - [ ] `systemd-credentials` for some cases.
 - [x] **Kernel/sysctl basics**:
   - [x] Enable reasonable sysctls (network hardening, etc) without breaking stuff.
