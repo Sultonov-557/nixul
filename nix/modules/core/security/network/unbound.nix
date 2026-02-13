@@ -17,7 +17,7 @@
 
         local-data = [
           ''"dashy.home. A 127.0.0.1"''
-          ''"glance.home. A 127.0.0.1"''
+          ''"dashboard.home. A 127.0.0.1"''
           ''"public.home. A 127.0.0.1"''
         ];
 
