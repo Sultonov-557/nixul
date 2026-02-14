@@ -21,7 +21,7 @@ in
       options = lib.setAttrByPath fullPath (
         lib.mkOption {
           type = lib.types.nullOr lib.types.bool;
-          default = null;
+          default = false;
         }
       );
     in

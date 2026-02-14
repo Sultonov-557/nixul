@@ -37,6 +37,21 @@
     ];
   };
 
+  fileSystems."/mnt/d" = {
+    device = "/dev/sda3";
+    fsType = "ntfs";
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=100"
+      "umask=000"
+      "windows_names"
+      "big_writes"
+      "x-gvfs-show"
+      "exec"
+    ];
+  };
+
   swapDevices = [
     {
       device = "/swapfile";

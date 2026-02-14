@@ -81,6 +81,7 @@
             discord = true;
             telegram = true;
           };
+          qbitttorrent = true;
         };
         productivity = {
           notes = {
