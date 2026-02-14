@@ -35,6 +35,9 @@
               "qwen2.5-coder:0.5b" = {
                 name = "qwen2.5-coder:0.5b";
               };
+              "qwen2.5-coder:1.5b" = {
+                name = "qwen2.5-coder:1.5b";
+              };
             };
           };
           google = {
