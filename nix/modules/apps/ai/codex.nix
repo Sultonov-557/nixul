@@ -1,5 +1,5 @@
-{ config, ... }:
-{
+{ config, nixul, ... }:
+nixul.mkBoolModule config [ "apps" "ai" "codex" ] {
   home-manager.users.${config.nixul.user} = {
     programs.codex = {
       enable = true;

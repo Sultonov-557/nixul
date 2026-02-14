@@ -15,7 +15,10 @@ let
     }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        nixul = import ./module-bool.nix { lib = nixpkgs.lib; };
+      };
 
       modules = [
         (
@@ -29,6 +32,10 @@ let
               email = lib.mkOption {
                 type = lib.types.str;
                 description = "email of the user";
+              };
+              hostname = lib.mkOption {
+                type = lib.types.str;
+                description = "hostname of the machine";
               };
             };
           }

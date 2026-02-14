@@ -3,7 +3,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  networking.hostName = "nomad";
+  networking.hostName = config.nixul.hostname;
 
   environment.defaultPackages = with pkgs; [ acpi ];
 
