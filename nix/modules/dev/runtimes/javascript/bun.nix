@@ -1,11 +1,14 @@
 { pkgs, config, ... }:
 {
+  environment.systemPackages = with pkgs; [ bun ];
 
   home-manager.users.${config.nixul.user} = {
     programs.bun = {
       enable = true;
     };
-
-    home.packages = with pkgs; [ bun ];
   };
+
+  programs.nix-ld.libraries = with pkgs; [
+    bun
+  ];
 }

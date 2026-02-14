@@ -1,6 +1,5 @@
 { config, ... }:
 {
-
   programs.fish.enable = true;
   home-manager.users.${config.nixul.user} = {
     programs.fish = {

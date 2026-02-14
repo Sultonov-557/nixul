@@ -1,6 +1,5 @@
 { config, ... }:
 {
-
   home-manager.users.${config.nixul.user} = {
     programs.ghostty = {
       enable = true;
@@ -27,9 +26,6 @@
         keybind = [
           "ctrl+shift+c=copy_to_clipboard"
           "ctrl+shift+v=paste_from_clipboard"
-          "ctrl+shift+t=new_tab"
-          "ctrl+shift+w=close_surface"
-          "ctrl+shift+n=new_window"
           "copy=copy_to_clipboard"
           "paste=paste_from_clipboard"
           "ctrl+==increase_font_size:1"

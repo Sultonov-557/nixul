@@ -173,8 +173,11 @@
 
     desktop = {
       components = {
+        notifications = {
+          mako = true;
+          ntfy = true;
+        };
         cliphist = true;
-        mako = true;
         polkit = true;
         screenshots = true;
       };
@@ -339,7 +342,6 @@
       monitoring = {
         dashy = true;
       };
-      ntfy = true;
       server = {
         nginx = true;
       };

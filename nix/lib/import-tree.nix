@@ -5,7 +5,12 @@ let
 
   wrapModule =
     { path, modulePath }:
-    args@{ nixul, nixulDefaults ? { }, pkgs, ... }:
+    args@{
+      nixul,
+      nixulDefaults ? { },
+      pkgs,
+      ...
+    }:
     let
       module = import path;
       boolModule = nixul.mkBoolModule {
@@ -15,8 +20,12 @@ let
       moduleValue = if lib.isFunction module then module args else module;
       imports = moduleValue.imports or [ ];
       options = boolModule.options // (moduleValue.options or { });
-      config =
-        lib.mkIf boolModule.enabled (removeAttrs (moduleValue.config or moduleValue) [ "imports" "options" ]);
+      config = lib.mkIf boolModule.enabled (
+        removeAttrs (moduleValue.config or moduleValue) [
+          "imports"
+          "options"
+        ]
+      );
     in
     {
       inherit imports options config;

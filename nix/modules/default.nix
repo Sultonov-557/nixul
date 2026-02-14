@@ -4,11 +4,29 @@ let
 in
 {
   imports = builtins.concatMap importTree [
-    { dir = ./apps; prefix = [ "apps" ]; }
-    { dir = ./core; prefix = [ "core" ]; }
-    { dir = ./desktop; prefix = [ "desktop" ]; }
-    { dir = ./dev; prefix = [ "dev" ]; }
-    { dir = ./hardware; prefix = [ "hardware" ]; }
-    { dir = ./services; prefix = [ "services" ]; }
+    {
+      dir = ./apps;
+      prefix = [ "apps" ];
+    }
+    {
+      dir = ./core;
+      prefix = [ "core" ];
+    }
+    {
+      dir = ./desktop;
+      prefix = [ "desktop" ];
+    }
+    {
+      dir = ./dev;
+      prefix = [ "dev" ];
+    }
+    {
+      dir = ./hardware;
+      prefix = [ "hardware" ];
+    }
+    {
+      dir = ./services;
+      prefix = [ "services" ];
+    }
   ];
 }

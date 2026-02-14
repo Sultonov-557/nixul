@@ -4,7 +4,10 @@ let
   inherit (inputs) nixpkgs;
 
   listDirectories =
-    dir: builtins.attrNames (nixpkgs.lib.filterAttrs (_: value: value == "directory") (builtins.readDir dir));
+    dir:
+    builtins.attrNames (
+      nixpkgs.lib.filterAttrs (_: value: value == "directory") (builtins.readDir dir)
+    );
 
   nixulOptions =
     { lib, ... }:
@@ -31,7 +34,11 @@ let
     };
 
   mkBaseModules =
-    { hostname, hostsDir, modulesDir }:
+    {
+      hostname,
+      hostsDir,
+      modulesDir,
+    }:
     [
       nixulOptions
       (hostsDir + "/${hostname}")

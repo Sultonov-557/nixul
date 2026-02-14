@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   boot = {
     loader = {
       grub = {

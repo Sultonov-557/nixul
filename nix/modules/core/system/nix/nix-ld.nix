@@ -5,7 +5,6 @@
     libraries = with pkgs; [
       jre8
       temurin-jre-bin-17
-      bun
       cups
       mesa
       libdrm
