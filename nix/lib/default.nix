@@ -21,9 +21,15 @@ let
         (
           { lib, ... }:
           {
-            options.nixul.user = lib.mkOption {
-              type = lib.types.str;
-              description = "name of the user";
+            options.nixul = {
+              user = lib.mkOption {
+                type = lib.types.str;
+                description = "name of the user";
+              };
+              email = lib.mkOption {
+                type = lib.types.str;
+                description = "email of the user";
+              };
             };
           }
         )

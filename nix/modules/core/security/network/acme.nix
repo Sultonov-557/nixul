@@ -1,8 +1,9 @@
+{ config, ... }:
 {
   security.acme = {
     acceptTerms = true;
     defaults = {
-      email = "sultonovzerifboy@gmail.com";
+      email = config.nixul.email;
       dnsResolver = "1.1.1.1";
     };
   };

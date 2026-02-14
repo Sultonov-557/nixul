@@ -5,8 +5,8 @@
       enable = true;
       settings = {
         user = {
-          name = "Sultonov-557";
-          email = "sultonovzerifboy@gmail.com";
+          name = config.nixul.user;
+          email = config.nixul.email;
         };
 
         delta = {
