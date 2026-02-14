@@ -6,6 +6,367 @@
     user = "sultonov";
     email = "sultonovzerifboy@gmail.com";
     hostname = "vanguard";
-    enableAllModules = true;
+
+    apps = {
+      ai = {
+        codex = true;
+        cursor = true;
+        gemini = true;
+        opencode = true;
+      };
+      gaming = {
+        compatibility = {
+          proton = true;
+          wine = true;
+        };
+        games = {
+          minecraft = true;
+        };
+        platform = {
+          gamemode = true;
+          gamescope = true;
+          lutris = true;
+          steam = true;
+        };
+      };
+      media = {
+        audio = {
+          pamixer = true;
+          pavucontrol = true;
+          playerctl = true;
+          pulsemixer = true;
+        };
+        music = {
+          spicetify = true;
+          yandex = true;
+        };
+        photo = {
+          aseprite = true;
+          gimp = true;
+        };
+        video = {
+          ffmpeg = true;
+          mpv = true;
+        };
+      };
+      system = {
+        disk = {
+          gparted = true;
+        };
+        files = {
+          analyzers = {
+            baobab = true;
+            ncdu = true;
+          };
+          archives = {
+            file-roller = true;
+            p7zip = true;
+            unzip = true;
+            zip = true;
+          };
+          managers = {
+            nautilus = true;
+            yazi = true;
+          };
+        };
+        monitors = {
+          mission-center = true;
+        };
+        terminal = {
+          foot = true;
+          ghostty = true;
+          kitty = true;
+        };
+      };
+      user = {
+        internet = {
+          browsers = {
+            chrome = true;
+            firefox = true;
+            tor = true;
+            zen-browser = true;
+          };
+          communication = {
+            discord = true;
+            telegram = true;
+            thunderbird = true;
+          };
+        };
+        productivity = {
+          notes = {
+            obsidian = true;
+          };
+          office = {
+            libreoffice = true;
+          };
+          tasks = {
+            todoist = true;
+          };
+        };
+      };
+    };
+
+    core = {
+      maintenance = {
+        garbage-collector = true;
+        journald = true;
+      };
+      security = {
+        access = {
+          polkit = true;
+        };
+        network = {
+          acme = true;
+          avahi = true;
+          firewall = true;
+          resolved = true;
+          unbound = true;
+        };
+        secrets = {
+          sops = true;
+        };
+        ssh = {
+          openssh = true;
+          ssh = true;
+        };
+        sysctl = true;
+      };
+      system = {
+        boot = {
+          bootloader = true;
+        };
+        desktop = {
+          dbus = true;
+          xdg = true;
+        };
+        identity = {
+          locale = true;
+          user = true;
+        };
+        nix = {
+          documentation = true;
+          nh = true;
+          nix = true;
+          nix-index = true;
+          nix-ld = true;
+        };
+      };
+      terminal = {
+        shells = {
+          fish = true;
+          zsh = true;
+        };
+        tools = {
+          display = {
+            bat = true;
+            eza = true;
+          };
+          history = {
+            atuin = true;
+            thefuck = true;
+          };
+          info = {
+            fastfetch = true;
+            lsof = true;
+          };
+          monitor = {
+            btop = true;
+            tcpdump = true;
+          };
+          navigation = {
+            fzf = true;
+            ripgrep = true;
+            zoxide = true;
+          };
+          prompt = {
+            starship = true;
+          };
+        };
+      };
+    };
+
+    desktop = {
+      components = {
+        cliphist = true;
+        mako = true;
+        polkit = true;
+        screenshots = true;
+      };
+      display = {
+        wayland = true;
+        xserver = true;
+      };
+      display-manager = {
+        gdm = true;
+      };
+      panels = {
+        noctalia = true;
+      };
+      theming = {
+        stylix = true;
+      };
+      wms = {
+        hyprland = true;
+        niri = true;
+      };
+    };
+
+    dev = {
+      editor = {
+        antigravity = true;
+        nixvim = true;
+        zed = true;
+      };
+      git = {
+        git = true;
+        git-extras = true;
+        github = true;
+        lazygit = true;
+      };
+      multiplexers = {
+        zellij = {
+          zellij = true;
+        };
+      };
+      runtimes = {
+        cpp = true;
+        javascript = {
+          bun = true;
+          nodejs = true;
+          prisma = true;
+          yarn = true;
+        };
+        python = true;
+        rustc = true;
+      };
+      security = {
+        analysis = {
+          burbsuite = true;
+          inetutils = true;
+          metasploit = true;
+          wireshark = true;
+        };
+        brute-force = {
+          hashcat = true;
+          hydra = true;
+          john = true;
+          wordlists = true;
+        };
+        mitm = {
+          ettercap = true;
+        };
+        scanning = {
+          assetfinder = true;
+          bettercap = true;
+          katana = true;
+          netcat = true;
+          nmap = true;
+        };
+        wireless = {
+          wifite2 = true;
+        };
+      };
+      tools = {
+        containers = {
+          lazydocker = true;
+        };
+        db = {
+          dbeaver = true;
+          usql = true;
+        };
+        env = {
+          direnv = true;
+        };
+        http = {
+          client = {
+            bruno = true;
+            simplehttp = true;
+            xh = true;
+          };
+          server = {
+            ngrok = true;
+          };
+        };
+        quality = {
+          biome = true;
+          deadnix = true;
+        };
+      };
+    };
+
+    hardware = {
+      audio = {
+        pipewire = true;
+        rtkit = true;
+      };
+      bluetooth = {
+        blueman = true;
+        bluetooth = true;
+      };
+      inputs = {
+        qmk = true;
+        via = true;
+      };
+      network = {
+        networkmanager = true;
+      };
+      power = {
+        brightnessctl = true;
+        lid = true;
+        power-management = true;
+        profiles = true;
+        thermald = true;
+        upower = true;
+      };
+      printing = {
+        hplip = true;
+        printing = true;
+        sane = true;
+      };
+      units = {
+        cpu = {
+          amd = true;
+          intel = true;
+        };
+        gpu = {
+          mesa = true;
+          nvidia = true;
+          opengl = true;
+        };
+        ram = {
+          zram = true;
+        };
+        storage = {
+          udiskie = true;
+          usb-automount = true;
+        };
+      };
+    };
+
+    services = {
+      ai = {
+        ollama = true;
+      };
+      containers = {
+        docker = true;
+      };
+      databases = {
+        postgresql = true;
+        redis = true;
+      };
+      monitoring = {
+        dashy = true;
+        open-webui = true;
+      };
+      ntfy = true;
+      server = {
+        nginx = true;
+      };
+      vpn = {
+        openvpn = true;
+        tailscale = true;
+        wireguard = true;
+      };
+    };
   };
 }
