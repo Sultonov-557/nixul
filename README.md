@@ -42,4 +42,4 @@ Declarative NixOS setups using flake-parts, with shared modules that configure s
 
 ## License / credits
 
-Personal NixOS config; reuse the ideas. Powered by NixOS, flake-parts, Home Manager, Stylix, sops-nix, Hyprland, NUR, and friends.
+Personal NixOS config; reuse the ideas. Powered by NixOS, flake-parts, Home Manager, Stylix, sops-nix, Hyprland, and friends.

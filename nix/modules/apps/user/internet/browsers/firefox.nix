@@ -19,22 +19,6 @@
       profiles."default" = {
         id = 0;
 
-        extensions = {
-          packages = with pkgs.nur.repos.rycee.firefox-addons; [
-            bitwarden
-            darkreader
-            ff2mpv
-            istilldontcareaboutcookies
-            languagetool
-            link-cleaner
-            privacy-badger
-            simple-tab-groups
-            ublock-origin
-            unpaywall
-            vimium
-          ];
-        };
-
         settings = {
           "app.normandy.first_run" = false;
           "app.shield.optoutstudies.enabled" = false;

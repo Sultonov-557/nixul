@@ -3,8 +3,27 @@
 let
   isNix = name: lib.hasSuffix ".nix" name;
 
+  wrapModule =
+    { path, modulePath }:
+    args@{ nixul, nixulDefaults ? { }, pkgs, ... }:
+    let
+      module = import path;
+      boolModule = nixul.mkBoolModule {
+        inherit nixulDefaults;
+        path = modulePath;
+      };
+      moduleValue = if lib.isFunction module then module args else module;
+      imports = moduleValue.imports or [ ];
+      options = boolModule.options // (moduleValue.options or { });
+      config =
+        lib.mkIf boolModule.enabled (removeAttrs (moduleValue.config or moduleValue) [ "imports" "options" ]);
+    in
+    {
+      inherit imports options config;
+    };
+
   importTree =
-    dir:
+    { dir, prefix }:
     let
       entries = builtins.readDir dir;
 
@@ -12,17 +31,36 @@ let
 
       names = builtins.attrNames entries;
 
-      # Import .nix files in this directory, except default.nix
       nixFiles = builtins.filter (
         name: entries.${name} == "regular" && isNix name && name != "default.nix"
       ) names;
 
-      # Recurse into subdirectories
       subdirs = builtins.filter (name: entries.${name} == "directory") names;
 
-      fromFiles = builtins.map (name: dir + "/${name}") nixFiles;
-      fromDirs = builtins.concatMap (name: importTree (dir + "/${name}")) subdirs;
+      fromFiles = builtins.map (
+        name:
+        wrapModule {
+          path = dir + "/${name}";
+          modulePath = prefix ++ [ (lib.removeSuffix ".nix" name) ];
+        }
+      ) nixFiles;
+
+      fromDirs = builtins.concatMap (
+        name:
+        importTree {
+          dir = dir + "/${name}";
+          prefix = prefix ++ [ name ];
+        }
+      ) subdirs;
     in
-    if hasDefault then [ (dir + "/default.nix") ] else fromFiles ++ fromDirs;
+    if hasDefault then
+      [
+        (wrapModule {
+          path = dir + "/default.nix";
+          modulePath = prefix;
+        })
+      ]
+    else
+      fromFiles ++ fromDirs;
 in
 importTree

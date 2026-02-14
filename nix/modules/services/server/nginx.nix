@@ -35,7 +35,7 @@
         serverName = "public.home";
         addSSL = true;
         enableACME = true;
-        root = ../../../../../assets/public;
+        root = ../../../assets/public;
         locations."/" = {
           tryFiles = "$uri =404";
         };

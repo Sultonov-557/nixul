@@ -3,7 +3,6 @@
   home-manager.users.${config.nixul.user} =
     { inputs, pkgs, ... }:
     {
-
       imports = [ inputs.xmcl.homeModules.xmcl ];
 
       programs.xmcl = {

@@ -24,22 +24,6 @@
           question = "allow";
         };
         provider = {
-          ollama = {
-            npm = "@ai-sdk/openai-compatible";
-            name = "Ollama";
-            options = {
-              baseURL = "http://127.0.0.1:11434/v1";
-              num_ctx = "65536";
-            };
-            models = {
-              "qwen2.5-coder:0.5b" = {
-                name = "qwen2.5-coder:0.5b";
-              };
-              "qwen2.5-coder:1.5b" = {
-                name = "qwen2.5-coder:1.5b";
-              };
-            };
-          };
           google = {
             models = {
               "antigravity-gemini-3-pro" = {
@@ -228,7 +212,8 @@
         };
       };
       rules = ''
-        write understandable code without comments
+        write understandable code
+        Add comments to explain complex logic, not to describe what the code does
         make your code modular and easy to understand and reuse
         if you are unsure about something ask the user'';
     };
