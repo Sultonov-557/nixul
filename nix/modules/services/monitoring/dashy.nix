@@ -1,4 +1,29 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  services.nginx.virtualHosts = lib.mkIf config.nixul.services.server.nginx {
+    dashy = {
+      serverName = "dashy.home";
+      addSSL = config.nixul.core.security.network.acme;
+      enableACME = config.nixul.core.security.network.acme;
+      root = config.services.dashy.finalDrv;
+      locations."/" = {
+        tryFiles = "$uri /index.html";
+      };
+    };
+  };
+
+  services.unbound.settings.server.local-data =
+    lib.optionals config.nixul.core.security.network.unbound
+      [
+        ''"dashy.home. A 127.0.0.1"''
+      ];
+
+  environment.systemPackages = with pkgs; [ dashy-ui ];
   services.dashy = {
     enable = true;
 

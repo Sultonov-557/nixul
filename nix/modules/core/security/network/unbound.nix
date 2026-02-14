@@ -16,8 +16,6 @@
         local-zone = [ "home. static" ];
 
         local-data = [
-          ''"dashy.home. A 127.0.0.1"''
-          ''"ai.home. A 127.0.0.1"''
           ''"public.home. A 127.0.0.1"''
         ];
 
