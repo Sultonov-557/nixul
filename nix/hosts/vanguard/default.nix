@@ -88,12 +88,10 @@
           qbitttorrent = true;
         };
         productivity = {
-          notes = {
-            obsidian = true;
-          };
-          office = {
-            libreoffice = true;
-          };
+          obsidian = true;
+          libreoffice = true;
+          khal = true;
+          todoist = true;
         };
       };
     };

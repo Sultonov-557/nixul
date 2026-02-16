@@ -1,10 +1,8 @@
 - [x] feat: add hurl http client
 - [x] fix(nixvim): move lines with alt+arrow
 - [x] refactor(nixul): move timezone to nixul options
-- [ ] fix(fastfetch): configure fastfetch
-- [ ] refactor(opencode): split opencode into multiple files
+- [x] feat: add khal
 - [ ] feat: some kind of theme switcher
-- [ ] feat: add khal
 - [ ] feat: make login screen great again!!!
 - [ ] fix(noctalia): configure noctalia shell
 - [ ] refactor(niri): split niri into multiple files
@@ -23,6 +21,8 @@
 - [ ] fix(gemini): configure gemini
 - [ ] fix(discord): make discord great again!!!
 - [ ] fix(zed): configure zed editor
+- [ ] fix(fastfetch): configure fastfetch
+- [ ] refactor(opencode): split opencode into multiple files
 
 ### take inspiration from
 
