@@ -25,6 +25,10 @@ let
           type = lib.types.str;
           description = "hostname of the machine";
         };
+        timezone = lib.mkOption {
+          type = lib.types.str;
+          description = "timezone of the machine";
+        };
         enableAllModules = lib.mkOption {
           type = lib.types.bool;
           default = false;

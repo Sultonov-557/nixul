@@ -6,6 +6,7 @@
     user = "sultonov";
     email = "sultonovzerifboy@gmail.com";
     hostname = "vanguard";
+    timezone = "Asia/Tashkent";
 
     apps = {
       ai = {
