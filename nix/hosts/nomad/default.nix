@@ -270,6 +270,7 @@
             bruno = true;
             simplehttp = true;
             xh = true;
+            hurl = true;
           };
           server = {
             ngrok = true;

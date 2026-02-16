@@ -1,4 +1,4 @@
-- [ ] feat: add hurl http client
+- [x] feat: add hurl http client
 - [ ] fix(codex): configure codex
 - [ ] fix(codex): configure gemini
 - [ ] refactor(opencode): split opencode into multiple files
