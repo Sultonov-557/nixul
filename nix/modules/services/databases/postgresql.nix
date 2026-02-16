@@ -1,9 +1,8 @@
 { pkgs, config, ... }:
 {
-
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql_16;
+    package = pkgs.postgresql_18;
     ensureDatabases = [ config.nixul.user ];
     ensureUsers = [
       {
