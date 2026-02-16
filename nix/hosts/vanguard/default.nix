@@ -100,6 +100,7 @@
     core = {
       maintenance = {
         garbage-collector = true;
+        auto-upgrade = true;
         journald = true;
       };
       security = {
