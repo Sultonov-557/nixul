@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   imports = [ inputs.stylix.nixosModules.stylix ];
 
   home-manager.users.${config.nixul.user} = {

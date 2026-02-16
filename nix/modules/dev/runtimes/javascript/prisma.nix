@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   environment.defaultPackages = with pkgs; [
     prisma
     prisma-engines

@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 {
-
   home-manager.users.${config.nixul.user} = {
-
     home = {
       packages = with pkgs; [
         grim
