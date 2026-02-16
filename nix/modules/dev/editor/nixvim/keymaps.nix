@@ -128,6 +128,18 @@
       options.desc = "Move up";
     }
     {
+      mode = "n";
+      key = "<A-down>";
+      action = "<cmd>m .+1<cr>==";
+      options.desc = "Move down";
+    }
+    {
+      mode = "n";
+      key = "<A-up>";
+      action = "<cmd>m .-2<cr>==";
+      options.desc = "Move up";
+    }
+    {
       mode = "i";
       key = "<A-j>";
       action = "<esc><cmd>m .+1<cr>==gi";
@@ -138,18 +150,6 @@
       key = "<A-k>";
       action = "<esc><cmd>m .-2<cr>==gi";
       options.desc = "Move up";
-    }
-    {
-      mode = "v";
-      key = "J";
-      action = ":m '>+1<CR>gv=gv";
-      options.desc = "Move line down";
-    }
-    {
-      mode = "v";
-      key = "K";
-      action = ":m '<-2<CR>gv=gv";
-      options.desc = "Move line up";
     }
 
     # Better Indenting

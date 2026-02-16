@@ -1,6 +1,7 @@
 - [x] feat: add hurl http client
+- [x] fix(nixvim): move lines with alt+arrow
 - [ ] fix(codex): configure codex
-- [ ] fix(codex): configure gemini
+- [ ] fix(gemini): configure gemini
 - [ ] refactor(opencode): split opencode into multiple files
 - [ ] fix(discord): make discord great again!!!
 - [ ] refactor(nixul): move timezone to nixul options
@@ -15,3 +16,15 @@
 - [ ] fix(prisma): make prisma work
 - [ ] fix(hashcat): make hashcat work
 - [ ] fix(dashy): make dashy great again!!!
+- [ ] feat: try swayfx
+- [ ] feat: try gruvbox-material
+- [ ] feat: try lutgen
+- [ ] feat: papirus icons
+- [ ] feat: bibiata cursor
+- [ ] feat: add tty clock
+
+### take inspiration from
+
+- [ ] https://github.com/Syndrizzle/hotfiles
+- [ ] https://github.com/namishh/crystal
+- [ ] https://github.com/Stardust-kyun/calla

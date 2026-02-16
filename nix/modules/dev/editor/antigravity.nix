@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.defaultPackages = [
-    pkgs.antigravity
+  environment.systemPackages = with pkgs; [
+    antigravity
   ];
 }
