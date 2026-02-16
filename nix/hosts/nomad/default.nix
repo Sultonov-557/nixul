@@ -88,7 +88,6 @@
           obsidian = true;
           libreoffice = true;
           khal = true;
-          todoist = true;
         };
       };
     };
@@ -194,6 +193,9 @@
       };
       theming = {
         stylix = true;
+        themes = {
+          gruvbox = true;
+        };
       };
       wms = {
         hyprland = true;

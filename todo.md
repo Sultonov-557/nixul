@@ -2,7 +2,7 @@
 - [x] fix(nixvim): move lines with alt+arrow
 - [x] refactor(nixul): move timezone to nixul options
 - [x] feat: add khal
-- [ ] feat: some kind of theme switcher
+- [x] feat: some kind of theme switcher
 - [ ] feat: make login screen great again!!!
 - [ ] fix(noctalia): configure noctalia shell
 - [ ] refactor(niri): split niri into multiple files
@@ -15,7 +15,6 @@
 - [ ] feat: try gruvbox-material
 - [ ] feat: try lutgen
 - [ ] feat: papirus icons
-- [ ] feat: bibiata cursor
 - [ ] feat: add tty clock
 - [ ] fix(codex): configure codex
 - [ ] fix(gemini): configure gemini
