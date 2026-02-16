@@ -15,13 +15,6 @@
         ./plugins
       ];
 
-      colorschemes.gruvbox = {
-        enable = true;
-        settings = {
-          transparent_background = true;
-        };
-      };
-
       #Language Servers
       withNodeJs = true;
     };

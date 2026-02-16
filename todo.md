@@ -3,7 +3,14 @@
 - [x] refactor(nixul): move timezone to nixul options
 - [x] feat: add khal
 - [x] feat: some kind of theme switcher
-- [ ] feat: make login screen great again!!!
+- [x] feat: add gruvbox-material
+- [ ] feat: add dockbarx
+- [ ] fix: configure gdm
+- [ ] feat: add cosmic-greeter
+- [ ] feat: add dms-greeter
+- [ ] feat: add lemurs
+- [ ] feat: add ly
+- [ ] feat: add sddm
 - [ ] fix(noctalia): configure noctalia shell
 - [ ] refactor(niri): split niri into multiple files
 - [ ] fix(hyprland): resize and move windows with keybinds
@@ -12,7 +19,6 @@
 - [ ] fix(hashcat): make hashcat work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] feat: try swayfx
-- [ ] feat: try gruvbox-material
 - [ ] feat: try lutgen
 - [ ] feat: papirus icons
 - [ ] feat: add tty clock

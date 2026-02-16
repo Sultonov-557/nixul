@@ -194,7 +194,7 @@
       theming = {
         stylix = true;
         themes = {
-          gruvbox = true;
+          gruvbox-material = true;
         };
       };
       wms = {
