@@ -28,7 +28,7 @@
   };
 
   extraPackages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
     nodePackages.prettier
     stylua
     black

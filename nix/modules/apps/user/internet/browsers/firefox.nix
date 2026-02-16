@@ -1,18 +1,9 @@
 {
-  inputs,
   config,
   ...
 }:
 {
   home-manager.users.${config.nixul.user} = {
-    imports = [ inputs.textfox.homeManagerModules.default ];
-
-    textfox = {
-      enable = true;
-      profile = "default";
-      config = { };
-    };
-
     programs.firefox = {
       enable = true;
       profiles."default" = {

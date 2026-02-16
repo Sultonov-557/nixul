@@ -303,7 +303,6 @@
       };
       power = {
         brightnessctl = true;
-        lid = true;
         power-management = true;
         profiles = true;
         thermald = true;
