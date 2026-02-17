@@ -186,8 +186,7 @@
         xserver = true;
       };
       display-manager = {
-        gdm = false;
-        dms = true;
+        gdm = true;
       };
       panels = {
         noctalia = true;
@@ -195,7 +194,7 @@
       theming = {
         stylix = true;
         themes = {
-          gruvbox-material = true;
+          tokyo-night = true;
         };
       };
       wms = {
