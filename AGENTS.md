@@ -17,3 +17,46 @@
 - **Commits:** Follow conventional commit standards.
 - **Comments:** Add comments to explain complex logic, not to describe what the code does.
 - **Error Handling:** Ensure that Nix expressions fail gracefully with `builtins.tryEval` or provide meaningful error messages using `throw`.
+
+## How to Implement New Features
+
+### Module System Overview
+The codebase uses a custom module system located in `nix/modules`.
+
+- **Goal:** Keep the directory tree deep, clean, and easy to navigate.
+- **Auto-Imports:** `nix/lib/import-tree.nix` automatically imports all `.nix` files in subdirectories.
+- **Auto-Options:** `nix/lib/module-bool.nix` automatically generates a `nixul.<category>.<subcategory>.<name>` boolean option for each module.
+
+### Directory Structure & Rules
+(Based on `nix/modules/README.md`)
+
+- **`apps/`**: User-facing programs (browsers, media, gaming, AI).
+- **`core/`**: Baseline OS, security, users, time, networking defaults.
+- **`desktop/`**: Display stack, compositors, panels, theming.
+- **`dev/`**: Developer tools, runtimes, editors.
+- **`hardware/`**: Drivers, audio, power, inputs, storage.
+- **`services/`**: Long-running daemons, databases, VPNs.
+
+**Rules:**
+1.  **Limit Items:** Keep folders at roughly 5 items max. Split into subfolders if it grows larger.
+2.  **Naming:** Use `kebab-case` for files and directories.
+3.  **Reuse:** Prioritize reusing existing folders over creating new ones.
+4.  **`default.nix`:** Only use `default.nix` for ordering or shared configuration; otherwise, rely on auto-imports.
+
+### Step-by-Step Guide
+1.  **Decide Location:** Choose the appropriate category based on the rules above.
+    - Example: A new AI tool goes in `nix/modules/apps/ai/`.
+2.  **Create Module:** Create a new `.nix` file (e.g., `my-tool.nix`).
+    ```nix
+    { pkgs, ... }:
+    {
+      # Your configuration here
+      environment.systemPackages = [ pkgs.my-tool ];
+    }
+    ```
+    *Note: You do NOT need to define `options` or `mkIf`. The system handles this wrapped in `config` and `options` based on the file path.*
+
+3.  **Enable Module:** In your host configuration (e.g., `nix/hosts/nomad/default.nix`), enable the generated option.
+    ```nix
+    nixul.apps.ai.my-tool = true;
+    ```
