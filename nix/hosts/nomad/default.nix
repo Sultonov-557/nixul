@@ -38,6 +38,7 @@
         photo = {
           aseprite = true;
           gimp = true;
+          lutgen = true;
         };
         video = {
           ffmpeg = true;

@@ -13,10 +13,9 @@
 - [x] feat: add lemurs
 - [x] feat: add ly
 - [x] feat: add sddm
-- [ ] feat: try swayfx
+- [ ] feat: add lutgen
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
-- [ ] feat: try lutgen
 - [ ] feat: papirus icons
 - [ ] feat: add tty clock
 - [ ] fix(codex): configure codex
