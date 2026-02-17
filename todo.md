@@ -13,10 +13,9 @@
 - [x] feat: add lemurs
 - [x] feat: add ly
 - [x] feat: add sddm
-- [ ] fix(zellij): configure zellij
+- [ ] feat: try swayfx
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
-- [ ] feat: try swayfx
 - [ ] feat: try lutgen
 - [ ] feat: papirus icons
 - [ ] feat: add tty clock
