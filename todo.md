@@ -11,8 +11,8 @@
 - [x] refactor(niri): split niri into multiple files
 - [x] fix(hashcat): make hashcat work
 - [x] feat: add lemurs
-- [ ] feat: add ly
-- [ ] feat: add sddm
+- [x] feat: add ly
+- [x] feat: add sddm
 - [ ] fix(zellij): configure zellij
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
