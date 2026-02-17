@@ -24,6 +24,8 @@
       allowPanelsOnScreenWithoutBar = true;
       showChangelogOnStartup = true;
       telemetryEnabled = false;
+      enableLockScreenCountdown = true;
+      lockScreenCountdownDuration = 10000;
     };
   };
 }

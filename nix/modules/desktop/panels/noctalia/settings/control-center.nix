@@ -30,7 +30,7 @@
           id = "audio-card";
         }
         {
-          enabled = false;
+          enabled = true;
           id = "brightness-card";
         }
         {

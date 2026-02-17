@@ -7,10 +7,10 @@
 - [x] feat: add cosmic-greeter
 - [x] feat: add dms-greeter
 - [x] fix(hyprland): resize and move windows with keybinds
+- [x] fix(noctalia): configure noctalia shell
 - [ ] feat: add lemurs
 - [ ] feat: add ly
 - [ ] feat: add sddm
-- [ ] fix(noctalia): configure noctalia shell
 - [ ] refactor(niri): split niri into multiple files
 - [ ] fix(zellij): configure zellij
 - [ ] fix(prisma): make prisma work

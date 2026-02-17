@@ -9,6 +9,8 @@
       gpuCriticalThreshold = 90;
       memWarningThreshold = 80;
       memCriticalThreshold = 90;
+      swapWarningThreshold = 80;
+      swapCriticalThreshold = 90;
       diskWarningThreshold = 80;
       diskCriticalThreshold = 90;
       cpuPollingInterval = 3000;
