@@ -187,7 +187,7 @@
       };
       display-manager = {
         gdm = false;
-        cosmic = true;
+        dms = true;
       };
       panels = {
         noctalia = true;

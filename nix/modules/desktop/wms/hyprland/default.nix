@@ -7,6 +7,8 @@
     enable = true;
   };
 
+  services.displayManager.dms-greeter.compositor.name = "hyprland";
+
   home-manager.users.${config.nixul.user} = {
     imports = [
       ./keybinds.nix

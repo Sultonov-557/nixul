@@ -5,7 +5,7 @@
 - [x] feat: some kind of theme switcher
 - [x] feat: add gruvbox-material
 - [x] feat: add cosmic-greeter
-- [ ] feat: add dms-greeter
+- [x] feat: add dms-greeter
 - [ ] feat: add lemurs
 - [ ] feat: add ly
 - [ ] feat: add sddm
