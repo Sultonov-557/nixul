@@ -10,7 +10,7 @@
 - [x] fix(noctalia): configure noctalia shell
 - [x] refactor(niri): split niri into multiple files
 - [x] fix(hashcat): make hashcat work
-- [ ] feat: add lemurs
+- [x] feat: add lemurs
 - [ ] feat: add ly
 - [ ] feat: add sddm
 - [ ] fix(zellij): configure zellij
