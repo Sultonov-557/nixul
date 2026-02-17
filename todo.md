@@ -9,12 +9,12 @@
 - [x] fix(hyprland): resize and move windows with keybinds
 - [x] fix(noctalia): configure noctalia shell
 - [x] refactor(niri): split niri into multiple files
+- [x] fix(hashcat): make hashcat work
 - [ ] feat: add lemurs
 - [ ] feat: add ly
 - [ ] feat: add sddm
 - [ ] fix(zellij): configure zellij
 - [ ] fix(prisma): make prisma work
-- [ ] fix(hashcat): make hashcat work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] feat: try swayfx
 - [ ] feat: try lutgen
