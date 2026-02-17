@@ -13,7 +13,7 @@
 - [x] feat: add lemurs
 - [x] feat: add ly
 - [x] feat: add sddm
-- [ ] feat: add lutgen
+- [x] feat: add lutgen
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] feat: papirus icons
