@@ -10,7 +10,6 @@
 
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
-    image = ../../../../assets/public/gruvbox.png;
 
     cursor = {
       package = pkgs.bibata-cursors;

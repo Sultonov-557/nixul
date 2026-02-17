@@ -23,6 +23,7 @@
       ./settings/system-monitor.nix
       ./settings/templates.nix
       ./settings/ui.nix
+      ./settings/wallpaper.nix
     ];
 
     programs.noctalia-shell = {

@@ -10,7 +10,6 @@
 
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-    image = ../../../../assets/public/tokyo-night.png;
 
     cursor = {
       package = pkgs.bibata-cursors;
