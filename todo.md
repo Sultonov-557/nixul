@@ -4,9 +4,7 @@
 - [x] feat: add khal
 - [x] feat: some kind of theme switcher
 - [x] feat: add gruvbox-material
-- [ ] feat: add dockbarx
-- [ ] fix: configure gdm
-- [ ] feat: add cosmic-greeter
+- [x] feat: add cosmic-greeter
 - [ ] feat: add dms-greeter
 - [ ] feat: add lemurs
 - [ ] feat: add ly
