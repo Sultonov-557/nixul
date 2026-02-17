@@ -14,10 +14,10 @@
 - [x] feat: add ly
 - [x] feat: add sddm
 - [x] feat: add lutgen
+- [x] feat: add tty clock
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] feat: papirus icons
-- [ ] feat: add tty clock
 - [ ] fix(codex): configure codex
 - [ ] fix(gemini): configure gemini
 - [ ] fix(discord): make discord great again!!!

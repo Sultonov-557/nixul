@@ -155,6 +155,7 @@
           info = {
             fastfetch = true;
             lsof = true;
+            tty-clock = true;
           };
           monitor = {
             btop = true;
