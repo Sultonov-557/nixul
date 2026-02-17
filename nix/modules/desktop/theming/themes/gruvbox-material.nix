@@ -24,6 +24,11 @@
       popups = 0.0;
     };
 
+    icons = {
+      package = pkgs.papirus-icon-theme;
+      dark = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark";
+    };
+
     fonts = {
       monospace = {
         package = pkgs.jetbrains-mono;
