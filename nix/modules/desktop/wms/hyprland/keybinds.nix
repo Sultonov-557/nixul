@@ -21,7 +21,7 @@ in
       # -- Applications --
       "${mod}, RETURN, exec, ghostty"
       "${mod}, E, exec, nautilus"
-      "${mod}, W, exec, zen"
+      "${mod}, W, exec, zen-beta"
       "${mod}, T, exec, Telegram"
       "${mod}, M, exec, yandex-music"
       "${mod} SHIFT, C, exec, hyprpicker -a"
