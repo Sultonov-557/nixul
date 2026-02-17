@@ -3,21 +3,21 @@ let
 in
 {
   wayland.windowManager.hyprland.settings = {
-    # Keybindings
     bind = [
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       "${mod} SHIFT, M, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
       # Media keys (playerctl)
       ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioPause, exec, playerctl play-pause" # Often same as Play
+      ", XF86AudioPause, exec, playerctl play-pause"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
       ", XF86AudioStop, exec, playerctl stop"
 
       # Niri Specific ported
-      "${mod} SHIFT, E, exit," # Exits Hyprland
-      ''${mod} SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy'' # Region screenshot
+      "${mod} SHIFT, E, exit,"
+      ''${mod} SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy''
+
       # -- Applications --
       "${mod}, RETURN, exec, ghostty"
       "${mod}, E, exec, nautilus"
@@ -31,17 +31,16 @@ in
 
       # -- Window Management --
       "${mod}, Q, killactive,"
-      "${mod}, F, fullscreen," # Toggles fullscreen on the active window
-      "${mod}, V, togglefloating," # Toggles floating mode for the active window
+      "${mod}, F, fullscreen,"
+      "${mod}, V, togglefloating,"
 
       # -- Focus --
       "${mod}, LEFT, movefocus, l"
       "${mod}, DOWN, movefocus, d"
       "${mod}, UP, movefocus, u"
       "${mod}, RIGHT, movefocus, r"
-      # Niri's focus-column-first/last has no direct simple equivalent in Hyprland's master layout
 
-      # -- Move --
+      # -- Move Window --
       "${mod} SHIFT, LEFT, movewindow, l"
       "${mod} SHIFT, DOWN, movewindow, d"
       "${mod} SHIFT, UP, movewindow, u"
@@ -67,22 +66,32 @@ in
       "${mod} SHIFT, 7, movetoworkspace, 7"
       "${mod} SHIFT, 8, movetoworkspace, 8"
       "${mod} SHIFT, 9, movetoworkspace, 9"
+
     ];
 
     bindm = [
       "${mod}, mouse:272, movewindow"
       "${mod}, mouse:273, resizewindow"
+      "${mod} SHIFT, mouse:272, resizewindow"
     ];
 
-    # Keybindings with repeated execution (binde)
     binde = [
-      # -- Media & System (Standard) --
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
-
-      # Brightness keys (brightnessctl)
       ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
       ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+
+      # -- Resize --
+      "${mod} CTRL, left, resizeactive, -20 0"
+      "${mod} CTRL, right, resizeactive, 20 0"
+      "${mod} CTRL, up, resizeactive, 0 -20"
+      "${mod} CTRL, down, resizeactive, 0 20"
+
+      # -- Move --
+      "${mod} ALT, left, moveactive, -20 0"
+      "${mod} ALT, right, moveactive, 20 0"
+      "${mod} ALT, up, moveactive, 0 -20"
+      "${mod} ALT, down, moveactive, 0 20"
     ];
 
   };

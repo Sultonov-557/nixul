@@ -6,12 +6,12 @@
 - [x] feat: add gruvbox-material
 - [x] feat: add cosmic-greeter
 - [x] feat: add dms-greeter
+- [x] fix(hyprland): resize and move windows with keybinds
 - [ ] feat: add lemurs
 - [ ] feat: add ly
 - [ ] feat: add sddm
 - [ ] fix(noctalia): configure noctalia shell
 - [ ] refactor(niri): split niri into multiple files
-- [ ] fix(hyprland): resize and move windows with keybinds
 - [ ] fix(zellij): configure zellij
 - [ ] fix(prisma): make prisma work
 - [ ] fix(hashcat): make hashcat work
