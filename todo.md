@@ -15,15 +15,9 @@
 - [x] feat: add sddm
 - [x] feat: add lutgen
 - [x] feat: add tty clock
-- [ ] feat: papirus icons
+- [x] feat: papirus icons
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
-- [ ] fix(codex): configure codex
-- [ ] fix(gemini): configure gemini
-- [ ] fix(discord): make discord great again!!!
-- [ ] fix(zed): configure zed editor
-- [ ] fix(fastfetch): configure fastfetch
-- [ ] refactor(opencode): split opencode into multiple files
 
 ### take inspiration from
 
