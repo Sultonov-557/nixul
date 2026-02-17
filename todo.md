@@ -8,10 +8,10 @@
 - [x] feat: add dms-greeter
 - [x] fix(hyprland): resize and move windows with keybinds
 - [x] fix(noctalia): configure noctalia shell
+- [x] refactor(niri): split niri into multiple files
 - [ ] feat: add lemurs
 - [ ] feat: add ly
 - [ ] feat: add sddm
-- [ ] refactor(niri): split niri into multiple files
 - [ ] fix(zellij): configure zellij
 - [ ] fix(prisma): make prisma work
 - [ ] fix(hashcat): make hashcat work
