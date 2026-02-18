@@ -354,6 +354,7 @@
       };
       monitoring = {
         dashy = true;
+        glance = true;
       };
       server = {
         nginx = true;

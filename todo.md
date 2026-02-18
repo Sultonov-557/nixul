@@ -18,7 +18,7 @@
 - [x] feat: papirus icons
 - [x] fix(noctalia): move ocd to bottom
 - [x] feat: add caelestia-shell
-- [ ] feat: add glance
+- [x] feat: add glance
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
