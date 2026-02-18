@@ -22,6 +22,9 @@
 
 ### take inspiration from
 
+- [ ] https://github.com/anotherhadi/nixy
+- [ ] https://gitlab.com/Zaney/zaneyos
+- [ ] https://github.com/Frost-Phoenix/nixos-config
 - [ ] https://github.com/Syndrizzle/hotfiles
 - [ ] https://github.com/namishh/crystal
 - [ ] https://github.com/Stardust-kyun/calla
