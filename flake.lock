@@ -386,11 +386,28 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
+        "sine-bootloader": "sine-bootloader",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "xmcl": "xmcl",
         "zen-browser": "zen-browser"
+      }
+    },
+    "sine-bootloader": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770491100,
+        "narHash": "sha256-JvXNVd0HJ2OtVQuZ3bsOOvJW5VD5TIuZD8zxP1V2Y4Q=",
+        "owner": "sineorg",
+        "repo": "bootloader",
+        "rev": "e83ebd5f4137731726c759540166906ca646a939",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sineorg",
+        "repo": "bootloader",
+        "type": "github"
       }
     },
     "sops-nix": {
@@ -659,11 +676,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771247135,
-        "narHash": "sha256-qDFOVzhs8S/dk3Eqvyqi7veWKEviZuh0hjTNsb4TZ2I=",
+        "lastModified": 1771381854,
+        "narHash": "sha256-6uEDuQYEGuyuFnvOdSx+fW75tRbNiLswAl6+4qyTdJ4=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "a96ac9e2ae07ccd8522a790ff720db11dd3bdd6e",
+        "rev": "0fa995bec0e391b45b032fbd9d6e03609a30c115",
         "type": "github"
       },
       "original": {

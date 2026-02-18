@@ -55,6 +55,10 @@
         home-manager.follows = "home-manager";
       };
     };
+    sine-bootloader = {
+      url = "github:sineorg/bootloader";
+      flake = false;
+    };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
