@@ -9,34 +9,6 @@ let
       nixpkgs.lib.filterAttrs (_: value: value == "directory") (builtins.readDir dir)
     );
 
-  nixulOptions =
-    { lib, ... }:
-    {
-      options.nixul = {
-        user = lib.mkOption {
-          type = lib.types.str;
-          description = "name of the user";
-        };
-        email = lib.mkOption {
-          type = lib.types.str;
-          description = "email of the user";
-        };
-        hostname = lib.mkOption {
-          type = lib.types.str;
-          description = "hostname of the machine";
-        };
-        timezone = lib.mkOption {
-          type = lib.types.str;
-          description = "timezone of the machine";
-        };
-        enableAllModules = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "enable every module by default";
-        };
-      };
-    };
-
   mkBaseModules =
     {
       hostname,
@@ -44,7 +16,7 @@ let
       modulesDir,
     }:
     [
-      nixulOptions
+      ../nixul
       (hostsDir + "/${hostname}")
       inputs.home-manager.nixosModules.home-manager
       modulesDir

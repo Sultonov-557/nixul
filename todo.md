@@ -19,6 +19,8 @@
 - [x] fix(noctalia): move ocd to bottom
 - [x] feat: add caelestia-shell
 - [x] feat: add glance
+- [ ] feat: universal options for many modules
+
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
@@ -28,7 +30,6 @@
 
 - [ ] feat: add nixarr
 - [ ] feat: advanced theme configuration like nixy
-- [ ] feat: universal options for many modules
 
 ### take inspiration from
 
