@@ -341,11 +341,10 @@
       };
       containers = {
         docker = true;
-        kubernetes ={
+        kubernetes = {
           kind = true;
           kubectl = true;
           minikube = true;
-        };
         };
       };
       databases = {

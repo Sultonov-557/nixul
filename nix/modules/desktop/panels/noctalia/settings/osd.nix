@@ -2,7 +2,7 @@
   programs.noctalia-shell.settings = {
     osd = {
       enabled = true;
-      location = "top_right";
+      location = "bottom_center";
       autoHideMs = 2000;
       overlayLayer = true;
       enabledTypes = [
@@ -14,4 +14,3 @@
     };
   };
 }
-
