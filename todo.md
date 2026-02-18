@@ -19,12 +19,21 @@
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
+- [ ] feat: add caelestia-shell
+- [ ] feat: add glance
+- [ ] feat: add adguardhome
+- [ ] feat: add CyberChef
+- [ ] feat: add fail2ban
+
+- [ ] feat: add nixarr
+- [ ] feat: advanced theme configuration like nixy
+- [ ] feat: universal options for many modules
 
 ### take inspiration from
 
 - [ ] https://github.com/anotherhadi/nixy
-- [ ] https://gitlab.com/Zaney/zaneyos
-- [ ] https://github.com/Frost-Phoenix/nixos-config
+- [ ] https://github.com/Frost-Phoenix/nixos-config/blob/main/modules/home/packages/cli.nix
 - [ ] https://github.com/Syndrizzle/hotfiles
 - [ ] https://github.com/namishh/crystal
 - [ ] https://github.com/Stardust-kyun/calla
+- [ ] https://github.com/nix-media-server/nixarr
