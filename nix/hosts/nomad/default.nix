@@ -341,6 +341,12 @@
       };
       containers = {
         docker = true;
+        kubernetes ={
+          kind = true;
+          kubectl = true;
+          minikube = true;
+        };
+        };
       };
       databases = {
         postgresql = true;
