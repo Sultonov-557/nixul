@@ -236,6 +236,7 @@
           inetutils = true;
           metasploit = true;
           wireshark = true;
+          caido = true;
         };
         brute-force = {
           hashcat = true;
@@ -249,6 +250,7 @@
         scanning = {
           assetfinder = true;
           bettercap = true;
+          nuclei = true;
           katana = true;
           netcat = true;
           nmap = true;
