@@ -17,14 +17,14 @@
 - [x] feat: add tty clock
 - [x] feat: papirus icons
 - [x] fix(noctalia): move ocd to bottom
-- [ ] fix(prisma): make prisma work
-- [ ] fix(dashy): make dashy great again!!!
-- [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] feat: add caelestia-shell
 - [ ] feat: add glance
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
+- [ ] fix(prisma): make prisma work
+- [ ] fix(dashy): make dashy great again!!!
+- [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
 - [ ] feat: add nixarr
 - [ ] feat: advanced theme configuration like nixy

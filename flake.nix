@@ -49,15 +49,11 @@
     };
 
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake/743d55655850160a7ab43d0bacf22afd7c9fa445";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
-    };
-    sine-bootloader = {
-      url = "github:sineorg/bootloader";
-      flake = false;
     };
 
     spicetify-nix = {
