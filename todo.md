@@ -17,7 +17,7 @@
 - [x] feat: add tty clock
 - [x] feat: papirus icons
 - [x] fix(noctalia): move ocd to bottom
-- [ ] feat: add caelestia-shell
+- [x] feat: add caelestia-shell
 - [ ] feat: add glance
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef

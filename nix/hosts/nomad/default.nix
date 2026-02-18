@@ -191,6 +191,7 @@
         gdm = true;
       };
       panels = {
+        caelestia = false;
         noctalia = true;
       };
       theming = {
