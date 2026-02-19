@@ -14,6 +14,7 @@ in
 {
   imports = [
     ./adapters/hyprland
+    ./adapters/niri
   ];
 
   options.nixul.keybinds = lib.mkOption {
