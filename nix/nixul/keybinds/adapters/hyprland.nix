@@ -41,14 +41,23 @@ let
     let
       combos = normalizeKeys kb.keys;
       command = actionMap kb;
+
+      mkOne =
+        combo:
+        let
+          len = builtins.length combo;
+        in
+        if len == 0 then
+          throw "Keybind keys combo cannot be empty"
+        else
+          let
+            modsList = lib.sublist 0 (len - 1) combo;
+            key = lib.elemAt combo (len - 1);
+            mods = concatStringsSep " " modsList;
+          in
+          "${mods},${key},${command}";
     in
-    map (
-      combo:
-      let
-        keyString = concatStringsSep "," combo;
-      in
-      "${keyString},${command}"
-    ) combos;
+    map mkOne combos;
 
   mkSettings = foldl' (
     acc: kb:

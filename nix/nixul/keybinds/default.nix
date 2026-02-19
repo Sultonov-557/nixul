@@ -7,8 +7,8 @@
       lib.types.submodule {
         options = {
           keys = lib.mkOption {
-            type = lib.types.either (lib.types.listOf lib.types.str) (
-              lib.types.listOf (lib.types.listOf lib.types.str)
+            type = lib.types.either (lib.types.listOf (lib.types.listOf lib.types.str)) (
+              lib.types.listOf lib.types.str
             );
             description = ''
               Keys can be a single combo (list of strings) or multiple combos

@@ -14,8 +14,6 @@ in
       ", XF86AudioPrev, exec, playerctl previous"
       ", XF86AudioStop, exec, playerctl stop"
 
-      # Niri Specific ported
-      "${mod} SHIFT, E, exit,"
       ''${mod} SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy''
 
       # -- Applications --
