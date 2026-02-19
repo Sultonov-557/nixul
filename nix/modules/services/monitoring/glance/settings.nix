@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   services.glance.settings.pages = [
     {
@@ -13,7 +14,7 @@
             }
             {
               type = "weather";
-              location = "Paris, France";
+              location = config.nixul.location;
             }
           ];
         }
