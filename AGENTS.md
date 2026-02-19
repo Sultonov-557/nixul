@@ -21,6 +21,7 @@
 ## How to Implement New Features
 
 ### Module System Overview
+
 The codebase uses a custom module system located in `nix/modules`.
 
 - **Goal:** Keep the directory tree deep, clean, and easy to navigate.
@@ -28,6 +29,7 @@ The codebase uses a custom module system located in `nix/modules`.
 - **Options:** Each module is responsible for defining its own options and gating.
 
 ### Directory Structure & Rules
+
 (Based on `nix/modules/README.md`)
 
 - **`apps/`**: User-facing programs (browsers, media, gaming, AI).
@@ -38,24 +40,30 @@ The codebase uses a custom module system located in `nix/modules`.
 - **`services/`**: Long-running daemons, databases, VPNs.
 
 **Rules:**
+
 1.  **Limit Items:** Keep folders at roughly 5 items max. Split into subfolders if it grows larger.
 2.  **Naming:** Use `kebab-case` for files and directories.
 3.  **Reuse:** Prioritize reusing existing folders over creating new ones.
 4.  **`default.nix`:** Only use `default.nix` for ordering or shared configuration; otherwise, rely on auto-imports.
 
 ### Step-by-Step Guide
+
 1.  **Decide Location:** Choose the appropriate category based on the rules above.
     - Example: A new AI tool goes in `nix/modules/apps/ai/`.
 2.  **Create Module:** Create a new `.nix` file (e.g., `my-tool.nix`).
+
     ```nix
     { pkgs, ... }:
     {
       environment.systemPackages = [ pkgs.my-tool ];
     }
     ```
-    *Note: Define any options and gating inside the module itself.*
+
+    _Note: Define any options and gating inside the module itself._
 
 3.  **Enable Module:** In your host configuration (e.g., `nix/hosts/nomad/default.nix`), enable the generated option.
     ```nix
     nixul.apps.ai.my-tool = true;
     ```
+
+# If you need detailed information about the project look at /docs/LLM.md

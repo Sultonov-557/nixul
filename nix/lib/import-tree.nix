@@ -4,7 +4,7 @@ let
   isNix = name: lib.hasSuffix ".nix" name;
 
   importTree =
-    { dir }:
+    dir:
     let
       entries = builtins.readDir dir;
       hasDefault = (entries ? "default.nix") && entries."default.nix" == "regular";
@@ -18,11 +18,8 @@ let
 
       fromFiles = builtins.map (name: dir + "/${name}") nixFiles;
 
-      fromDirs = builtins.concatMap (name: importTree { dir = dir + "/${name}"; }) subdirs;
+      fromDirs = builtins.concatMap (name: importTree (dir + "/${name}")) subdirs;
     in
-    if hasDefault then
-      [ (dir + "/default.nix") ]
-    else
-      fromFiles ++ fromDirs;
+    if hasDefault then [ (dir + "/default.nix") ] else fromFiles ++ fromDirs;
 in
 importTree

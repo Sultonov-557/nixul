@@ -1,32 +1,44 @@
-{ inputs, config, ... }:
 {
-  home-manager.users.${config.nixul.primaryUser} = {
-    imports = [
-      inputs.caelestia-shell.homeManagerModules.default
-      ./bar.nix
-      ./launcher.nix
-      ./appearance.nix
-    ];
+  meta = {
+    scope = "user";
+    hm = true;
+    system = false;
+  };
 
-    programs.caelestia = {
-      enable = true;
-      systemd.enable = true;
-      settings = {
-        services.weatherLocation = config.nixul.location;
-        general = {
-          apps = {
-            terminal = [ "ghostty" ];
-            audio = [ "pavucontrol" ];
-            explorer = [ "thunar" ];
-          };
-          idle = {
-            timeouts = [ ];
+  home =
+    {
+      cfg, # TODO: add config
+      inputs,
+      config,
+      ...
+    }:
+    {
+      imports = [
+        inputs.caelestia-shell.homeManagerModules.default
+        ./bar.nix
+        ./launcher.nix
+        ./appearance.nix
+      ];
+
+      programs.caelestia = {
+        enable = true;
+        systemd.enable = true;
+        settings = {
+          services.weatherLocation = config.nixul.location;
+          general = {
+            apps = {
+              terminal = [ "ghostty" ];
+              audio = [ "pavucontrol" ];
+              explorer = [ "thunar" ];
+            };
+            idle = {
+              timeouts = [ ];
+            };
           };
         };
-      };
-      cli = {
-        enable = true;
+        cli = {
+          enable = true;
+        };
       };
     };
-  };
 }

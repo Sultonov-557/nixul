@@ -10,5 +10,11 @@
       name = "nomad";
       timezone = "Asia/Tashkent";
     };
+
+    apps = {
+      ai = {
+        codex.enable = true;
+      };
+    };
   };
 }
