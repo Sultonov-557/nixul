@@ -19,6 +19,12 @@
 - [x] fix(noctalia): move ocd to bottom
 - [x] feat: add caelestia-shell
 - [x] feat: add glance
+- [x] feat: universal keybindings
+- [x] feat(keybinds): hyprland adapter for universal keybindings
+- [x] feat(keybinds): niri adapter for universal keybindings
+- [ ] feat: universal options for bookmarks
+- [ ] feat: universal options for themes (replace stylix)
+
 - [ ] feat: universal options for many modules
 
 - [ ] feat: add adguardhome
