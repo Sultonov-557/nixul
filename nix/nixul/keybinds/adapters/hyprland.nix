@@ -2,6 +2,7 @@
 
 let
   inherit (lib)
+    concatMap
     concatStringsSep
     foldl'
     isString
@@ -16,16 +17,57 @@ let
     else
       keys;
 
-  actionMap =
+  requireArg =
+    kb: name: value:
+    if value == null then throw "Keybind action ${kb.action} requires ${name}" else value;
+
+  hyprCommands =
     kb:
-    if kb.action == "spawn" then
-      "exec,${kb.cmd}"
-    else if kb.action == "close" then
-      "killactive"
-    else if kb.action == "fullscreen" then
-      "fullscreen,1"
-    else
-      throw "Unknown keybind action: ${kb.action}";
+    let
+      raw = kb.raw.hyprland;
+      args = if kb.args == null then { } else kb.args;
+      get = name: if builtins.hasAttr name args then builtins.getAttr name args else null;
+      toStr = builtins.toString;
+
+      directionVector =
+        direction: amount:
+        let
+          step = requireArg kb "amount" amount;
+        in
+        if direction == "l" then
+          "-${toString step} 0"
+        else if direction == "r" then
+          "${toString step} 0"
+        else if direction == "u" then
+          "0 -${toString step}"
+        else if direction == "d" then
+          "0 ${toString step}"
+        else
+          throw "Unknown direction: ${direction}";
+
+      mapped =
+        if kb.action == "spawn" then
+          "exec,${requireArg kb "cmd" (get "cmd")}"
+        else if kb.action == "close" then
+          "killactive"
+        else if kb.action == "fullscreen" then
+          "fullscreen,0"
+        else if kb.action == "float" then
+          "togglefloating"
+        else if kb.action == "focus" then
+          "movefocus,${requireArg kb "direction" (get "direction")}"
+        else if kb.action == "movewindow" then
+          "movewindow,${requireArg kb "direction" (get "direction")}"
+        else if kb.action == "resize" then
+          "resizeactive,${directionVector (requireArg kb "direction" (get "direction")) (get "amount")}"
+        else if kb.action == "workspace" then
+          "workspace,${toStr (requireArg kb "workspace" (get "workspace"))}"
+        else if kb.action == "movetoworkspace" then
+          "movetoworkspace,${toStr (requireArg kb "workspace" (get "workspace"))}"
+        else
+          throw "Unknown keybind action: ${kb.action}";
+    in
+    if raw != null then if isString raw then [ raw ] else raw else [ mapped ];
 
   bindGroup =
     kb:
@@ -40,10 +82,10 @@ let
     kb:
     let
       combos = normalizeKeys kb.keys;
-      command = actionMap kb;
+      commands = hyprCommands kb;
 
       mkOne =
-        combo:
+        command: combo:
         let
           len = builtins.length combo;
         in
@@ -57,7 +99,7 @@ let
           in
           "${mods},${key},${command}";
     in
-    map mkOne combos;
+    concatMap (combo: map (command: mkOne command combo) commands) combos;
 
   mkSettings = foldl' (
     acc: kb:
