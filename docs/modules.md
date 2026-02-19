@@ -1,45 +1,27 @@
 # Modules
 
-## How modules are structured
+## Feature modules
 
-- Files live under `nix/modules/` by domain: `apps/`, `core/`, `desktop/`, `dev/`, `hardware/`, `services/`.
-- Everything except folders with their own `default.nix` is imported automatically by `nix/lib/import-tree.nix`.
-- Modules are plain Nix functions that take an attribute set (`{ config, lib, pkgs, ... }:`) and return options.
-- System and Home Manager settings often sit together in one module by writing into `home-manager.users.${config.nixul.user}` alongside system options.
-
-## Naming conventions
-
-- Use kebab-case for filenames and directories: `apps/browser/firefox.nix`.
-- Keep modules small and focused; split when a file covers multiple concerns.
-- Use the most specific folder possible so imports stay predictable.
-
-## How to create a new module
-
-1. Pick the right folder (e.g., `services/monitoring/` for a daemon, `apps/media/` for a user-facing app).
-2. Create `nix/modules/<path>/feature.nix` with a minimal module function.
-3. Set system config and, if needed, add user-level configuration under `home-manager.users.${config.nixul.user}` in the same file.
-4. Rebuild with `nh os test .#<host>` to validate before switching.
-
-Example combined system + user module:
+- Feature definitions live under `nix/modules/features/` and export plain attribute sets, not NixOS option declarations.
+- Options are generated automatically:
+  - Host toggle: `nixul.modules.<path>` defaults to `null`.
+  - User toggle: `nixul.users.<name>.modules.<path>` defaults to `null`.
+- Scopes:
+  - `scope = "user"`: only users may enable the feature.
+  - `scope = "host"`: only hosts may enable the feature.
+  - `scope = "both"`: either is allowed; system fragment runs once if any side enables.
+- A feature may export `system` (runs once when enabled by host or any user) and `home` (runs per enabled user) functions. Both receive `cfg`, the per-feature config value (attribute set or `{}` when enabled without config).
+- Example per-user enablement:
 
 ```nix
-{ config, pkgs, inputs, ... }:
-{
-  environment.systemPackages = [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
-  programs.hyprland.enable = true;
-
-  home-manager.users.${config.nixul.user} = {
-    wayland.windowManager.hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    };
-  };
-}
+nixul.users.sultonov.modules.apps.ai.codex = {
+  instructions = "Keep replies short.";
+};
 ```
 
-## Examples
+## Classic modules
 
-- See `nix/modules/desktop/wms/hyprland/default.nix` for a combined system + user module.
-- `nix/modules/services/ntfy.nix` shows a simple enabled-by-default service.
-- For folder layout patterns, check `nix/modules/README.md`.
-- Host files `nix/hosts/*/home.nix` show how user options are applied per machine.
+- Existing modules still live under `nix/modules/` by domain: `apps/`, `core/`, `desktop/`, `dev/`, `hardware`, `services/`.
+- Everything except folders with their own `default.nix` is imported automatically by `nix/lib/import-tree.nix`.
+- Use kebab-case for filenames and directories and keep files focused; split when a module covers multiple concerns.
+- Prefer the most specific folder to keep import paths predictable.

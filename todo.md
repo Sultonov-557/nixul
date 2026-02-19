@@ -22,7 +22,7 @@
 - [x] feat: universal keybindings
 - [x] feat(keybinds): hyprland adapter for universal keybindings
 - [x] feat(keybinds): niri adapter for universal keybindings
-- [ ] feat: multi-users system
+- [x] feat: multi-users system
 - [ ] feat: better options structure for modules
 
 - [ ] feat: universal options for bookmarks for dashboards, browsers, etc.
