@@ -1,6 +1,9 @@
 { ... }:
 {
-  imports = [ ./system.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./keybinds
+  ];
 
   nixul = {
     user = "sultonov";
