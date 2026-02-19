@@ -47,6 +47,7 @@ let
     in
     {
       inherit path segments definition scope hasSystem hasHome key;
+      isAuto = false;
     };
 
   moduleDefs = map parseModuleDef moduleDefPaths;

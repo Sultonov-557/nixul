@@ -1,8 +1,17 @@
-{ pkgs, ... }:
 {
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-gtk
-  ];
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      xdg.portal.enable = true;
+      xdg.portal.extraPortals = [
+        pkgs.xdg-desktop-portal-wlr
+        pkgs.xdg-desktop-portal-gtk
+      ];
+    };
 }

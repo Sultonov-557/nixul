@@ -1,221 +1,264 @@
-{ config, ... }:
 {
-  home-manager.users.${config.nixul.primaryUser} = {
-    programs.opencode = {
-      enable = true;
+  meta = {
+    scope = "user";
+    hm = true;
+    system = false;
+  };
 
-      settings = {
-        plugin = [
-          "opencode-antigravity-auth@latest"
-          "opencode-openai-codex-auth@latest"
-        ];
-        permission = {
-          bash = "ask";
-          edit = "ask";
-          read = "allow";
-          grep = "allow";
-          glob = "allow";
-          list = "allow";
-          lsp = "allow";
-          skill = "ask";
-          todowrite = "allow";
-          todoread = "allow";
-          webfetch = "allow";
-          question = "allow";
-        };
-        provider = {
-          google = {
-            models = {
-              "antigravity-gemini-3-pro" = {
-                name = "Gemini 3 Pro (Antigravity)";
-                limit = {
-                  context = 1048576;
-                  output = 65535;
-                };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
-                };
-                variants = {
-                  low = {
-                    thinkingLevel = "low";
+  home =
+    { cfg, ... }:
+    {
+      programs.opencode = {
+        enable = cfg.enable or true;
+
+        settings = {
+          plugin = [
+            "opencode-antigravity-auth@latest"
+            "opencode-openai-codex-auth@latest"
+          ];
+          permission = {
+            bash = "ask";
+            edit = "ask";
+            read = "allow";
+            grep = "allow";
+            glob = "allow";
+            list = "allow";
+            lsp = "allow";
+            skill = "ask";
+            todowrite = "allow";
+            todoread = "allow";
+            webfetch = "allow";
+            question = "allow";
+          };
+          provider = {
+            google = {
+              models = {
+                "antigravity-gemini-3-pro" = {
+                  name = "Gemini 3 Pro (Antigravity)";
+                  limit = {
+                    context = 1048576;
+                    output = 65535;
                   };
-                  high = {
-                    thinkingLevel = "high";
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
                   };
-                };
-              };
-              "antigravity-gemini-3-flash" = {
-                name = "Gemini 3 Flash (Antigravity)";
-                limit = {
-                  context = 1048576;
-                  output = 65536;
-                };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
-                };
-                variants = {
-                  minimal = {
-                    thinkingLevel = "minimal";
-                  };
-                  low = {
-                    thinkingLevel = "low";
-                  };
-                  medium = {
-                    thinkingLevel = "medium";
-                  };
-                  high = {
-                    thinkingLevel = "high";
-                  };
-                };
-              };
-              "antigravity-claude-sonnet-4-5" = {
-                name = "Claude Sonnet 4.5 (Antigravity)";
-                limit = {
-                  context = 200000;
-                  output = 64000;
-                };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
-                };
-              };
-              "antigravity-claude-sonnet-4-5-thinking" = {
-                name = "Claude Sonnet 4.5 Thinking (Antigravity)";
-                limit = {
-                  context = 200000;
-                  output = 64000;
-                };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
-                };
-                variants = {
-                  low = {
-                    thinkingConfig = {
-                      thinkingBudget = 8192;
+                  variants = {
+                    low = {
+                      thinkingLevel = "low";
                     };
-                  };
-                  max = {
-                    thinkingConfig = {
-                      thinkingBudget = 32768;
+                    high = {
+                      thinkingLevel = "high";
                     };
                   };
                 };
-              };
-              "antigravity-claude-opus-4-5-thinking" = {
-                name = "Claude Opus 4.5 Thinking (Antigravity)";
-                limit = {
-                  context = 200000;
-                  output = 64000;
-                };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
-                };
-                variants = {
-                  low = {
-                    thinkingConfig = {
-                      thinkingBudget = 8192;
+                "antigravity-gemini-3-flash" = {
+                  name = "Gemini 3 Flash (Antigravity)";
+                  limit = {
+                    context = 1048576;
+                    output = 65536;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
+                  variants = {
+                    minimal = {
+                      thinkingLevel = "minimal";
+                    };
+                    low = {
+                      thinkingLevel = "low";
+                    };
+                    medium = {
+                      thinkingLevel = "medium";
+                    };
+                    high = {
+                      thinkingLevel = "high";
                     };
                   };
-                  max = {
-                    thinkingConfig = {
-                      thinkingBudget = 32768;
+                };
+                "antigravity-claude-sonnet-4-5" = {
+                  name = "Claude Sonnet 4.5 (Antigravity)";
+                  limit = {
+                    context = 200000;
+                    output = 64000;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
+                };
+                "antigravity-claude-sonnet-4-5-thinking" = {
+                  name = "Claude Sonnet 4.5 Thinking (Antigravity)";
+                  limit = {
+                    context = 200000;
+                    output = 64000;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
+                  variants = {
+                    low = {
+                      thinkingConfig = {
+                        thinkingBudget = 8192;
+                      };
+                    };
+                    max = {
+                      thinkingConfig = {
+                        thinkingBudget = 32768;
+                      };
                     };
                   };
                 };
-              };
-              "gemini-2.5-flash" = {
-                name = "Gemini 2.5 Flash (Gemini CLI)";
-                limit = {
-                  context = 1048576;
-                  output = 65536;
+                "antigravity-claude-opus-4-5-thinking" = {
+                  name = "Claude Opus 4.5 Thinking (Antigravity)";
+                  limit = {
+                    context = 200000;
+                    output = 64000;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
+                  variants = {
+                    low = {
+                      thinkingConfig = {
+                        thinkingBudget = 8192;
+                      };
+                    };
+                    max = {
+                      thinkingConfig = {
+                        thinkingBudget = 32768;
+                      };
+                    };
+                  };
                 };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
+                "gemini-2.5-flash" = {
+                  name = "Gemini 2.5 Flash (Gemini CLI)";
+                  limit = {
+                    context = 1048576;
+                    output = 65536;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
                 };
-              };
-              "gemini-2.5-pro" = {
-                name = "Gemini 2.5 Pro (Gemini CLI)";
-                limit = {
-                  context = 1048576;
-                  output = 65536;
+                "gemini-2.5-pro" = {
+                  name = "Gemini 2.5 Pro (Gemini CLI)";
+                  limit = {
+                    context = 1048576;
+                    output = 65536;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
                 };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
+                "gemini-3-flash-preview" = {
+                  name = "Gemini 3 Flash Preview (Gemini CLI)";
+                  limit = {
+                    context = 1048576;
+                    output = 65536;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
                 };
-              };
-              "gemini-3-flash-preview" = {
-                name = "Gemini 3 Flash Preview (Gemini CLI)";
-                limit = {
-                  context = 1048576;
-                  output = 65536;
+                "gemini-3-pro-preview" = {
+                  name = "Gemini 3 Pro Preview (Gemini CLI)";
+                  limit = {
+                    context = 1048576;
+                    output = 65535;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
                 };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
+                "gemini-1.5-pro" = {
+                  name = "Gemini 1.5 Pro (Gemini CLI)";
+                  limit = {
+                    context = 1048576;
+                    output = 65536;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
                 };
-              };
-              "gemini-3-pro-preview" = {
-                name = "Gemini 3 Pro Preview (Gemini CLI)";
-                limit = {
-                  context = 1048576;
-                  output = 65535;
-                };
-                modalities = {
-                  input = [
-                    "text"
-                    "image"
-                    "pdf"
-                  ];
-                  output = [ "text" ];
+                "gemini-1.5-flash" = {
+                  name = "Gemini 1.5 Flash (Gemini CLI)";
+                  limit = {
+                    context = 1048576;
+                    output = 65536;
+                  };
+                  modalities = {
+                    input = [
+                      "text"
+                      "image"
+                      "pdf"
+                    ];
+                    output = [ "text" ];
+                  };
+                  variants = {
+                    low = {
+                      thinkingLevel = "low";
+                    };
+                    medium = {
+                      thinkingLevel = "medium";
+                    };
+                    high = {
+                      thinkingLevel = "high";
+                    };
+                  };
                 };
               };
             };
           };
         };
       };
-      rules = ''
-        write understandable code
-        Add comments to explain complex logic, not to describe what the code does
-        make your code modular and easy to understand and reuse
-        if you are unsure about something ask the user'';
     };
-  };
 }

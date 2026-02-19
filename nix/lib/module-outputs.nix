@@ -1,16 +1,27 @@
 { lib, config }:
 
-{ moduleStates, ... }:
+{ moduleStates, autoModules ? [ ], ... }:
 
 let
   systemConfigs = lib.concatMap (
     state:
     if state.moduleDef.hasSystem && state.enabled then
+      let
+        sys = state.moduleDef.definition.system;
+      in
       [
-        (state.moduleDef.definition.system {
-          inherit lib config;
-          cfg = state.systemCfg;
-        })
+        (
+          if builtins.isFunction sys then
+            sys (
+              {
+                inherit lib config;
+                cfg = state.systemCfg;
+              }
+              // placeholder
+            )
+          else
+            sys
+        )
       ]
     else
       [ ]
@@ -51,7 +62,9 @@ let
       message = "Module ${name} is host-scoped; nixul.users.<name>.modules.${name} must be null";
     }
   ) moduleStates;
+
+  autoImports = map (module: module.path) autoModules;
 in
 {
-  inherit systemConfigs homeConfigs scopeAssertions;
+  inherit systemConfigs homeConfigs scopeAssertions autoImports;
 }

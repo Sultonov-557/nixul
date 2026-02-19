@@ -9,13 +9,11 @@ let
   moduleOptions = buildOptions moduleScan;
   states = buildStates moduleScan;
   outputs = buildOutputs states;
-
-  autoImports = map (module: module.path) moduleScan.autoModules;
 in
 {
-  imports = moduleScan.regularModuleImports ++ autoImports;
+  imports = moduleScan.regularModuleImports ++ outputs.autoImports;
 
-  options.nixul.modules = moduleOptions;
+  options.nixul = moduleOptions;
 
   config = lib.mkMerge (
     [
