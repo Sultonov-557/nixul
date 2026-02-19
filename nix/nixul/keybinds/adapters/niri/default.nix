@@ -15,9 +15,17 @@ let
     inherit lib mkBinding;
     inherit (helpers) normalizeKeys formatCombo;
   };
+
+  enabledUsers = lib.filterAttrs (_: u: u.enable or false) config.nixul.users;
+
+  desktopUsers = lib.filterAttrs (_: u: lib.elem "desktop" (u.tags or [ ])) enabledUsers;
+
+  hostBinds = config.nixul.host.keybinds or [ ];
+
+  mkUserHM = user: {
+    programs.niri.settings.binds = mkSettings ((user.keybinds or [ ]) ++ hostBinds);
+  };
 in
 {
-  home-manager.users.${config.nixul.user} = lib.mkIf niriAvailable {
-    programs.niri.settings.binds = mkSettings config.nixul.keybinds;
-  };
+  home-manager.users = lib.mapAttrs mkUserHM desktopUsers;
 }

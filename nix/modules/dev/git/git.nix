@@ -1,12 +1,12 @@
 { config, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     programs.git = {
       enable = true;
       settings = {
         user = {
-          name = config.nixul.user;
-          email = config.nixul.email;
+          name = config.nixul.users.${config.nixul.primaryUser}.name;
+          email = config.nixul.users.${config.nixul.primaryUser}.email;
         };
 
         delta = {

@@ -3,10 +3,10 @@
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_18;
-    ensureDatabases = [ config.nixul.user ];
+    ensureDatabases = [ config.nixul.host.name ];
     ensureUsers = [
       {
-        name = config.nixul.user;
+        name = config.nixul.host.name;
         ensureDBOwnership = true;
       }
     ];

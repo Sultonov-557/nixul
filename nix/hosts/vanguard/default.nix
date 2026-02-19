@@ -3,10 +3,14 @@
   imports = [ ./system.nix ];
 
   nixul = {
-    user = "sultonov";
-    email = "sultonovzerifboy@gmail.com";
-    hostname = "vanguard";
-    timezone = "Asia/Tashkent";
+    primaryUser = "sultonov";
+    users.sultonov = {
+      email = "sultonovzerifboy@gmail.com";
+    };
+    host = {
+      name = "nomad";
+      timezone = "Asia/Tashkent";
+    };
 
     apps = {
       ai = {

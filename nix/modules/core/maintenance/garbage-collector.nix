@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     systemd.user.services.home-profile-prune = {
       Unit.Description = "Prune home-manager generations";
       Service.Type = "oneshot";
       Service.Environment = [ "NIX_REMOTE=daemon" ];
-      Service.ExecStart = "${pkgs.nix}/bin/nix-env --profile /nix/var/nix/profiles/per-user/${config.nixul.user}/home-manager --delete-generations 14d";
+      Service.ExecStart = "${pkgs.nix}/bin/nix-env --profile /nix/var/nix/profiles/per-user/${config.nixul.primaryUser}/home-manager --delete-generations 14d";
     };
 
     systemd.user.timers.home-profile-prune = {

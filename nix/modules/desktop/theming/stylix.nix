@@ -6,7 +6,7 @@
 {
   imports = [ inputs.stylix.nixosModules.stylix ];
 
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     stylix.targets = {
       nixvim = {
         enable = false;

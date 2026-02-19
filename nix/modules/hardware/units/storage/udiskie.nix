@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     services.udiskie = {
       enable = true;
       automount = true;

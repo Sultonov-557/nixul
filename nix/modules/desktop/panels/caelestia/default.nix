@@ -1,6 +1,6 @@
 { inputs, config, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     imports = [
       inputs.caelestia-shell.homeManagerModules.default
       ./bar.nix
@@ -12,7 +12,7 @@
       enable = true;
       systemd.enable = true;
       settings = {
-        services.weatherLocation = "Paris"; # TODO : nixul option for this
+        services.weatherLocation = config.nixul.location;
         general = {
           apps = {
             terminal = [ "ghostty" ];

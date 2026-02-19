@@ -1,9 +1,8 @@
-{
-  lib,
-  argsModule,
-  rawType,
-}:
-
+{ lib, ... }:
+let
+  argsModule = import ./args.nix { inherit lib; };
+  rawType = import ./raw.nix { inherit lib; };
+in
 lib.types.submodule ({
   options = {
     keys = lib.mkOption {

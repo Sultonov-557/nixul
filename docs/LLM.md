@@ -13,11 +13,10 @@ It highlights architecture, workflows, option semantics, and angles for tutorial
 
 - `flake.nix`: inputs (nixpkgs, home-manager, flake-parts, sops-nix, stylix, hyprland/niri, nixvim, panels), outputs per host via flake-parts.
 - `nix/lib`: helper functions
-  - `default.nix`: `mkSystems` that scans `nix/hosts`, builds `nixosSystem` per host, injects `nixulDefaults`, and wires modules + Home Manager.
-  - `import-tree.nix`: recursively imports every `.nix` under `nix/modules` (unless a `default.nix` is present) and wraps them with boolean options.
-  - `module-bool.nix`: auto-generates `nixul.<path>` options and toggles module configs based on host defaults or `enableAllModules`.
+  - `default.nix`: `mkSystems` that scans `nix/hosts`, builds `nixosSystem` per host, and wires modules + Home Manager with `inputs` in `specialArgs`.
+  - `import-tree.nix`: recursively imports every `.nix` under `nix/modules` (unless a `default.nix` is present).
 - `nix/modules`: shared features grouped by domain (apps, core, desktop, dev, hardware, services); auto-imported.
-- `nix/nixul`: base options (`nixul.user/email/hostname/timezone/location/enableAllModules`) and the cross-WM keybind system.
+- `nix/nixul`: base options (`nixul.user/email/hostname/timezone/location`) and the cross-WM keybind system.
 - `nix/hosts/<host>`: thin host definitions (hardware import, Home Manager import, host-specific keybinds/displays). Current hosts: `nomad`, `vanguard`.
 - `nix/assets`: static files (logo, wallpapers) and `assets/secrets/secrets.yaml` for sops.
 - `docs`: human docs (architecture, modules, workflows, recovery, secrets, hosts, customization). This file is the LLM-specific overlay.
@@ -35,11 +34,9 @@ It highlights architecture, workflows, option semantics, and angles for tutorial
 ## Architecture flow
 
 1. `flake.nix` gathers inputs and calls `lib.mkSystems` with `hostsDir` + `modulesDir`.
-2. `lib/mkSystems` imports each `nix/hosts/<hostname>` folder to get `nixulDefaults` (user/email/options) and builds a `nixosSystem`:
-   - Injects `inputs` and `nixulDefaults` into `specialArgs`.
-   - Imports: `nix/nixul` (base options + keybinds), host folder, Home Manager module, shared module tree, HM defaults.
+2. `lib/mkSystems` builds a `nixosSystem` per host, injecting `inputs` into `specialArgs`, and imports `nix/nixul`, the host folder, Home Manager, and the shared module tree.
 3. `nix/modules/default.nix` uses `import-tree.nix` to pull every module.
-4. Each module is wrapped so its config only applies if its generated option is enabled (`nixul.<category>...<name> = true`) or if `enableAllModules` is true.
+4. Modules are imported directly; each module defines its own options and gating.
 5. System and Home Manager configs often live together in one module to keep behavior unified.
 
 ## Host model (thin)
@@ -52,11 +49,8 @@ It highlights architecture, workflows, option semantics, and angles for tutorial
 
 ## Module system and options
 
-- Option naming: file path becomes `nixul.<prefix...>.<file-name>` (kebab-case). Example: `nix/modules/apps/media/video/mpv.nix` → option `nixul.apps.media.video.mpv`.
-- Enabling: set the option to true in a host file; defaults are false unless `enableAllModules = true`.
-- Options exist for every module because `module-bool.nix` wraps modules with `mkOption` + `mkIf`.
-- Modules can also define their own options/imports; these merge with the auto-generated boolean option.
-- `nixulDefaults` lets hosts preseed defaults before evaluation; values also end up in `config.nixul.*` for module consumption.
+- Options are defined per module; there is no auto-generated boolean.
+- Modules can add their own options/imports and handle conditional logic internally.
 
 ## Feature catalog (by domain)
 
@@ -112,7 +106,7 @@ It highlights architecture, workflows, option semantics, and angles for tutorial
 
 - Pros
   - Thin hosts, thick shared modules make reuse and onboarding fast.
-  - Auto-generated boolean options per module keep configuration declarative and discoverable.
+  - Modules stay discoverable through the shared tree without auto-generated options.
   - Unified system + Home Manager modules reduce drift between layers.
   - Opinionated desktop stack (Hyprland + Noctalia/Stylix) and dev stack (Nixvim/Zellij/git/security tools) ready out of the box.
   - Built-in ingress + DNS wiring (Nginx + Unbound) for self-hosted services.
@@ -126,7 +120,7 @@ It highlights architecture, workflows, option semantics, and angles for tutorial
 ## Talking points for blogs/docs/tutorials
 
 - Why Nixul: predictable rebuilds with `nh`, unified module tree, quick host cloning, and curated defaults for Wayland power users.
-- How it works: flake-parts + import-tree auto-discovery + module-bool gating; describe the semantic keybind system as a portability layer.
+- How it works: flake-parts + import-tree auto-discovery; describe the semantic keybind system as a portability layer.
 - Desktop story: Hyprland + Noctalia + Stylix produce a cohesive UX; mention screenshot helpers and notification stack.
 - Dev story: Nixvim-centric workflow with LSP/formatting, Git tools, Zellij multiplexer, and language runtimes.
 - Services story: self-hosted dashboards (Dashy/Glance), AI stack (Ollama/Open WebUI), ingress and DNS automation.
@@ -152,7 +146,7 @@ It highlights architecture, workflows, option semantics, and angles for tutorial
     home-manager.users.${config.nixul.user}.programs.myTool.enable = true;
   }
   ```
-- No need to declare the option manually; it is auto-generated. Enable it in `nix/hosts/<host>/default.nix` via `nixul.<path> = true;`.
+- Declare options and gating inside the module itself when needed.
 - Prefer shared modules over host-specific tweaks; keep host folders for hardware, monitors, and overrides.
 - Run `nix fmt` + `deadnix` + `nix flake check` before switching.
 

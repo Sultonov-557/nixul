@@ -5,5 +5,5 @@
     enableOnBoot = true;
   };
 
-  users.users.${config.nixul.user}.extraGroups = [ "docker" ];
+  users.users.${config.nixul.primaryUser}.extraGroups = [ "docker" ];
 }

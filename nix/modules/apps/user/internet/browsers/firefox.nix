@@ -3,7 +3,7 @@
   ...
 }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     programs.firefox = {
       enable = true;
       profiles."default" = {

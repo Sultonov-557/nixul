@@ -3,7 +3,5 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  networking.hostName = "vanguard";
-
-  home-manager.users.${config.nixul.user}.imports = [ ./home.nix ];
+  home-manager.users.${config.nixul.primaryUser}.imports = [ ./home.nix ];
 }

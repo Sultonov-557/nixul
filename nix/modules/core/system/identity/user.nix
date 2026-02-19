@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
-  users.users.${config.nixul.user} = {
+  users.users.${config.nixul.primaryUser} = {
     isNormalUser = true;
-    description = config.nixul.user;
+    description = config.nixul.primaryUser;
     extraGroups = [
       "networkmanager"
       "wheel"

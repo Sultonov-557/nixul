@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     programs.starship = {
       enable = true;
       enableZshIntegration = true;

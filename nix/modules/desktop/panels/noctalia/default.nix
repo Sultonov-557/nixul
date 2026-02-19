@@ -1,7 +1,6 @@
 { config, inputs, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
-
+  home-manager.users.${config.nixul.primaryUser} = {
     imports = [
       inputs.noctalia.homeModules.default
       ./plugins.nix

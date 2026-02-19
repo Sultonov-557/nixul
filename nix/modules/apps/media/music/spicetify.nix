@@ -9,7 +9,7 @@ let
 in
 {
 
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
 
     programs.spicetify = {

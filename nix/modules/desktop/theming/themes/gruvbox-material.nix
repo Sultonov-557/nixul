@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     programs.nixvim = {
       colorschemes.gruvbox = {
         enable = true;

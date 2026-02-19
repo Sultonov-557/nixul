@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     programs.pay-respects = {
       enable = true;
       options = [

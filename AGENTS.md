@@ -25,7 +25,7 @@ The codebase uses a custom module system located in `nix/modules`.
 
 - **Goal:** Keep the directory tree deep, clean, and easy to navigate.
 - **Auto-Imports:** `nix/lib/import-tree.nix` automatically imports all `.nix` files in subdirectories.
-- **Auto-Options:** `nix/lib/module-bool.nix` automatically generates a `nixul.<category>.<subcategory>.<name>` boolean option for each module.
+- **Options:** Each module is responsible for defining its own options and gating.
 
 ### Directory Structure & Rules
 (Based on `nix/modules/README.md`)
@@ -50,11 +50,10 @@ The codebase uses a custom module system located in `nix/modules`.
     ```nix
     { pkgs, ... }:
     {
-      # Your configuration here
       environment.systemPackages = [ pkgs.my-tool ];
     }
     ```
-    *Note: You do NOT need to define `options` or `mkIf`. The system handles this wrapped in `config` and `options` based on the file path.*
+    *Note: Define any options and gating inside the module itself.*
 
 3.  **Enable Module:** In your host configuration (e.g., `nix/hosts/nomad/default.nix`), enable the generated option.
     ```nix

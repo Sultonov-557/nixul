@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [ bun ];
 
-  home-manager.users.${config.nixul.user} = {
+  home-manager.users.${config.nixul.primaryUser} = {
     programs.bun = {
       enable = true;
     };

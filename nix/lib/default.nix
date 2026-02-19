@@ -36,16 +36,9 @@ let
       modulesDir,
       system ? "x86_64-linux",
     }:
-    let
-      hostPath = hostsDir + "/${hostname}";
-      nixulDefaults = (import hostPath { }).nixul or { };
-    in
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {
-        inherit inputs nixulDefaults;
-        nixul = import ./module-bool.nix { lib = nixpkgs.lib; };
-      };
+      specialArgs = { inherit inputs; };
       modules = mkBaseModules { inherit hostname hostsDir modulesDir; };
     };
 in
