@@ -1,30 +1,37 @@
-{ pkgs, config, ... }:
 {
-  home-manager.users.${config.nixul.primaryUser} = {
-    home = {
-      packages = with pkgs; [
-        grim
-        slurp
-        swappy
-        wl-clipboard
-      ];
+  meta = {
+    scope = "user";
+    hm = true;
+    system = false;
+  };
 
-      file.".local/bin/screenshot-full" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          grim -g "$(slurp)" - | wl-copy
-          notify-send "Screenshot captured" "Copied to clipboard"
-        '';
-      };
+  home =
+    { pkgs, ... }:
+    {
+      home = {
+        packages = [
+          pkgs.grim
+          pkgs.slurp
+          pkgs.swappy
+          pkgs.wl-clipboard
+        ];
 
-      file.".local/bin/screenshot-area" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          grim -g "$(slurp)" - | swappy -f -
-        '';
+        file.".local/bin/screenshot-full" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            grim -g "$(slurp)" - | wl-copy
+            notify-send "Screenshot captured" "Copied to clipboard"
+          '';
+        };
+
+        file.".local/bin/screenshot-area" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            grim -g "$(slurp)" - | swappy -f -
+          '';
+        };
       };
     };
-  };
 }

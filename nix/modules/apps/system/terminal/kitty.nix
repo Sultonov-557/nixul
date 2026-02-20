@@ -1,24 +1,33 @@
-{ config, ... }:
 {
-  home-manager.users.${config.nixul.primaryUser} = {
-    programs.kitty = {
-      enable = true;
-      shellIntegration = {
-        enableZshIntegration = true;
-        enableFishIntegration = true;
-      };
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
 
-      settings = {
-        enable_audio_bell = false;
-        confirm_os_window_close = 0;
-      };
+  system =
+    { config, ... }:
+    {
+      home-manager.users.${config.nixul.primaryUser} = {
+        programs.kitty = {
+          enable = true;
+          shellIntegration = {
+            enableZshIntegration = true;
+            enableFishIntegration = true;
+          };
 
-      keybindings = {
-        "Ctrl+Shift+T" = "";
-        "Ctrl+Shift+W" = "";
-        "Ctrl+Shift+Left" = "";
-        "Ctrl+Shift+Right" = "";
+          settings = {
+            enable_audio_bell = false;
+            confirm_os_window_close = 0;
+          };
+
+          keybindings = {
+            "Ctrl+Shift+T" = "";
+            "Ctrl+Shift+W" = "";
+            "Ctrl+Shift+Left" = "";
+            "Ctrl+Shift+Right" = "";
+          };
+        };
       };
     };
-  };
 }

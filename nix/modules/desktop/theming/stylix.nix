@@ -1,20 +1,17 @@
+{ inputs }:
 {
-  inputs,
-  config,
-  ...
-}:
-{
-  imports = [ inputs.stylix.nixosModules.stylix ];
-
-  home-manager.users.${config.nixul.primaryUser} = {
-    stylix.targets = {
-      nixvim = {
-        enable = false;
-      };
-    };
+  meta = {
+    scope = "host";
+    system = true;
+    hm = true;
   };
 
-  stylix = {
-    enable = true;
+  system = {
+    imports = [ inputs.stylix.nixosModules.stylix ];
+    stylix.enable = true;
+  };
+
+  home = {
+    stylix.targets.nixvim.enable = false;
   };
 }

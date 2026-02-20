@@ -1,4 +1,13 @@
-{ pkgs, ... }:
 {
-  environment.defaultPackages = with pkgs; [ todoist-electron ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.defaultPackages = with pkgs; [ todoist-electron ];
+    };
 }

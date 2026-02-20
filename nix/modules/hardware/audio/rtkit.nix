@@ -1,3 +1,12 @@
 {
-  security.rtkit.enable = true;
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    {
+      security.rtkit.enable = true;
+    };
 }

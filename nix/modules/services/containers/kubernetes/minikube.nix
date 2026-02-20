@@ -1,6 +1,15 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    minikube
-  ];
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        minikube
+      ];
+    };
 }

@@ -1,4 +1,13 @@
-{ pkgs, ... }:
 {
-  environment.defaultPackages = with pkgs; [ yarn ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.defaultPackages = with pkgs; [ yarn ];
+    };
 }

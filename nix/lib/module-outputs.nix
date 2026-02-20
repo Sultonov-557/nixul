@@ -1,4 +1,4 @@
-{ lib, config }:
+{ lib, config, pkgs }:
 
 { moduleStates, autoModules ? [ ], ... }:
 
@@ -8,16 +8,17 @@ let
     if state.moduleDef.hasSystem && state.enabled then
       let
         sys = state.moduleDef.definition.system;
+        inputsArg = if config ? _module && config._module ? args && config._module.args ? inputs then config._module.args.inputs else { };
       in
       [
         (
           if builtins.isFunction sys then
             sys (
               {
-                inherit lib config;
+                inherit lib config pkgs;
+                inputs = inputsArg;
                 cfg = state.systemCfg;
               }
-              // placeholder
             )
           else
             sys
@@ -39,7 +40,8 @@ let
           ${userName} = (inner.${userName} or [ ]) ++ [
             state.moduleDef.definition.home
             {
-              inherit lib config userName;
+              inherit lib config pkgs userName;
+              inputs = if config ? _module && config._module ? args && config._module.args ? inputs then config._module.args.inputs else { };
               userCfg = state.userModuleCfgs.${userName};
               cfg = state.userModuleCfgs.${userName};
             }

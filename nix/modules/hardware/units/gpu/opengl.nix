@@ -1,15 +1,24 @@
-{ pkgs, ... }:
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      intel-compute-runtime
-    ];
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
   };
 
-  environment.systemPackages = with pkgs; [
-    libGL
-    libGLU
-  ];
+  system =
+    { pkgs, ... }:
+    {
+      hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+        extraPackages = with pkgs; [
+          intel-compute-runtime
+        ];
+      };
+
+      environment.systemPackages = with pkgs; [
+        libGL
+        libGLU
+      ];
+    };
 }

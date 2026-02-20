@@ -1,4 +1,13 @@
-{ ... }:
 {
-  services.power-profiles-daemon.enable = true;
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { ... }:
+    {
+      services.power-profiles-daemon.enable = true;
+    };
 }

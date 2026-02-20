@@ -1,5 +1,14 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ usql ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
 
+  system =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [ usql ];
+
+    };
 }

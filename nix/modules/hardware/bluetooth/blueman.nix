@@ -1,3 +1,12 @@
 {
-  services.blueman.enable = true;
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    {
+      services.blueman.enable = true;
+    };
 }

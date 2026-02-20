@@ -1,22 +1,23 @@
-{ config, ... }:
 {
-  home-manager.users.${config.nixul.primaryUser} = {
+  meta = {
+    scope = "user";
+    hm = true;
+    system = false;
+  };
+
+  home = _: {
     services.mako = {
       enable = true;
 
       settings = {
         border-radius = 10;
         border-size = 2;
-
         width = 350;
         height = 100;
         margin = "10";
         padding = "15";
-
         default-timeout = 5000;
-
         anchor = "top-right";
-
         layer = "overlay";
       };
 

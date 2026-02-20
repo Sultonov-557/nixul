@@ -1,7 +1,16 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    wine
-    winetricks
-  ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        wine
+        winetricks
+      ];
+    };
 }

@@ -1,4 +1,13 @@
-{ pkgs, ... }:
 {
-  environment.defaultPackages = with pkgs; [ yandex-music ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.defaultPackages = with pkgs; [ yandex-music ];
+    };
 }

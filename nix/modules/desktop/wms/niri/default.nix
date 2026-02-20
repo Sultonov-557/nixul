@@ -1,18 +1,24 @@
+{ inputs }:
 {
-  config,
-  inputs,
-  ...
-}:
-{
-  programs.niri.enable = true;
+  meta = {
+    scope = "user";
+    hm = true;
+    system = true;
+  };
 
-  home-manager.users.${config.nixul.primaryUser} = {
-    imports = [
-      inputs.niri.homeModules.niri
-      ./keybinds.nix
-      ./settings.nix
-    ];
-
+  system = {
     programs.niri.enable = true;
   };
+
+  home =
+    { ... }:
+    {
+      imports = [
+        inputs.niri.homeModules.niri
+        ./keybinds.nix
+        ./settings.nix
+      ];
+
+      programs.niri.enable = true;
+    };
 }

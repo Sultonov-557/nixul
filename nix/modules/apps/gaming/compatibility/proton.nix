@@ -1,7 +1,16 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    protonup-qt
-    protontricks
-  ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        protonup-qt
+        protontricks
+      ];
+    };
 }

@@ -1,28 +1,35 @@
-{ pkgs, ... }:
 {
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      jre8
-      temurin-jre-bin-17
-      cups
-      mesa
-      libdrm
-      glib
-      gtk3
-      gdk-pixbuf
-      pango
-      cairo
-      atk
-      at-spi2-atk
-      at-spi2-core
-      dbus
-      nss
-      nspr
-      libdrm
-      mesa
-      libxkbcommon
-      alsa-lib
-    ];
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
   };
+
+  system =
+    { pkgs, ... }:
+    {
+      programs.nix-ld = {
+        enable = true;
+        libraries = [
+          pkgs.jre8
+          pkgs.temurin-jre-bin-17
+          pkgs.cups
+          pkgs.mesa
+          pkgs.libdrm
+          pkgs.glib
+          pkgs.gtk3
+          pkgs.gdk-pixbuf
+          pkgs.pango
+          pkgs.cairo
+          pkgs.atk
+          pkgs.at-spi2-atk
+          pkgs.at-spi2-core
+          pkgs.dbus
+          pkgs.nss
+          pkgs.nspr
+          pkgs.libxkbcommon
+          pkgs.alsa-lib
+        ];
+      };
+    };
 }

@@ -1,12 +1,16 @@
 {
-  services.displayManager.lemurs = {
-    enable = true;
-    settings = {
-      background = {
-        show_background = true;
-      };
-      username_field = {
-        remember = true;
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
+
+  system = {
+    services.displayManager.lemurs = {
+      enable = true;
+      settings = {
+        background.show_background = true;
+        username_field.remember = true;
       };
     };
   };

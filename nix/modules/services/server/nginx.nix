@@ -1,24 +1,33 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ nginx ];
-  services.nginx = {
-    enable = true;
-    recommendedBrotliSettings = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+  meta = {
+    scope = "host";
+    system = true;
+    hm = false;
+  };
 
-    virtualHosts = {
-      public = {
-        serverName = "public.home";
-        addSSL = true;
-        enableACME = true;
-        root = ../../../assets/public;
-        locations."/" = {
-          tryFiles = "$uri =404";
+  system =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [ nginx ];
+      services.nginx = {
+        enable = true;
+        recommendedBrotliSettings = true;
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
+        recommendedProxySettings = true;
+        recommendedTlsSettings = true;
+
+        virtualHosts = {
+          public = {
+            serverName = "public.home";
+            addSSL = true;
+            enableACME = true;
+            root = ../../../assets/public;
+            locations."/" = {
+              tryFiles = "$uri =404";
+            };
+          };
         };
       };
     };
-  };
 }

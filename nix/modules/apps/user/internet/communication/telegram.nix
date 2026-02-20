@@ -1,4 +1,13 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ telegram-desktop ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [ telegram-desktop ];
+    };
 }

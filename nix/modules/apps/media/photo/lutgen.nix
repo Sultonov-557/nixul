@@ -1,7 +1,16 @@
-{ pkgs, ... }:
 {
-  environment.defaultPackages = with pkgs; [
-    lutgen
-    lutgen-studio
-  ];
+  meta = {
+    scope = "user";
+    system = true;
+    hm = false;
+  };
+
+  system =
+    { pkgs, ... }:
+    {
+      environment.defaultPackages = with pkgs; [
+        lutgen
+        lutgen-studio
+      ];
+    };
 }

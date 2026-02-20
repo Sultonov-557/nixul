@@ -1,6 +1,11 @@
-{ config, ... }:
 {
-  home-manager.users.${config.nixul.primaryUser} = {
+  meta = {
+    scope = "user";
+    hm = true;
+    system = false;
+  };
+
+  home = _: {
     programs.zsh = {
       enable = true;
       enableCompletion = true;
@@ -35,6 +40,5 @@
         eval "$(zoxide init zsh)"
       '';
     };
-
   };
 }
