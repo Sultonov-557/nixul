@@ -80,7 +80,6 @@ in
   };
 
   config = lib.mkMerge [
-    #host.hostMerged
     {
       home-manager.users = users.homeMerged;
     }
