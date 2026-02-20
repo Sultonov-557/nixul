@@ -1,19 +1,17 @@
 {
   meta = {
     scope = "user";
-    system = true;
-    hm = false;
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.gh = {
+      programs.gh = {
+        enable = true;
+        gitCredentialHelper = {
           enable = true;
-          gitCredentialHelper = {
-            enable = true;
-          };
         };
       };
     };

@@ -1,20 +1,18 @@
 {
   meta = {
-    scope = "host";
-    system = true;
-    hm = false;
+    scope = "user";
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        services.udiskie = {
-          enable = true;
-          automount = true;
-          notify = true;
-          tray = "never";
-        };
+      services.udiskie = {
+        enable = true;
+        automount = true;
+        notify = true;
+        tray = "never";
       };
     };
 }

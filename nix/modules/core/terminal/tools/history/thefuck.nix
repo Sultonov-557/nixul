@@ -1,23 +1,21 @@
 {
   meta = {
-    scope = "host";
-    system = true;
-    hm = false;
+    scope = "user";
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.pay-respects = {
-          enable = true;
-          options = [
-            "--alias"
-            "f"
-          ];
-          enableZshIntegration = true;
-          enableFishIntegration = true;
-        };
+      programs.pay-respects = {
+        enable = true;
+        options = [
+          "--alias"
+          "f"
+        ];
+        enableZshIntegration = true;
+        enableFishIntegration = true;
       };
     };
 }

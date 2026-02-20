@@ -1,18 +1,16 @@
 {
   meta = {
     scope = "user";
-    system = true;
-    hm = false;
+    system = false;
+    hm = true;
   };
 
-  system =
-    { inputs, config, ... }:
+  home =
+    { inputs, ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        imports = [ inputs.nixcord.homeModules.nixcord ];
-        programs.nixcord = {
-          enable = true;
-        };
+      imports = [ inputs.nixcord.homeModules.nixcord ];
+      programs.nixcord = {
+        enable = true;
       };
     };
 }

@@ -1,17 +1,15 @@
 {
   meta = {
     scope = "user";
-    system = true;
-    hm = false;
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.lazydocker = {
-          enable = true;
-        };
+      programs.lazydocker = {
+        enable = true;
       };
     };
 }

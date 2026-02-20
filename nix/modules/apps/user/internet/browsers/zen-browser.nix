@@ -1,28 +1,26 @@
 {
   meta = {
     scope = "user";
-    system = true;
-    hm = false;
+    system = false;
+    hm = true;
   };
 
-  system =
-    { inputs, config, ... }:
+  home =
+    { inputs, ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        imports = [ inputs.zen-browser.homeModules.default ];
+      imports = [ inputs.zen-browser.homeModules.default ];
 
-        programs.zen-browser = {
-          enable = true;
+      programs.zen-browser = {
+        enable = true;
 
-          profiles.default = {
-            id = 0;
-            isDefault = true;
-            name = "Default";
+        profiles.default = {
+          id = 0;
+          isDefault = true;
+          name = "Default";
 
-            sine = {
-              enable = true;
-              mods = [ "Nebula" ];
-            };
+          sine = {
+            enable = true;
+            mods = [ "Nebula" ];
           };
         };
       };

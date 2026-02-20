@@ -47,6 +47,5 @@
       };
 
       system.stateVersion = "25.11";
-      home-manager.users.${config.nixul.primaryUser}.home.stateVersion = "25.11";
     };
 }

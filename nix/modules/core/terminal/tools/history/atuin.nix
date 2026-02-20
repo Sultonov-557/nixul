@@ -1,24 +1,22 @@
 {
   meta = {
-    scope = "host";
-    system = true;
-    hm = false;
+    scope = "user";
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.atuin = {
-          enable = true;
-          enableZshIntegration = true;
-          enableFishIntegration = true;
+      programs.atuin = {
+        enable = true;
+        enableZshIntegration = true;
+        enableFishIntegration = true;
 
-          settings = {
-            auto_sync = true;
-            sync_frequency = "10m";
-            search_mode = "fuzzy";
-          };
+        settings = {
+          auto_sync = true;
+          sync_frequency = "10m";
+          search_mode = "fuzzy";
         };
       };
     };

@@ -1,19 +1,17 @@
 {
   meta = {
-    scope = "host";
-    system = true;
-    hm = false;
+    scope = "user";
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.fastfetch = {
-          enable = true;
+      programs.fastfetch = {
+        enable = true;
 
-          settings = { };
-        };
+        settings = { };
       };
     };
 }

@@ -215,6 +215,13 @@ let
     ) userMods
   );
 
+  # pick a prefix path to test, e.g. ["apps"] or ["services" "nginx"]
+  onlyPrefix = [ "apps" ];
+
+  hostModsEnabled = builtins.filter (
+    m: lib.take (builtins.length onlyPrefix) m.pathParts == onlyPrefix
+  ) hostMods;
+
   hostFragments = map (
     m:
     let
@@ -236,7 +243,7 @@ let
         # you can pass extra common stuff here later:
         # inputs = config._module.args.inputs or null;
       })
-  ) hostMods;
+  ) hostModsEnabled;
 
   hostMerged = lib.mkMerge hostFragments;
 in

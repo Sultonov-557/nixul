@@ -1,23 +1,21 @@
 {
   meta = {
-    scope = "host";
-    system = true;
-    hm = false;
+    scope = "user";
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.starship = {
-          enable = true;
-          enableZshIntegration = true;
-          settings = {
-            add_newline = false;
-            character = {
-              success_symbol = "[➜](bold green)";
-              error_symbol = "[➜](bold red)";
-            };
+      programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
+        settings = {
+          add_newline = false;
+          character = {
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[➜](bold red)";
           };
         };
       };
