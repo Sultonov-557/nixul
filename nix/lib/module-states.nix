@@ -1,16 +1,14 @@
-{ lib, config }:
+{ lib }:
 
-{ moduleDefs, ... }:
+{ moduleDefs, nixul ? { }, ... }:
 
 let
-  enabledUsers = config.nixul.users or { };
+  enabledUsers = nixul.users or { };
 
   computeModuleState =
     moduleDef:
     let
-      hostCfg = lib.attrByPath (
-        [ "nixul" ] ++ moduleDef.segments
-      ) null config;
+      hostCfg = lib.attrByPath moduleDef.segments null nixul;
 
       usersWithModule = lib.filterAttrs (
         _: userCfg: lib.attrByPath ([ "modules" ] ++ moduleDef.segments) null userCfg != null

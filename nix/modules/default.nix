@@ -1,27 +1,31 @@
-{ lib, config, pkgs, ... }:
+{ lib, ... }:
 
 let
-  moduleScan = import ../lib/module-scan.nix { inherit lib; };
-  buildOptions = import ../lib/module-options.nix { inherit lib; };
-  buildStates = import ../lib/module-states.nix { inherit lib config; };
-  buildOutputs = import ../lib/module-outputs.nix { inherit lib config pkgs; };
+  importTree = import ../lib/import-tree.nix { inherit lib; };
+  moduleDirs = [
+    ./apps
+    ./core
+    ./desktop
+    ./dev
+    ./hardware
+    ./services
+  ];
+  moduleFiles = builtins.concatMap importTree moduleDirs;
 
-  moduleOptions = buildOptions moduleScan;
-  states = buildStates moduleScan;
-  outputs = buildOutputs states;
+  makeModule =
+    path:
+    args@{ inputs ? { }, lib, ... }:
+    let
+      raw = import path;
+      definition = if builtins.isFunction raw then raw args else raw;
+      sys = if definition ? system then definition.system else null;
+    in
+    {
+      imports = lib.optional (sys != null) sys;
+    };
+
+  systemModules = map makeModule moduleFiles;
 in
 {
-  imports = moduleScan.regularModuleImports ++ outputs.autoImports;
-
-  options.nixul = moduleOptions;
-
-  config = lib.mkMerge (
-    [
-      { assertions = outputs.scopeAssertions; }
-    ]
-    ++ lib.optional (outputs.homeConfigs != { }) {
-      home-manager.users = lib.mapAttrs (_: lib.mkMerge) outputs.homeConfigs;
-    }
-    ++ outputs.systemConfigs
-  );
+  imports = systemModules;
 }

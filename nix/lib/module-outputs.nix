@@ -1,72 +1,26 @@
-{ lib, config, pkgs }:
+{ lib }:
 
-{ moduleStates, autoModules ? [ ], ... }:
+{ moduleDefs, autoModules ? [ ], ... }:
 
 let
-  systemConfigs = lib.concatMap (
-    state:
-    if state.moduleDef.hasSystem && state.enabled then
-      let
-        sys = state.moduleDef.definition.system;
-        inputsArg = if config ? _module && config._module ? args && config._module.args ? inputs then config._module.args.inputs else { };
-      in
-      [
-        (
-          if builtins.isFunction sys then
-            sys (
-              {
-                inherit lib config pkgs;
-                inputs = inputsArg;
-                cfg = state.systemCfg;
-              }
-            )
-          else
-            sys
-        )
-      ]
-    else
-      [ ]
-  ) moduleStates;
-
-  homeConfigs = lib.foldl' (
-    acc: state:
-    if !state.moduleDef.hasHome then
-      acc
-    else
-      lib.foldlAttrs (
-        inner: userName: _:
-        inner
-        // {
-          ${userName} = (inner.${userName} or [ ]) ++ [
-            state.moduleDef.definition.home
-            {
-              inherit lib config pkgs userName;
-              inputs = if config ? _module && config._module ? args && config._module.args ? inputs then config._module.args.inputs else { };
-              userCfg = state.userModuleCfgs.${userName};
-              cfg = state.userModuleCfgs.${userName};
-            }
-          ];
-        }
-      ) acc state.userModuleCfgs
-  ) { } moduleStates;
-
-  scopeAssertions = lib.concatMap (
-    state:
+  mkSystemModule =
+    moduleDef: args@{ inputs ? { }, ... }:
     let
-      name = state.moduleDef.key;
+      def = if builtins.isFunction moduleDef.definition then moduleDef.definition args else moduleDef.definition;
+      sys = if def ? system then def.system else null;
     in
-    lib.optional (state.moduleDef.scope == "user" && state.hostRequested) {
-      assertion = false;
-      message = "Module ${name} is user-scoped; use nixul.users.<name>.modules.${name} instead";
-    }
-    ++ lib.optional (state.moduleDef.scope == "host" && state.userRequested) {
-      assertion = false;
-      message = "Module ${name} is host-scoped; nixul.users.<name>.modules.${name} must be null";
-    }
-  ) moduleStates;
+    if sys == null then null else {
+      imports = [
+        (if builtins.isFunction sys then sys (args // { inputs = inputs; }) else sys)
+      ];
+    };
+
+  systemModules = lib.filter (m: m != null) (map mkSystemModule moduleDefs);
 
   autoImports = map (module: module.path) autoModules;
 in
 {
-  inherit systemConfigs homeConfigs scopeAssertions autoImports;
+  inherit systemModules autoImports;
+  homeModules = [ ];
+  assertionsModule = { };
 }

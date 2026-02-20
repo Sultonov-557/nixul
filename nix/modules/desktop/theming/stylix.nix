@@ -1,4 +1,4 @@
-{ inputs }:
+{ inputs, ... }:
 {
   meta = {
     scope = "host";

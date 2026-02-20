@@ -5,16 +5,15 @@
     hm = false;
   };
 
-  system =
-    {
-      services.xserver.videoDrivers = [ "nvidia" ];
+  system = {
+    #services.xserver.videoDrivers = [ "nvidia" ];
 
-      hardware.nvidia = {
-        modesetting.enable = true;
-        powerManagement.enable = false;
-        open = false;
-        nvidiaSettings = true;
-      };
-
+    hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      open = false;
+      nvidiaSettings = true;
     };
+
+  };
 }

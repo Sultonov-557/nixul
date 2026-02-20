@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   meta = {
     scope = "user";
@@ -8,7 +9,7 @@
   home =
     { cfg, ... }:
     {
-      programs.codex = {
+      programs.codex = lib.mkIf cfg.enable {
         enable = true;
         custom-instructions = cfg.instructions or "";
       };

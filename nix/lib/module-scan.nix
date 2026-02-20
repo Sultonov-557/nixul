@@ -22,53 +22,24 @@ let
     in
     lib.splitString "/" relative;
 
-  isModuleDefinition =
-    path:
-    let
-      result = builtins.tryEval (import path);
-    in
-    path != toString (baseDir + "/default.nix")
-    && result.success
-    && builtins.isAttrs result.value
-    && result.value ? meta;
-
-  moduleDefPaths = builtins.filter isModuleDefinition allModuleFiles;
-
   parseModuleDef =
     path:
     let
       segments = pathSegments path;
       definition = import path;
-      meta = definition.meta or { };
+      meta = if builtins.isAttrs definition then definition.meta or { } else { };
       scope = meta.scope or "both";
-      hasSystem = meta.system or (definition ? system);
-      hasHome = meta.hm or (definition ? home);
       key = lib.concatStringsSep "." segments;
     in
     {
-      inherit path segments definition scope hasSystem hasHome key;
-      isAuto = false;
+      inherit path segments definition scope key;
     };
 
-  moduleDefs = map parseModuleDef moduleDefPaths;
+  moduleDefs = map parseModuleDef allModuleFiles;
 
-  autoModulePaths = builtins.filter (p: !builtins.elem p moduleDefPaths) allModuleFiles;
+  autoModules = [ ];
 
-  parseAutoModule =
-    path:
-    let
-      segments = pathSegments path;
-      key = lib.concatStringsSep "." segments;
-    in
-    {
-      inherit path segments key;
-    };
-
-  autoModules = map parseAutoModule autoModulePaths;
-
-  regularModuleImports = builtins.filter (
-    p: !(builtins.elem p moduleDefPaths) && !(builtins.elem p autoModulePaths)
-  ) allModuleFiles;
+  regularModuleImports = [ ];
 in
 {
   inherit moduleDefs autoModules regularModuleImports;
