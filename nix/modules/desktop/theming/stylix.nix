@@ -8,7 +8,9 @@
 
   system = _: {
     imports = [ inputs.stylix.nixosModules.stylix ];
-    stylix.enable = true;
+    config = {
+      stylix.enable = true;
+    };
   };
 
   home = _: {

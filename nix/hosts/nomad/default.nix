@@ -5,13 +5,13 @@
     ../../users/sultonov
   ];
 
-  # TODO: remove later
-  boot.loader.grub.devices = [ "nodev" ];
+  nixul.host = {
+    name = "nomad";
+    timezone = "Asia/Tashkent";
 
-  nixul = {
-    host = {
-      name = "nomad";
-      timezone = "Asia/Tashkent";
+    modules = {
+      core.system.boot.grub.enable = true;
     };
   };
+
 }

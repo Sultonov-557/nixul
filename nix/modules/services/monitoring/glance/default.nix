@@ -9,7 +9,8 @@
     imports = [
       ./settings.nix
     ];
-
-    services.glance.enable = true;
+    config = {
+      services.glance.enable = true;
+    };
   };
 }
