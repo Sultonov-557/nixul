@@ -81,14 +81,19 @@ let
         ''
       else
         {
-          inherit mod meta scope hm system;
+          inherit
+            mod
+            meta
+            scope
+            hm
+            system
+            ;
         };
 in
 {
   loadModule =
     filePath:
     let
-      _ = builtins.trace ("nixul importer: loading " + toString filePath) null;
       mod = materialize filePath;
     in
     validateContract { inherit filePath mod; };

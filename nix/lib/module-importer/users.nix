@@ -1,5 +1,6 @@
 {
   lib,
+  inputs,
   pkgs,
   config,
   userMods,
@@ -32,7 +33,12 @@ let
           null
         else if builtins.isFunction homeVal then
           homeVal {
-            inherit lib pkgs config;
+            inherit
+              lib
+              pkgs
+              config
+              inputs
+              ;
             cfg = cfg;
             user = user;
           }

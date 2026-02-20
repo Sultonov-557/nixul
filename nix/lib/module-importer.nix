@@ -34,20 +34,30 @@ let
   };
 
   host = import ./module-importer/host.nix {
-    inherit lib pkgs config;
+    inherit
+      lib
+      pkgs
+      config
+      inputs
+      ;
     inherit (discovery) hostMods;
     inherit (optionTrees) hostOptions;
     inherit (utils) getByPathOrNull;
     inherit (types) assertCfgType;
   };
 
-  # users = import ./module-importer/users.nix {
-  #   inherit lib pkgs config;
-  #   inherit (discovery) userMods;
-  #   inherit (optionTrees) userOptions;
-  #   inherit (utils) getByPathOrNull;
-  #   inherit (types) assertCfgType;
-  # };
+  users = import ./module-importer/users.nix {
+    inherit
+      lib
+      pkgs
+      config
+      inputs
+      ;
+    inherit (discovery) userMods;
+    inherit (optionTrees) userOptions;
+    inherit (utils) getByPathOrNull;
+    inherit (types) assertCfgType;
+  };
 
 in
 {
@@ -70,13 +80,12 @@ in
   };
 
   config = lib.mkMerge [
-    # step 6/7
-    host.hostMerged
+    #host.hostMerged
     {
-      #home-manager.users = users.homeMerged;
+      home-manager.users = users.homeMerged;
     }
     {
-      nixul._userModuleOptions = optionTrees.userModuleOptions;
+      nixul._userModuleOptions = optionTrees.userOptions;
       nixul._systemModuleOptions = optionTrees.hostOptions;
       warnings = [
         ("nixul importer discovered: " + (toString (builtins.length discovery.discovered)) + " modules")

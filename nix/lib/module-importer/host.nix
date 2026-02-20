@@ -6,17 +6,10 @@
   ...
 }:
 let
-  config._module.args.nixulHostCfg = lib.attrByPath [
-    "nixul"
-    "host"
-    "modules"
-  ] { } config;
-  nixulHostCfg = config._module.args.nixulHostCfg or { };
-
   evaluateHostModule =
     module:
     let
-      modPath = lib.concatStringsSep "." module.pathParts;
+      modPath = (lib.concatStringsSep "." module.pathParts);
       sysVal = module.mod.system;
       sysType = builtins.typeOf sysVal;
     in
@@ -37,9 +30,9 @@ let
           ...
         }:
         let
-          optName = "nixul.modules." + lib.concatStringsSep "." module.pathParts;
+          optName = "nixul.host.modules." + lib.concatStringsSep "." module.pathParts;
 
-          cfg0 = getByPathOrNull module.pathParts (nixulHostCfg);
+          cfg0 = (getByPathOrNull module.pathParts (config));
           cfg = assertCfgType {
             filePath = module.filePath;
             inherit optName;
@@ -55,21 +48,14 @@ let
             + toString module.filePath
           ) null;
 
-          evaluated =
-            if cfg == null then
-              {
-                success = true;
-                value = { };
-              }
-            else
-              builtins.tryEval (sysVal {
-                inherit lib pkgs config;
-                cfg = cfg;
-              });
+          evaluated = (
+            builtins.tryEval (sysVal {
+              inherit lib pkgs config;
+              cfg = cfg;
+            })
+          );
         in
-        if cfg == null then
-          { }
-        else if evaluated.success then
+        if evaluated.success then
           evaluated.value
         else
           throw ''
@@ -81,8 +67,7 @@ let
       );
 
   hostImports = map evaluateHostModule hostMods;
-  hostMerged = { };
 in
 {
-  inherit hostImports hostMerged;
+  inherit hostImports;
 }

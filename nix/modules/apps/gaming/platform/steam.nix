@@ -1,12 +1,11 @@
 {
   meta = {
     scope = "user";
-    system = false;
-    hm = true;
+    system = true;
+    hm = false;
   };
 
-  home =
-    {
-      programs.steam.enable = true;
-    };
+  system = _: {
+    programs.steam.enable = true;
+  };
 }

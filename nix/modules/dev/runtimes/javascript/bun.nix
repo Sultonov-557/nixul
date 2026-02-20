@@ -5,13 +5,11 @@
     hm = true;
   };
 
-  home =
-    { }:
-    {
-      programs.bun = {
-        enable = true;
-      };
+  home = _: {
+    programs.bun = {
+      enable = true;
     };
+  };
 
   system =
     { pkgs, ... }:

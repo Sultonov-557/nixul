@@ -1,15 +1,14 @@
 {
   meta = {
     scope = "host";
-    system = false;
-    hm = true;
+    system = true;
+    hm = false;
   };
 
-  home =
-    {
-      powerManagement = {
-        enable = true;
-        cpuFreqGovernor = "schedutil";
-      };
+  system = _: {
+    powerManagement = {
+      enable = true;
+      cpuFreqGovernor = "schedutil";
     };
+  };
 }

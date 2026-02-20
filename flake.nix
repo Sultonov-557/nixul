@@ -89,7 +89,6 @@
 
       nixosConfigurations = lib.mkSystems {
         hostsDir = ./nix/hosts;
-        modulesDir = ./nix/modules;
       };
 
       hostBuilds = builtins.mapAttrs (_: cfg: cfg.config.system.build.toplevel) nixosConfigurations;

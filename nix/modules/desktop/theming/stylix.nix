@@ -14,6 +14,9 @@
   };
 
   home = _: {
-    stylix.targets.nixvim.enable = false;
+    imports = [ inputs.stylix.homeModules.stylix ];
+    config = {
+      stylix.targets.nixvim.enable = false;
+    };
   };
 }

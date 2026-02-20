@@ -13,7 +13,7 @@
     ) hostMods
   );
 
-  userModuleOptions = mergeAll (
+  userOptions = mergeAll (
     map (
       m:
       mkNested m.pathParts (

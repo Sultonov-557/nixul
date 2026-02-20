@@ -15,9 +15,9 @@ let
       hostsDir,
     }:
     [
+      (hostsDir + "/${hostname}")
       ../nixul
       ./module-importer.nix
-      (hostsDir + "/${hostname}")
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -42,7 +42,7 @@ let
 in
 {
   mkSystems =
-    { hostsDir, modulesDir }:
+    { hostsDir }:
     let
       hosts = listDirectories hostsDir;
     in

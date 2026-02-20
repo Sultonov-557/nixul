@@ -9,7 +9,7 @@
   home =
     { cfg, ... }:
     {
-      programs.codex = lib.mkIf cfg.enable {
+      programs.codex = lib.mkIf cfg.enable or false {
         enable = true;
         custom-instructions = cfg.instructions or "";
       };

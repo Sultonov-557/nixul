@@ -70,8 +70,8 @@ let
         [ ]
     ) topNames;
 
-  hostMods = builtins.filter (m: m.scope == "host" && m.system) discovered;
-  userMods = builtins.filter (m: m.scope == "user" && m.hm) discovered;
+  hostMods = builtins.filter (m: m.system) discovered;
+  userMods = builtins.filter (m: m.hm) discovered;
 in
 {
   inherit discovered hostMods userMods;

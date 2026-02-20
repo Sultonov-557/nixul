@@ -10,7 +10,11 @@
     timezone = "Asia/Tashkent";
 
     modules = {
-      core.system.boot.grub.enable = true;
+      core.system = {
+        boot.grub.enable = true;
+        nix.nix.enable = true;
+        identity.user.enable = true;
+      };
     };
   };
 

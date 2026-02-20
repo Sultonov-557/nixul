@@ -53,7 +53,7 @@
       };
     };
 
-  home = {
+  home = _: {
     programs.nixvim.colorschemes.gruvbox.enable = true;
   };
 }

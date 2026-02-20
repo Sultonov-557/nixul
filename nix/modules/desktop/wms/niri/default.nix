@@ -6,19 +6,17 @@
     system = true;
   };
 
-  system = {
+  system = _: {
     programs.niri.enable = true;
   };
 
-  home =
-    { ... }:
-    {
-      imports = [
-        inputs.niri.homeModules.niri
-        ./keybinds.nix
-        ./settings.nix
-      ];
+  home = _: {
+    imports = [
+      inputs.niri.homeModules.niri
+      ./keybinds.nix
+      ./settings.nix
+    ];
 
-      programs.niri.enable = true;
-    };
+    programs.niri.enable = true;
+  };
 }

@@ -1,16 +1,13 @@
 {
   meta = {
     scope = "user";
-    system = false;
-    hm = true;
+    system = true;
+    hm = false;
   };
 
-  home =
-    { ... }:
-    {
-      programs.thunderbird = {
-        enable = true;
-        preferences = { };
-      };
+  system = _: {
+    programs.thunderbird = {
+      enable = true;
     };
+  };
 }

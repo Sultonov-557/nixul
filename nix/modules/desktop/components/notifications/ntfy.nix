@@ -1,11 +1,11 @@
 {
   meta = {
     scope = "user";
-    hm = true;
-    system = false;
+    hm = false;
+    system = true;
   };
 
-  home = {
+  system = _: {
     services.ntfy-sh = {
       enable = true;
       settings = {

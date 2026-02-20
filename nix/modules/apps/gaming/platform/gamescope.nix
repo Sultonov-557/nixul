@@ -1,13 +1,11 @@
 {
   meta = {
     scope = "user";
-    system = false;
-    hm = true;
+    system = true;
+    hm = false;
   };
 
-  home =
-    { ... }:
-    {
-      programs.gamescope.enable = true;
-    };
+  system = _: {
+    programs.gamescope.enable = true;
+  };
 }
