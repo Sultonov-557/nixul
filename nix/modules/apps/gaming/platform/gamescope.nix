@@ -6,6 +6,7 @@
   };
 
   home =
+    { ... }:
     {
       programs.gamescope.enable = true;
     };

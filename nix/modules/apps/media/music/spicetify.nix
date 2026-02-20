@@ -1,37 +1,32 @@
 {
   meta = {
     scope = "user";
-    system = true;
-    hm = false;
+    system = false;
+    hm = true;
   };
 
-  system =
+  home =
     {
       inputs,
       pkgs,
-      config,
       ...
     }:
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
     in
     {
+      imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
+      programs.spicetify = {
+        enable = true;
 
-      home-manager.users.${config.nixul.primaryUser} = {
-        imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
+        enabledExtensions = with spicePkgs.extensions; [
+          fullAppDisplay
+          shuffle
+          hidePodcasts
+          adblockify
+        ];
 
-        programs.spicetify = {
-          enable = true;
-
-          enabledExtensions = with spicePkgs.extensions; [
-            fullAppDisplay
-            shuffle
-            hidePodcasts
-            adblockify
-          ];
-
-          enabledCustomApps = with spicePkgs.apps; [ marketplace ];
-        };
+        enabledCustomApps = with spicePkgs.apps; [ marketplace ];
       };
     };
 }

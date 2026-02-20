@@ -13,13 +13,12 @@ let
     {
       hostname,
       hostsDir,
-      modulesDir,
     }:
     [
       ../nixul
+      ./module-importer.nix
       (hostsDir + "/${hostname}")
       inputs.home-manager.nixosModules.home-manager
-      modulesDir
       {
         home-manager = {
           useGlobalPkgs = true;
@@ -33,13 +32,12 @@ let
     {
       hostname,
       hostsDir,
-      modulesDir,
       system ? "x86_64-linux",
     }:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
-      modules = mkBaseModules { inherit hostname hostsDir modulesDir; };
+      modules = mkBaseModules { inherit hostname hostsDir; };
     };
 in
 {
@@ -51,7 +49,7 @@ in
     builtins.listToAttrs (
       map (hostname: {
         name = hostname;
-        value = mkSystem { inherit hostname hostsDir modulesDir; };
+        value = mkSystem { inherit hostname hostsDir; };
       }) hosts
     );
 

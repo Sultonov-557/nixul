@@ -1,3 +1,4 @@
+{ lib, pkgs, ... }:
 {
   meta = {
     scope = "host";
@@ -6,8 +7,8 @@
   };
 
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = [ pkgs.cursor-cli ];
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.cursor-cli ];
     };
 }

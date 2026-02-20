@@ -2,19 +2,21 @@
   meta = {
     scope = "user";
     system = true;
-    hm = false;
+    hm = true;
   };
 
+  home =
+    { }:
+    {
+      programs.bun = {
+        enable = true;
+      };
+    };
+
   system =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [ bun ];
-
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.bun = {
-          enable = true;
-        };
-      };
 
       programs.nix-ld.libraries = with pkgs; [
         bun

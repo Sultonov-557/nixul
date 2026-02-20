@@ -1,6 +1,7 @@
-{ lib, ... }:
+{ lib, config, ... }:
 let
   keybindSubmodule = import ../keybinds/types/keybind.nix;
+  injected = config.nixul._systemModuleOptions or { };
 in
 {
   options.nixul = {
@@ -24,12 +25,12 @@ in
             default = [ ];
             description = "list of keybinds";
           };
-
           tags = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             default = [ ];
             description = "list of tags";
           };
+          modules = injected;
         };
       };
     };

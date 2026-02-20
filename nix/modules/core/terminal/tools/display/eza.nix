@@ -1,15 +1,13 @@
 {
   meta = {
     scope = "host";
-    system = true;
-    hm = false;
+    system = false;
+    hm = true;
   };
 
-  system =
-    { config, ... }:
+  home =
+    { ... }:
     {
-      home-manager.users.${config.nixul.primaryUser} = {
-        programs.eza.enable = true;
-      };
+      programs.eza.enable = true;
     };
 }
