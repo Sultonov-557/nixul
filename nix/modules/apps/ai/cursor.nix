@@ -1,14 +1,14 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   meta = {
-    scope = "host";
-    system = true;
-    hm = false;
+    scope = "user";
+    system = false;
+    hm = true;
   };
 
-  system =
-    { cfg, ... }:
+  home =
+    { cfg, pkgs, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.cursor-cli ];
+      home.packages = lib.mkIf cfg.enable [ pkgs.cursor-cli ];
     };
 }

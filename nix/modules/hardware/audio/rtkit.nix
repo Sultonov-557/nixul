@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      security.rtkit.enable = true;
-    };
+  system = _: {
+    security.rtkit.enable = true;
+  };
 }

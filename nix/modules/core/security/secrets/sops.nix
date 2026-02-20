@@ -13,15 +13,17 @@
         inputs.sops-nix.nixosModules.sops
       ];
 
-      sops = {
-        defaultSopsFile = ../../../assets/secrets/secrets.yaml;
-        defaultSopsFormat = "yaml";
-        age.keyFile = "/home/${config.nixul.user}/.config/sops/age/keys.txt";
-      };
+      config = {
+        sops = {
+          defaultSopsFile = ../../../assets/secrets/secrets.yaml;
+          defaultSopsFormat = "yaml";
+          age.keyFile = "/home/${config.nixul.primaryUser}/.config/sops/age/keys.txt";
+        };
 
-      environment.systemPackages = [
-        pkgs.sops
-        pkgs.age
-      ];
+        environment.systemPackages = [
+          pkgs.sops
+          pkgs.age
+        ];
+      };
     };
 }

@@ -5,11 +5,13 @@
     hm = false;
   };
 
-  system = {
-    services.avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
+  system =
+    { ... }:
+    {
+      services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
     };
-  };
 }

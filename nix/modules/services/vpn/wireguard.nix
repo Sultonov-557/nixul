@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      networking.wireguard.enable = true;
-    };
+  system = _: {
+    networking.wireguard.enable = true;
+  };
 }

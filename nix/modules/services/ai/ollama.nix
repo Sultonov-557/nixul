@@ -5,11 +5,10 @@
     hm = false;
   };
 
-  system =
-    {
-      services.ollama = {
-        enable = true;
-        loadModels = [ "glm-5:cloud" ];
-      };
+  system = _: {
+    services.ollama = {
+      enable = true;
+      loadModels = [ "glm-5:cloud" ];
     };
+  };
 }

@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      services.printing.enable = true;
-    };
+  system = _: {
+    services.printing.enable = true;
+  };
 }

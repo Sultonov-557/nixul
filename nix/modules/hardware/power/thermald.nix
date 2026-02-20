@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      services.thermald.enable = true;
-    };
+  system = _: {
+    services.thermald.enable = true;
+  };
 }

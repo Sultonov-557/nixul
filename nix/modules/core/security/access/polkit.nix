@@ -5,7 +5,9 @@
     hm = false;
   };
 
-  system = {
-    security.polkit.enable = true;
-  };
+  system =
+    { ... }:
+    {
+      security.polkit.enable = true;
+    };
 }

@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      services.upower.enable = true;
-    };
+  system = _: {
+    services.upower.enable = true;
+  };
 }

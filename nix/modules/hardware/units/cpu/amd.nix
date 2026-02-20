@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      hardware.cpu.amd.updateMicrocode = true;
-    };
+  system = _: {
+    hardware.cpu.amd.updateMicrocode = true;
+  };
 }

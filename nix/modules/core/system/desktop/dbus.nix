@@ -5,7 +5,9 @@
     hm = false;
   };
 
-  system = {
-    services.dbus.enable = true;
-  };
+  system =
+    { ... }:
+    {
+      services.dbus.enable = true;
+    };
 }

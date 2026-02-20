@@ -5,7 +5,7 @@
     hm = false;
   };
 
-  system = {
+  system = _: {
     services.xserver.enable = true;
   };
 }

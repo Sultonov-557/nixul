@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      services.blueman.enable = true;
-    };
+  system = _: {
+    services.blueman.enable = true;
+  };
 }

@@ -5,8 +5,7 @@
     hm = false;
   };
 
-  system =
-    {
-      hardware.sane.enable = true;
-    };
+  system = _: {
+    hardware.sane.enable = true;
+  };
 }

@@ -5,11 +5,13 @@
     hm = false;
   };
 
-  system = {
-    system.autoUpgrade = {
-      enable = true;
-      dates = "daily";
-      upgrade = false;
+  system =
+    { ... }:
+    {
+      system.autoUpgrade = {
+        enable = true;
+        dates = "daily";
+        upgrade = false;
+      };
     };
-  };
 }

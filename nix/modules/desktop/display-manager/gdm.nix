@@ -5,7 +5,7 @@
     hm = false;
   };
 
-  system = {
+  system = _: {
     services.displayManager.gdm.enable = true;
   };
 }

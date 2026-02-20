@@ -6,6 +6,7 @@
   };
 
   system =
+    { ... }:
     {
       hardware.bluetooth = {
         enable = true;

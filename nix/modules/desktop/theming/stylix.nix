@@ -6,12 +6,12 @@
     hm = true;
   };
 
-  system = {
+  system = _: {
     imports = [ inputs.stylix.nixosModules.stylix ];
     stylix.enable = true;
   };
 
-  home = {
+  home = _: {
     stylix.targets.nixvim.enable = false;
   };
 }

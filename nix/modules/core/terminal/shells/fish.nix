@@ -5,7 +5,7 @@
     hm = true;
   };
 
-  system = {
+  system = _: {
     programs.fish.enable = true;
   };
 

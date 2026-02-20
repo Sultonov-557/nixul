@@ -5,35 +5,37 @@
     hm = false;
   };
 
-  system = {
-    services.unbound = {
-      enable = true;
+  system =
+    { ... }:
+    {
+      services.unbound = {
+        enable = true;
 
-      settings = {
-        server = {
-          interface = [
-            "127.0.0.1"
-            "::1"
-          ];
-          access-control = [
-            "127.0.0.0/8 allow"
-            "::1 allow"
-          ];
+        settings = {
+          server = {
+            interface = [
+              "127.0.0.1"
+              "::1"
+            ];
+            access-control = [
+              "127.0.0.0/8 allow"
+              "::1 allow"
+            ];
 
-          local-zone = [ "home. static" ];
+            local-zone = [ "home. static" ];
 
-          local-data = [
-            ''"public.home. A 127.0.0.1"''
-          ];
+            local-data = [
+              ''"public.home. A 127.0.0.1"''
+            ];
 
-          cache-min-ttl = 3600;
-          cache-max-ttl = 86400;
-          prefetch = true;
-          qname-minimisation = true;
+            cache-min-ttl = 3600;
+            cache-max-ttl = 86400;
+            prefetch = true;
+            qname-minimisation = true;
+          };
         };
       };
-    };
 
-    networking.nameservers = [ "127.0.0.1" ];
-  };
+      networking.nameservers = [ "127.0.0.1" ];
+    };
 }

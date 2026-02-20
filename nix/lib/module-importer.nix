@@ -18,12 +18,7 @@ let
   mergeAll = xs: lib.foldl' lib.recursiveUpdate { } xs;
 
   # Get a nested value from an attrset by path, return null if missing
-  getByPathOrNull =
-    path: set:
-    let
-      try = builtins.tryEval (lib.getAttrFromPath path set);
-    in
-    if try.success then try.value else null;
+  getByPathOrNull = path: set: lib.attrByPath path null set;
 
   # Optional: assert the cfg is either null or attrs (nice errors)
   assertCfgType =
@@ -215,18 +210,33 @@ let
     ) userMods
   );
 
-  # pick a prefix path to test, e.g. ["apps"] or ["services" "nginx"]
-  onlyPrefix = [ "apps" ];
-
-  hostModsEnabled = builtins.filter (
-    m: lib.take (builtins.length onlyPrefix) m.pathParts == onlyPrefix
+  hostModulesToImport = map (
+    m:
+    let
+      optName = "nixul.modules." + lib.concatStringsSep "." m.pathParts;
+      cfg0 = getByPathOrNull m.pathParts (hostOptions);
+      cfg =
+        if cfg0 == null || builtins.isAttrs cfg0 then
+          cfg0
+        else
+          throw "nixul: ${optName} must be null or attrs, got ${builtins.typeOf cfg0}";
+    in
+    if cfg == null then
+      null
+    else
+      # This returns a NixOS module (attrset), good for imports
+      (m.mod.system {
+        inherit lib pkgs config;
+        cfg = cfg;
+      })
   ) hostMods;
+  hostImports = builtins.filter (x: x != null) hostModulesToImport;
 
   hostFragments = map (
     m:
     let
       optName = "nixul.modules." + lib.concatStringsSep "." m.pathParts;
-      cfg0 = getByPathOrNull m.pathParts (config.nixul.modules or { });
+      cfg0 = getByPathOrNull m.pathParts (hostOptions);
       cfg = assertCfgType {
         filePath = m.filePath;
         inherit optName;
@@ -236,18 +246,41 @@ let
     if cfg == null then
       { }
     else
-      # Call module system function, pass cfg + usual module args
-      (m.mod.system {
-        inherit lib pkgs config;
-        cfg = cfg;
-        # you can pass extra common stuff here later:
-        # inputs = config._module.args.inputs or null;
-      })
-  ) hostModsEnabled;
+      let
+        modPath = lib.concatStringsSep "." m.pathParts;
+        sysVal = m.mod.system;
+        sysType = builtins.typeOf sysVal;
+
+        _ = builtins.trace (
+          "nixul importer: calling system for "
+          + modPath
+          + " | file="
+          + toString m.filePath
+          + " | systemType="
+          + sysType
+        ) null;
+      in
+      if builtins.isFunction sysVal then
+        sysVal {
+          inherit lib pkgs config;
+          cfg = cfg;
+        }
+      else
+        throw ''
+          nixul importer: module has meta.system=true but `system` is not a function
+
+          Module: ${modPath}
+          File: ${toString m.filePath}
+          system type: ${sysType}
+
+          Hint: system must be like: system = { cfg, ... }: { config = ...; };
+        ''
+  ) hostMods;
 
   hostMerged = lib.mkMerge hostFragments;
 in
 {
+  imports = hostImports;
   options = {
     nixul._systemModuleOptions = lib.mkOption {
       type = lib.types.attrs; # this is an options-tree (attrset of mkOption), so keep it attrs
