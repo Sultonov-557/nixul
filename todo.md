@@ -22,20 +22,29 @@
 - [x] feat: universal keybindings
 - [x] feat(keybinds): hyprland adapter for universal keybindings
 - [x] feat(keybinds): niri adapter for universal keybindings
-- [ ] feat: universal options for bookmarks
+- [ ] feat: multi-users system
+- [ ] feat: better options structure for modules
+- [ ] fix: add options to all modules
+- [ ] feat: profiles, host/user tags for module imports
+
+- [ ] feat: universal options for bookmarks for dashboards, browsers, etc.
+- [ ] feat: option for unbound domains
 - [ ] feat: universal options for themes (replace stylix)
+- [ ] feat: decomple dependency's e.g nginx is dependent on unbound
 
 - [ ] feat: universal options for many modules
 
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
+- [ ] feat: add tmux
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
 - [ ] feat: add nixarr
 - [ ] feat: advanced theme configuration like nixy
+- [ ] feat: good, like really really good, documentation
 
 ### take inspiration from
 
