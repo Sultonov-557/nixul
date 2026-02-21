@@ -1,15 +1,8 @@
+{ config, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
-  };
-
   home =
     {
-      cfg, # TODO: add config
       inputs,
-      config,
       ...
     }:
     {
@@ -24,7 +17,7 @@
         enable = true;
         systemd.enable = true;
         settings = {
-          services.weatherLocation = config.nixul.location;
+          services.weatherLocation = config.nixul.host.location;
           general = {
             apps = {
               terminal = [ "ghostty" ];

@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  config,
 }:
 let
   toPretty = lib.generators.toPretty { };
@@ -24,7 +25,18 @@ let
     filePath:
     let
       raw = importValue filePath;
-      mod = if builtins.isFunction raw then raw { inherit lib pkgs inputs; } else raw;
+      mod =
+        if builtins.isFunction raw then
+          raw {
+            inherit
+              lib
+              pkgs
+              inputs
+              config
+              ;
+          }
+        else
+          raw;
       evaluated = builtins.tryEval mod;
     in
     if evaluated.success then

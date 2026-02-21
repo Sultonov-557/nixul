@@ -14,7 +14,7 @@ in
         else
           t.attrs
       );
-      default = null;
+      default = { };
       description = "Auto-imported nixul module: ${module.name}";
     };
 

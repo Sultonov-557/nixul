@@ -14,10 +14,12 @@ in
           };
           timezone = lib.mkOption {
             type = lib.types.str;
+            default = "UTC";
             description = "timezone of the machine";
           };
           location = lib.mkOption {
             type = lib.types.str;
+            default = "The Moon";
             description = "location of the machine for weather etc...";
           };
           keybinds = lib.mkOption {

@@ -11,7 +11,14 @@ let
 
   utils = import ./module-importer/utils.nix { inherit lib; };
   types = import ./module-importer/types.nix { inherit lib; };
-  loader = import ./module-importer/module-loader.nix { inherit lib pkgs inputs; };
+  loader = import ./module-importer/module-loader.nix {
+    inherit
+      lib
+      pkgs
+      inputs
+      config
+      ;
+  };
 
   discovery = import ./module-importer/discover.nix {
     inherit lib modulesRoot;

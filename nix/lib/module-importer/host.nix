@@ -1,7 +1,6 @@
 {
   lib,
   hostMods,
-  getByPathOrNull,
   assertCfgType,
   ...
 }:
@@ -12,6 +11,7 @@ let
       modPath = (lib.concatStringsSep "." module.pathParts);
       sysVal = module.mod.system;
       sysType = builtins.typeOf sysVal;
+      optName = "nixul.host.modules." + lib.concatStringsSep "." module.pathParts;
     in
     if !(builtins.isFunction sysVal) then
       throw ''
@@ -27,12 +27,19 @@ let
           lib,
           pkgs,
           config,
+          inputs,
           ...
         }:
         let
-          optName = "nixul.host.modules." + lib.concatStringsSep "." module.pathParts;
 
-          cfg0 = (getByPathOrNull module.pathParts (config));
+          cfg0 = lib.attrByPath (
+            [
+              "nixul"
+              "host"
+              "modules"
+            ]
+            ++ module.pathParts
+          ) (module.options.default or { }) config;
           cfg = assertCfgType {
             filePath = module.filePath;
             inherit optName;
@@ -50,7 +57,12 @@ let
 
           evaluated = (
             builtins.tryEval (sysVal {
-              inherit lib pkgs config;
+              inherit
+                lib
+                pkgs
+                config
+                inputs
+                ;
               cfg = cfg;
             })
           );

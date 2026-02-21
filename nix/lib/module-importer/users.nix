@@ -1,10 +1,7 @@
 {
   lib,
-  inputs,
-  pkgs,
   config,
   userMods,
-  getByPathOrNull,
   assertCfgType,
   ...
 }:
@@ -37,17 +34,17 @@ let
         }:
         let
           optName = "nixul.users.${user}.modules." + lib.concatStringsSep "." module.pathParts;
-          cfg0 = (
-            getByPathOrNull (
-              [
-                "nixul"
-                "users"
-                user
-                "modules"
-              ]
-              ++ module.pathParts
-            ) config
-          );
+
+          cfg0 = lib.attrByPath (
+            [
+              "nixul"
+              "users"
+              user
+              "modules"
+            ]
+            ++ module.pathParts
+          ) (module.options.default or { }) config;
+
           cfg = assertCfgType {
             filePath = module.filePath;
             inherit optName;

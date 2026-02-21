@@ -1,19 +1,15 @@
+{ config, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
 
   home =
-    { config, ... }:
+    { user, ... }:
     {
       programs.git = {
         enable = true;
         settings = {
           user = {
-            name = config.nixul.users.${config.nixul.primaryUser}.name;
-            email = config.nixul.users.${config.nixul.primaryUser}.email;
+            name = config.nixul.users.${user}.name;
+            email = config.nixul.users.${user}.email;
           };
 
           delta = {
