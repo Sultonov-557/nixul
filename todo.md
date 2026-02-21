@@ -37,12 +37,14 @@
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
+- [ ] feat: add tmux
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
 - [ ] feat: add nixarr
 - [ ] feat: advanced theme configuration like nixy
+- [ ] feat: good, like really really good, documentation
 
 ### take inspiration from
 
