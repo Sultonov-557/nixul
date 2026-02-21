@@ -1,4 +1,4 @@
-{ ... }:
+{ loadUserTags, ... }:
 {
   imports = [
     ./keybinds
@@ -8,7 +8,7 @@
     primaryUser = "sultonov";
     users.sultonov = {
       email = "sultonovzerifboy@gmail.com";
-
+      modules = loadUserTags [ "base" ];
     };
   };
 }

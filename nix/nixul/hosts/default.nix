@@ -31,11 +31,6 @@ in
             default = { };
             description = "list of modules";
           };
-          tags = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [ ];
-            description = "list of tags";
-          };
         };
       };
     };

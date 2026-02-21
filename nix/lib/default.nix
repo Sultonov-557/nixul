@@ -1,9 +1,9 @@
-{ inputs }:
+{ inputs, lib, ... }:
 
 let
   inherit (inputs) nixpkgs;
 
-  loadTags = import ./load-tags.nix;
+  tagLib = import ./load-tags.nix { inherit lib; };
 
   listDirectories =
     dir:
@@ -38,7 +38,11 @@ let
     }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs loadTags; };
+      specialArgs = {
+        inherit inputs;
+        loadTags = tagLib.loadTags;
+        loadUserTags = tagLib.loadUserTags;
+      };
       modules = mkBaseModules { inherit hostname hostsDir; };
     };
 in

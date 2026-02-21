@@ -39,10 +39,10 @@ in
                 default = [ ];
                 description = "list of keybinds";
               };
-              tags = lib.mkOption {
-                type = lib.types.listOf lib.types.str;
-                default = [ ];
-                description = "list of tags";
+              modules = lib.mkOption {
+                type = lib.types.attrsOf lib.types.attrs;
+                default = { };
+                description = "list of modules";
               };
             };
           }

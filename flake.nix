@@ -82,18 +82,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    inputs@{ flake-parts, ... }:
-    let
-      lib = import ./nix/lib { inherit inputs; };
 
-      nixosConfigurations = lib.mkSystems {
+  outputs =
+    inputs@{ ... }:
+    let
+      nixulLib = import ./nix/lib {
+        inherit inputs;
+        lib = inputs.nixpkgs.lib;
+      };
+
+      nixosConfigurations = nixulLib.mkSystems {
         hostsDir = ./nix/hosts;
       };
 
       hostBuilds = builtins.mapAttrs (_: cfg: cfg.config.system.build.toplevel) nixosConfigurations;
     in
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
       perSystem =
