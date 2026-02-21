@@ -1,33 +1,45 @@
-{ inputs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
       imports = [
         inputs.nix-index-database.nixosModules.nix-index
       ];
 
-      config = {
-        programs.nix-index = {
-          enable = true;
-          enableBashIntegration = true;
-          enableZshIntegration = true;
-          enableFishIntegration = true;
+      programs.nix-index = lib.mkIf cfg.enable {
+        enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+        enableFishIntegration = true;
+      };
+
+      programs.nix-index-database = lib.mkIf cfg.enable {
+        comma.enable = true;
+      };
+
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.comma ];
+
+      programs.command-not-found.enable = lib.mkIf cfg.enable false;
+    };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable nix-index";
         };
-
-        programs.nix-index-database = {
-          comma.enable = true;
-        };
-
-        environment.systemPackages = [ pkgs.comma ];
-
-        programs.command-not-found.enable = false;
       };
     };
+    default = {
+      enable = false;
+    };
+  };
 }

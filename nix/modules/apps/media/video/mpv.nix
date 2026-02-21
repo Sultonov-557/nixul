@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    { ... }:
+    { cfg, ... }:
     {
-      programs.mpv = {
+      programs.mpv = lib.mkIf cfg.enable {
         enable = true;
         config = {
           hwdec = "auto";
@@ -18,4 +13,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable mpv";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

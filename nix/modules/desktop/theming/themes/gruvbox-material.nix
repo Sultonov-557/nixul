@@ -1,14 +1,9 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = true;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      stylix = {
+      stylix = lib.mkIf cfg.enable {
         base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
 
         cursor = {
@@ -53,7 +48,24 @@
       };
     };
 
-  home = _: {
-    programs.nixvim.colorschemes.gruvbox.enable = true;
+  home =
+    { cfg, ... }:
+    {
+      programs.nixvim.colorschemes.gruvbox.enable = lib.mkIf cfg.enable true;
+    };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable gruvbox-material";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

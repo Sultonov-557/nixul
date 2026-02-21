@@ -1,15 +1,25 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      services.printing.drivers = with pkgs; [
+      services.printing.drivers = lib.mkIf cfg.enable (with pkgs; [
         hplip
-      ];
+      ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable hplip";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

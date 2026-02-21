@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ pamixer ];
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ pamixer ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable pamixer";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

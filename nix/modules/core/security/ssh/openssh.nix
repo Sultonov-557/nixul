@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { ... }:
+    { cfg, ... }:
     {
-      services.openssh = {
+      services.openssh = lib.mkIf cfg.enable {
         enable = true;
         settings = {
           PasswordAuthentication = false;
@@ -25,4 +20,19 @@
         ];
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable openssh";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

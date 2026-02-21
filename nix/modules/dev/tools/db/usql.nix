@@ -1,14 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ usql ];
-
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ usql ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable usql";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

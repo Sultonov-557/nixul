@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.defaultPackages = with pkgs; [ baobab ];
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ baobab ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable baobab";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

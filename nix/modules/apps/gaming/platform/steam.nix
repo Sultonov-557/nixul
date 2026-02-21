@@ -1,11 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.steam.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    programs.steam.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable steam";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

@@ -1,21 +1,31 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = true;
-  };
-
-  system = _: {
-    imports = [ inputs.stylix.nixosModules.stylix ];
-    config = {
-      stylix.enable = true;
+  system =
+    { cfg, ... }:
+    {
+      imports = [ inputs.stylix.nixosModules.stylix ];
+      stylix.enable = lib.mkIf cfg.enable true;
     };
-  };
 
-  home = _: {
-    config = {
-      stylix.targets.nixvim.enable = false;
+  home =
+    { cfg, ... }:
+    {
+      imports = [ inputs.stylix.homeModules.stylix ];
+      stylix.targets.nixvim.enable = lib.mkIf cfg.enable false;
+    };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable stylix";
+        };
+      };
+    };
+    default = {
+      enable = false;
     };
   };
 }

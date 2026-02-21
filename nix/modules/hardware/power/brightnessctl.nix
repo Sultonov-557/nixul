@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ brightnessctl ];
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ brightnessctl ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable brightnessctl";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

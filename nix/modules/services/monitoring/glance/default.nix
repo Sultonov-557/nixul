@@ -1,16 +1,26 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      imports = [
+        ./settings.nix
+      ];
+      services.glance.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    imports = [
-      ./settings.nix
-    ];
-    config = {
-      services.glance.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable glance";
+        };
+      };
+    };
+    default = {
+      enable = false;
     };
   };
 }

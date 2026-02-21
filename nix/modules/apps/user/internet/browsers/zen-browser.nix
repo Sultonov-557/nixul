@@ -1,16 +1,11 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    { inputs, ... }:
+    { cfg, inputs, ... }:
     {
       imports = [ inputs.zen-browser.homeModules.default ];
 
-      programs.zen-browser = {
+      programs.zen-browser = lib.mkIf cfg.enable {
         enable = true;
 
         profiles.default = {
@@ -25,4 +20,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable zen-browser";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

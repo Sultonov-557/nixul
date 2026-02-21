@@ -1,10 +1,9 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
-
   home =
-    { user, ... }:
+    { cfg, user, ... }:
     {
-      programs.git = {
+      programs.git = lib.mkIf cfg.enable {
         enable = true;
         settings = {
           user = {
@@ -40,4 +39,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable git";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

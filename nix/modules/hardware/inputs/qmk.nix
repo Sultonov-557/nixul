@@ -1,17 +1,27 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ qmk ];
-      hardware.keyboard.qmk = {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ qmk ]);
+      hardware.keyboard.qmk = lib.mkIf cfg.enable {
         enable = true;
         keychronSupport = true;
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable qmk";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

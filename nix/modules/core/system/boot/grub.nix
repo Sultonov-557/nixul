@@ -1,14 +1,9 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      boot = {
+      boot = lib.mkIf cfg.enable {
         loader = {
           grub = {
             enable = true;
@@ -27,4 +22,19 @@
         supportedFilesystems = [ "ntfs" ];
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+          description = "Enable grub";
+        };
+      };
+    };
+    default = {
+      enable = true;
+    };
+  };
 }

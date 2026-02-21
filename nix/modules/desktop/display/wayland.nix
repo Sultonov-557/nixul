@@ -1,11 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.xwayland.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    programs.xwayland.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable wayland";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

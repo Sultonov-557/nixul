@@ -1,21 +1,11 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
+    { cfg, ... }:
     {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
-    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ dashy-ui ]);
 
-      environment.systemPackages = with pkgs; [ dashy-ui ];
-      services.dashy = {
+      services.dashy = lib.mkIf cfg.enable {
         enable = true;
 
         settings =
@@ -164,4 +154,19 @@
           };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable dashy";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

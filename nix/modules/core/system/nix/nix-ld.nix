@@ -1,14 +1,9 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      programs.nix-ld = {
+      programs.nix-ld = lib.mkIf cfg.enable {
         enable = true;
         libraries = [
           pkgs.jre8
@@ -32,4 +27,19 @@
         ];
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable nix-ld";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

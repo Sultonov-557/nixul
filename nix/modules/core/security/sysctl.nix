@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { ... }:
+    { cfg, ... }:
     {
-      boot.kernel.sysctl = {
+      boot.kernel.sysctl = lib.mkIf cfg.enable {
         "net.ipv4.conf.all.rp_filter" = 1;
         "net.ipv4.conf.default.rp_filter" = 1;
         "net.ipv4.tcp_syncookies" = 1;
@@ -25,4 +20,19 @@
         "kernel.dmesg_restrict" = 1;
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable sysctl";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

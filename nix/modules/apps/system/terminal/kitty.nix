@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    { ... }:
+    { cfg, ... }:
     {
-      programs.kitty = {
+      programs.kitty = lib.mkIf cfg.enable {
         enable = true;
         shellIntegration = {
           enableZshIntegration = true;
@@ -28,4 +23,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable kitty";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

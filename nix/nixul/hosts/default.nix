@@ -32,7 +32,6 @@ in
             default = [ ];
             description = "list of tags";
           };
-          modules = injected;
         };
       };
     };

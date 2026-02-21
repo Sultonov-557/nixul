@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { ... }:
+    { cfg, ... }:
     {
-      services.unbound = {
+      services.unbound = lib.mkIf cfg.enable {
         enable = true;
 
         settings = {
@@ -36,6 +31,21 @@
         };
       };
 
-      networking.nameservers = [ "127.0.0.1" ];
+      networking.nameservers = lib.mkIf cfg.enable [ "127.0.0.1" ];
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable unbound";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

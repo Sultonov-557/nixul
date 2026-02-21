@@ -1,22 +1,35 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = true;
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.niri.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    programs.niri.enable = true;
-  };
+  home =
+    { cfg, ... }:
+    {
+      imports = [
+        inputs.niri.homeModules.niri
+        ./keybinds.nix
+        ./settings.nix
+      ];
 
-  home = _: {
-    imports = [
-      inputs.niri.homeModules.niri
-      ./keybinds.nix
-      ./settings.nix
-    ];
+      programs.niri.enable = lib.mkIf cfg.enable true;
+    };
 
-    programs.niri.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable niri";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

@@ -1,16 +1,27 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
-  };
 
   home =
     { cfg, ... }:
     {
-      programs.gemini-cli = {
+      programs.gemini-cli = lib.mkIf cfg.enable {
         enable = true;
-        settings = cfg.settings or { };
+        settings = { };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable gemini";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

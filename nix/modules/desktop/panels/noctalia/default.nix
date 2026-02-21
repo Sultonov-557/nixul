@@ -1,13 +1,7 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
-  };
-
   home =
-    { ... }:
+    { cfg, ... }:
     {
       imports = [
         inputs.noctalia.homeModules.default
@@ -33,9 +27,24 @@
         ./settings/wallpaper.nix
       ];
 
-      programs.noctalia-shell = {
+      programs.noctalia-shell = lib.mkIf cfg.enable {
         enable = true;
         systemd.enable = true;
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable noctalia";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

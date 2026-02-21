@@ -1,11 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      services.upower.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    services.upower.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable upower";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

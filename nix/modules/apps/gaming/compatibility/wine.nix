@@ -1,16 +1,29 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [
-        wine
-        winetricks
-      ];
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          wine
+          winetricks
+        ]
+      );
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable wine";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

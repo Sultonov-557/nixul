@@ -1,11 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      services.blueman.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    services.blueman.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable blueman";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

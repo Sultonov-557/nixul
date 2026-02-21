@@ -1,16 +1,11 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    { inputs, pkgs, ... }:
+    { cfg, inputs, ... }:
     {
       imports = [ inputs.xmcl.homeModules.xmcl ];
 
-      programs.xmcl = {
+      programs.xmcl = lib.mkIf cfg.enable {
         enable = true;
         commandLineArgs = [ ''--password-store="gnome-libsecret"'' ];
         jres = [
@@ -20,4 +15,19 @@
         ];
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable minecraft";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

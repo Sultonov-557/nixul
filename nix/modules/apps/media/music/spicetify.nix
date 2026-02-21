@@ -1,22 +1,14 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    {
-      inputs,
-      pkgs,
-      ...
-    }:
+    { cfg, inputs, ... }:
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
     in
     {
       imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
-      programs.spicetify = {
+
+      programs.spicetify = lib.mkIf cfg.enable {
         enable = true;
 
         enabledExtensions = with spicePkgs.extensions; [
@@ -29,4 +21,19 @@
         enabledCustomApps = with spicePkgs.apps; [ marketplace ];
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable spicetify";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

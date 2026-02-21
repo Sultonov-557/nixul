@@ -1,18 +1,32 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = true;
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.fish.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    programs.fish.enable = true;
-  };
+  home =
+    { cfg, ... }:
+    {
+      programs.fish = lib.mkIf cfg.enable {
+        enable = true;
+        shellInit = "set -U fish_greeting";
+      };
+    };
 
-  home = _: {
-    programs.fish = {
-      enable = true;
-      shellInit = "set -U fish_greeting";
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable fish";
+        };
+      };
+    };
+    default = {
+      enable = false;
     };
   };
 }

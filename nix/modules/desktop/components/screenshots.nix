@@ -1,14 +1,9 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
-  };
-
   home =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      home = {
+      home = lib.mkIf cfg.enable {
         packages = [
           pkgs.grim
           pkgs.slurp
@@ -34,4 +29,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable screenshots";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

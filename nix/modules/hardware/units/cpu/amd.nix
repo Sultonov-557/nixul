@@ -1,11 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      hardware.cpu.amd.updateMicrocode = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    hardware.cpu.amd.updateMicrocode = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable amd cpu";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

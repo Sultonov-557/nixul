@@ -1,16 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
+    { cfg, ... }:
     {
-      ...
-    }:
-    {
-      programs.firefox = {
+      programs.firefox = lib.mkIf cfg.enable {
         enable = true;
         profiles."default" = {
           id = 0;
@@ -21,7 +14,7 @@
 
             "app.update.channel" = "default";
 
-            "browser.contentblocking.category" = "standard"; # "strict"
+            "browser.contentblocking.category" = "standard";
             "browser.ctrlTab.recentlyUsedOrder" = false;
 
             "browser.download.useDownloadDir" = false;
@@ -39,7 +32,6 @@
             "browser.urlbar.placeholderName" = "DuckDuckGo";
             "browser.urlbar.showSearchSuggestionsFirst" = false;
 
-            # disable all the annoying quick actions
             "browser.urlbar.quickactions.enabled" = false;
             "browser.urlbar.quickactions.showPrefs" = false;
             "browser.urlbar.shortcuts.quickactions" = false;
@@ -81,4 +73,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable firefox";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

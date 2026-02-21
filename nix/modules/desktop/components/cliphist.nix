@@ -1,18 +1,28 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
-  };
-
   home =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      home.packages = [
+      home.packages = lib.mkIf cfg.enable [
         pkgs.cliphist
         pkgs.wl-clipboard
       ];
 
-      services.cliphist.enable = true;
+      services.cliphist.enable = lib.mkIf cfg.enable true;
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable cliphist";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

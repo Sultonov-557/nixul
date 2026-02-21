@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { ... }:
+    { cfg, ... }:
     {
-      services.journald.extraConfig = ''
+      services.journald.extraConfig = lib.mkIf cfg.enable ''
         SystemMaxUse=1G
         SystemKeepFree=2G
         RuntimeMaxUse=256M
@@ -17,4 +12,19 @@
         Seal=yes
       '';
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable journald";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

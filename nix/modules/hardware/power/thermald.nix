@@ -1,11 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
+  system =
+    { cfg, ... }:
+    {
+      services.thermald.enable = lib.mkIf cfg.enable true;
+    };
 
-  system = _: {
-    services.thermald.enable = true;
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable thermald";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
   };
 }

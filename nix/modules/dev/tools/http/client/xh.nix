@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ xh ];
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ xh ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable xh";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

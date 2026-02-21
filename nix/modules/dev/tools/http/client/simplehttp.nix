@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.defaultPackages = with pkgs; [ simplehttp2server ];
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ simplehttp2server ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable simplehttp";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

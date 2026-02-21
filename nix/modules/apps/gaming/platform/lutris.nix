@@ -1,13 +1,23 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    { ... }:
+    { cfg, ... }:
     {
-      programs.lutris.enable = true;
+      programs.lutris.enable = lib.mkIf cfg.enable true;
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable lutris";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

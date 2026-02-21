@@ -1,15 +1,10 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ nginx ];
-      services.nginx = {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ nginx ]);
+      services.nginx = lib.mkIf cfg.enable {
         enable = true;
         recommendedBrotliSettings = true;
         recommendedGzipSettings = true;
@@ -20,8 +15,6 @@
         virtualHosts = {
           public = {
             serverName = "public.home";
-            addSSL = true;
-            enableACME = true;
             root = ../../../assets/public;
             locations."/" = {
               tryFiles = "$uri =404";
@@ -30,4 +23,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable nginx";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.defaultPackages = with pkgs; [ wordlists ];
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ wordlists ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable wordlists";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

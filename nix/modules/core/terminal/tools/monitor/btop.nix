@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
-  };
-
   home =
-    { ... }:
+    { cfg, ... }:
     {
-      programs.btop = {
+      programs.btop = lib.mkIf cfg.enable {
         enable = true;
         settings = {
           theme_background = false;
@@ -16,4 +11,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable btop";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

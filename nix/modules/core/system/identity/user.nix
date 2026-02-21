@@ -1,14 +1,9 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { config, pkgs, ... }:
+    { cfg, config, ... }:
     {
-      users.users.${config.nixul.primaryUser} = {
+      users.users.${config.nixul.primaryUser} = lib.mkIf cfg.enable {
         isNormalUser = true;
         description = config.nixul.primaryUser;
         extraGroups = [
@@ -19,4 +14,19 @@
         shell = pkgs.fish;
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+          description = "Enable user";
+        };
+      };
+    };
+    default = {
+      enable = true;
+    };
+  };
 }

@@ -1,14 +1,9 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { config, ... }:
+    { cfg, config, ... }:
     {
-      security.acme = {
+      security.acme = lib.mkIf cfg.enable {
         acceptTerms = true;
         defaults = {
           email = config.nixul.users.${config.nixul.primaryUser}.email;
@@ -16,4 +11,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable acme";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

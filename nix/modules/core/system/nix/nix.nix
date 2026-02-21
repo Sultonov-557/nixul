@@ -1,53 +1,66 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = true;
-  };
+  system =
+    { cfg, ... }:
+    {
+      nixpkgs.config = lib.mkIf cfg.enable {
+        allowUnfree = true;
+        separateDebugInfo = false;
+      };
 
-  system = _: {
-    nixpkgs.config = {
-      allowUnfree = true;
-      separateDebugInfo = false;
+      environment.pathsToLink = lib.mkIf cfg.enable [
+        "/share/applications"
+        "/share/xdg-desktop-portal"
+      ];
+
+      nix.settings = lib.mkIf cfg.enable {
+        max-jobs = "auto";
+        cores = 0;
+        auto-optimise-store = true;
+        keep-outputs = false;
+        keep-derivations = false;
+
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+
+        substituters = [
+          "https://cache.nixos.org/"
+          "https://nixpkgs.cachix.org"
+          "https://hyprland.cachix.org"
+          "https://niri.cachix.org"
+        ];
+        trusted-public-keys = [
+          "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+          "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+          "niri:7kPRy+bwoMP2GiLMR20qHUUiQ1Tg96YapZFsyvokm90="
+        ];
+      };
+      system.stateVersion = lib.mkIf cfg.enable "25.11";
     };
 
-    environment.pathsToLink = [
-      "/share/applications"
-      "/share/xdg-desktop-portal"
-    ];
-
-    nix.settings = {
-      max-jobs = "auto";
-      cores = 0;
-      auto-optimise-store = true;
-      keep-outputs = false;
-      keep-derivations = false;
-
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-
-      substituters = [
-        "https://cache.nixos.org/"
-        "https://nixpkgs.cachix.org"
-        "https://hyprland.cachix.org"
-        "https://niri.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-        "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "niri:7kPRy+bwoMP2GiLMR20qHUUiQ1Tg96YapZFsyvokm90="
-      ];
+  home =
+    { cfg, ... }:
+    {
+      home.stateVersion = lib.mkIf cfg.enable "25.11";
     };
-    system.stateVersion = "25.11";
-  };
 
-  home = _: {
-    home.stateVersion = "25.11";
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+          description = "Enable nix";
+        };
+      };
+    };
+    default = {
+      enable = true;
+    };
   };
-
 }

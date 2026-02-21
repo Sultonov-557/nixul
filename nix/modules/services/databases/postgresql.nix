@@ -1,14 +1,9 @@
+{ lib, pkgs, config, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, config, ... }:
+    { cfg, ... }:
     {
-      services.postgresql = {
+      services.postgresql = lib.mkIf cfg.enable {
         enable = true;
         package = pkgs.postgresql_18;
         ensureDatabases = [ config.nixul.host.name ];
@@ -25,4 +20,19 @@
         '';
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable postgresql";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

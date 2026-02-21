@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.defaultPackages = with pkgs; [ obsidian ];
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ obsidian ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable obsidian";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

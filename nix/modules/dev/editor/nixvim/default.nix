@@ -1,17 +1,11 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
-  };
-
   home =
-    { ... }:
+    { cfg, ... }:
     {
       imports = [ inputs.nixvim.homeModules.nixvim ];
 
-      programs.nixvim = {
+      programs.nixvim = lib.mkIf cfg.enable {
         enable = true;
         extraSpecialArgs = { inherit inputs; };
         defaultEditor = true;
@@ -24,4 +18,19 @@
         withNodeJs = true;
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable nixvim";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

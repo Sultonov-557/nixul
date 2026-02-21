@@ -1,10 +1,7 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   home =
-    {
-      inputs,
-      ...
-    }:
+    { cfg, inputs, ... }:
     {
       imports = [
         inputs.caelestia-shell.homeManagerModules.default
@@ -13,7 +10,7 @@
         ./appearance.nix
       ];
 
-      programs.caelestia = {
+      programs.caelestia = lib.mkIf cfg.enable {
         enable = true;
         systemd.enable = true;
         settings = {
@@ -34,4 +31,19 @@
         };
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable caelestia";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

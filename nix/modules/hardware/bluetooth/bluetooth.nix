@@ -1,16 +1,26 @@
+{ lib, ... }:
 {
-  meta = {
-    scope = "host";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { ... }:
+    { cfg, ... }:
     {
-      hardware.bluetooth = {
+      hardware.bluetooth = lib.mkIf cfg.enable {
         enable = true;
         powerOnBoot = true;
       };
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable bluetooth";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }

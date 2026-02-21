@@ -1,13 +1,23 @@
+{ lib, pkgs, ... }:
 {
-  meta = {
-    scope = "user";
-    system = true;
-    hm = false;
-  };
-
   system =
-    { pkgs, ... }:
+    { cfg, ... }:
     {
-      environment.systemPackages = with pkgs; [ telegram-desktop ];
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ telegram-desktop ]);
     };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable telegram";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }
