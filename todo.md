@@ -25,8 +25,8 @@
 - [x] feat: multi-users system
 - [x] feat: better options structure for modules
 - [x] fix: add options to all modules
+- [x] feat: profiles, host/user tags for module imports
 
-- [ ] feat: profiles, host/user tags for module imports
 - [ ] feat: universal options for bookmarks for dashboards, browsers, etc.
 - [ ] feat: option for unbound domains
 - [ ] feat: universal options for themes (replace stylix)
