@@ -32,14 +32,16 @@ let
         }:
         let
 
-          cfg0 = lib.attrByPath (
-            [
-              "nixul"
-              "host"
-              "modules"
-            ]
-            ++ module.pathParts
-          ) (module.options.default or { }) config;
+          cfg0 = (
+            lib.attrByPath (
+              [
+                "nixul"
+                "host"
+                "modules"
+              ]
+              ++ module.pathParts
+            ) (module.options.default or { }) config
+          );
           cfg = assertCfgType {
             filePath = module.filePath;
             inherit optName;

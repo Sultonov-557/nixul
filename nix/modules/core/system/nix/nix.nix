@@ -40,13 +40,7 @@
           "niri:7kPRy+bwoMP2GiLMR20qHUUiQ1Tg96YapZFsyvokm90="
         ];
       };
-      system.stateVersion = lib.mkIf cfg.enable "25.11";
-    };
-
-  home =
-    { cfg, ... }:
-    {
-      home.stateVersion = lib.mkIf cfg.enable "25.11";
+      system.stateVersion = lib.mkIf cfg.enable "26.05";
     };
 
   options = lib.mkOption {
@@ -54,13 +48,13 @@
       options = {
         enable = lib.mkOption {
           type = lib.types.bool;
-          default = true;
+          default = false;
           description = "Enable nix";
         };
       };
     };
     default = {
-      enable = true;
+      enable = false;
     };
   };
 }

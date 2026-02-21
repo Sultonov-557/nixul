@@ -19,13 +19,12 @@
       options = {
         enable = lib.mkOption {
           type = lib.types.bool;
-          default = true;
           description = "Enable user";
         };
       };
     };
     default = {
-      enable = true;
+      enable = false;
     };
   };
 }

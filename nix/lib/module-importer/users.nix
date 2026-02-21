@@ -92,6 +92,7 @@ let
   hmUsersImports = lib.genAttrs userNames (user: mkUserHmImports user);
   homeMerged = lib.genAttrs userNames (user: {
     imports = hmUsersImports.${user};
+    home.stateVersion = "26.05";
   });
 in
 {

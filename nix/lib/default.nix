@@ -3,6 +3,8 @@
 let
   inherit (inputs) nixpkgs;
 
+  loadTags = import ./load-tags.nix;
+
   listDirectories =
     dir:
     builtins.attrNames (
@@ -15,9 +17,9 @@ let
       hostsDir,
     }:
     [
-      (hostsDir + "/${hostname}")
       ../nixul
       ./module-importer.nix
+      (hostsDir + "/${hostname}")
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -36,7 +38,7 @@ let
     }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs loadTags; };
       modules = mkBaseModules { inherit hostname hostsDir; };
     };
 in

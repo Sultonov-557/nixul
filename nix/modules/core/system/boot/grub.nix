@@ -9,7 +9,7 @@
             enable = true;
             useOSProber = true;
             efiSupport = true;
-            device = "nodev";
+            devices = [ "nodev" ];
             configurationLimit = 15;
           };
           efi = {
@@ -28,13 +28,12 @@
       options = {
         enable = lib.mkOption {
           type = lib.types.bool;
-          default = true;
           description = "Enable grub";
         };
       };
     };
     default = {
-      enable = true;
+      enable = false;
     };
   };
 }
