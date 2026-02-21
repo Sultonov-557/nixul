@@ -19,13 +19,13 @@ let
           loaded = loadModule filePath;
         in
         {
-          pathParts = sanitizeParts parts;
+          pathParts = (sanitizeParts parts);
+          name = ("nixul.modules." + (lib.concatStringsSep "." pathParts));
           inherit (loaded)
             mod
-            meta
-            scope
-            hm
-            system
+            hasHome
+            hasSystem
+            options
             ;
           inherit filePath;
         };
@@ -70,8 +70,8 @@ let
         [ ]
     ) topNames;
 
-  hostMods = builtins.filter (m: m.system) discovered;
-  userMods = builtins.filter (m: m.hm) discovered;
+  hostMods = builtins.filter (module: module.hasSystem) discovered;
+  userMods = builtins.filter (module: module.hasHome) discovered;
 in
 {
   inherit discovered hostMods userMods;

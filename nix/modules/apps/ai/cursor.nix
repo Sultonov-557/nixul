@@ -1,9 +1,11 @@
 { lib, ... }:
 {
-  meta = {
-    scope = "user";
-    system = false;
-    hm = true;
+  options = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable cursor";
+    };
   };
 
   home =

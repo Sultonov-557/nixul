@@ -4,56 +4,93 @@
   pkgs,
   config,
   userMods,
-  userOptions,
   getByPathOrNull,
   assertCfgType,
+  ...
 }:
 let
   userNames = builtins.attrNames (config.nixul.users or { });
 
-  mkUserHmImports =
-    user:
+  evaluateUserModule =
+    user: module:
     let
-      userModulesCfg = (userOptions);
+      modPath = lib.concatStringsSep "." module.pathParts;
+      homeVal = module.mod.home;
+      homeType = builtins.typeOf homeVal;
+    in
+    if !(builtins.isFunction homeVal) then
+      throw ''
+        nixul importer: module has meta.home=true but `home` is not a function
 
-      importsMaybe = map (
-        m:
+        Module: ${modPath}
+        File: ${toString module.filePath}
+        home type: ${homeType}
+      ''
+    else
+      (
+        {
+          lib,
+          pkgs,
+          config,
+          inputs,
+          ...
+        }:
         let
-          optName = "nixul.users.${user}.modules." + lib.concatStringsSep "." m.pathParts;
-          cfg0 = getByPathOrNull m.pathParts userModulesCfg;
+          optName = "nixul.users.${user}.modules." + lib.concatStringsSep "." module.pathParts;
+          cfg0 = (
+            getByPathOrNull (
+              [
+                "nixul"
+                "users"
+                user
+                "modules"
+              ]
+              ++ module.pathParts
+            ) config
+          );
           cfg = assertCfgType {
-            filePath = m.filePath;
+            filePath = module.filePath;
             inherit optName;
             cfg = cfg0;
           };
 
-          homeVal = m.mod.home;
+          _ = builtins.trace (
+            "nixul importer: "
+            + modPath
+            + " user="
+            + user
+            + " cfg="
+            + (if cfg == null then "null" else "set")
+            + " file="
+            + toString module.filePath
+          ) null;
+
+          evaluated = (
+            builtins.tryEval (homeVal {
+              inherit
+                lib
+                pkgs
+                config
+                inputs
+                ;
+              cfg = cfg;
+              user = user;
+            })
+          );
         in
-        if cfg == null then
-          null
-        else if builtins.isFunction homeVal then
-          homeVal {
-            inherit
-              lib
-              pkgs
-              config
-              inputs
-              ;
-            cfg = cfg;
-            user = user;
-          }
+        if evaluated.success then
+          evaluated.value
         else
           throw ''
-            nixul importer: meta.hm=true but `home` is not a function
+            nixul importer: evaluating home failed
 
-            Module: ${lib.concatStringsSep "." m.pathParts}
-            File: ${toString m.filePath}
-            home type: ${builtins.typeOf homeVal}
+            Module: ${modPath}
+            File: ${toString module.filePath}
+            User: ${user}
           ''
-      ) userMods;
+      );
 
-    in
-    builtins.filter (x: x != null) importsMaybe;
+  mkUserHmImports = user: map (evaluateUserModule user) userMods;
 
   hmUsersImports = lib.genAttrs userNames (user: mkUserHmImports user);
   homeMerged = lib.genAttrs userNames (user: {

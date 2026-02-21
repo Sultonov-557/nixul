@@ -1,9 +1,16 @@
 { lib, ... }:
 {
-  meta = {
-    scope = "user";
-    hm = true;
-    system = false;
+  options = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable codex";
+    };
+    instructions = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "Custom instructions for codex";
+    };
   };
 
   home =

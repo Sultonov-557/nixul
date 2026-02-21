@@ -61,7 +61,7 @@ let
 
 in
 {
-  imports = host.hostImports; # ++ users.hmUsersImports;
+  imports = host.hostImports;
   options = {
     nixul._systemModuleOptions = lib.mkOption {
       type = lib.types.attrs;

@@ -4,11 +4,18 @@ let
 in
 {
   mkCfgOption =
-    fullName:
+    module:
     lib.mkOption {
-      type = t.nullOr t.attrs;
+      type = t.nullOr (
+        if module.options != null then
+          t.submodule (_: {
+            options = module.options;
+          })
+        else
+          t.attrs
+      );
       default = null;
-      description = "Auto-imported nixul module: ${fullName}";
+      description = "Auto-imported nixul module: ${module.name}";
     };
 
   assertCfgType =
