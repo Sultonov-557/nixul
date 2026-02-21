@@ -1,9 +1,8 @@
 # Customization
 
 ## How to enable/disable apps
-- Shared apps live in `nix/modules/apps/` or similar; set their enable options in host or home configs.
-- For host-only apps, add them to `nix/hosts/<host>/home.nix` or a host-local module.
-- To disable something, set its enable option to `false` in the host or user config and rebuild.
+- Shared apps live in `nix/modules/apps/` or similar; set their options in host config via `nixul.host.modules.*` or user config via `nixul.users.<name>.modules.*`.
+- To disable something, set its `enable` option to `false` and rebuild.
 
 ## How to add new packages
 - System-wide packages:
@@ -23,7 +22,7 @@
 - Prefer Home Manager for user-facing tools so hosts stay lean.
 
 ## How to override settings
-- Override shared defaults per host by setting the same option in `nix/hosts/<host>/system.nix` or `home.nix`.
+- Override shared defaults per host by setting the same option in `nix/hosts/<host>/default.nix`.
 - For package overrides, use `pkgs.foo.override { ... }` inside a module.
 - For one-off tweaks, wrap them in `lib.mkIf` conditions so they are easy to disable later.
 
@@ -31,18 +30,15 @@
 - Enable a desktop service only on laptops:
   ```nix
   { config, lib, ... }:
-  let isLaptop = config.networking.hostName == "nomad";
+  let isLaptop = config.nixul.host.name == "nomad";
   in {
     config = lib.mkIf isLaptop {
       services.upower.enable = true;
     };
   }
   ```
-- Add a browser for a single host:
+- Enable a browser for a user:
   ```nix
-  { pkgs, ... }:
-  {
-    home.packages = [ pkgs.firefox ];
-  }
+  nixul.users.sultonov.modules.apps.user.internet.browsers.firefox = { enable = true; };
   ```
 - Swap a theme package for all hosts by editing the relevant module under `nix/modules/desktop/`.

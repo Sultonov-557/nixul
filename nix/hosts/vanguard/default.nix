@@ -1,15 +1,14 @@
 { ... }:
 {
-  imports = [ ./system.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../users/sultonov
+  ];
 
-  nixul = {
-    primaryUser = "sultonov";
-    users.sultonov = {
-      email = "sultonovzerifboy@gmail.com";
-    };
-    host = {
-      name = "nomad";
-      timezone = "Asia/Tashkent";
-    };
+  nixul.host = {
+    name = "nomad";
+    timezone = "Asia/Tashkent";
+
   };
+
 }

@@ -24,7 +24,7 @@
 - [x] feat(keybinds): niri adapter for universal keybindings
 - [x] feat: multi-users system
 - [x] feat: better options structure for modules
-- [ ] fix: add options to all modules
+- [x] fix: add options to all modules
 
 - [ ] feat: profiles, host/user tags for module imports
 - [ ] feat: universal options for bookmarks for dashboards, browsers, etc.

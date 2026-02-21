@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   system =
     { cfg, config, ... }:
@@ -11,7 +11,6 @@
           "wheel"
         ];
         ignoreShellProgramCheck = true;
-        shell = pkgs.fish;
       };
     };
 

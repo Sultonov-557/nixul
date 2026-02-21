@@ -2,7 +2,7 @@
 
 ## How secrets are managed
 - The flake includes `sops-nix` as an input; add `inputs.sops-nix.nixosModules.sops` to your imports (shared module tree or host) to enable it.
-- Secrets should live in encrypted files (e.g., `secrets/<host>.yaml`), not in the repo in plain text.
+- Secrets live in encrypted files under `nix/assets/secrets/`, not in the repo in plain text.
 - Each host can map its secret files to paths or options via a small module in `nix/modules/` or the host folder.
 
 ## How to edit or rotate secrets
@@ -15,18 +15,17 @@
    grep public ~/.config/age/keys.txt
    ```
 3) Create or edit a secret file:
-   ```sh
-   mkdir -p secrets
-   SOPS_AGE_KEY_FILE=~/.config/age/keys.txt sops secrets/<host>.yaml
-   ```
+    ```sh
+    SOPS_AGE_KEY_FILE=~/.config/age/keys.txt sops nix/assets/secrets/secrets.yaml
+    ```
 4) Add a module that consumes the secret. Example:
-   ```nix
-   { config, pkgs, ... }:
-   {
-     sops.secrets."myapp.env".sopsFile = ../../secrets/<host>.yaml;
-     systemd.services.myapp.serviceConfig.EnvironmentFile = config.sops.secrets."myapp.env".path;
-   }
-   ```
+    ```nix
+    { config, pkgs, ... }:
+    {
+      sops.secrets."myapp.env".sopsFile = ../../../nix/assets/secrets/secrets.yaml;
+      systemd.services.myapp.serviceConfig.EnvironmentFile = config.sops.secrets."myapp.env".path;
+    }
+    ```
 5) Rebuild and test:
    ```sh
    nh os test .#<host>

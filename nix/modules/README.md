@@ -1,8 +1,8 @@
 # nix/modules
 
 Personal NixOS and Home Manager modules live here, grouped by category so the
-tree stays deep, clean, and easy to navigate. Imports are mostly automatic via
-`nix/lib/import-tree.nix`; only add a `default.nix` when you need ordering or
+tree stays deep, clean, and easy to navigate. Modules are discovered automatically
+via `nix/lib/module-importer.nix`; only add a `default.nix` when you need ordering or
 shared defaults (e.g. /dev/editor/nixvim). Keep folders at roughly five items max—split before they turn
 into junk drawers.
 
@@ -50,7 +50,7 @@ into junk drawers.
 - Create a subfolder when you add multiple related modules or shared helpers
   (e.g., `apps/ai/`, `services/security/`).
 - Add a `default.nix` only if ordering or shared options are required; otherwise
-  rely on automatic imports.
+  rely on automatic discovery via the module importer.
 - For cross-cutting modules, favor the most fundamental layer and expose options
   that higher layers can enable.
 
