@@ -346,9 +346,9 @@
       containers = {
         docker = true;
         kubernetes = {
-          kind = true;
-          kubectl = true;
-          minikube = true;
+          kind = false;
+          kubectl = false;
+          minikube = false;
         };
       };
       databases = {
