@@ -10,6 +10,7 @@
     email = "sultonovzerifboy@gmail.com";
     hostname = "nomad";
     timezone = "Asia/Tashkent";
+    location = "Tashkent, Uzbekistan";
 
     apps = {
       ai = {
