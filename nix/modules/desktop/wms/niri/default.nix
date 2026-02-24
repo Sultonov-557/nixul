@@ -1,4 +1,13 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  config,
+  ...
+}:
+let
+  adapter = import ../../../../nixul/universal/keybinds/adapters/niri;
+in
+
 {
   system =
     { cfg, ... }:
@@ -7,15 +16,15 @@
     };
 
   home =
-    { cfg, ... }:
+    { cfg, user, ... }:
     {
       imports = [
         inputs.niri.homeModules.niri
-        ./keybinds.nix
         ./settings.nix
       ];
 
-      programs.niri.enable = lib.mkIf cfg.enable true;
+      programs.niri.enable = (lib.mkIf cfg.enable true);
+      programs.niri.settings = (adapter.mkSettings config.nixul.users.${user}.keybinds);
     };
 
   options = lib.mkOption {

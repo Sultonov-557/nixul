@@ -2,7 +2,7 @@ let
   resizeAmount = 20;
 in
 {
-  nixul.keybinds = [
+  keybinds = [
     {
       keys = [
         [

@@ -1,5 +1,5 @@
 {
-  nixul.keybinds = [
+  keybinds = [
     {
       keys = [
         [

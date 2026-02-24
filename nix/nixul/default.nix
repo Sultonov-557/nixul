@@ -2,6 +2,5 @@
   imports = [
     ./hosts
     ./users
-    ./keybinds
   ];
 }

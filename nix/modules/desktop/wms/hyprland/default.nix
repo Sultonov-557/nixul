@@ -1,4 +1,7 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  adapter = import ../../../../nixul/universal/keybinds/adapters/hyprland;
+in
 {
   system =
     { cfg, ... }:
@@ -8,16 +11,14 @@
     };
 
   home =
-    { cfg, ... }:
+    { cfg, user, ... }:
     {
       imports = [ ./settings.nix ];
       wayland.windowManager.hyprland = lib.mkIf cfg.enable {
         enable = true;
         xwayland.enable = true;
         systemd.enable = true;
-        settings = {
-          monitor = [ "eDP-1,1920x1080@60,0x0,1" ];
-        };
+        settings = adapter.mkSettings config.nixul.users.${user}.keybinds;
       };
     };
 

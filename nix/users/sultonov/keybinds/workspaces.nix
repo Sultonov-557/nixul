@@ -1,5 +1,5 @@
 {
-  nixul.keybinds =
+  keybinds =
     let
       workspace = number: {
         keys = [
