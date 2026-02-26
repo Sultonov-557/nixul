@@ -237,33 +237,48 @@
         rustc = true;
       };
       security = {
-        analysis = {
-          inetutils = true;
-          metasploit = true;
-          whatweb = true;
-          wireshark = true;
-          caido = true;
+        attack = {
+          brute-force = {
+            hashcat = true;
+            hydra = true;
+            john = true;
+            wordlists = true;
+          };
+          exploit = {
+            metasploit = true;
+            websploit = true;
+          };
+          mitm = {
+            bettercap = true;
+            ettercap = true;
+          };
         };
-        brute-force = {
-          hashcat = true;
-          hydra = true;
-          john = true;
-          wordlists = true;
-        };
-        mitm = {
-          ettercap = true;
+        recon = {
+          discovery = {
+            amass = true;
+            assetfinder = true;
+            sherlock = true;
+            subfinder = true;
+          };
+          web = {
+            katana = true;
+            whatweb = true;
+          };
         };
         scanning = {
-          amass = true;
-          assetfinder = true;
-          subfinder = true;
-          bettercap = true;
-          websploit = true;
-          nuclei = true;
-          katana = true;
-          netcat = true;
-          nmap = true;
-          sherlock = true;
+          network = {
+            inetutils = true;
+            netcat = true;
+            nmap = true;
+          };
+          vulnability = {
+            nuclei = true;
+          };
+        };
+        trafic = {
+          burbsuite = true;
+          caido = true;
+          wireshark = true;
         };
         wireless = {
           wifite2 = true;
