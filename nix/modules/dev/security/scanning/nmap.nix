@@ -1,4 +1,7 @@
 { pkgs, ... }:
 {
-  environment.defaultPackages = with pkgs; [ nmap ];
+  environment.defaultPackages = with pkgs; [
+    nmap
+    zenmap
+  ];
 }

@@ -240,6 +240,7 @@
         analysis = {
           inetutils = true;
           metasploit = true;
+          whatweb = true;
           wireshark = true;
           caido = true;
         };
@@ -253,12 +254,16 @@
           ettercap = true;
         };
         scanning = {
+          amass = true;
           assetfinder = true;
+          subfinder = true;
           bettercap = true;
+          websploit = true;
           nuclei = true;
           katana = true;
           netcat = true;
           nmap = true;
+          sherlock = true;
         };
         wireless = {
           wifite2 = true;
