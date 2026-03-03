@@ -13,7 +13,6 @@
           "git"
           "sudo"
           "docker"
-          "kubectl"
           "aliases"
           "bun"
           "history-substring-search"

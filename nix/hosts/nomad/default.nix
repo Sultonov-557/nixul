@@ -276,7 +276,7 @@
           };
         };
         trafic = {
-          burbsuite = true;
+          burbsuite = false;
           caido = true;
           wireshark = true;
         };
@@ -362,7 +362,7 @@
     services = {
       ai = {
         ollama = true;
-        open-webui = true;
+        open-webui = false;
       };
       containers = {
         docker = true;
