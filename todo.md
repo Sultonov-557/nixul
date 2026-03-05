@@ -26,8 +26,7 @@
 - [x] feat: better options structure for modules
 - [x] fix: add options to all modules
 - [x] feat: profiles, host/user tags for module imports
-
-- [ ] feat: universal options for bookmarks for dashboards, browsers, etc.
+- [x] feat: universal options for bookmarks for dashboards, browsers, etc.
 
 - [ ] feat: universal options for themes (replace stylix)
 - [ ] feat: option for unbound domains
