@@ -7,13 +7,9 @@
 
 keybinds:
 let
-  addEntry =
-    acc: entry:
-    acc // { ${entry.name} = entry.value; };
+  addEntry = acc: entry: acc // { ${entry.name} = entry.value; };
 
-  addEntries =
-    acc: entries:
-    lib.foldl' addEntry acc entries;
+  addEntries = acc: entries: lib.foldl' addEntry acc entries;
 in
 lib.foldl' (
   acc: keybind:

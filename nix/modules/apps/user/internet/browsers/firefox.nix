@@ -1,12 +1,17 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix { inherit lib; };
+in
 {
   home =
-    { cfg, ... }:
+    { cfg, user, ... }:
     {
       programs.firefox = lib.mkIf cfg.enable {
         enable = true;
         profiles."default" = {
           id = 0;
+
+          bookmarks = mkBookmarks config.nixul.users.${user}.bookmarks;
 
           settings = {
             "app.normandy.first_run" = false;
@@ -89,3 +94,4 @@
     };
   };
 }
+

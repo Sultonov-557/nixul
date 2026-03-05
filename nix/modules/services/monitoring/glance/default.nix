@@ -1,10 +1,13 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  mkBookmarks = import ../../../../nixul/universal/bookmarks/adapters/glance/default.nix { inherit lib; };
+in
 {
   system =
     { cfg, ... }:
     {
       imports = [
-        ./settings.nix
+        (import ./settings.nix { inherit mkBookmarks config; })
       ];
       services.glance.enable = lib.mkIf cfg.enable true;
     };

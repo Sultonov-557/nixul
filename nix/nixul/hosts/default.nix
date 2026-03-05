@@ -1,6 +1,7 @@
 { lib, ... }:
 let
   keybindSubmodule = import ../keybinds/types/keybind.nix;
+  bookmarkTypes = import ../universal/bookmarks/types { inherit lib; };
 in
 {
   options.nixul = {
@@ -25,6 +26,11 @@ in
             type = lib.types.listOf keybindSubmodule;
             default = [ ];
             description = "list of keybinds";
+          };
+          bookmarks = lib.mkOption {
+            type = lib.types.attrsOf bookmarkTypes.groupBookmarkType;
+            default = { };
+            description = "host-level bookmarks for dashboards (glance, dashy)";
           };
           modules = lib.mkOption {
             type = lib.types.attrsOf lib.types.attrs;

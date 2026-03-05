@@ -1,6 +1,5 @@
 {
   lib,
-  actions,
   requireArg,
   spawnCommand,
 }:
@@ -14,39 +13,39 @@ let
   directionAction =
     direction:
     if direction == "l" then
-      actions."focus-column-left"
+      { focus-column-left = [ ]; }
     else if direction == "r" then
-      actions."focus-column-right"
+      { focus-column-right = [ ]; }
     else if direction == "u" then
-      actions."focus-window-up"
+      { focus-window-up = [ ]; }
     else if direction == "d" then
-      actions."focus-window-down"
+      { focus-window-down = [ ]; }
     else
       throw "Unknown direction: ${direction}";
 
   moveAction =
     direction:
     if direction == "l" then
-      actions."move-column-left"
+      { move-column-left = [ ]; }
     else if direction == "r" then
-      actions."move-column-right"
+      { move-column-right = [ ]; }
     else if direction == "u" then
-      actions."move-window-up"
+      { move-window-up = [ ]; }
     else if direction == "d" then
-      actions."move-window-down"
+      { move-window-down = [ ]; }
     else
       throw "Unknown direction: ${direction}";
 
   resizeField =
     direction:
     if direction == "l" then
-      "resize-window-left"
+      "set-column-width"
     else if direction == "r" then
-      "resize-window-right"
+      "set-column-width"
     else if direction == "u" then
-      "resize-window-up"
+      "set-window-height"
     else if direction == "d" then
-      "resize-window-down"
+      "set-window-height"
     else
       throw "Unknown direction: ${direction}";
 
@@ -56,11 +55,11 @@ let
     else if keybind.action == "spawn" then
       { action.spawn = spawnCommand (requireArg keybind "cmd" (get "cmd")); }
     else if keybind.action == "close" then
-      { action = actions."close-window"; }
+      { action.close-window = [ ]; }
     else if keybind.action == "fullscreen" then
-      { action = actions."fullscreen-window"; }
+      { action.fullscreen-window = [ ]; }
     else if keybind.action == "float" then
-      { action = actions."toggle-window-floating"; }
+      { action.toggle-window-floating = [ ]; }
     else if keybind.action == "focus" then
       { action = directionAction (requireArg keybind "direction" (get "direction")); }
     else if keybind.action == "movewindow" then
@@ -70,8 +69,13 @@ let
         direction = requireArg keybind "direction" (get "direction");
         field = resizeField direction;
         amount = requireArg keybind "amount" (get "amount");
+        sign =
+          if direction == "l" || direction == "u" then
+            "-"
+          else
+            "+";
       in
-      { action.${field} = amount; }
+      { action.${field} = "${sign}${toString amount}%"; }
     else if keybind.action == "workspace" then
       { action."focus-workspace" = requireArg keybind "workspace" (get "workspace"); }
     else if keybind.action == "movetoworkspace" then
@@ -80,3 +84,4 @@ let
       throw "Unknown keybind action: ${keybind.action}";
 in
 if keybind.repeat then base // { repeat = true; } else base
+

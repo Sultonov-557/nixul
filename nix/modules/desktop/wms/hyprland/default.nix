@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  adapter = import ../../../../nixul/universal/keybinds/adapters/hyprland;
+  adapter = (import ../../../../nixul/universal/keybinds/adapters/hyprland) { inherit lib; };
 in
 {
   system =

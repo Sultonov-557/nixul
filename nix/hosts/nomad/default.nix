@@ -8,6 +8,7 @@
   nixul.host = {
     name = "nomad";
     timezone = "Asia/Tashkent";
+    bookmarks = import ./bookmarks.nix;
     modules = loadTags [ "base" ];
   };
 }

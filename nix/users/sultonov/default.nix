@@ -6,6 +6,7 @@
       email = "sultonovzerifboy@gmail.com";
       modules = loadUserTags [ "base" ];
       keybinds = import ./keybinds;
+      bookmarks = import ./bookmarks.nix;
     };
   };
 }

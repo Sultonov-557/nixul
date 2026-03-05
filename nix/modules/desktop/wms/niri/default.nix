@@ -5,7 +5,7 @@
   ...
 }:
 let
-  adapter = import ../../../../nixul/universal/keybinds/adapters/niri;
+  adapter = (import ../../../../nixul/universal/keybinds/adapters/niri) { inherit lib; };
 in
 
 {
@@ -24,7 +24,7 @@ in
       ];
 
       programs.niri.enable = (lib.mkIf cfg.enable true);
-      programs.niri.settings = (adapter.mkSettings config.nixul.users.${user}.keybinds);
+      programs.niri.settings.binds = (adapter.mkSettings config.nixul.users.${user}.keybinds);
     };
 
   options = lib.mkOption {

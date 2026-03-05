@@ -1,12 +1,9 @@
-{ lib, config, ... }:
+{ lib, ... }:
 let
   helpers = import ./helpers.nix { inherit lib; };
 
-  niriAvailable = config.lib ? niri;
-
   mkBinding = import ./binding.nix {
     inherit lib;
-    actions = if niriAvailable then config.lib.niri.actions else { };
     inherit (helpers) requireArg spawnCommand;
   };
 
@@ -14,8 +11,8 @@ let
     inherit lib mkBinding;
     inherit (helpers) normalizeKeys formatCombo;
   };
-
 in
 {
   inherit mkSettings;
 }
+
