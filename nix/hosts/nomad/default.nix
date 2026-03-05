@@ -1,4 +1,4 @@
-{ loadTags, ... }:
+{ loadTags, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,6 +9,16 @@
     name = "nomad";
     timezone = "Asia/Tashkent";
     bookmarks = import ./bookmarks.nix;
-    modules = loadTags [ "base" ];
+
+    modules = lib.recursiveUpdate (loadTags [
+      "base"
+      "bluetooth"
+      "network"
+      "wayland"
+      "laptop"
+      "audio"
+      "compositor/hyprland"
+      "display-manager/gdm"
+    ]) { };
   };
 }
