@@ -28,6 +28,8 @@
 - [x] feat: profiles, host/user tags for module imports
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
 
+- [ ] test experimental features and merge with main branch
+
 - [ ] feat: universal options for themes (replace stylix)
 - [ ] feat: option for unbound domains
 - [ ] feat: decomple dependency's e.g nginx is dependent on unbound
