@@ -45,6 +45,8 @@
 - [ ] feat: add nixarr
 - [ ] feat: advanced theme configuration like nixy
 - [ ] feat: good, like really really good, documentation
+- [ ] feat: add worktrunk
+- [ ] feat: add really really good aliases
 
 ### take inspiration from
 
