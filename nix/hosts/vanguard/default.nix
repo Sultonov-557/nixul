@@ -5,22 +5,10 @@
     ../../users/sultonov
   ];
 
-  home-manager.users.sultonov.programs.niri.settings.outputs = {
-    "DP-1" = {
-      mode = {
-        height = 1080;
-        width = 1920;
-        refresh = 60.0;
-      };
-    };
-    "HDMI-A-1" = {
-      mode = {
-        height = 1024;
-        width = 1280;
-        refresh = 60.02;
-      };
-    };
-  };
+  home-manager.users.sultonov.wayland.windowManager.hyprland.settings.monitor = [
+    "DP-1,1920x1080@60,0x0,1"
+    "HDMI-A-1,1280x1024@60,1920x0,1"
+  ];
 
   nixul.host = {
     name = "nomad";
