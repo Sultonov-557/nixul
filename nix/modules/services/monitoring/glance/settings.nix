@@ -3,6 +3,7 @@
 let
   bookmarkGroups = mkBookmarks config.nixul.host.bookmarks;
 in
+{ config, ... }:
 {
   services.glance.settings.pages = [
     {
@@ -18,7 +19,7 @@ in
             }
             {
               type = "weather";
-              location = "Paris, France";
+              location = config.nixul.location;
             }
           ];
         }
@@ -50,4 +51,3 @@ in
     }
   ];
 }
-

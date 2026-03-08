@@ -12,7 +12,7 @@
       fillColor = "#000000";
       useSolidColor = false;
       solidColor = "#1a1a2e";
-      automationEnabled = true;
+      automationEnabled = false;
       wallpaperChangeMode = "random";
       randomIntervalSec = 60 * 60 * 1; # 1 hour
       transitionDuration = 1500;

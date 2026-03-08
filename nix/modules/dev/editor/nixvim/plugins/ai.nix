@@ -1,5 +1,12 @@
 {
   plugins = {
-    supermaven.enable = true;
+    supermaven = {
+      enable = true;
+      settings = {
+        keymaps = {
+          accept_suggestion = "<C-a>";
+        };
+      };
+    };
   };
 }
