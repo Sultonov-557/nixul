@@ -28,13 +28,12 @@
 - [x] feat: profiles, host/user tags for module imports
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
 
-- [-] test experimental features and merge with main branch
-
-- [ ] feat: option for unbound domains
 - [ ] feat: universal options for themes (replace stylix)
 - [ ] feat: universal options for aliases and adapters for bash, zsh, fish
 - [ ] feat: option for unbound domains
 - [ ] feat: decomple dependency's e.g nginx is dependent on unbound
+
+- [-] test experimental features and merge with main branch
 
 - [ ] feat: universal options for many modules
 
@@ -47,7 +46,6 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
 - [ ] feat: add nixarr
-- [ ] feat: advanced theme configuration like nixy
 - [ ] feat: good, like really really good, documentation
 - [ ] feat: add worktrunk
 - [ ] feat: add really really good aliases
