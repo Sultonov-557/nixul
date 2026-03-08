@@ -1,5 +1,8 @@
 {
   boot.kernel.sysctl = {
+    # swappiness
+    "vm.swappiness" = 180;
+
     # Network hardening
     "net.ipv4.conf.all.rp_filter" = 1;
     "net.ipv4.conf.default.rp_filter" = 1;
