@@ -4,6 +4,7 @@ let
   inherit (inputs) nixpkgs;
 
   tagLib = import ./load-tags.nix { inherit lib; };
+  themeLib = import ./load-theme.nix { inherit lib; };
 
   listDirectories =
     dir:
@@ -40,8 +41,10 @@ let
       inherit system;
       specialArgs = {
         inherit inputs;
+        inherit (inputs) nix-colors;
         loadTags = tagLib.loadTags;
         loadUserTags = tagLib.loadUserTags;
+        loadTheme = themeLib.loadTheme;
       };
       modules = (
         mkBaseModules {

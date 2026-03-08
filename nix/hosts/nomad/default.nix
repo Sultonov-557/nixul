@@ -1,8 +1,9 @@
-{ loadTags, lib, ... }:
+{ loadTags, loadTheme, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ../../users/sultonov
+    (loadTheme "gruvbox-material")
   ];
 
   nixul.host = {
@@ -205,12 +206,6 @@
       panels = {
         caelestia = false;
         noctalia = true;
-      };
-      theming = {
-        stylix = true;
-        themes = {
-          gruvbox-material = true;
-        };
       };
       wms = {
         hyprland = true;

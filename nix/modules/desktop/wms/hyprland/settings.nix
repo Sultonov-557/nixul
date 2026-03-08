@@ -1,5 +1,19 @@
+{ config, ... }:
+let
+  palette = config.nixul.theme.colors.palette;
+in
 {
   wayland.windowManager.hyprland.settings = {
+    general = {
+      "col.active_border" = "0xff${palette.base0B}";
+      "col.inactive_border" = "0xff${palette.base02}";
+
+      gaps_in = 10;
+      gaps_out = 10;
+      border_size = 2; # Set border size to see it
+      layout = "master";
+    };
+
     exec-once = [
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -15,13 +29,6 @@
         natural_scroll = true;
         tap-to-click = true;
       };
-    };
-
-    general = {
-      gaps_in = 10;
-      gaps_out = 10;
-      border_size = 0;
-      layout = "master";
     };
 
     decoration = {

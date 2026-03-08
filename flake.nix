@@ -21,13 +21,8 @@
     };
 
     # Styling
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
+
+    nix-colors.url = "github:misterio77/nix-colors";
 
     # WM/DM
     niri = {

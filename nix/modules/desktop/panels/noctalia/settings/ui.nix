@@ -1,8 +1,9 @@
+{ config, ... }:
 {
   programs.noctalia-shell.settings = {
     ui = {
-      fontDefault = "Inter";
-      fontFixed = "JetBrains Mono";
+      fontDefault = config.nixul.theme.fonts.sansSerif.name;
+      fontFixed = config.nixul.theme.fonts.monospace.name;
       fontDefaultScale = 1;
       fontFixedScale = 1;
       tooltipsEnabled = true;

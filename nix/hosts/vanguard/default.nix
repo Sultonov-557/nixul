@@ -1,8 +1,9 @@
-{ loadTags, lib, ... }:
+{ loadTags, loadTheme, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ../../users/sultonov
+    (loadTheme "gruvbox-material")
   ];
 
   home-manager.users.sultonov.wayland.windowManager.hyprland.settings.monitor = [
@@ -11,7 +12,7 @@
   ];
 
   nixul.host = {
-    name = "nomad";
+    name = "vanguard";
     timezone = "Asia/Tashkent";
     location = "Tashkent";
     bookmarks = import ./bookmarks.nix;
@@ -147,6 +148,7 @@
           desktop.display-manager.gdm.enable = true;
           desktop.display.wayland.enable = true;
           desktop.display.xserver.enable = true;
+
 
           dev.editor.antigravity.enable = true;
           dev.git.git-extras.enable = true;

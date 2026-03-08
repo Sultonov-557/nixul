@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  palette = config.nixul.theme.colors.palette;
+in
 {
   programs.niri.settings = {
     animations = {
@@ -43,8 +47,10 @@
       };
 
       focus-ring = {
-        enable = false;
+        enable = true;
         width = 2;
+        active-color = "#${palette.base0D}";
+        inactive-color = "#${palette.base02}";
       };
 
       shadow = {
@@ -54,6 +60,8 @@
       border = {
         enable = false;
         width = 2;
+        active-color = "#${palette.base0B}";
+        inactive-color = "#${palette.base02}";
       };
     };
   };

@@ -1,10 +1,19 @@
 { lib, ... }:
 {
   home =
-    { cfg, ... }:
+    { cfg, config, ... }:
+    let
+      palette = config.nixul.theme.colors.palette;
+    in
     {
       services.mako = lib.mkIf cfg.enable {
         enable = true;
+
+        font = "${config.nixul.theme.fonts.sansSerif.name} ${toString config.nixul.theme.fonts.sansSerif.size}";
+        backgroundColor = "#${palette.base00}";
+        textColor = "#${palette.base05}";
+        borderColor = "#${palette.base0D}";
+        progressColor = "over #${palette.base02}";
 
         settings = {
           border-radius = 10;
@@ -20,7 +29,7 @@
 
         extraConfig = ''
           [urgency=high]
-          border-color=#FF3B30
+          border-color=#${palette.base08}
           default-timeout=0
         '';
       };
