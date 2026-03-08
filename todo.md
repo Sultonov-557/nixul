@@ -31,6 +31,7 @@
 - [ ] test experimental features and merge with main branch
 
 - [ ] feat: universal options for themes (replace stylix)
+- [ ] feat: universal options for aliases and adapters for bash, zsh, fish
 - [ ] feat: option for unbound domains
 - [ ] feat: decomple dependency's e.g nginx is dependent on unbound
 
