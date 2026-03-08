@@ -1,9 +1,9 @@
 { lib, pkgs, ... }:
 {
-  system =
+  home =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ wireshark ]);
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ wireshark ]);
     };
 
   options = lib.mkOption {

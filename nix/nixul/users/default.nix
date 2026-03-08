@@ -2,6 +2,7 @@
 let
   keybindSubmodule = import ../universal/keybinds/types/keybind.nix { inherit lib; };
   bookmarkTypes = import ../universal/bookmarks/types { inherit lib; };
+  userModule = import ../universal/users/modules/user.nix { inherit lib; };
 in
 {
   options.nixul = {

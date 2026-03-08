@@ -18,7 +18,6 @@ let
     }:
     [
       ../nixul
-      ./module-importer.nix
       (hostsDir + "/${hostname}")
       inputs.home-manager.nixosModules.home-manager
       {
@@ -28,6 +27,7 @@ let
           extraSpecialArgs = { inherit inputs; };
         };
       }
+      ./module-importer.nix
     ];
 
   mkSystem =
@@ -43,7 +43,11 @@ let
         loadTags = tagLib.loadTags;
         loadUserTags = tagLib.loadUserTags;
       };
-      modules = mkBaseModules { inherit hostname hostsDir; };
+      modules = (
+        mkBaseModules {
+          inherit hostname hostsDir;
+        }
+      );
     };
 in
 {

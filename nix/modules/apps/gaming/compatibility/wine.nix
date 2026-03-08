@@ -1,9 +1,9 @@
 { lib, pkgs, ... }:
 {
-  system =
+  home =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (
+      home.packages = lib.mkIf cfg.enable (
         with pkgs;
         [
           wine

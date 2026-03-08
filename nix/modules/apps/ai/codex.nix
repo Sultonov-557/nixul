@@ -6,7 +6,7 @@
     {
       programs.codex = lib.mkIf cfg.enable {
         enable = true;
-        custom-instructions = cfg.instructions;
+        custom-instructions = cfg.instructions or "";
       };
     };
 

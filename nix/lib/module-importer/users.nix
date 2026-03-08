@@ -30,6 +30,7 @@ let
           pkgs,
           config,
           inputs,
+          osConfig,
           ...
         }:
         let
@@ -43,7 +44,7 @@ let
               "modules"
             ]
             ++ module.pathParts
-          ) (module.options.default or { }) config;
+          ) (module.options.default or { }) osConfig;
 
           cfg = assertCfgType {
             filePath = module.filePath;

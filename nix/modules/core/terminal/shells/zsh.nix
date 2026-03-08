@@ -1,5 +1,11 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
+  system =
+    { cfg, ... }:
+    {
+      programs.zsh.enable = lib.mkIf cfg.enable true;
+    };
+
   home =
     { cfg, ... }:
     {

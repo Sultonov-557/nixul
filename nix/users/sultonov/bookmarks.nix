@@ -1,3 +1,4 @@
+{
   favorites = {
     title = "Favorites";
     items = {

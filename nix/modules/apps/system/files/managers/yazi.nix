@@ -1,13 +1,16 @@
 { lib, pkgs, ... }:
 {
-  system =
+  home =
     { cfg, ... }:
     {
       programs.yazi.enable = lib.mkIf cfg.enable true;
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        yazi
-        ueberzugpp
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          yazi
+          ueberzugpp
+        ]
+      );
     };
 
   options = lib.mkOption {

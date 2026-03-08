@@ -1,9 +1,9 @@
 { lib, pkgs, ... }:
 {
-  system =
+  home =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ yarn ]);
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ yarn ]);
     };
 
   options = lib.mkOption {
