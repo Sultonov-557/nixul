@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 {
   system =
     { cfg, ... }:
@@ -22,6 +22,13 @@
           };
         };
       };
+
+      assertions = [
+        {
+          assertion = (!cfg.enable) || config.nixul.host.modules.core.security.network.unbound.enable;
+          message = "services.server.nginx requires core.security.network.unbound.enable = true";
+        }
+      ];
     };
 
   options = lib.mkOption {

@@ -1,6 +1,11 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
-  mkSections = import ../../../../nixul/universal/bookmarks/adapters/dashy/default.nix { inherit lib; };
+  mkSections = import ../../../nixul/universal/bookmarks/adapters/dashy { inherit lib; };
 in
 {
   system =
@@ -13,6 +18,11 @@ in
 
       services.dashy = lib.mkIf cfg.enable {
         enable = true;
+
+        virtualHost = {
+          enableNginx = true;
+          domain = "dashy.home";
+        };
 
         settings = {
           pageInfo = {
@@ -44,6 +54,23 @@ in
           };
         };
       };
+
+      services.unbound.settings.server.local-data =
+        lib.mkIf (cfg.enable && config.nixul.host.modules.core.security.network.unbound.enable)
+          [
+            ''"dashy.home. A 127.0.0.1"''
+          ];
+
+      assertions = [
+        {
+          assertion = (!cfg.enable) || config.nixul.host.modules.services.server.nginx.enable;
+          message = "services.monitoring.dashy requires services.server.nginx.enable = true";
+        }
+        {
+          assertion = (!cfg.enable) || config.nixul.host.modules.core.security.network.unbound.enable;
+          message = "services.monitoring.dashy requires core.security.network.unbound.enable = true";
+        }
+      ];
     };
 
   options = lib.mkOption {
@@ -61,4 +88,3 @@ in
     };
   };
 }
-

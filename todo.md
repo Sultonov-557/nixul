@@ -29,12 +29,12 @@
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
 - [x] feat: universal options for themes (replace stylix)
 - [x] feat: universal options for aliases and adapters for bash, zsh, fish
-
-- [ ] feat: option for unbound domains
-- [ ] feat: decomple dependency's e.g nginx is dependent on unbound
-- [ ] feat: add nixul import for all modules
+- [x] feat: option for unbound domains
+- [x] feat: decomple dependency's e.g nginx is dependent on unbound
 
 - [-] test experimental features and merge with main branch
+
+- [ ] feat: add nixul import for all modules
 
 - [ ] feat: universal options for many modules
 
