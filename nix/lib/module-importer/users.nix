@@ -70,6 +70,7 @@ let
                 pkgs
                 config
                 inputs
+                osConfig
                 ;
               cfg = cfg;
               user = user;

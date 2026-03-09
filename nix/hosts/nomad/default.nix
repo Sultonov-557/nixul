@@ -1,4 +1,9 @@
-{ loadTags, loadTheme, lib, ... }:
+{
+  loadTags,
+  loadTheme,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -11,366 +16,167 @@
     timezone = "Asia/Tashkent";
     bookmarks = import ./bookmarks.nix;
 
-    modules = lib.recursiveUpdate (loadTags [
-      "base"
-      "bluetooth"
-      "network"
-      "wayland"
-      "laptop"
-      "audio"
-      "compositor/hyprland"
-      "display-manager/gdm"
-    ]) { };
-    apps = {
-      ai = {
-        codex = true;
-        opencode = true;
-      };
-      gaming = {
-        compatibility = {
-          wine = true;
-        };
-        games = {
-          minecraft = true;
-        };
-        platform = {
-          gamemode = true;
-          gamescope = true;
-        };
-      };
-      media = {
-        audio = {
-          pamixer = true;
-          pavucontrol = true;
-          playerctl = true;
-          pulsemixer = true;
-        };
-        music = {
-          yandex = true;
-        };
-        photo = {
-          aseprite = true;
-          gimp = true;
-          lutgen = true;
-        };
-        video = {
-          ffmpeg = true;
-          mpv = true;
-        };
-      };
-      system = {
-        disk = {
-          gparted = true;
-        };
-        files = {
-          analyzers = {
-            baobab = true;
-            ncdu = true;
-          };
-          archives = {
-            file-roller = true;
-            p7zip = true;
-            unzip = true;
-            zip = true;
-          };
-          managers = {
-            nautilus = true;
-            yazi = true;
-          };
-        };
-        monitors = {
-          mission-center = true;
-        };
-        terminal = {
-          ghostty = true;
-        };
-      };
-      user = {
-        internet = {
-          browsers = {
-            chrome = true;
-            tor = true;
-            zen-browser = true;
-          };
-          communication = {
-            discord = true;
-            telegram = true;
-          };
-          qbitttorrent = true;
-        };
-        productivity = {
-          obsidian = true;
-          libreoffice = true;
-          khal = true;
-        };
-      };
-    };
+    modules =
+      lib.recursiveUpdate
+        (loadTags [
+          "base"
+          "bluetooth"
+          "network"
+          "wayland"
+          "laptop"
+          "audio"
+          "compositor/hyprland"
+          "display-manager/gdm"
+        ])
+        {
+          core.maintenance.auto-upgrade.enable = true;
+          core.maintenance.journald.enable = true;
+          core.security.network.acme.enable = true;
+          core.security.network.avahi.enable = true;
+          core.security.network.firewall.enable = true;
+          core.security.network.resolved.enable = true;
+          core.security.network.unbound.enable = true;
+          core.security.secrets.sops.enable = true;
+          core.security.ssh.openssh.enable = true;
+          core.security.sysctl.enable = true;
+          core.system.desktop.dbus.enable = true;
+          core.system.desktop.xdg.enable = true;
+          core.system.identity.locale.enable = true;
+          core.system.identity.user.enable = true;
+          core.system.nix.documentation.enable = true;
+          core.system.nix.nh.enable = true;
+          core.system.nix.nix-index.enable = true;
+          core.system.nix.nix-ld.enable = true;
+          core.system.nix.nix.enable = true;
+          core.system.boot.grub.enable = true;
 
-    core = {
-      maintenance = {
-        garbage-collector = true;
-        auto-upgrade = true;
-        journald = true;
-      };
-      security = {
-        access = {
-          polkit = true;
-        };
-        network = {
-          acme = true;
-          avahi = true;
-          firewall = true;
-          resolved = true;
-          unbound = true;
-        };
-        secrets = {
-          sops = true;
-        };
-        ssh = {
-          openssh = true;
-          ssh = true;
-        };
-        sysctl = true;
-      };
-      system = {
-        boot = {
-          grub = true;
-        };
-        desktop = {
-          dbus = true;
-          xdg = true;
-        };
-        identity = {
-          locale = true;
-          user = true;
-        };
-        nix = {
-          documentation = true;
-          nh = true;
-          nix = true;
-          nix-index = true;
-          nix-ld = true;
-        };
-      };
-      terminal = {
-        shells = {
-          fish = true;
-        };
-        tools = {
-          display = {
-            bat = true;
-            eza = true;
-          };
-          history = {
-            atuin = true;
-            thefuck = true;
-          };
-          info = {
-            fastfetch = true;
-            lsof = true;
-            tty-clock = true;
-          };
-          monitor = {
-            btop = true;
-            tcpdump = true;
-          };
-          navigation = {
-            fzf = true;
-            ripgrep = true;
-            zoxide = true;
-          };
-          prompt = {
-            starship = true;
-          };
-        };
-      };
-    };
+          core.terminal.tools.display.bat.enable = true;
+          core.terminal.tools.display.eza.enable = true;
+          core.terminal.tools.history.atuin.enable = true;
+          core.terminal.tools.history.thefuck.enable = true;
+          core.terminal.tools.info.fastfetch.enable = true;
+          core.terminal.tools.info.lsof.enable = true;
+          core.terminal.tools.info.tty-clock.enable = true;
+          core.terminal.tools.monitor.btop.enable = true;
+          core.terminal.tools.monitor.tcpdump.enable = true;
+          core.terminal.tools.navigation.fzf.enable = true;
+          core.terminal.tools.navigation.ripgrep.enable = true;
+          core.terminal.tools.navigation.zoxide.enable = true;
+          core.terminal.tools.prompt.starship.enable = true;
+          core.terminal.shells.fish.enable = true;
+          core.terminal.shells.zsh.enable = true;
 
-    desktop = {
-      components = {
-        notifications = {
-          mako = true;
-          ntfy = true;
-        };
-        cliphist = true;
-        polkit = true;
-        screenshots = true;
-      };
-      display = {
-        wayland = true;
-        xserver = true;
-      };
-      display-manager = {
-        gdm = true;
-      };
-      panels = {
-        caelestia = false;
-        noctalia = true;
-      };
-      wms = {
-        hyprland = true;
-      };
-    };
+          services.ai.ollama.enable = true;
+          services.ai.open-webui.enable = true;
+          services.containers.docker.enable = true;
+          services.containers.kubernetes.kind.enable = true;
+          services.containers.kubernetes.kubectl.enable = true;
+          services.containers.kubernetes.minikube.enable = true;
+          services.databases.postgresql.enable = true;
+          services.databases.redis.enable = true;
+          services.monitoring.dashy.enable = true;
+          services.monitoring.glance.enable = true;
+          services.server.nginx.enable = true;
+          services.vpn.openvpn.enable = true;
+          services.vpn.tailscale.enable = true;
+          services.vpn.wireguard.enable = true;
 
-    dev = {
-      editor = {
-        antigravity = true;
-        nixvim = true;
-      };
-      git = {
-        git = true;
-        git-extras = true;
-        github = true;
-        lazygit = true;
-      };
-      multiplexers = {
-        zellij = {
-          zellij = true;
-        };
-      };
-      runtimes = {
-        cpp = true;
-        javascript = {
-          bun = true;
-          nodejs = true;
-          prisma = true;
-          yarn = true;
-        };
-        python = true;
-        rustc = true;
-      };
-      security = {
-        analysis = {
-          inetutils = true;
-          metasploit = true;
-          wireshark = true;
-          caido = true;
-        };
-        brute-force = {
-          hashcat = true;
-          hydra = true;
-          john = true;
-          wordlists = true;
-        };
-        mitm = {
-          ettercap = true;
-        };
-        scanning = {
-          assetfinder = true;
-          bettercap = true;
-          nuclei = true;
-          katana = true;
-          netcat = true;
-          nmap = true;
-        };
-        wireless = {
-          wifite2 = true;
-        };
-      };
-      tools = {
-        containers = {
-          lazydocker = true;
-        };
-        db = {
-          dbeaver = true;
-          usql = true;
-        };
-        env = {
-          direnv = true;
-        };
-        http = {
-          client = {
-            bruno = true;
-            simplehttp = true;
-            xh = true;
-            hurl = true;
-          };
-          server = {
-            ngrok = true;
-          };
-        };
-        quality = {
-          biome = true;
-          deadnix = true;
-        };
-      };
-    };
+          hardware.audio.pipewire.enable = true;
+          hardware.audio.rtkit.enable = true;
+          hardware.bluetooth.blueman.enable = true;
+          hardware.bluetooth.bluetooth.enable = true;
+          hardware.inputs.qmk.enable = true;
+          hardware.inputs.via.enable = true;
+          hardware.network.networkmanager.enable = true;
+          hardware.power.brightnessctl.enable = true;
+          hardware.power.power-management.enable = true;
+          hardware.power.profiles.enable = true;
+          hardware.power.thermald.enable = true;
+          hardware.power.upower.enable = true;
+          hardware.printing.hplip.enable = true;
+          hardware.printing.printing.enable = true;
+          hardware.printing.sane.enable = true;
+          hardware.units.cpu.amd.enable = true;
+          hardware.units.cpu.intel.enable = true;
+          hardware.units.gpu.mesa.enable = true;
+          hardware.units.gpu.nvidia.enable = true;
+          hardware.units.gpu.opengl.enable = true;
+          hardware.units.ram.zram.enable = true;
+          hardware.units.storage.usb-automount.enable = true;
 
-    hardware = {
-      audio = {
-        pipewire = true;
-        rtkit = true;
-      };
-      bluetooth = {
-        blueman = true;
-        bluetooth = true;
-      };
-      inputs = {
-        qmk = true;
-        via = true;
-      };
-      network = {
-        networkmanager = true;
-      };
-      power = {
-        brightnessctl = true;
-        power-management = true;
-        profiles = true;
-        thermald = true;
-        upower = true;
-      };
-      printing = {
-        hplip = true;
-        printing = true;
-        sane = true;
-      };
-      units = {
-        cpu = {
-          intel = true;
-        };
-        gpu = {
-          mesa = true;
-          opengl = true;
-        };
-        ram = {
-          zram = true;
-        };
-        storage = {
-          udiskie = true;
-          usb-automount = true;
-        };
-      };
-    };
+          apps.gaming.compatibility.proton.enable = true;
+          apps.gaming.platform.gamemode.enable = true;
+          apps.gaming.platform.gamescope.enable = true;
+          apps.gaming.platform.steam.enable = true;
+          apps.media.audio.pamixer.enable = true;
+          apps.media.audio.pavucontrol.enable = true;
+          apps.media.audio.playerctl.enable = true;
+          apps.media.audio.pulsemixer.enable = true;
+          apps.media.photo.aseprite.enable = true;
+          apps.media.photo.gimp.enable = true;
+          apps.media.photo.lutgen.enable = true;
+          apps.media.video.ffmpeg.enable = true;
+          apps.system.disk.gparted.enable = true;
+          apps.system.files.analyzers.baobab.enable = true;
+          apps.system.files.analyzers.ncdu.enable = true;
+          apps.system.files.archives.file-roller.enable = true;
+          apps.system.files.archives.p7zip.enable = true;
+          apps.system.files.archives.unzip.enable = true;
+          apps.system.files.managers.nautilus.enable = true;
+          apps.system.monitors.mission-center.enable = true;
+          apps.user.internet.browsers.chrome.enable = true;
+          apps.user.internet.browsers.tor.enable = true;
+          apps.user.internet.communication.telegram.enable = true;
+          apps.user.internet.communication.thunderbird.enable = true;
+          apps.user.internet.qbitttorrent.enable = true;
+          apps.user.productivity.libreoffice.enable = true;
+          apps.user.productivity.obsidian.enable = true;
+          apps.user.productivity.todoist.enable = true;
 
-    services = {
-      ai = {
-        ollama = true;
-        open-webui = true;
-      };
-      containers = {
-        docker = true;
-        kubernetes = {
-          kind = true;
-          kubectl = true;
-          minikube = true;
+          desktop.components.notifications.ntfy.enable = true;
+          desktop.display-manager.gdm.enable = true;
+          desktop.display.wayland.enable = true;
+          desktop.display.xserver.enable = true;
+
+          dev.editor.antigravity.enable = true;
+          dev.git.git-extras.enable = true;
+          dev.git.lazygit.enable = true;
+          dev.runtimes.cpp.enable = true;
+          dev.runtimes.javascript.nodejs.enable = true;
+          dev.runtimes.javascript.prisma.enable = true;
+          dev.runtimes.python.enable = true;
+          dev.runtimes.rustc.enable = true;
+          dev.security.attack.brute-force.hashcat.enable = true;
+          dev.security.attack.brute-force.hydra.enable = true;
+          dev.security.attack.brute-force.john.enable = true;
+          dev.security.attack.brute-force.wordlists.enable = true;
+          dev.security.attack.exploit.metasploit.enable = true;
+          dev.security.attack.exploit.websploit.enable = true;
+          dev.security.attack.mitm.bettercap.enable = true;
+          dev.security.attack.mitm.ettercap.enable = true;
+          dev.security.attack.recon.discovery.amass.enable = true;
+          dev.security.attack.recon.discovery.assetfinder.enable = true;
+          dev.security.attack.recon.discovery.sherlock.enable = true;
+          dev.security.attack.recon.discovery.subfinder.enable = true;
+          dev.security.attack.recon.web.katana.enable = true;
+          dev.security.attack.recon.web.whatweb.enable = true;
+          dev.security.attack.scanning.network.inetutils.enable = true;
+          dev.security.attack.scanning.network.netcat.enable = true;
+          dev.security.attack.scanning.network.nmap.enable = true;
+          dev.security.attack.scanning.vulnability.nuclei.enable = true;
+          dev.security.attack.trafic.burbsuite.enable = true;
+          dev.security.attack.trafic.caido.enable = true;
+          dev.security.attack.trafic.wireshark.enable = true;
+          dev.security.wireless.wifite2.enable = true;
+          dev.tools.db.dbeaver.enable = true;
+          dev.tools.db.usql.enable = true;
+          dev.tools.http.client.bruno.enable = true;
+          dev.tools.http.client.hurl.enable = true;
+          dev.tools.http.client.simplehttp.enable = true;
+          dev.tools.http.client.xh.enable = true;
+          dev.tools.http.server.ngrok.enable = true;
+          dev.tools.quality.biome.enable = true;
+          dev.tools.quality.deadnix.enable = true;
         };
-      };
-      databases = {
-        postgresql = true;
-        redis = true;
-      };
-      monitoring = {
-        dashy = true;
-        glance = true;
-      };
-      server = {
-        nginx = true;
-      };
-      vpn = {
-        openvpn = true;
-        tailscale = true;
-        wireguard = true;
-      };
-    };
   };
 }

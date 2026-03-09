@@ -1,9 +1,9 @@
-{ config, ... }:
+{ osConfig, ... }:
 {
   programs.noctalia-shell.settings = {
     ui = {
-      fontDefault = config.nixul.theme.fonts.sansSerif.name;
-      fontFixed = config.nixul.theme.fonts.monospace.name;
+      fontDefault = osConfig.nixul.theme.fonts.sansSerif.name;
+      fontFixed = osConfig.nixul.theme.fonts.monospace.name;
       fontDefaultScale = 1;
       fontFixedScale = 1;
       tooltipsEnabled = true;

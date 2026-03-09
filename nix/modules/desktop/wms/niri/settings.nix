@@ -1,6 +1,6 @@
-{ config, ... }:
+{ osConfig, ... }:
 let
-  palette = config.nixul.theme.colors.palette;
+  palette = osConfig.nixul.theme.colors.palette;
 in
 {
   programs.niri.settings = {
@@ -49,8 +49,6 @@ in
       focus-ring = {
         enable = true;
         width = 2;
-        active-color = "#${palette.base0D}";
-        inactive-color = "#${palette.base02}";
       };
 
       shadow = {
@@ -60,8 +58,6 @@ in
       border = {
         enable = false;
         width = 2;
-        active-color = "#${palette.base0B}";
-        inactive-color = "#${palette.base02}";
       };
     };
   };

@@ -1,9 +1,9 @@
 { lib, config, ... }:
 {
   home =
-    { cfg, ... }:
+    { cfg, osConfig, ... }:
     let
-      palette = config.nixul.theme.colors.palette;
+      palette = osConfig.nixul.theme.colors.palette;
     in
     {
       programs.ghostty = lib.mkIf cfg.enable {

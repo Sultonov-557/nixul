@@ -1,16 +1,16 @@
 { lib, ... }:
 {
   home =
-    { cfg, config, ... }:
+    { cfg, osConfig, ... }:
     let
-      palette = config.nixul.theme.colors.palette;
+      palette = osConfig.nixul.theme.colors.palette;
     in
     {
       programs.foot = lib.mkIf cfg.enable {
         enable = true;
         settings = {
           main = {
-            font = "${config.nixul.theme.fonts.monospace.name}:size=${toString config.nixul.theme.fonts.monospace.size}";
+            font = "${osConfig.nixul.theme.fonts.monospace.name}:size=${toString osConfig.nixul.theme.fonts.monospace.size}";
           };
           cursor = {
             style = "block";

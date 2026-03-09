@@ -1,6 +1,6 @@
-{ config, ... }:
+{ osConfig, ... }:
 let
-  palette = config.nixul.theme.colors.palette;
+  palette = osConfig.nixul.theme.colors.palette;
 in
 {
   wayland.windowManager.hyprland.settings = {

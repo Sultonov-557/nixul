@@ -4,7 +4,13 @@ let
 
   loadTheme =
     name:
-    { config, lib, pkgs, inputs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      inputs,
+      ...
+    }:
     let
       p = themesRoot + "/${name}.nix";
       theme =
@@ -15,14 +21,28 @@ let
     in
     {
       # System part
-      imports = [ (theme.system { inherit lib pkgs config inputs; }) ];
+      imports = [
+        (theme.system {
+          inherit
+            lib
+            pkgs
+            config
+            inputs
+            ;
+        })
+      ];
 
-      # Home part for all users
-      home-manager.users = lib.mapAttrs (
-        uname: ucfg: {
-          imports = [ (theme.home { inherit lib pkgs config inputs; }) ];
-        }
-      ) config.home-manager.users;
+      # Home part for main user
+      home-manager.sharedModules = [
+        (theme.home {
+          inherit
+            lib
+            pkgs
+            config
+            inputs
+            ;
+        })
+      ];
     };
 in
 {

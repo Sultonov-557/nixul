@@ -16,7 +16,7 @@ let
   loadUserTag =
     tag:
     let
-      p = builtins.trace "user tag path" userTagsRoot + "/${tag}.nix";
+      p = userTagsRoot + "/${tag}.nix";
     in
     if builtins.pathExists p then
       import p

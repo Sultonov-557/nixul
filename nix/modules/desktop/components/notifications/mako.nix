@@ -1,15 +1,15 @@
 { lib, ... }:
 {
   home =
-    { cfg, config, ... }:
+    { cfg, osConfig, ... }:
     let
-      palette = config.nixul.theme.colors.palette;
+      palette = osConfig.nixul.theme.colors.palette;
     in
     {
       services.mako = lib.mkIf cfg.enable {
         enable = true;
 
-        font = "${config.nixul.theme.fonts.sansSerif.name} ${toString config.nixul.theme.fonts.sansSerif.size}";
+        font = "${osConfig.nixul.theme.fonts.sansSerif.name} ${toString osConfig.nixul.theme.fonts.sansSerif.size}";
         backgroundColor = "#${palette.base00}";
         textColor = "#${palette.base05}";
         borderColor = "#${palette.base0D}";

@@ -1,9 +1,9 @@
 { lib, ... }:
 {
   home =
-    { cfg, config, ... }:
+    { cfg, osConfig, ... }:
     let
-      palette = config.nixul.theme.colors.palette;
+      palette = osConfig.nixul.theme.colors.palette;
     in
     {
       programs.kitty = lib.mkIf cfg.enable {
@@ -14,8 +14,8 @@
         };
 
         settings = {
-          font_family = config.nixul.theme.fonts.monospace.name;
-          font_size = config.nixul.theme.fonts.monospace.size;
+          font_family = osConfig.nixul.theme.fonts.monospace.name;
+          font_size = osConfig.nixul.theme.fonts.monospace.size;
 
           background = "#${palette.base00}";
           foreground = "#${palette.base05}";
