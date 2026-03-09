@@ -44,6 +44,7 @@
 - [ ] feat: add tmux
 - [ ] feat: add devenv
 - [ ] feat: add nix-init
+- [ ] feat: add nix-tree
 - [ ] feat: add winboat
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
@@ -53,6 +54,8 @@
 - [ ] feat: good, like really really good, documentation
 - [ ] feat: add worktrunk
 - [ ] feat: add really really good aliases
+- [ ] feat: add impermanence
+- [ ] feat: add disko
 
 ### take inspiration from
 
