@@ -27,8 +27,8 @@
 - [x] fix: add options to all modules
 - [x] feat: profiles, host/user tags for module imports
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
+- [x] feat: universal options for themes (replace stylix)
 
-- [ ] feat: universal options for themes (replace stylix)
 - [ ] feat: universal options for aliases and adapters for bash, zsh, fish
 - [ ] feat: option for unbound domains
 - [ ] feat: decomple dependency's e.g nginx is dependent on unbound
