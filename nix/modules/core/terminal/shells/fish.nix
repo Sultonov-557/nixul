@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   system =
     { cfg, ... }:
@@ -8,10 +8,15 @@
 
   home =
     { cfg, ... }:
+    let
+      aliasesAdapter = import ../../../../nixul/universal/aliases/adapters/default.nix { inherit lib; };
+      universalAliases = aliasesAdapter.mkAliases config.nixul.aliases;
+    in
     {
       programs.fish = lib.mkIf cfg.enable {
         enable = true;
         shellInit = "set -U fish_greeting";
+        shellAliases = universalAliases;
       };
     };
 

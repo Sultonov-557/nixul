@@ -42,6 +42,9 @@
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
 - [ ] feat: add tmux
+- [ ] feat: add devenv
+- [ ] feat: add nix-init
+- [ ] feat: add winboat
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved

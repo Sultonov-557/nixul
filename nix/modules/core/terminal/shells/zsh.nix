@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   system =
     { cfg, ... }:
@@ -8,6 +8,10 @@
 
   home =
     { cfg, ... }:
+    let
+      aliasesAdapter = import ../../../../nixul/universal/aliases/adapters/default.nix { inherit lib; };
+      universalAliases = aliasesAdapter.mkAliases config.nixul.aliases;
+    in
     {
       programs.zsh = lib.mkIf cfg.enable {
         enable = true;
@@ -30,14 +34,16 @@
           theme = "robbyrussell";
         };
 
-        shellAliases = {
-          ll = "ls -lah";
-          la = "ls -A";
-          l = "ls -CF";
-          cat = "bat";
-          find = "fd";
-          grep = "rg";
-        };
+        shellAliases =
+          {
+            ll = "ls -lah";
+            la = "ls -A";
+            l = "ls -CF";
+            cat = "bat";
+            find = "fd";
+            grep = "rg";
+          }
+          // universalAliases;
 
         initContent = ''
           eval "$(zoxide init zsh)"
