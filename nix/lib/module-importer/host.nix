@@ -66,6 +66,7 @@ let
                 inputs
                 ;
               cfg = cfg;
+              nixul = config.nixul;
             })
           );
         in

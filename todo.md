@@ -31,10 +31,9 @@
 - [x] feat: universal options for aliases and adapters for bash, zsh, fish
 - [x] feat: option for unbound domains
 - [x] feat: decomple dependency's e.g nginx is dependent on unbound
+- [x] feat: add nixul import for all modules
 
 - [-] test experimental features and merge with main branch
-
-- [ ] feat: add nixul import for all modules
 
 - [ ] feat: universal options for many modules
 
@@ -61,6 +60,7 @@
 
 - [ ] https://github.com/anotherhadi/nixy
 - [ ] https://github.com/Frost-Phoenix/nixos-config/blob/main/modules/home/packages/cli.nix
+- [ ] https://gitlab.com/Zaney/zaneyos
 - [ ] https://github.com/Syndrizzle/hotfiles
 - [ ] https://github.com/namishh/crystal
 - [ ] https://github.com/Stardust-kyun/calla

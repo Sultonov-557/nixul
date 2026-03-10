@@ -74,6 +74,7 @@ let
                 ;
               cfg = cfg;
               user = user;
+              nixul = osConfig.nixul;
             })
           );
         in
