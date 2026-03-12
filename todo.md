@@ -37,6 +37,7 @@
 
 - [ ] feat: universal options for many modules
 
+- [ ] feat: add vicinae
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
@@ -50,11 +51,17 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
 - [ ] feat: add nixarr
+- [ ] feat: add bun2nix
 - [ ] feat: good, like really really good, documentation
 - [ ] feat: add worktrunk
 - [ ] feat: add really really good aliases
 - [ ] feat: add impermanence
 - [ ] feat: add disko
+- [ ] feat: add kde plasma and plasma-manager
+- [ ] feat: add nix-melt
+- [ ] feat: add vulnix
+
+- [ ] feat: try out mineflake
 
 ### take inspiration from
 
