@@ -1,4 +1,9 @@
-{ loadTags, loadTheme, lib, ... }:
+{
+  loadTags,
+  loadTheme,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -85,7 +90,7 @@
           services.containers.kubernetes.minikube.enable = true;
           services.databases.postgresql.enable = true;
           services.databases.redis.enable = true;
-          services.monitoring.dashy.enable = true;
+          services.monitoring.dashy.enable = false;
           services.monitoring.glance.enable = true;
           services.server.nginx.enable = true;
           services.vpn.openvpn.enable = true;
@@ -148,7 +153,6 @@
           desktop.display-manager.gdm.enable = true;
           desktop.display.wayland.enable = true;
           desktop.display.xserver.enable = true;
-
 
           dev.editor.antigravity.enable = true;
           dev.git.git-extras.enable = true;
