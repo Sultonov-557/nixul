@@ -1,17 +1,26 @@
+{ osConfig, ... }:
+let
+  cfg = osConfig.nixul.theme;
+  palette = cfg.colors.palette;
+in
 {
   programs.noctalia-shell.settings = {
     wallpaper = {
       enabled = true;
       overviewEnabled = true;
-      directory = "${../../../../../assets/public/wallpapers}";
+      directory =
+        if cfg.wallpaper != null then
+          builtins.dirOf cfg.wallpaper
+        else
+          "${../../../../../assets/public/wallpapers}";
       monitorDirectories = [ ];
       enableMultiMonitorDirectories = false;
       recursiveSearch = false;
       setWallpaperOnAllMonitors = true;
       fillMode = "crop";
-      fillColor = "#000000";
+      fillColor = "#${palette.base00}";
       useSolidColor = false;
-      solidColor = "#1a1a2e";
+      solidColor = "#${palette.base00}";
       automationEnabled = false;
       wallpaperChangeMode = "random";
       randomIntervalSec = 60 * 60 * 1; # 1 hour

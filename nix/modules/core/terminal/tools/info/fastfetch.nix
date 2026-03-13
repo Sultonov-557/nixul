@@ -1,12 +1,56 @@
 { lib, ... }:
 {
   home =
-    { cfg, ... }:
+    {
+      cfg,
+      osConfig,
+      ...
+    }:
+    let
+      palette = osConfig.nixul.theme.colors.palette;
+    in
     {
       programs.fastfetch = lib.mkIf cfg.enable {
         enable = true;
 
-        settings = { };
+        settings = {
+          display = {
+            color = {
+              keys = "magenta";
+              title = "magenta";
+            };
+          };
+          modules = [
+            "title"
+            "separator"
+            "os"
+            "host"
+            "kernel"
+            "uptime"
+            "packages"
+            "shell"
+            "display"
+            "de"
+            "wm"
+            "wmtheme"
+            "theme"
+            "icons"
+            "font"
+            "cursor"
+            "terminal"
+            "terminalfont"
+            "cpu"
+            "gpu"
+            "memory"
+            "disk"
+            "localip"
+            "battery"
+            "poweradapter"
+            "locale"
+            "break"
+            "colors"
+          ];
+        };
       };
     };
 

@@ -1,3 +1,7 @@
+{ osConfig, ... }:
+let
+  theme = osConfig.nixul.theme;
+in
 {
   programs.noctalia-shell.settings = {
     bar = {
@@ -71,12 +75,12 @@
             visualizerType = "wave";
           }
           {
-            customFont = "";
+            customFont = theme.fonts.sansSerif.name;
             formatHorizontal = "HH:mm ddd, MMM dd";
             formatVertical = "HH mm - dd MM";
             id = "Clock";
             tooltipFormat = "HH:mm ddd, MMM dd";
-            useCustomFont = false;
+            useCustomFont = true;
             usePrimaryColor = true;
           }
           {

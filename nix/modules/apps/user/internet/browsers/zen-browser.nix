@@ -18,6 +18,25 @@ in
 
           bookmarks = mkBookmarks config.nixul.users.${user}.bookmarks;
 
+          settings = {
+            "ui.systemUsesDarkTheme" = 1;
+            "layout.css.prefers-color-scheme.content-override" = 0;
+            "browser.theme.content-theme" = 0;
+            "browser.theme.toolbar-theme" = 0;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          };
+
+          userChrome =
+            let
+              palette = config.nixul.theme.colors.palette;
+            in
+            ''
+              :root {
+                --zen-primary-color: #${palette.base0D} !important;
+                --zen-secondary-color: #${palette.base0E} !important;
+              }
+            '';
+
           sine = {
             enable = true;
             mods = [ "Nebula" ];

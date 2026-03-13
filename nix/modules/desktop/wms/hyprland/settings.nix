@@ -17,6 +17,7 @@ in
     exec-once = [
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+      "hyprctl setcursor ${osConfig.nixul.theme.cursor.name} ${toString osConfig.nixul.theme.cursor.size}"
     ];
 
     input = {
@@ -55,5 +56,14 @@ in
       new_on_top = true;
       mfact = 0.55;
     };
+
+    cursor = {
+      no_hardware_cursors = true;
+    };
+
+    env = [
+      "XCURSOR_THEME,${osConfig.nixul.theme.cursor.name}"
+      "XCURSOR_SIZE,${toString osConfig.nixul.theme.cursor.size}"
+    ];
   };
 }

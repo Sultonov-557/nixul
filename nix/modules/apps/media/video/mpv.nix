@@ -1,16 +1,26 @@
 { lib, ... }:
 {
   home =
-    { cfg, ... }:
+    { cfg, osConfig, ... }:
     {
       programs.mpv = lib.mkIf cfg.enable {
         enable = true;
-        config = {
-          hwdec = "auto";
-          vo = "gpu";
-          profile = "gpu-hq";
-          save-position-on-quit = true;
-        };
+        config =
+          let
+            palette = osConfig.nixul.theme.colors.palette;
+          in
+          {
+            hwdec = "auto";
+            vo = "gpu";
+            profile = "gpu-hq";
+            save-position-on-quit = true;
+
+            osd-color = "#${palette.base05}";
+            osd-border-color = "#${palette.base00}";
+            osd-bar-align-y = 0.9;
+            osd-bar-h = 2;
+            osd-bar-w = 60;
+          };
       };
     };
 

@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   system =
-    { cfg, ... }:
+    { cfg, nixul, ... }:
     {
       boot = lib.mkIf cfg.enable {
         loader = {
@@ -11,6 +11,9 @@
             efiSupport = true;
             devices = [ "nodev" ];
             configurationLimit = 15;
+
+            splashImage = nixul.theme.wallpaper;
+            backgroundColor = "#${nixul.theme.colors.palette.base00}";
           };
           efi = {
             canTouchEfiVariables = true;

@@ -1,3 +1,4 @@
+{ osConfig, ... }:
 {
   programs.caelestia.settings.bar = {
     clock.showIcon = false;
@@ -64,6 +65,16 @@
     tray = {
       background = false;
       recolour = false;
+    };
+    fonts = {
+      sansSerif = {
+        name = osConfig.nixul.theme.fonts.sansSerif.name;
+        size = 11;
+      };
+      monospace = {
+        name = osConfig.nixul.theme.fonts.monospace.name;
+        size = 10;
+      };
     };
   };
 }

@@ -1,11 +1,19 @@
 { lib, ... }:
 {
   home =
-    { cfg, ... }:
+    {
+      cfg,
+      osConfig,
+      ...
+    }:
+    let
+      palette = osConfig.nixul.theme.colors.palette;
+    in
     {
       programs.btop = lib.mkIf cfg.enable {
         enable = true;
         settings = {
+          color_theme = "base16";
           theme_background = false;
           vim_keys = true;
         };

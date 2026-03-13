@@ -61,6 +61,14 @@ in
             "extensions.webcompat.perform_injections" = true;
             "extensions.webcompat.perform_ua_overrides" = true;
 
+            # Theming
+            "ui.systemUsesDarkTheme" = 1;
+            "layout.css.prefers-color-scheme.content-override" = 0; # Dark
+            "browser.theme.content-theme" = 0; # Dark
+            "browser.theme.toolbar-theme" = 0; # Dark
+
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
             "print.print_footerleft" = "";
             "print.print_footerright" = "";
             "print.print_headerleft" = "";
@@ -72,9 +80,28 @@ in
             "security.webauth.webauthn" = true;
             "security.webauth.webauthn_enable_softtoken" = true;
             "security.webauth.webauthn_enable_usbtoken" = true;
-
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
+
+          userChrome =
+            let
+              palette = config.nixul.theme.colors.palette;
+            in
+            ''
+              :root {
+                --toolbar-bgcolor: #${palette.base00} !important;
+                --toolbar-color: #${palette.base05} !important;
+                --toolbar-field-background-color: #${palette.base01} !important;
+                --toolbar-field-color: #${palette.base05} !important;
+                --toolbar-field-border-color: #${palette.base03} !important;
+                --toolbar-field-focus-background-color: #${palette.base02} !important;
+                --toolbar-field-focus-color: #${palette.base07} !important;
+                --toolbar-field-focus-border-color: #${palette.base0D} !important;
+                --lwt-accent-color: #${palette.base00} !important;
+                --lwt-text-color: #${palette.base05} !important;
+                --lwt-toolbar-field-background-color: #${palette.base01} !important;
+                --lwt-toolbar-field-color: #${palette.base05} !important;
+              }
+            '';
         };
       };
     };

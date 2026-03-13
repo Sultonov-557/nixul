@@ -1,7 +1,12 @@
 { lib, config, ... }:
 {
   home =
-    { cfg, inputs, ... }:
+    {
+      cfg,
+      inputs,
+      nixul,
+      ...
+    }:
     {
       imports = [
         inputs.caelestia-shell.homeManagerModules.default
@@ -13,6 +18,7 @@
       programs.caelestia = lib.mkIf cfg.enable {
         enable = true;
         systemd.enable = true;
+
         settings = {
           services.weatherLocation = config.nixul.host.location;
           general = {
