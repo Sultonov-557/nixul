@@ -1,13 +1,10 @@
 { lib, ... }:
 {
   home =
-    { cfg, osConfig, ... }:
+    { cfg, ... }:
     {
       programs.bat = lib.mkIf cfg.enable {
         enable = true;
-        config = {
-          theme = "base16";
-        };
       };
     };
 

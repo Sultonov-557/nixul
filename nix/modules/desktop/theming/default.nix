@@ -1,52 +1,53 @@
 {
   lib,
-  pkgs,
   config,
+  inputs,
   ...
 }:
 let
-  cfg = config.nixul.theme;
-  palette = cfg.colors.palette;
+  theme = config.nixul.theme;
 in
 {
-  home =
+  system =
     { ... }:
     {
-      # GTK styling
-      gtk = {
-        enable = true;
-        iconTheme = {
-          package = cfg.icons.package;
-          name = cfg.icons.name;
-        };
-        font = {
-          package = cfg.fonts.sansSerif.package;
-          name = cfg.fonts.sansSerif.name;
-          size = cfg.fonts.sansSerif.size;
-        };
-        # We could use a specific GTK theme package here if we wanted to enforce it
-        # but by default we rely on the OS or manual overrides.
-        # Many people prefer adw-gtk3 or similar.
-        theme = {
-          package = pkgs.adw-gtk3;
-          name = "adw-gtk3";
-        };
-      };
+      imports = [
+        inputs.stylix.nixosModules.stylix
+      ];
 
-      # Qt styling
-      qt = {
+      stylix = {
         enable = true;
-        platformTheme.name = "gtk";
-        style.name = "adwaita-dark";
-      };
+        autoEnable = true;
+        base16Scheme = inputs.nix-colors.colorSchemes.${theme.colors.scheme};
 
-      # Cursor styling
-      home.pointerCursor = {
-        package = cfg.cursor.package;
-        name = cfg.cursor.name;
-        size = cfg.cursor.size;
-        gtk.enable = true;
-        x11.enable = true;
+        targets = {
+        };
+
+        cursor = theme.cursor;
+
+        opacity = theme.opacity;
+
+        icons = {
+          enable = true;
+          package = theme.icons.package;
+          dark = theme.icons.name;
+          light = theme.icons.name;
+        };
+
+        fonts = {
+          monospace = {
+            package = theme.fonts.monospace.package;
+            name = theme.fonts.monospace.name;
+          };
+          sansSerif = {
+            package = theme.fonts.sansSerif.package;
+            name = theme.fonts.sansSerif.name;
+          };
+          serif = {
+            package = theme.fonts.serif.package;
+            name = theme.fonts.serif.name;
+          };
+        };
       };
     };
 

@@ -27,15 +27,14 @@
 - [x] fix: add options to all modules
 - [x] feat: profiles, host/user tags for module imports
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
-- [x] feat: universal options for themes (replace stylix)
 - [x] feat: universal options for aliases and adapters for bash, zsh, fish
 - [x] feat: option for unbound domains
 - [x] feat: decomple dependency's e.g nginx is dependent on unbound
 - [x] feat: add nixul import for all modules
 - [x] fix: default options for shell
+- [x] fix: integrate themes
 
 - [-] test experimental features and merge with main branch
-- [-] fix: integrate themes
 - [-] feat: universal options for many modules
 
 - [ ] feat: add vicinae

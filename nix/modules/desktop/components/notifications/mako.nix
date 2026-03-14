@@ -9,12 +9,6 @@
       services.mako = lib.mkIf cfg.enable {
         enable = true;
 
-        font = "${osConfig.nixul.theme.fonts.sansSerif.name} ${toString osConfig.nixul.theme.fonts.sansSerif.size}";
-        backgroundColor = "#${palette.base00}";
-        textColor = "#${palette.base05}";
-        borderColor = "#${palette.base0D}";
-        progressColor = "over #${palette.base02}";
-
         settings = {
           border-radius = 10;
           border-size = 2;

@@ -51,15 +51,16 @@ in
     };
 
     fonts = {
+      size = lib.mkOption {
+        type = lib.types.int;
+        default = 12;
+        description = "Font size";
+      };
       monospace = lib.mkOption {
         type = lib.types.submodule {
           options = {
             package = lib.mkOption { type = lib.types.package; };
             name = lib.mkOption { type = lib.types.str; };
-            size = lib.mkOption {
-              type = lib.types.int;
-              default = 12;
-            };
           };
         };
       };
@@ -68,10 +69,6 @@ in
           options = {
             package = lib.mkOption { type = lib.types.package; };
             name = lib.mkOption { type = lib.types.str; };
-            size = lib.mkOption {
-              type = lib.types.int;
-              default = 11;
-            };
           };
         };
       };
@@ -80,10 +77,6 @@ in
           options = {
             package = lib.mkOption { type = lib.types.package; };
             name = lib.mkOption { type = lib.types.str; };
-            size = lib.mkOption {
-              type = lib.types.int;
-              default = 11;
-            };
           };
         };
       };

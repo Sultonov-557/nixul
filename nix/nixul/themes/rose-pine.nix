@@ -27,17 +27,14 @@
           monospace = {
             package = pkgs.jetbrains-mono;
             name = "JetBrains Mono";
-            size = 12;
           };
           sansSerif = {
             package = pkgs.inter;
             name = "Inter";
-            size = 11;
           };
           serif = {
             package = pkgs.inter;
             name = "Inter";
-            size = 11;
           };
         };
       };

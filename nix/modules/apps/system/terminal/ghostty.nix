@@ -14,7 +14,7 @@
 
         settings = {
           font-family = config.nixul.theme.fonts.monospace.name;
-          font-size = config.nixul.theme.fonts.monospace.size;
+          font-size = config.nixul.theme.fonts.size;
 
           window-decoration = false;
           window-padding-x = 8;

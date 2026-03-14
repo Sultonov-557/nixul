@@ -1,13 +1,7 @@
 { osConfig, ... }:
-let
-  palette = osConfig.nixul.theme.colors.palette;
-in
 {
   wayland.windowManager.hyprland.settings = {
     general = {
-      "col.active_border" = "0xff${palette.base0B}";
-      "col.inactive_border" = "0xff${palette.base02}";
-
       gaps_in = 10;
       gaps_out = 10;
       border_size = 2; # Set border size to see it

@@ -30,29 +30,6 @@
       programs.noctalia-shell = lib.mkIf cfg.enable {
         enable = true;
         systemd.enable = true;
-
-        colors =
-          let
-            palette = osConfig.nixul.theme.colors.palette;
-          in
-          {
-            mPrimary = "#${palette.base0D}";
-            mOnPrimary = "#${palette.base00}";
-            mSecondary = "#${palette.base0C}";
-            mOnSecondary = "#${palette.base00}";
-            mTertiary = "#${palette.base0E}";
-            mOnTertiary = "#${palette.base00}";
-            mSurface = "#${palette.base00}";
-            mOnSurface = "#${palette.base05}";
-            mSurfaceVariant = "#${palette.base01}";
-            mOnSurfaceVariant = "#${palette.base04}";
-            mOutline = "#${palette.base03}";
-            mShadow = "#000000";
-            mError = "#${palette.base08}";
-            mOnError = "#${palette.base00}";
-            mHover = "#${palette.base02}";
-            mOnHover = "#${palette.base07}";
-          };
       };
     };
 
