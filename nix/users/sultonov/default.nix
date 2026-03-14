@@ -43,8 +43,8 @@
             apps.ai.gemini.enable = true;
             apps.ai.opencode.enable = true;
             apps.gaming.games.minecraft.enable = true;
-            apps.gaming.platform.lutris.enable = true;
-            apps.media.music.spicetify.enable = true;
+            apps.gaming.platform.lutris.enable = false;
+            apps.media.music.spicetify.enable = false;
             apps.media.music.yandex.enable = true;
             apps.media.video.mpv.enable = true;
             apps.system.files.archives.file-roller.enable = true;
@@ -52,10 +52,10 @@
             apps.system.files.archives.unzip.enable = true;
             apps.system.files.archives.zip.enable = true;
             apps.system.files.managers.yazi.enable = true;
-            apps.system.terminal.foot.enable = true;
+            apps.system.terminal.foot.enable = false;
             apps.system.terminal.ghostty.enable = true;
-            apps.system.terminal.kitty.enable = true;
-            apps.user.internet.browsers.firefox.enable = true;
+            apps.system.terminal.kitty.enable = false;
+            apps.user.internet.browsers.firefox.enable = false;
             apps.user.internet.browsers.zen-browser.enable = true;
             apps.user.internet.communication.discord.enable = true;
             apps.user.productivity.khal.enable = true;
@@ -70,7 +70,7 @@
             desktop.wms.niri.enable = true;
 
             dev.editor.nixvim.enable = true;
-            dev.editor.zed.enable = true;
+            dev.editor.zed.enable = false;
             dev.git.git.enable = true;
             dev.git.github.enable = true;
             dev.multiplexers.zellij.enable = true;

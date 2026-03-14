@@ -74,7 +74,7 @@
           services.containers.kubernetes.minikube.enable = true;
           services.databases.postgresql.enable = true;
           services.databases.redis.enable = true;
-          services.monitoring.dashy.enable = true;
+          services.monitoring.dashy.enable = false;
           services.monitoring.glance.enable = true;
           services.server.nginx.enable = true;
           services.vpn.openvpn.enable = true;
@@ -104,7 +104,7 @@
           hardware.units.ram.zram.enable = true;
           hardware.units.storage.usb-automount.enable = true;
 
-          apps.gaming.compatibility.proton.enable = true;
+          apps.gaming.compatibility.proton.enable = false;
           apps.gaming.platform.gamemode.enable = true;
           apps.gaming.platform.gamescope.enable = true;
           apps.gaming.platform.steam.enable = true;
@@ -127,7 +127,7 @@
           apps.user.internet.browsers.chrome.enable = true;
           apps.user.internet.browsers.tor.enable = true;
           apps.user.internet.communication.telegram.enable = true;
-          apps.user.internet.communication.thunderbird.enable = true;
+          apps.user.internet.communication.thunderbird.enable = false;
           apps.user.internet.qbitttorrent.enable = true;
           apps.user.productivity.libreoffice.enable = true;
           apps.user.productivity.obsidian.enable = true;

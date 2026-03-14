@@ -51,6 +51,15 @@ in
                 default = { };
                 description = "list of modules";
               };
+              shell = lib.mkOption {
+                type = lib.types.enum [
+                  "bash"
+                  "fish"
+                  "zsh"
+                ];
+                default = "fish";
+                description = "login shell for the user";
+              };
             };
           }
         )
