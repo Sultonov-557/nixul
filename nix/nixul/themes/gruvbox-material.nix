@@ -47,5 +47,6 @@
     { ... }:
     {
       programs.nixvim.colorschemes.gruvbox.enable = true;
+      programs.opencode.settings.theme = "gruvbox";
     };
 }

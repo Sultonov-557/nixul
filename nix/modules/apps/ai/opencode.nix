@@ -1,24 +1,12 @@
 { lib, ... }:
 {
   home =
-    { cfg, nixul, ... }:
+    { cfg, ... }:
     {
       programs.opencode = lib.mkIf cfg.enable {
         enable = true;
 
         settings = {
-          theme = "nixul";
-          colors =
-            let
-              palette = nixul.theme.colors.palette;
-            in
-            {
-              primary = "#${palette.base0D}";
-              accent = "#${palette.base0E}";
-              background = "#${palette.base00}";
-              foreground = "#${palette.base05}";
-            };
-
           plugin = [
             "opencode-antigravity-auth@latest"
             "opencode-openai-codex-auth@latest"

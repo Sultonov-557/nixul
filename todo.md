@@ -36,7 +36,7 @@
 - [-] test experimental features and merge with main branch
 
 - [ ] fix: default options for shell
-- [x] fix: integrate themes
+- [-] fix: integrate themes (opencode)
 - [ ] feat: universal options for many modules
 
 - [ ] feat: add vicinae
