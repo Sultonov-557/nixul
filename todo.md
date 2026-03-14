@@ -40,6 +40,8 @@
 - [ ] feat: universal options for many modules
 
 - [ ] feat: add vicinae
+- [ ] feat: add mini-ai to nixvim
+- [ ] feat: add avante to nixvim
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
