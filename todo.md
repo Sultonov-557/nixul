@@ -32,12 +32,11 @@
 - [x] feat: option for unbound domains
 - [x] feat: decomple dependency's e.g nginx is dependent on unbound
 - [x] feat: add nixul import for all modules
+- [x] fix: default options for shell
 
 - [-] test experimental features and merge with main branch
-
-- [ ] fix: default options for shell
-- [-] fix: integrate themes (opencode)
-- [ ] feat: universal options for many modules
+- [-] fix: integrate themes
+- [-] feat: universal options for many modules
 
 - [ ] feat: add vicinae
 - [ ] feat: add mini-ai to nixvim
