@@ -1,6 +1,7 @@
 { loadUserTags, lib, ... }:
 {
   nixul = {
+    aliases = import ./alias;
     primaryUser = "sultonov";
     users.sultonov = {
       email = "sultonovzerifboy@gmail.com";

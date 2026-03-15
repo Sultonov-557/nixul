@@ -44,13 +44,13 @@
 - [x] feat: add nix-melt
 - [x] feat: add vulnix
 - [x] feat: add nushell
+- [x] feat: add really really good aliases
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
 - [ ] feat: add brotab (vicinae ext)
 - [ ] feat: bloat vicinae with extensions
-- [ ] feat: add really really good aliases
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(glance): make glance great again!!!

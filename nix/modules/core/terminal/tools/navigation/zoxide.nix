@@ -3,7 +3,12 @@
   home =
     { cfg, ... }:
     {
-      programs.zoxide.enable = lib.mkIf cfg.enable true;
+      programs.zoxide = lib.mkIf cfg.enable {
+        enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+        enableFishIntegration = true;
+      };
     };
 
   options = lib.mkOption {
