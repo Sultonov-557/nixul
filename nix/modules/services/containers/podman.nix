@@ -1,15 +1,15 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 {
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (
-        with pkgs;
-        [
-          wine
-          winetricks
-        ]
-      );
+      virtualisation.podman = lib.mkIf cfg.enable {
+        enable = true;
+      };
+
     };
 
   options = lib.mkOption {
@@ -18,7 +18,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable wine";
+          description = "Enable podman";
         };
       };
     };

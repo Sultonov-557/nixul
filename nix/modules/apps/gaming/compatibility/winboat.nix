@@ -6,8 +6,7 @@
       environment.systemPackages = lib.mkIf cfg.enable (
         with pkgs;
         [
-          wine
-          winetricks
+          winboat
         ]
       );
     };
@@ -18,7 +17,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable wine";
+          description = "Enable winboat";
         };
       };
     };

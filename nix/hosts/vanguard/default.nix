@@ -72,8 +72,6 @@
           core.terminal.tools.history.atuin.enable = true;
           core.terminal.tools.history.thefuck.enable = true;
           core.terminal.tools.info.fastfetch.enable = true;
-          core.terminal.tools.info.lsof.enable = true;
-          core.terminal.tools.info.tty-clock.enable = true;
           core.terminal.tools.monitor.btop.enable = true;
           core.terminal.tools.monitor.tcpdump.enable = true;
           core.terminal.tools.navigation.fzf.enable = true;
@@ -84,8 +82,9 @@
           core.terminal.shells.zsh.enable = true;
 
           services.ai.ollama.enable = true;
-          services.ai.open-webui.enable = true;
-          services.containers.docker.enable = true;
+          services.ai.open-webui.enable = false;
+          services.containers.docker.enable = false;
+          services.containers.podman.enable = true;
           services.containers.kubernetes.kind.enable = true;
           services.containers.kubernetes.kubectl.enable = true;
           services.containers.kubernetes.minikube.enable = true;
@@ -122,6 +121,8 @@
           hardware.units.storage.usb-automount.enable = true;
 
           apps.gaming.compatibility.proton.enable = true;
+          apps.gaming.compatibility.wine.enable = true;
+          apps.gaming.compatibility.winboat.enable = true;
           apps.gaming.platform.gamemode.enable = true;
           apps.gaming.platform.gamescope.enable = true;
           apps.gaming.platform.steam.enable = true;

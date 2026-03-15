@@ -31,6 +31,9 @@
             core.terminal.tools.history.atuin.enable = true;
             core.terminal.tools.history.thefuck.enable = true;
             core.terminal.tools.info.fastfetch.enable = true;
+            core.terminal.tools.info.lsof.enable = true;
+            core.terminal.tools.info.tty-clock.enable = true;
+            core.terminal.tools.info.nix-tree.enable = true;
             core.terminal.tools.monitor.btop.enable = true;
             core.terminal.tools.navigation.fzf.enable = true;
             core.terminal.tools.navigation.zoxide.enable = true;
@@ -44,6 +47,7 @@
             apps.ai.opencode.enable = true;
             apps.gaming.games.minecraft.enable = true;
             apps.gaming.platform.lutris.enable = false;
+            apps.gaming.compatibility.winboat.enable = true;
             apps.media.music.spicetify.enable = false;
             apps.media.music.yandex.enable = true;
             apps.media.video.mpv.enable = true;

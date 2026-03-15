@@ -71,7 +71,7 @@
           core.terminal.shells.zsh.enable = true;
 
           services.ai.ollama.enable = true;
-          services.ai.open-webui.enable = true;
+          services.ai.open-webui.enable = false;
           services.containers.docker.enable = true;
           services.containers.kubernetes.kind.enable = true;
           services.containers.kubernetes.kubectl.enable = true;
