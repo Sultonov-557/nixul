@@ -54,7 +54,6 @@
 
   # system monitoring
   "ht=htop"
-  "ps=ps aux"
   "pm=procs"
 
   # networking
