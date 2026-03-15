@@ -33,11 +33,11 @@
 - [x] feat: add nixul import for all modules
 - [x] fix: default options for shell
 - [x] fix: integrate themes
+- [x] feat: add vicinae
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add vicinae
 - [ ] feat: add mini-ai to nixvim
 - [ ] feat: add avante to nixvim
 - [ ] feat: add adguardhome
@@ -63,6 +63,8 @@
 - [ ] feat: add kde plasma and plasma-manager
 - [ ] feat: add nix-melt
 - [ ] feat: add vulnix
+- [ ] feat: add brotab (vicinae ext)
+- [ ] feat: bloat vicinae with extensions
 
 - [ ] feat: try out mineflake
 

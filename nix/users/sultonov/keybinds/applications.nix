@@ -80,7 +80,7 @@
         ]
       ];
       action = "spawn";
-      args.cmd = "noctalia-shell ipc call launcher toggle";
+      args.cmd = "vicinae toggle";
     }
     {
       keys = [

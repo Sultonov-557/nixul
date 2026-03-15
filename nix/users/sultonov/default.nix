@@ -61,6 +61,7 @@
             apps.user.productivity.khal.enable = true;
 
             desktop.theming.enable = true;
+            desktop.components.vicinae.enable = true;
             desktop.components.cliphist.enable = true;
             desktop.components.notifications.mako.enable = true;
             desktop.components.polkit.enable = true;
