@@ -40,28 +40,27 @@
 - [x] feat: add nix-init
 - [x] feat: add nix-tree
 - [x] feat: add winboat
+- [x] feat: add worktrunk
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add worktrunk
-- [ ] feat: add really really good aliases
-- [ ] feat: add impermanence
-- [ ] feat: add maltego
-- [ ] feat: add disko
-- [ ] feat: add kde plasma and plasma-manager
 - [ ] feat: add nix-melt
 - [ ] feat: add vulnix
 - [ ] feat: add brotab (vicinae ext)
 - [ ] feat: bloat vicinae with extensions
-- [ ] feat: add bun2nix
+- [ ] feat: add nushell
+- [ ] feat: add really really good aliases
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(glance): make glance great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
+- [ ] fix: find old modules and convert to new format
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
+
+- [-] fix: remove worktrunk flake (it got added to nixpkgs in 11 March 2026)
 
 ### maybe
 

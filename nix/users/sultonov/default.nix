@@ -78,12 +78,14 @@
             dev.editor.nixvim.enable = true;
             dev.editor.zed.enable = false;
             dev.git.git.enable = true;
+            dev.git.worktrunk.enable = true;
             dev.git.github.enable = true;
             dev.multiplexers.zellij.enable = true;
             dev.runtimes.javascript.bun.enable = true;
             dev.tools.containers.lazydocker.enable = true;
             dev.tools.env.direnv.enable = true;
             dev.tools.env.devenv.enable = true;
+            dev.tools.env.nix-init.enable = true;
             dev.tools.quality.deadnix.enable = true;
 
             hardware.units.storage.udiskie.enable = true;
