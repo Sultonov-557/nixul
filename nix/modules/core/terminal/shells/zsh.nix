@@ -34,16 +34,7 @@
           theme = "robbyrussell";
         };
 
-        shellAliases =
-          {
-            ll = "ls -lah";
-            la = "ls -A";
-            l = "ls -CF";
-            cat = "bat";
-            find = "fd";
-            grep = "rg";
-          }
-          // universalAliases;
+        shellAliases = universalAliases;
 
         initContent = ''
           eval "$(zoxide init zsh)"
