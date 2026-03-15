@@ -34,12 +34,11 @@
 - [x] fix: default options for shell
 - [x] fix: integrate themes
 - [x] feat: add vicinae
+- [x] feat: add mini-ai to nixvim
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add mini-ai to nixvim
-- [ ] feat: add avante to nixvim
 - [ ] feat: add adguardhome
 - [ ] feat: add CyberChef
 - [ ] feat: add fail2ban
@@ -65,6 +64,8 @@
 - [ ] feat: add vulnix
 - [ ] feat: add brotab (vicinae ext)
 - [ ] feat: bloat vicinae with extensions
+
+- [ ] feat: break everything down to tags
 
 - [ ] feat: try out mineflake
 

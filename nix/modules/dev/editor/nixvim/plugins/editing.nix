@@ -10,6 +10,10 @@
       };
     };
 
+    mini-ai = {
+      enable = true;
+    };
+
     mini-surround = {
       enable = true;
       settings = {

@@ -149,8 +149,8 @@
           apps.user.productivity.obsidian.enable = true;
           apps.user.productivity.todoist.enable = true;
 
-          desktop.components.notifications.ntfy.enable = true;
           desktop.theming.enable = true;
+          desktop.components.notifications.ntfy.enable = true;
           desktop.display-manager.gdm.enable = true;
           desktop.display.wayland.enable = true;
           desktop.display.xserver.enable = true;

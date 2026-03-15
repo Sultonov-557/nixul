@@ -95,7 +95,6 @@
             desktop.display.xserver.enable = true;
             desktop.panels.caelestia.enable = true;
             desktop.panels.noctalia.enable = true;
-            desktop.theming.themes.gruvbox-material.enable = true;
             desktop.wms.hyprland.enable = true;
             desktop.wms.niri.enable = true;
 

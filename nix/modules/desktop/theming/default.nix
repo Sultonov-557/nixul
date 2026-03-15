@@ -18,11 +18,9 @@ in
       stylix = {
         enable = true;
         autoEnable = true;
-        base16Scheme = inputs.nix-colors.colorSchemes.${theme.colors.scheme};
-        image = theme.wallpaper or null;
 
-        targets = {
-        };
+        base16Scheme = inputs.nix-colors.colorSchemes.${theme.colors.scheme}.palette;
+        image = theme.wallpaper or null;
 
         cursor = theme.cursor;
 
@@ -48,6 +46,17 @@ in
             package = theme.fonts.serif.package;
             name = theme.fonts.serif.name;
           };
+        };
+      };
+    };
+
+  home =
+    { ... }:
+    {
+      stylix = {
+        enable = true;
+        targets = {
+          nixvim.enable = false;
         };
       };
     };
