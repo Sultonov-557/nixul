@@ -28,6 +28,7 @@
             core.security.ssh.ssh.enable = true;
             core.terminal.tools.display.bat.enable = true;
             core.terminal.tools.display.eza.enable = true;
+            core.terminal.tools.display.nix-melt.enable = true;
             core.terminal.tools.history.atuin.enable = true;
             core.terminal.tools.history.thefuck.enable = true;
             core.terminal.tools.info.fastfetch.enable = true;

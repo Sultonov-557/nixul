@@ -41,11 +41,11 @@
 - [x] feat: add nix-tree
 - [x] feat: add winboat
 - [x] feat: add worktrunk
+- [x] feat: add nix-melt
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add nix-melt
 - [ ] feat: add vulnix
 - [ ] feat: add brotab (vicinae ext)
 - [ ] feat: bloat vicinae with extensions
