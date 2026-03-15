@@ -37,11 +37,11 @@
 - [x] feat: add mini-ai to nixvim
 - [x] feat: add adguardhome
 - [x] feat: add devenv
+- [x] feat: add nix-init
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add nix-init
 - [ ] feat: add nix-tree
 - [ ] feat: add winboat
 - [ ] fix(prisma): make prisma work
