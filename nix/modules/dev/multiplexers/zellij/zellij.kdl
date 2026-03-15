@@ -246,7 +246,7 @@ web_client {
     font "monospace"
 }
 
-theme "nixul"
+theme "stylix"
 
 default_mode "locked"
 default_layout "default"

@@ -19,6 +19,7 @@ in
         enable = true;
         autoEnable = true;
         base16Scheme = inputs.nix-colors.colorSchemes.${theme.colors.scheme};
+        image = theme.wallpaper or null;
 
         targets = {
         };

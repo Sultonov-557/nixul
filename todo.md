@@ -58,6 +58,7 @@
 - [ ] feat: add worktrunk
 - [ ] feat: add really really good aliases
 - [ ] feat: add impermanence
+- [ ] feat: add maltego
 - [ ] feat: add disko
 - [ ] feat: add kde plasma and plasma-manager
 - [ ] feat: add nix-melt

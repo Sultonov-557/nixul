@@ -5,6 +5,8 @@
       nixul.theme = {
         colors.scheme = "gruvbox-material-dark-hard";
 
+        wallpaper = ../../assets/public/wallpapers/gruvbox.png;
+
         cursor = {
           package = pkgs.bibata-cursors;
           name = "Bibata-Modern-Classic";

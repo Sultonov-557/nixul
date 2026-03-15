@@ -5,6 +5,8 @@
       nixul.theme = {
         colors.scheme = "catppuccin-mocha";
 
+        wallpaper = ../../assets/public/wallpapers/catppuccin.png;
+
         cursor = {
           package = pkgs.bibata-cursors;
           name = "Bibata-Modern-Classic";
