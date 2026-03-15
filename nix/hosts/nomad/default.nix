@@ -39,6 +39,7 @@
           core.security.network.firewall.enable = true;
           core.security.network.resolved.enable = true;
           core.security.network.unbound.enable = true;
+          core.security.network.adguardhome.enable = true;
           core.security.secrets.sops.enable = true;
           core.security.ssh.openssh.enable = true;
           core.security.sysctl.enable = true;

@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   system =
-    { cfg, ... }:
+    { cfg, config, ... }:
     {
       services.unbound = lib.mkIf cfg.enable {
         enable = true;
@@ -16,6 +16,7 @@
               "127.0.0.0/8 allow"
               "::1 allow"
             ];
+            port = 5335;
 
             local-zone = [ "home. static" ];
 
@@ -23,6 +24,8 @@
               ''"public.home. A 127.0.0.1"''
             ];
 
+            do-ip4 = true;
+            do-ip6 = true;
             cache-min-ttl = 3600;
             cache-max-ttl = 86400;
             prefetch = true;
@@ -31,7 +34,9 @@
         };
       };
 
-      networking.nameservers = lib.mkIf cfg.enable [ "127.0.0.1" ];
+      networking.nameservers = lib.mkIf (cfg.enable && !config.services.adguardhome.enable) [
+        "127.0.0.1:5335"
+      ];
     };
 
   options = lib.mkOption {
