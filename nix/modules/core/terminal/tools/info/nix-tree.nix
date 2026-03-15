@@ -6,7 +6,7 @@
       home.packages = lib.mkIf cfg.enable (
         with pkgs;
         [
-          tty-clock
+          nix-tree
         ]
       );
     };
@@ -17,7 +17,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable tty-clock";
+          description = "Enable nix-tree";
         };
       };
     };

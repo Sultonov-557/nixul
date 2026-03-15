@@ -1,11 +1,14 @@
 { lib, pkgs, ... }:
 {
-  system =
+  home =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        lsof
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          lsof
+        ]
+      );
     };
 
   options = lib.mkOption {

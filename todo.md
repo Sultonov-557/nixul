@@ -38,11 +38,11 @@
 - [x] feat: add adguardhome
 - [x] feat: add devenv
 - [x] feat: add nix-init
+- [ ] feat: add nix-tree
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add nix-tree
 - [ ] feat: add winboat
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!

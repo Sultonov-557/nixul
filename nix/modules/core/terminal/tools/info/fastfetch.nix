@@ -3,12 +3,8 @@
   home =
     {
       cfg,
-      osConfig,
       ...
     }:
-    let
-      palette = osConfig.nixul.theme.colors.palette;
-    in
     {
       programs.fastfetch = lib.mkIf cfg.enable {
         enable = true;
