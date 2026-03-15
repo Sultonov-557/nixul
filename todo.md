@@ -36,14 +36,11 @@
 - [x] feat: add vicinae
 - [x] feat: add mini-ai to nixvim
 - [x] feat: add adguardhome
+- [x] feat: add devenv
 
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add CyberChef
-- [ ] feat: add fail2ban
-- [ ] feat: add tmux
-- [ ] feat: add devenv
 - [ ] feat: add nix-init
 - [ ] feat: add nix-tree
 - [ ] feat: add winboat

@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   system =
     { cfg, ... }:
@@ -16,6 +21,7 @@
           public = {
             serverName = "public.home";
             root = ../../../assets/public;
+            default = true;
             locations."/" = {
               tryFiles = "$uri =404";
             };

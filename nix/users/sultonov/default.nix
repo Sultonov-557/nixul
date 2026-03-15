@@ -79,6 +79,7 @@
             dev.runtimes.javascript.bun.enable = true;
             dev.tools.containers.lazydocker.enable = true;
             dev.tools.env.direnv.enable = true;
+            dev.tools.env.devenv.enable = true;
             dev.tools.quality.deadnix.enable = true;
 
             hardware.units.storage.udiskie.enable = true;
