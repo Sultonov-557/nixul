@@ -15,6 +15,8 @@
 
       nix.settings = lib.mkIf cfg.enable {
         max-jobs = "auto";
+        min-free = 1 * 1024 * 1024 * 1024; # 1 GiB
+        max-free = 3 * 1024 * 1024 * 1024; # 3 GiB
         cores = 0;
         auto-optimise-store = true;
         keep-outputs = false;
