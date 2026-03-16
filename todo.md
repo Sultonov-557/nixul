@@ -46,7 +46,8 @@
 - [x] feat: add nushell
 - [x] feat: add really really good aliases
 
-- [-] test experimental features and merge with main branch
+- [x] test experimental features and merge with main branch
+
 - [-] feat: universal options for many modules
 
 - [ ] fix(prisma): make prisma work
