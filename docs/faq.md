@@ -1,9 +1,31 @@
 # FAQ
 
-- **Why `nh` instead of plain `nixos-rebuild`?** It wraps the usual commands with nicer defaults and keeps the interface consistent (`switch`, `test`, `build`, `rollback`).
-- **Do I need a dev shell?** No. Use the packaged tools directly: `nix fmt`, `deadnix -- --fail .`, `nix flake check`.
-- **Where do secrets live?** In encrypted files managed by `sops-nix`. See `docs/secrets.md`.
-- **How do I add a program only for me?** Set `nixul.users.<name>.modules.<path>.enable = true` in your host config.
-- **Can I mix system and home options in one file?** Modules can have both `system` and `home` exports in the same file. Host config should stay thin in `default.nix`.
-- **How do I know which host I'm on?** Check `nixul.host.name` in `nix/hosts/<host>/default.nix` and match it to `hostnamectl`.
-- **Is it safe to edit modules directly?** Yes, but prefer adding new modules over stuffing more into big ones. Small files are easier to debug at 3 AM.
+- **Why use `nh` instead of `nixos-rebuild`?**
+  `nh` wraps common NixOS workflows (`switch`, `test`, `build`, `rollback`) with a consistent interface. You can still use `nixos-rebuild` if you prefer.
+
+- **Do I need a dev shell?**
+  Not strictly. You can run tools directly (`nix fmt`, `nix flake check`). The recommended way to run `deadnix` is via the dev shell:
+  ```sh
+  nix develop --command deadnix --fail .
+  ```
+
+- **How are modules enabled?**
+  Through generated options under `nixul.host.modules` and `nixul.users.<name>.modules`. Most modules have an `enable` option plus additional settings.
+
+- **What are tags?**
+  Tags are pre-defined bundles of module options stored under `nix/nixul/tags`. Hosts call `loadTags [ ... ]` to turn on groups of features (base system, desktop, dev stacks, and more).
+
+- **Where do secrets live?**
+  In encrypted files under `nix/assets/secrets/` managed by `sops-nix`. See `docs/secrets.md` for details.
+
+- **How do I add a program only for me?**
+  Either enable a per-user module under `nixul.users.<name>.modules` or add packages to `home.packages` in your user config.
+
+- **Can I mix system and home options in one module?**
+  Yes. Modules can expose `system` and `home` functions to configure both layers from a single file.
+
+- **How do I know which host I am on?**
+  Check `nixul.host.name` in `nix/hosts/<host>/default.nix` and compare with `hostnamectl`.
+
+- **Is it safe to edit modules directly?**
+  Yes, but favour adding new modules or tags over piling more behaviour into huge ones. Smaller, focused files are easier to debug.

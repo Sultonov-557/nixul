@@ -1,35 +1,35 @@
 # Workflows
 
-## Daily rebuild workflow
+## Daily rebuild
 
-1. Pull latest changes (or commit yours).
-2. Format and lint:
+1. Pull latest changes (or commit your local changes).
+2. Format and lint Nix code:
    ```sh
    nix fmt
-   deadnix -- --fail .
+   nix develop --command deadnix --fail .
    ```
-3. Evaluate:
+3. Evaluate all hosts:
    ```sh
    nix flake check --all-systems --show-trace
    ```
-4. Test the build without switching:
+4. Build a host without activating it:
    ```sh
    nh os test .#<host>
    ```
-5. Switch if it looks good:
+5. Switch if everything looks good:
    ```sh
    nh os switch .#<host>
    ```
 
 ## Updating flake inputs
 
-1. Update dependencies:
+1. Update inputs:
    ```sh
    nix flake update
    ```
-2. Review `flake.lock` changes; if a dependency looks risky, pin it manually before proceeding.
-3. Run the daily workflow to test and switch.
-4. Keep a rollback generation around until you are confident.
+2. Inspect `flake.lock` to see what changed.
+3. Run the daily workflow (format, lint, `nix flake check`, `nh os test`, `nh os switch`).
+4. Keep at least one known-good generation in the bootloader until you are confident.
 
 ## Debugging failed builds
 
@@ -41,26 +41,25 @@
   ```sh
   nix build .#<host> --show-trace
   ```
-- For fetch or cache hiccups, retry with refresh:
+- For fetch or cache issues, retry with refresh:
   ```sh
   nix build --refresh .#<host>
   ```
-- If a module path is wrong, search the tree:
+- If a module or option path is wrong, search the tree:
   ```sh
   rg "myOptionName" nix/modules nix/hosts
   ```
 
 ## Rolling back safely
 
-- Immediate rollback to previous generation:
+- Immediately roll back the last activation:
   ```sh
   nh os rollback .#<host>
   ```
-- From the bootloader, pick an older generation; once stable, prune old ones:
+- From the bootloader, choose an older generation; once the system is stable, prune old ones:
   ```sh
   nix-collect-garbage -d
   ```
-- Avoid building over a broken generation; rollback first, then try a fixed build.
 
 ## Testing changes before switching
 
@@ -69,13 +68,13 @@
   ```sh
   nh os build .#<host>
   ```
-- Validate systemd units:
+- Check important services:
   ```sh
   systemctl status <unit>
   journalctl -u <unit>
   ```
-- When iterating on Home Manager options that read local files, use an impure rebuild only if required:
+- When iterating on modules that read local files, you can fall back to an impure rebuild as a last resort:
   ```sh
   sudo nixos-rebuild switch --impure --flake .#<host>
   ```
-  Avoid `--impure` unless you really need it.
+  Prefer pure builds where possible.

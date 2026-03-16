@@ -1,75 +1,58 @@
-# nixul
+# Nixul
 
-![Nixul logo](nix/assets/public/logo.png)
+Treat every machine like a tagged profile. Nixul is a NixOS + Home Manager stack that keeps hosts thin, pushes shared behavior into reusable modules, and lets you toggle full desktops, services, or per-user perks through tags.
 
-<div align="center">
+## Highlights
+- **Unified tree** – System and user modules share the same structure, so shells, editors, aliases, and keybinds stay aligned everywhere.
+- **Tag-driven intent** – Hosts only declare hardware and a short tag list; tags fan out into entire desktops, infra bundles, or user add-ons.
+- **Production habits** – Formatting, linting, and `flake check` are first-class, and modules default to sane, audited configurations.
+- **Batteries included** – Wayland stacks, Stylix themes, developer shells, observability tools, and AI assistants ship ready to flip on.
 
-![License](https://img.shields.io/github/license/Sultonov-557/nixul?style=for-the-badge&color=b4befe)
-![NixOS](https://img.shields.io/badge/NixOS-unstable-blue?style=for-the-badge&logo=nixos&logoColor=white&color=74c7ec)
-![Build Status](https://img.shields.io/github/actions/workflow/status/Sultonov-557/nixul/build.yml?style=for-the-badge&color=a6e3a1)
+## Layout at a glance
+| Location | Purpose |
+| --- | --- |
+| `flake.nix` | Wires inputs, exposes helpers from `nix/lib`, and defines the `nixul` flake outputs. |
+| `nix/lib` | Auto-imports modules, loads tags/themes, and offers host utilities. |
+| `nix/modules/**` | Feature modules grouped by domain (`apps`, `core`, `desktop`, `dev`, `hardware`, `services`). Each file gates one capability. |
+| `nix/hosts/<name>` | Real machines. They import hardware, pick users, and call `loadTags`. |
+| `nix/nixul/**` | Shared user options: aliases, keybinds, bookmarks, theme presets, and tag definitions. |
+| `docs/*.md` | Operational guides. `docs/LLM.md` exists but is intentionally left untouched during audits. |
 
-</div>
+## Batteries you actually use
+- **Desktops & UX** – Hyprland, Niri, Caelestia/Noctalia panels, stylix-powered themes, curated terminal + launcher stack.
+- **Developers** – Nixvim profiles, language runtimes (Node.js, Python, Rust, C++), multiplexers, Git helpers, DB/HTTP clients.
+- **Apps & workflows** – Browsers, media suites, messaging, security tooling, aliases, bookmarks, and tag-aware user bundles.
+- **Infra** – Ollama + Open WebUI, nginx ingress, VPN profiles, DNS/monitoring, sops-nix secrets, and container helpers.
 
-Modular NixOS + Home Manager configs that keep hosts thin and the shared module tree rich. Built to be fast, reversible, and calm enough for 3 AM fixes. 🌙✨
+## Getting started
+1. **Prep nix** – Use an existing NixOS host with flakes enabled; install [`nh`](https://github.com/viperML/nh) if you prefer that UX.
+2. **Clone** – `git clone <repo> /etc/nixos && cd /etc/nixos`.
+3. **Pick a base** – Copy a host from `nix/hosts/*` (e.g., `nomad`, `vanguard`) and rename it.
+4. **Wire hardware** – Drop in `hardware-configuration.nix`, set `nixul.host.name`, and enable your preferred tags via `loadTags [ ... ]`.
+5. **Switch** – `nh os switch .#<host>` or `sudo nixos-rebuild switch --flake .#<host>`.
 
-## Welcome to Nixul 🚀
+See `docs/installations.md` for the full walkthrough, including partitioning notes and remote builds.
 
-Declarative NixOS setups using **flake-parts**, with shared modules that configure both the system and user layers together (check out `nix/modules/desktop/wms/hyprland`!).
-
-Hosts carry only hardware specifics, hostname, and tiny overrides. Keeping it clean! 🧹
-
-## 📊 Stats & Tech
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Sultonov-557&show_icons=true&theme=catppuccin_mocha&bg_color=1e1e2e&title_color=cba6f7&text_color=cdd6f4&icon_color=f5c2e7&border_color=313244&hide_border=true" alt="Sultonov-557's Github Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sultonov-557&layout=compact&theme=catppuccin_mocha&bg_color=1e1e2e&title_color=cba6f7&text_color=cdd6f4&icon_color=f5c2e7&border_color=313244&hide_border=true" alt="Top Languages" />
-</p>
-
-<div align="center">
-
-![Nix](https://img.shields.io/badge/Nix-5277C3?style=for-the-badge&logo=nix&logoColor=white)
-![Hyprland](https://img.shields.io/badge/Hyprland-00A4C7?style=for-the-badge&logo=hyprland&logoColor=white)
-![Neovim](https://img.shields.io/badge/Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
-![Home Manager](https://img.shields.io/badge/Home_Manager-5277C3?style=for-the-badge&logo=nix&logoColor=white)
-![Stylix](https://img.shields.io/badge/Stylix-FCC624?style=for-the-badge&logo=nixos&logoColor=black)
-
-</div>
-
-## Get Started in Seconds ⚡
-
-1.  **Install NixOS** with flakes enabled & grab `nh` (`nix profile install nixpkgs#nh`).
-2.  **Clone** this repo to your machine. 👯
-3.  **Copy** a host folder under `nix/hosts/`, set `nixul.user`, hostname, and drop in your generated `hardware-configuration.nix`.
-4.  *(Optional)* Adjust `home.nix` for your displays and favorite apps. 🎨
-5.  **Build & Switch**: `nh os switch .#<host>` and liftoff! 🚀
-
-## Command Center 🛠️
-
+## Daily commands
 | Action | Command |
-| :--- | :--- |
-| **Rebuild & Switch** | `nh os switch .#<host>` |
-| **Test (No Switch)** | `nh os test .#<host>` |
-| **Boot (Next Only)** | `nh os boot .#<host>` |
-| **Build Only** | `nh os build .#<host>` |
-| **Format Code** | `nix fmt` |
-| **Lint Code** | `nix run nixpkgs#deadnix -- --fail .` |
-| **Health Check** | `nix flake check --all-systems --show-trace` |
+| --- | --- |
+| Switch host | `nh os switch .#<host>` or `sudo nixos-rebuild switch --flake .#<host>` |
+| Dry-run/test | `nh os test .#<host>` |
+| Build only | `nh os build .#<host>` |
+| Roll back | `nh os rollback .#<host>` |
+| Format | `nix fmt` |
+| Dead code scan | `nix develop --command deadnix --fail .` |
+| Evaluate | `nix flake check --all-systems --show-trace` |
 
-## Documentation 📚
+## Learn the system
+- `docs/architecture.md` – Import tree, tag loader, host lifecycle.
+- `docs/modules.md` – Writing feature modules, defining options, and gating behavior.
+- `docs/hosts.md` – Keeping machines thin and cloning them safely.
+- `docs/workflows.md` – Day-two ops, debugging, and reproducible maintenance.
+- `docs/customization.md`, `docs/secrets.md`, `docs/recovery.md`, `docs/faq.md`, `docs/installations.md` – Specific drill-downs for tuning, secrets, failures, and onboarding.
 
--   **Start Here**: [Install & Troubleshooting](docs/workflows.md) | [Recovery](docs/recovery.md)
--   **Deep Dive**: [Architecture](docs/architecture.md) | [Modules](docs/modules.md)
--   **Manage Hosts**: [Hosts Guide](docs/hosts.md)
--   **Secrets & Custom**: [Secrets](docs/secrets.md) | [Customization](docs/customization.md)
--   **Questions?**: [FAQ](docs/faq.md)
-
-## The Vibe 🧠
-
--   **Shared First**: Modules do the heavy lifting, hosts just ride along.
--   **Panic-Friendly**: Simple > Clever. We want to sleep at night. 😴
--   **Unified**: One module to rule them all (System + Home).
-
-## License / Credits 💖
-
-Personal NixOS config—**steal these ideas!**
-Powered by **NixOS**, **flake-parts**, **Home Manager**, **Stylix**, **sops-nix**, **Hyprland**, and friends.
+## Contributing without chaos
+- Run `nix fmt`, `nix develop --command deadnix --fail .`, and `nix flake check --all-systems --show-trace` before sending changes.
+- Keep modules scoped and composable; prefer new tags over duplicating host config.
+- Document new toggles or workflows under `docs/` so the tree stays self-explanatory.
+- Share improvements across users/hosts instead of forking behavior per machine.
