@@ -50,21 +50,53 @@
 - [-] feat: universal options for many modules
 
 - [ ] fix(prisma): make prisma work
-- [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(glance): make glance great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] feat: add realse tracker to glance
 
+- [ ] feat: opencode agent orchestration
+
 - [ ] fix: find old modules and convert to new format
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
+
+- [ ] feat: add system monitoring stack
+- [ ] feat: integrate btop config module
+- [ ] feat: add grafana dashboard module
+- [ ] feat: add prometheus exporter modules
+- [ ] feat: add glance system metrics widgets
+- [ ] feat: add log viewer module (loki or lnav)
+- [ ] feat: system health command (nixul doctor)
+
+- [ ] feat: project templates (node, rust, python)
+- [ ] feat: nixul new <template> command
+- [ ] feat: automatic direnv integration
+- [ ] feat: language dev modules (go, rust, zig, python)
+
+- [ ] feat: nixul cli
+- [ ] feat: nixul update
+- [ ] feat: nixul doctor
+- [ ] feat: nixul rebuild
+- [ ] feat: nixul garbage-collect
+- [ ] feat: nixul list enabled modules
+
+- [ ] feat: security audit module
+- [ ] feat: fail2ban module
+- [ ] feat: yubikey support
+- [ ] feat: disk encryption helpers
+
+- [ ] feat: self documenting system
+- [ ] feat: generate website from config
+- [ ] feat: nixul system diagram generator
+- [ ] feat: module tree visualizer
+
+- [ ] feat: multi-host orchestration
 
 ### maybe
 
 - [ ] feat: try out mineflake
 - [ ] feat: add nixarr
 - [ ] feat: bloat vicinae with extensions
-- [ ] feat: bloat opencode
 - [ ] feat: bloat nixvim
 
 ### take inspiration from
