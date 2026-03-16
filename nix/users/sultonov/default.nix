@@ -50,7 +50,7 @@
             apps.ai.gemini.enable = true;
             apps.ai.opencode.enable = true;
             apps.gaming.games.minecraft.enable = true;
-            apps.gaming.platform.lutris.enable = false;
+            apps.gaming.platform.lutris.enable = true;
             apps.gaming.compatibility.winboat.enable = true;
             apps.media.music.spicetify.enable = false;
             apps.media.music.yandex.enable = true;
@@ -77,7 +77,7 @@
             desktop.panels.caelestia.enable = false;
             desktop.panels.noctalia.enable = true;
             desktop.wms.hyprland.enable = true;
-            desktop.wms.niri.enable = true;
+            desktop.wms.niri.enable = false;
 
             dev.editor.nixvim.enable = true;
             dev.editor.zed.enable = false;

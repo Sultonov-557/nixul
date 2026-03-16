@@ -32,7 +32,6 @@
           "laptop"
           "audio"
           "compositor/hyprland"
-          "compositor/niri"
           "display-manager/gdm"
           "display-manager/sddm"
           "desktop"
