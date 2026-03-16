@@ -1,38 +1,70 @@
 # Architecture
 
-## High-level design philosophy
+## Goals
 
-- Keep hosts thin: hardware, hostname, user name, and small per-device tweaks live under `nix/hosts/`.
-- Keep everything else shared: reusable modules sit in `nix/modules/` and are pulled into every host.
-- Favor declarative switches with `nh` so the same command works for build, test, and boot outputs.
-- Minimize surprises: every option should be discoverable from the module tree or the host folder.
+- Thin host folders that describe hardware and high-level choices.
+- A deep shared module tree that holds almost all behaviour.
+- A module importer that discovers modules automatically and generates typed options.
+- A tags and themes system to enable groups of features quickly.
 
-## How modules are organized
+## Flake and library
 
-- Modules live under `nix/modules/` grouped by concern: `apps`, `core`, `desktop`, `dev`, `hardware`, `services`.
-- `nix/lib/module-importer.nix` discovers and loads all modules automatically. Directories that need ordering or shared defaults can add their own `default.nix`.
-- Module naming uses kebab-case files. Keep modules small and composable; if a folder reaches four or five items, split it.
+- `flake.nix` declares inputs such as `nixpkgs`, `home-manager`, `flake-parts`, `sops-nix`, `stylix`, and various desktop and service flakes.
+- The `outputs` call into `nix/lib`:
+  - `nix/lib/default.nix` defines `mkSystem` and `mkSystems`.
+  - Each host under `nix/hosts` becomes a `nixosSystem` exposed as both a flake `package` and a `check`.
+- `mkSystem` injects `inputs` and helpers into `specialArgs` so modules and hosts can use them:
+  - `loadTags` / `loadUserTags` – build module trees from tags.
+  - `loadTheme` – select theme modules by name.
+  - the full `inputs` set for accessing upstream flakes.
 
-## System vs home modules (blended)
+## Module importer
 
-- Shared modules often configure both layers together: system bits via the `system` function and Home Manager bits via the `home` function in the same file (see `nix/modules/desktop/wms/hyprland`).
-- Host-only user settings are configured via `nixul.users.<name>.modules.*` options in the host's `default.nix`.
-- Most shared features live in the module tree with their user configuration attached.
+- `nix/lib/module-importer.nix` is imported into every system.
+- It treats `nix/modules` as the root of the feature tree and:
+  - discovers all `.nix` files under that directory;
+  - loads each module via `module-loader.nix`;
+  - builds option trees for host and user modules;
+  - constructs Home Manager config per user.
+- Modules are regular Nix modules that return an attribute set which may export:
+  - `options` – a subtree describing configuration for the module;
+  - `system` – a function that produces NixOS config;
+  - `home` – a function that produces Home Manager config.
+- For every discovered module, the importer generates options:
+  - `nixul.host.modules.<path>` for host-level configuration;
+  - `nixul.users.<name>.modules.<path>` for per-user configuration.
+  The `<path>` is derived from the modules location under `nix/modules` (for example `core/system/nix/nix`).
 
-## How options flow through the system
+## Host model
 
-1. `flake.nix` defines inputs and hands `inputs` to the library.
-2. `nix/lib/default.nix` exposes `mkSystems`, which:
-   - Reads host folders under `nix/hosts/`.
-   - Builds `nixosSystem` per host with `inputs` in `specialArgs`.
-   - Imports `nix/nixul` (user/host options), `nix/lib/module-importer.nix` (auto-discovers modules), and the host folder.
-3. `nix/lib/module-importer.nix` collects every module file automatically and generates `nixul.host.modules.*` and `nixul.users.<name>.modules.*` options.
-4. Host configs can override or extend any shared option because they are imported last in their folder.
+- Each host lives in `nix/hosts/<hostname>/default.nix`.
+- A typical host:
+  - imports its `hardware-configuration.nix`;
+  - imports one or more users from `nix/users`;
+  - picks a theme via `loadTheme`;
+  - configures `home-manager.users.<name>` with host-specific bits (monitors, keybinds, etc.);
+  - sets `nixul.host` attributes such as `name`, `timezone`, `location`, and `bookmarks`;
+  - chooses which features to enable through tags and explicit module overrides.
+- Hosts usually merge:
+  - a base set of modules loaded from tags;
+  - a small inline attribute set of overrides and extra features.
 
-## How to reason about the config
+This keeps most logic in shared modules while allowing hosts to tweak details.
 
-- Start at `flake.nix` to see what the flake exposes (packages/checks per host).
-- Open `nix/lib/default.nix` to understand how hosts are constructed.
-- Browse `nix/modules/` to see the shared feature set; check `nix/modules/README.md` for placement guidance.
-- Look at `nix/hosts/<host>/default.nix` for machine-specific settings (hostname, timezone).
-- If something is mysterious, search for the option name in `nix/modules/` first; hosts should only be thin wrappers.
+## Tags and themes
+
+- Tags live under `nix/nixul/tags` and describe reusable module bundles such as:
+  - `base`, `desktop`, `dev/*`, `gaming/*`, `ai/*`, and more.
+- Hosts call `loadTags [ "base" "wayland" "desktop" ... ]` to build a module tree for `nixul.host.modules`.
+- User-specific tags can be loaded with `loadUserTags` from host or user configs.
+- Themes live under `nix/nixul/themes`; `loadTheme "catppuccin-mocha"` (for example) returns a module that configures Stylix and related theming.
+
+## Reasoning about a configuration
+
+When debugging or extending Nixul:
+
+- Start from `flake.nix` to see inputs and flake outputs.
+- Read `nix/lib/default.nix` and `nix/lib/module-importer.nix` to understand how hosts and modules are wired.
+- Check `nix/hosts/<host>/default.nix` for host-specific imports, tags, and overrides.
+- Explore `nix/modules` for the feature you care about; the path usually matches the option path under `nixul.host.modules` or `nixul.users.<name>.modules`.
+- If an option seems mysterious, search for it in `nix/modules` first; host folders should remain small wrappers.

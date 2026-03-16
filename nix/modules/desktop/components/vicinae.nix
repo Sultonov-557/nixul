@@ -18,7 +18,6 @@
           autoStart = true;
         };
 
-        # TODO: bloat with extensions
         extensions = [
           (config.lib.vicinae.mkExtension {
             name = "nix";
@@ -39,6 +38,11 @@
           (config.lib.vicinae.mkExtension {
             name = "it-tools";
             src = "${extensionStore}/extensions/it-tools";
+          })
+          (config.lib.vicinae.mkRayCastExtension {
+            name = "gif-search";
+            sha256 = "sha256-/59ZaKe6gUkemauakgSvwkb76kN3aciKHgAh2yYk6jI=";
+            rev = "f1d8134c3d1373158c864b489ee3c0fdb436c9d3";
           })
         ];
       };

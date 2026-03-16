@@ -17,6 +17,7 @@
   nixul.host = {
     name = "nomad";
     timezone = "Asia/Tashkent";
+    location = "Urganch";
     bookmarks = import ./bookmarks.nix;
 
     modules =
@@ -37,7 +38,6 @@
           core.security.network.acme.enable = true;
           core.security.network.avahi.enable = true;
           core.security.network.firewall.enable = true;
-          core.security.network.resolved.enable = true;
           core.security.network.unbound.enable = true;
           core.security.network.adguardhome.enable = true;
           core.security.secrets.sops.enable = true;
@@ -116,7 +116,7 @@
           apps.media.audio.pavucontrol.enable = true;
           apps.media.audio.playerctl.enable = true;
           apps.media.audio.pulsemixer.enable = true;
-          apps.media.photo.aseprite.enable = true;
+          apps.media.photo.aseprite.enable = false;
           apps.media.photo.gimp.enable = true;
           apps.media.photo.lutgen.enable = true;
           apps.media.video.ffmpeg.enable = true;
@@ -135,7 +135,7 @@
           apps.user.internet.qbitttorrent.enable = true;
           apps.user.productivity.libreoffice.enable = true;
           apps.user.productivity.obsidian.enable = true;
-          apps.user.productivity.todoist.enable = true;
+          apps.user.productivity.todoist.enable = false;
 
           desktop.components.notifications.ntfy.enable = true;
           desktop.display-manager.gdm.enable = true;

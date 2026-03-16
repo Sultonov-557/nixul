@@ -49,24 +49,23 @@
 - [-] test experimental features and merge with main branch
 - [-] feat: universal options for many modules
 
-- [ ] feat: add brotab (vicinae ext)
-- [ ] feat: bloat vicinae with extensions
 - [ ] fix(prisma): make prisma work
 - [ ] fix(dashy): make dashy great again!!!
 - [ ] fix(glance): make glance great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
+- [ ] feat: add realse tracker to glance
 
 - [ ] fix: find old modules and convert to new format
-- [ ] fix: tags system
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
-
-- [-] fix: remove worktrunk flake (it got added to nixpkgs in 11 March 2026)
 
 ### maybe
 
 - [ ] feat: try out mineflake
 - [ ] feat: add nixarr
+- [ ] feat: bloat vicinae with extensions
+- [ ] feat: bloat opencode
+- [ ] feat: bloat nixvim
 
 ### take inspiration from
 

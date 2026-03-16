@@ -3,7 +3,7 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ nodePackages_latest.nodejs ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ nodejs_22 ]);
     };
 
   options = lib.mkOption {

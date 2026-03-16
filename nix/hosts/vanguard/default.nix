@@ -49,7 +49,6 @@
           core.security.network.acme.enable = true;
           core.security.network.avahi.enable = true;
           core.security.network.firewall.enable = true;
-          core.security.network.resolved.enable = true;
           core.security.network.unbound.enable = true;
           core.security.network.adguardhome.enable = true;
           core.security.secrets.sops.enable = true;

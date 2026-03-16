@@ -6,7 +6,7 @@ let
 in
 {
   system =
-    { cfg, ... }:
+    { cfg, nixul, ... }:
     {
       services.glance = lib.mkIf cfg.enable {
         enable = true;
@@ -23,8 +23,12 @@ in
                     hour-format = "24h";
                   }
                   {
+                    type = "calendar";
+                    first-day-of-week = "monday";
+                  }
+                  {
                     type = "weather";
-                    location = cfg.location or config.nixul.location or "The Moon";
+                    location = cfg.location or nixul.host.location or "The Moon";
                   }
                 ];
               }
@@ -36,6 +40,11 @@ in
                     search-engine = "google";
                   }
                   {
+                    type = "github-releases";
+                    title = "Release Tracker";
+                    repositories = [ ];
+                  }
+                  {
                     type = "group";
                     widgets = [
                       {
@@ -45,11 +54,6 @@ in
                       }
                     ];
                   }
-                  {
-                    type = "hacker-news";
-                    limit = 15;
-                    collapse-after = 5;
-                  }
                 ];
               }
             ];
@@ -58,29 +62,27 @@ in
       };
 
       services.nginx.virtualHosts.glance =
-        lib.mkIf (cfg.enable && config.nixul.host.modules.services.server.nginx.enable) {
-          serverName = "glance.home";
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:8080";
+        lib.mkIf (cfg.enable && config.nixul.host.modules.services.server.nginx.enable)
+          {
+            serverName = "glance.home";
+            locations."/" = {
+              proxyPass = "http://127.0.0.1:8080";
+            };
           };
-        };
 
       services.unbound.settings.server.local-data =
-        lib.mkIf (cfg.enable && config.nixul.host.modules.core.security.network.unbound.enable) [
-          ''"glance.home. A 127.0.0.1"''
-        ];
+        lib.mkIf (cfg.enable && config.nixul.host.modules.core.security.network.unbound.enable)
+          [
+            ''"glance.home. A 127.0.0.1"''
+          ];
 
       assertions = [
         {
-          assertion =
-            (!cfg.enable)
-            || config.nixul.host.modules.services.server.nginx.enable;
+          assertion = (!cfg.enable) || config.nixul.host.modules.services.server.nginx.enable;
           message = "services.monitoring.glance requires services.server.nginx.enable = true";
         }
         {
-          assertion =
-            (!cfg.enable)
-            || config.nixul.host.modules.core.security.network.unbound.enable;
+          assertion = (!cfg.enable) || config.nixul.host.modules.core.security.network.unbound.enable;
           message = "services.monitoring.glance requires core.security.network.unbound.enable = true";
         }
       ];

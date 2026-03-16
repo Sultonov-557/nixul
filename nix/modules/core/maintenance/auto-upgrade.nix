@@ -6,7 +6,7 @@
       system.autoUpgrade = lib.mkIf cfg.enable {
         enable = true;
         dates = "daily";
-        upgrade = false;
+        upgrade = true;
       };
     };
 
