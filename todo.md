@@ -60,8 +60,6 @@
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
 
-- [-] fix: remove worktrunk flake (it got added to nixpkgs in 11 March 2026)
-
 ### maybe
 
 - [ ] feat: try out mineflake

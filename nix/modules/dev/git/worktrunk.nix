@@ -1,16 +1,14 @@
-{ lib, inputs, ... }:
+{ lib, pkgs, ... }:
 {
   home =
     { cfg, ... }:
     {
-      imports = [ inputs.worktrunk.homeModules.default ];
-
-      programs.worktrunk = lib.mkIf cfg.enable {
-        enable = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
-        enableFishIntegration = true;
-      };
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          worktrunk
+        ]
+      );
     };
 
   options = lib.mkOption {

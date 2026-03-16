@@ -45,7 +45,6 @@
           core.security.network.acme.enable = true;
           core.security.network.avahi.enable = true;
           core.security.network.firewall.enable = true;
-          core.security.network.resolved.enable = true;
           core.security.network.unbound.enable = true;
           core.security.secrets.sops.enable = true;
           core.security.ssh.openssh.enable = true;
