@@ -17,6 +17,7 @@
   nixul.host = {
     name = "nomad";
     timezone = "Asia/Tashkent";
+    location = "Urganch";
     bookmarks = import ./bookmarks.nix;
 
     modules =
