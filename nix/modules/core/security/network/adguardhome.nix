@@ -5,7 +5,6 @@
     {
       services.adguardhome = lib.mkIf cfg.enable {
         enable = true;
-        mutableSettings = true;
         port = 9000;
 
         settings = {
