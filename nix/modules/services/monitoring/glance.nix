@@ -40,11 +40,6 @@ in
                     search-engine = "google";
                   }
                   {
-                    type = "github-releases";
-                    title = "Release Tracker";
-                    repositories = [ ];
-                  }
-                  {
                     type = "group";
                     widgets = [
                       {
