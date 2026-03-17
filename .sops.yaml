@@ -1,3 +1,10 @@
-reation_rules:
-  - path_regex: ./nix/assets/secrets/*\.yaml
-  - age: age1n0e5a3hecpcxzeusgt4hhsg408k6h3jracgy8pae9wcz2m6p69es39t8z9
+keys:
+  - &nomad age1n0e5a3hecpcxzeusgt4hhsg408k6h3jracgy8pae9wcz2m6p69es39t8z9
+  - &vanguard age1hjp0g05semkv6ch484na9n6hvgp44qlsx4zxtkad3mgx0nudla5s5pkr86
+
+creation_rules:
+  - path_regex: ^nix/assets/secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *nomad
+          - *vanguard
