@@ -84,6 +84,16 @@
 
 - [ ] feat: multi-host orchestration
 
+- [ ] plan(layering): map tag/user/host precedence rules in docs with real examples and one recommended override pattern
+- [ ] feat(debug): add `nixul trace` command (or script) to show final merged values for selected option paths
+- [ ] feat(validation): add check that warns on conflicting overrides across tags, hosts, and users for the same module subtree
+- [ ] refactor(modules): add explicit `enable` + `preset` options for opinionated modules so defaults are easy to keep or override
+- [ ] docs(modules): document module default behaviors and override points in a consistent per-module template
+- [ ] perf(profiles): split heavy all-in bundles into slim/base/full profiles to reduce closure size and build time
+- [ ] perf(metrics): add flake check output for closure-size/build-time deltas to catch profile bloat early
+- [ ] feat(multi-user): provide reusable multi-user tags and examples for shared vs per-user module ownership
+- [ ] feat(guardrails): add assertions/checks for duplicate primary-user assumptions and unsafe host-only toggles in multi-user setups
+
 ### maybe
 
 - [ ] feat: try out mineflake
