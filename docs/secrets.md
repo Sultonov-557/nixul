@@ -1,60 +1,50 @@
 # Secrets
 
-## Overview
+Nixul uses `sops-nix` with an encrypted repository file at `nix/assets/secrets/secrets.yaml`.
 
-Nixul uses `sops-nix` to manage secrets. Encrypted files live in the repo; decrypted content is only available at build time on machines that hold the appropriate Age key.
+## Current module path
+- Shared secrets integration is provided by `nix/modules/core/security/secrets/sops.nix`.
+- Hosts usually enable it through `nixul.host.modules.core.security.secrets.sops.enable = true` (directly or via tags/overrides).
 
-- Default secrets file: `nix/assets/secrets/secrets.yaml`.
-- Default Age key location: `/home/${nixul.user}/.config/sops/age/keys.txt`.
-
-## Enabling sops-nix
-
-The flake already includes `sops-nix` as an input. To enable it, import the module in either a shared module or a host:
-
-```nix
-{ inputs, ... }:
-{
-  imports = [ inputs.sops-nix.nixosModules.sops ];
-}
-```
-
-Most setups will instead rely on the shared module under `nix/modules/core/security/secrets/sops.nix`, which wires sensible defaults.
-
-## Editing or rotating secrets
-
-1. Create an Age key if you do not already have one:
-   ```sh
+## Initial setup
+1. Generate an Age key:
+   ```bash
    mkdir -p ~/.config/sops/age
    age-keygen -o ~/.config/sops/age/keys.txt
    ```
-2. Export the public key so you can add it to `secrets.yaml`:
-   ```sh
-   grep public ~/.config/sops/age/keys.txt
+2. Export key file for editing:
+   ```bash
+   export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
    ```
-3. Edit the main secrets file:
-   ```sh
-   export SOPS_AGE_KEY_FILE=$HOME/.config/sops/age/keys.txt
+3. Edit encrypted secrets:
+   ```bash
    sops nix/assets/secrets/secrets.yaml
    ```
-4. Reference secrets from a module. Example:
-   ```nix
-   { config, ... }:
-   {
-     sops.secrets."myapp.env".sopsFile = ../../../nix/assets/secrets/secrets.yaml;
 
-     systemd.services.myapp.serviceConfig.EnvironmentFile =
-       config.sops.secrets."myapp.env".path;
-   }
-   ```
-5. Rebuild and test:
-   ```sh
-   nh os test .#<host>
-   nh os switch .#<host>
-   ```
+## Referencing a secret
+```nix
+{
+  sops.secrets."myapp.env".sopsFile = ../../../assets/secrets/secrets.yaml;
 
-## Common pitfalls
+  systemd.services.myapp.serviceConfig.EnvironmentFile =
+    config.sops.secrets."myapp.env".path;
+}
+```
 
-- Forgetting to copy the Age key to a new machine; builds that need secrets will fail until the key exists at the expected path.
-- Pointing `sopsFile` at the wrong location; keep paths inside the repo so they are available at evaluation time.
-- Editing secrets without setting `SOPS_AGE_KEY_FILE`, resulting in unencrypted files.
-- Accidentally committing decrypted files; `git status` should show only encrypted blobs under `nix/assets/secrets`.
+Adjust the `sopsFile` path relative to the file where you define the secret.
+
+## Validate
+```bash
+nh os test .#<host>
+nh os switch .#<host>
+```
+
+`nh os test` activates a temporary generation; use `switch` after validation.
+
+## Common failure modes
+- Missing key on target machine.
+- Wrong `sopsFile` path.
+- Editing without `SOPS_AGE_KEY_FILE` set.
+- Committing decrypted files instead of encrypted `sops` data.
+
+See `docs/workflows.md` for deployment flow and `docs/recovery.md` for rollback steps.

@@ -1,80 +1,40 @@
 # Workflows
 
-## Daily rebuild
+## Command semantics (`nh`)
+- `nh os build .#<host>`: build only, no activation.
+- `nh os test .#<host>`: build and activate a temporary generation for validation.
+- `nh os switch .#<host>`: build, activate, and persist generation as default.
+- `nh os rollback .#<host>`: roll back to the previous persisted generation.
 
-1. Pull latest changes (or commit your local changes).
-2. Format and lint Nix code:
-   ```sh
-   nix fmt
-   nix develop --command deadnix --fail .
-   ```
-3. Evaluate all hosts:
-   ```sh
-   nix flake check --all-systems --show-trace
-   ```
-4. Build a host without activating it:
-   ```sh
-   nh os test .#<host>
-   ```
-5. Switch if everything looks good:
-   ```sh
-   nh os switch .#<host>
-   ```
+`test` is non-persistent: reboot returns to persisted default unless `switch` was run.
 
-## Updating flake inputs
+## Daily loop
+```bash
+nix fmt
+nix develop --command deadnix --fail .
+nix flake check --all-systems --show-trace
+nh os test .#<host>
+nh os switch .#<host>
+```
 
-1. Update inputs:
-   ```sh
-   nix flake update
-   ```
-2. Inspect `flake.lock` to see what changed.
-3. Run the daily workflow (format, lint, `nix flake check`, `nh os test`, `nh os switch`).
-4. Keep at least one known-good generation in the bootloader until you are confident.
+## Input updates
+```bash
+nix flake update
+nix flake check --all-systems --show-trace
+nh os test .#<host>
+```
 
-## Debugging failed builds
+Review `flake.lock` before switching.
 
-- Show full evaluation errors:
-  ```sh
-  nix flake check --all-systems --show-trace
-  ```
-- Build a single host with extra logs:
-  ```sh
-  nix build .#<host> --show-trace
-  ```
-- For fetch or cache issues, retry with refresh:
-  ```sh
-  nix build --refresh .#<host>
-  ```
-- If a module or option path is wrong, search the tree:
-  ```sh
-  rg "myOptionName" nix/modules nix/hosts
-  ```
+## Debugging
+- Full traces: `nix flake check --all-systems --show-trace`.
+- Build one host: `nix build .#<host> --show-trace`.
+- Refresh fetches: `nix build --refresh .#<host>`.
+- Find wrong option/tag usage: `rg "<term>" nix/modules nix/nixul/tags nix/hosts`.
 
-## Rolling back safely
+## Rollback and recovery
+- Fast rollback: `nh os rollback .#<host>`.
+- Bootloader fallback: choose older generation if system fails to boot.
+- Garbage collect only after a known-good generation exists: `nix-collect-garbage -d`.
 
-- Immediately roll back the last activation:
-  ```sh
-  nh os rollback .#<host>
-  ```
-- From the bootloader, choose an older generation; once the system is stable, prune old ones:
-  ```sh
-  nix-collect-garbage -d
-  ```
-
-## Testing changes before switching
-
-- Use `nh os test .#<host>` for an activation-free test build.
-- For risky changes, build only:
-  ```sh
-  nh os build .#<host>
-  ```
-- Check important services:
-  ```sh
-  systemctl status <unit>
-  journalctl -u <unit>
-  ```
-- When iterating on modules that read local files, you can fall back to an impure rebuild as a last resort:
-  ```sh
-  sudo nixos-rebuild switch --impure --flake .#<host>
-  ```
-  Prefer pure builds where possible.
+See `docs/installations.md` for first install and `docs/recovery.md` for incident procedures.
