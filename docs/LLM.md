@@ -1,157 +1,147 @@
 # Nixul for LLMs
 
 This file is the fastest way for an LLM to understand and explain Nixul without re-reading the whole repo.
-It highlights architecture, workflows, option semantics, and angles for tutorials, reviews, or blog posts.
+It reflects the current architecture based on host/user tags plus the module importer.
 
 ## Quick context
 
-- Purpose: modular NixOS + Home Manager setup that keeps host folders thin and pushes reusable features into `nix/modules`.
-- Style: flake-based, flake-parts driven, declarative and reversible; prefers small, composable modules over monoliths.
-- Targets: Wayland desktops (Hyprland by default), curated dev/security toolchains, self-hosted services, and themed user experience via Stylix.
+- Purpose: modular NixOS + Home Manager flake where hosts stay thin and reusable behavior lives in `nix/modules`.
+- Composition model: `loadTags` and `loadUserTags` create base module trees, then hosts/users override with `lib.recursiveUpdate`.
+- Scope: desktop systems (Hyprland/Niri), developer tooling, security tooling, and optional self-hosted services.
 
 ## Repository map (mental model)
 
-- `flake.nix`: inputs (nixpkgs, home-manager, flake-parts, sops-nix, stylix, hyprland/niri, nixvim, panels), outputs per host via flake-parts.
-- `nix/lib`: helper functions
-  - `default.nix`: `mkSystems` that scans `nix/hosts`, builds `nixosSystem` per host, and wires modules + Home Manager with `inputs` in `specialArgs`.
-  - `import-tree.nix`: recursively imports every `.nix` under `nix/modules` (unless a `default.nix` is present).
-- `nix/modules`: shared features grouped by domain (apps, core, desktop, dev, hardware, services); auto-imported.
-- `nix/nixul`: base options (`nixul.user/email/hostname/timezone/location`) and the cross-WM keybind system.
-- `nix/hosts/<host>`: thin host definitions (hardware import, Home Manager import, host-specific keybinds/displays). Current hosts: `nomad`, `vanguard`.
-- `nix/assets`: static files (logo, wallpapers) and `assets/secrets/secrets.yaml` for sops.
-- `docs`: human docs (architecture, modules, workflows, recovery, secrets, hosts, customization). This file is the LLM-specific overlay.
-- Tooling: `package.json` only for commit tooling; `bun.lock`/`node_modules` exist but are not central.
+- `flake.nix`: defines inputs and builds `nixosConfigurations` for every folder under `nix/hosts`.
+- `nix/lib/default.nix`: `mkSystem`/`mkSystems`, injects `loadTags`, `loadUserTags`, and `loadTheme` via `specialArgs`.
+- `nix/lib/module-importer.nix`: discovers module files, builds generated option trees, evaluates `system` and `home` module functions.
+- `nix/lib/module-importer/*`: importer internals (`discover.nix`, `module-loader.nix`, `options.nix`, `host.nix`, `users.nix`, `types.nix`, `utils.nix`).
+- `nix/modules/**`: shared module files grouped by domain (`apps`, `core`, `desktop`, `dev`, `hardware`, `services`).
+- `nix/nixul/tags/host/**`: reusable host-side bundles.
+- `nix/nixul/tags/user/**`: reusable per-user bundles.
+- `nix/nixul/themes/*`: theme modules loaded through `loadTheme`.
+- `nix/hosts/<host>`: host entrypoints (`default.nix`, hardware config, optional `bookmarks.nix`).
+- `nix/users/<user>`: user entrypoints (`nixul.users.<name>` plus user tags and overrides).
+- `nix/assets/public`: static assets (logo, wallpapers); `nix/assets/secrets/secrets.yaml`: encrypted secrets file.
 
 ## Build, quality, and workflows
 
-- Formatting: `nix fmt` (nixfmt, 2-space indent).
-- Lint: `nix develop --command deadnix --fail .` (or `deadnix -- --fail .` if already installed).
+- Format: `nix fmt`.
+- Lint: `nix develop --command deadnix --fail .`.
 - Checks/tests: `nix flake check --all-systems --show-trace`.
-- Rebuilds: `nh os switch .#<host>` (or `nh os test/build/boot`).
-- Dev shell: `nix develop` for nixfmt + deadnix.
-- Rollback: `nh os rollback .#<host>` or select generation at bootloader.
+- Build host: `nh os build .#<host>`.
+- Validate activation: `nh os test .#<host>`.
+- Persist activation: `nh os switch .#<host>`.
+- Roll back: `nh os rollback .#<host>`.
 
 ## Architecture flow
 
-1. `flake.nix` gathers inputs and calls `lib.mkSystems` with `hostsDir` + `modulesDir`.
-2. `lib/mkSystems` builds a `nixosSystem` per host, injecting `inputs` into `specialArgs`, and imports `nix/nixul`, the host folder, Home Manager, and the shared module tree.
-3. `nix/modules/default.nix` uses `import-tree.nix` to pull every module.
-4. Modules are imported directly; each module defines its own options and gating.
-5. System and Home Manager configs often live together in one module to keep behavior unified.
+1. `flake.nix` calls `nix/lib/default.nix` to generate one `nixosSystem` per host directory.
+2. Base modules for each host are: `nix/nixul`, `nix/hosts/<host>`, Home Manager module wiring, and `nix/lib/module-importer.nix`.
+3. Hosts set `nixul.host.modules`; users set `nixul.users.<name>.modules`.
+4. Importer discovers `nix/modules/**` and maps each file path to an option path.
+5. Importer evaluates each module's `system` and `home` functions with that module's `cfg` subtree.
 
-## Host model (thin)
+## Module contract and generated options
 
-- A host folder usually has `default.nix` (sets `nixul.*` and imports), `hardware-configuration.nix`, and optional `home.nix`/keybinds.
-- Current hosts
-  - `nomad`: Intel GPU, Hyprland, Noctalia panel, rich keybind set in `nix/hosts/nomad/keybinds/*.nix`, Stylix theme `gruvbox-material`.
-  - `vanguard`: NVIDIA GPU + Intel, Hyprland, Noctalia, Stylix theme `gruvbox`, dual-monitor layout in `home.nix`.
-- Adding a host: copy an existing folder, set `nixul.user/email/hostname/timezone/location`, import hardware config, adjust `home.nix` (monitors, desktop tweaks), set module booleans.
+- Module files can return `options`, `system`, and `home` attributes.
+- Generated option roots:
+  - `nixul.host.modules.<path>` for host-side modules.
+  - `nixul.users.<user>.modules.<path>` for per-user modules.
+- Path mapping is file-based. Example: `nix/modules/services/ai/ollama.nix` -> `services.ai.ollama`.
+- Keep modules focused, kebab-case, and reusable; prefer splitting over adding broad feature flags.
 
-## Module system and options
+## Host and user model
 
-- Options are defined per module; there is no auto-generated boolean.
-- Modules can add their own options/imports and handle conditional logic internally.
+- Hosts are thin and focus on machine identity plus module selection.
+- Host fields are under `nixul.host` (not the old flat `nixul.user/email/hostname/...` style).
+- Current host folders: `nix/hosts/nomad`, `nix/hosts/vanguard`, and `nix/hosts/example`.
+- User definitions live under `nix/users/*` and populate `nixul.users.<name>`.
+- `nixul.primaryUser` is set from user entrypoints and used by modules that need a default user context.
 
-## Feature catalog (by domain)
+## Tags and themes
 
-- Apps (`nix/modules/apps`): AI tools (Codex with instructions, OpenCode with provider presets, Gemini/Cursor), gaming stack (Steam, Lutris, Gamescope, Gamemode, Proton/Wine, Minecraft), media (mpv, ffmpeg, GIMP, Aseprite, Lutgen, Yandex Music, Spicetify), terminals (Ghostty, Kitty, Foot), file tools (Nautilus, Yazi, archives, ncdu, baobab), system utilities (GParted, Mission Center), browsers (Chrome, Zen, Tor), comms (Discord, Telegram, Thunderbird), productivity (Obsidian, LibreOffice, Todoist, Khal), qBittorrent.
-- Core (`nix/modules/core`): bootloader (GRUB EFI, latest kernel, NTFS support), identity (locale/timezone/user shell), Nix tuning (allowUnfree, substituters including Hyprland/Niri caches, nix-index, nix-ld, nh), desktop basics (dbus, xdg), security (firewall + nftables, Unbound DNS with `home.` zone, systemd-resolved, Avahi, ACME defaults from `nixul.email`, Polkit, OpenSSH + HM ssh config, sysctl), maintenance (auto-upgrade, GC, journald tweaks), terminal tooling (fish/zsh shells, Starship, Atuin, The Fuck, fzf, ripgrep, zoxide, bat, eza, btop, tcpdump, lsof, tty-clock, fastfetch).
-- Desktop (`nix/modules/desktop`): Wayland + X fallback toggles, display managers (GDM default; alternatives SDDM, Ly, Lemurs, Cosmic), WMs (Hyprland with defaults + settings + keybind adapter; Niri via upstream home module), panels (Noctalia with extensive settings split; Caelestia shell/launcher), components (Mako + ntfy notifications, polkit agents, cliphist, screenshot scripts with grim/slurp/swappy/wl-clipboard), theming (Stylix base, theme modules: Gruvbox, Gruvbox Material, Tokyo Night; Stylix targets adjust cursors/fonts/opacity).
-- Dev (`nix/modules/dev`): editors (Nixvim with rich plugin set + options, Antigravity, Zed), git tooling (git, git-extras, GitHub CLI, LazyGit), multiplexers (Zellij with bundled `config.kdl`), runtimes (Node.js, Bun, Yarn, Prisma, Python, Rust, C++), HTTP clients/servers (xh, Bruno, Hurl, SimpleHTTP, ngrok), DB tools (DBeaver, usql), containers (Lazydocker), quality (Biome, Deadnix), security toolset (Metasploit, Caido, Wireshark, Bettercap, Nmap/Katana/Nuclei, Netcat, Ettercap, Wifite2, Hashcat/Hydra/John, wordlists, inetutils).
-- Hardware (`nix/modules/hardware`): audio (PipeWire + WirePlumber, RTKit), Bluetooth (bluetoothd + Blueman), networking (NetworkManager), power (power-profiles-daemon, thermald, upower, brightnessctl helpers), CPUs (Intel/AMD toggles), GPUs (Mesa/OpenGL stack, NVIDIA settings), RAM (zram), storage (Udiskie, usb-automount helpers), inputs (QMK/VIA tools), printing/scanning (CUPS, HPLIP, SANE).
-- Services (`nix/modules/services`): AI (Ollama with `glm-5:cloud`, Open WebUI proxied at `ai.home`), containers (Docker, Kubernetes helpers: kubectl/kind/minikube), databases (PostgreSQL, Redis), monitoring/dashboards (Dashy at `dashy.home`, Glance dashboard using `nixul.location` for weather), server (Nginx with `public.home` vhost pointing to `nix/assets/public`), VPN (WireGuard, Tailscale, OpenVPN). DNS entries for services integrate with Unbound when enabled.
+- Host tags: load from `nix/nixul/tags/host/**` with `loadTags [ ... ]`.
+- User tags: load from `nix/nixul/tags/user/**` with `loadUserTags [ ... ]`.
+- Themes: load from `nix/nixul/themes/*` with `(loadTheme "<name>")` in host imports.
+- Recommended composition pattern: tags for reusable baseline, explicit `modules = { ... }` overrides for host/user specifics.
+
+## Key universal subsystems
+
+- Keybind schema/adapters: `nix/nixul/universal/keybinds/**` with Hyprland and Niri adapters.
+- Bookmarks schema/adapters: `nix/nixul/universal/bookmarks/**` for browser/dashy/glance outputs.
+- Aliases: `nix/nixul/universal/aliases/**`, typically configured from user files.
+- Secrets: `nix/modules/core/security/secrets/sops.nix` with encrypted data at `nix/assets/secrets/secrets.yaml`.
+
+## Reliable talking points
+
+- Nixul uses generated module option trees instead of hand-wiring every shared module.
+- Tags are first-class composition units for both host and user config.
+- Hosts stay small; most behavior belongs in modules or tags.
+- System and Home Manager concerns can be co-located in one module file (`system` + `home`).
+- The operational loop is `nix fmt` -> `deadnix` -> `nix flake check` -> `nh os test/switch`.
+
+## Feature catalog (high-level by domain)
+
+- Apps (`nix/modules/apps`): AI CLI/desktop tools, gaming launchers and compatibility tools, browsers, communication apps, media tooling, terminals, and productivity apps.
+- Core (`nix/modules/core`): boot, locale/time/user identity, Nix tooling (`nh`, docs, nix-index, nix-ld), security/network defaults, and maintenance tasks.
+- Desktop (`nix/modules/desktop`): compositor modules (Hyprland/Niri), display manager modules, panel modules (Noctalia/Caelestia), notifications, screenshots, clipboard, and theming.
+- Dev (`nix/modules/dev`): editors (notably Nixvim), VCS tooling, runtimes, HTTP/database tooling, quality tools, and security/research tooling.
+- Hardware (`nix/modules/hardware`): audio, bluetooth, networking, power management, CPU/GPU toggles, storage helpers, and printing/scanning.
+- Services (`nix/modules/services`): AI services, containers, databases, dashboards/monitoring, reverse proxy, and VPN services.
 
 ## Desktop and UX specifics
 
-- Hyprland module sets sane defaults (layout master, animations, input options, monitors default to `eDP-1`). Hosts can override monitors via Home Manager (see `nix/hosts/vanguard/home.nix`).
-- Noctalia panel config is split by feature (`settings/*.nix`) and imports upstream `inputs.noctalia.homeModules.default`. Launcher, control center, widgets, OSD, etc., are all preconfigured; toggled via `nixul.desktop.panels.noctalia`.
-- Caelestia panel/launcher uses `inputs.caelestia-shell`; weather location is hard-coded to Paris (TODO in module), so override if using it.
-- Stylix is on by default when enabled; theme modules adjust fonts/cursors/colors and can enable matching Nixvim colorschemes.
+- Hyprland and Niri are modeled as modules under `desktop.wms.*`, so hosts can switch compositor strategy without changing unrelated config.
+- Panel stacks are explicit toggles (`desktop.panels.noctalia`, `desktop.panels.caelestia`) and can coexist in config while only one is actively enabled.
+- Theming is host-driven via `loadTheme`, then materialized through theme modules under `nix/nixul/themes/*`.
+- Host monitor layouts are usually set as host-level overrides in `nix/hosts/<host>/default.nix`.
 
-## Editor stack (Nixvim focus)
+## Networking, DNS, ingress, and secrets
 
-- `nix/modules/dev/editor/nixvim` imports upstream Nixvim home module and splits config into `options.nix`, `keymaps.nix`, and `plugins/`.
-- Plugins include AI helpers, autopairs, Blink completion, bufferline, Telescope, Treesitter, LSP with many servers (nixd, lua, rust, pyright, gopls, clangd, tailwind, etc.), formatting/linting, Trouble, todo-comments, Snacks UI, markdown helpers, terminal integration.
-- Node.js support is on for Nixvim; it is set as default editor and ships manpages.
-- Zellij config lives in `nix/modules/dev/multiplexers/zellij/zellij.kdl` and is symlinked via Home Manager.
+- Network/security behavior is assembled from core modules plus host tags and explicit overrides.
+- Service modules can depend on host-level choices (for example reverse proxy or DNS conventions), so explain them as composable, not globally always-on.
+- Secrets are expected to stay encrypted in-repo (`nix/assets/secrets/secrets.yaml`) with `sops-nix` integration from module config.
+- When documenting secret flows, include `SOPS_AGE_KEY_FILE` setup and remind readers not to commit decrypted material.
 
-## Keybind system (shared schema → WM-specific)
+## Pros and trade-offs
 
-- Define semantic keybinds in host files under `nixul.keybinds` (see `nix/hosts/nomad/keybinds/*` for examples).
-- Schema: keys (list of combos), action (spawn/focus/resize/workspace/etc.), optional args (direction/amount/workspace/cmd), flags (repeat/mouse), and `raw` escape hatches.
-- Adapters translate schema into compositor config:
-  - Hyprland: `nix/nixul/keybinds/adapters/hyprland` maps actions to `bind`/`binde`/`bindm` lines.
-  - Niri: adapter scaffold exists; enable `nixul.desktop.wms.niri` to use upstream HM module.
-- This keeps host keybinds portable across compositors while allowing raw overrides.
+- Pros:
+  - Strong reuse via tags + generated option trees.
+  - Thin host entrypoints reduce copy/paste drift.
+  - Clear separation of reusable behavior (`nix/modules`) from machine intent (`nix/hosts`) and user intent (`nix/users`).
+  - Easy to explain operational lifecycle with `nh` and flake checks.
+- Trade-offs:
+  - Tag + override layering can be hard to reason about if too many overrides are applied in hosts/users.
+  - Some modules are intentionally opinionated, so users may need to override defaults for local preferences.
+  - Large all-in profiles can increase closure size and build time.
+  - Multi-user scenarios require deliberate `nixul.users.*` design, not just host-level toggles.
 
-## Networking, DNS, and ingress patterns
+## Blog and tutorial angles
 
-- Unbound provides a `.home` zone with static records; modules append service records (e.g., `public.home`, `ai.home`, `glance.home`, `dashy.home`) when both the service and Unbound are enabled.
-- Nginx is the default ingress; many services add virtual hosts that assume ACME is on for TLS. Static assets for `public.home` live in `nix/assets/public`.
-- ACME defaults pull email from `nixul.email`. DNS-01 is not wired; defaults use resolver 1.1.1.1.
+- Architecture walkthrough: start from `flake.nix` -> `mkSystems` -> `module-importer` -> generated option trees.
+- Composition story: show how `loadTags`/`loadUserTags` produce baseline profiles and how `lib.recursiveUpdate` customizes per host/user.
+- Practical migration story: how to move a monolithic host config into reusable module files and tags.
+- Desktop story: compositor + panel + theme as separate toggles instead of one giant desktop module.
+- Ops story: repeatable day-two workflow (`fmt`, lint, check, test, switch, rollback).
 
-## Secrets and sensitive paths
+## Evaluation checklist for reviews
 
-- SOPS support is in `nix/modules/core/security/secrets/sops.nix`, importing `inputs.sops-nix`.
-- Defaults: `sops.defaultSopsFile = ../../../assets/secrets/secrets.yaml`, Age key at `/home/${nixul.user}/.config/sops/age/keys.txt`.
-- When describing secrets management, remind readers to keep secret files encrypted, set `SOPS_AGE_KEY_FILE`, and avoid committing decrypted content.
+- Is reusable behavior in `nix/modules/**` instead of duplicated in host files?
+- Are tags used for shared bundles and overrides used only for host/user specifics?
+- Do option paths align with generated trees (`nixul.host.modules.*`, `nixul.users.<name>.modules.*`)?
+- Are secrets encrypted and referenced through `sops` paths?
+- Do docs and examples use current architecture terms (module importer, tags, users)?
 
-## Assets, themes, and branding
+## Common pitfalls to avoid in explanations
 
-- Logo: `nix/assets/public/logo.png`; wallpapers in `nix/assets/public/wallpapers`.
-- Static site served by Nginx `public` vhost uses the same directory.
-- Stylix themes and fonts are defined in theme modules; cursors typically Bibata, fonts JetBrains Mono/Inter unless overridden.
+- Do not describe the old `import-tree.nix` auto-import architecture; current code uses `module-importer.nix`.
+- Do not reference old flat option fields like `nixul.user` or `nixul.email`; use `nixul.host.*` and `nixul.users.*`.
+- Do not assume host-specific `home.nix` files are the primary pattern; user config is now centered under `nix/users/*`.
+- Do not claim all services are enabled by default; tags and per-host overrides decide that.
 
-## Pros, cons, and evaluation angles
+## LLM editing expectations
 
-- Pros
-  - Thin hosts, thick shared modules make reuse and onboarding fast.
-  - Modules stay discoverable through the shared tree without auto-generated options.
-  - Unified system + Home Manager modules reduce drift between layers.
-  - Opinionated desktop stack (Hyprland + Noctalia/Stylix) and dev stack (Nixvim/Zellij/git/security tools) ready out of the box.
-  - Built-in ingress + DNS wiring (Nginx + Unbound) for self-hosted services.
-- Cons / trade-offs
-  - Single-user assumption (`nixul.user`) baked into many modules; multi-user setups need refactoring.
-  - Some modules ship hard-coded values (Caelestia weather location, Glance bookmarks, Dashy links) that may need overrides.
-  - Enabling many modules can bloat closures or pull heavy security suites; be selective per host.
-  - Services expect local DNS/TLS plumbing (Unbound + ACME + Nginx); disabling one may require manual fixes.
-  - `system.stateVersion` is set to `25.11`; changing channels may require bumps and compatibility checks.
-
-## Talking points for blogs/docs/tutorials
-
-- Why Nixul: predictable rebuilds with `nh`, unified module tree, quick host cloning, and curated defaults for Wayland power users.
-- How it works: flake-parts + import-tree auto-discovery; describe the semantic keybind system as a portability layer.
-- Desktop story: Hyprland + Noctalia + Stylix produce a cohesive UX; mention screenshot helpers and notification stack.
-- Dev story: Nixvim-centric workflow with LSP/formatting, Git tools, Zellij multiplexer, and language runtimes.
-- Services story: self-hosted dashboards (Dashy/Glance), AI stack (Ollama/Open WebUI), ingress and DNS automation.
-- Customization: add modules under `nix/modules/<domain>/`, enable via `nixul.*`, adjust hosts for monitors/keybinds/themes.
-- Risk mitigation: use `nix flake check`, `nh os test`, and `nix fmt`/`deadnix` before switching; keep secrets encrypted with sops.
-
-## Common pitfalls and tips
-
-- Set `nixul.location` if Glance weather is enabled; otherwise weather widget misbehaves.
-- If using Caelestia, change the default weather location and terminal/app mappings in `nix/modules/desktop/panels/caelestia/appearance.nix`.
-- DNS records for services rely on Unbound; if you skip Unbound, adjust `/etc/hosts` or Nginx server names.
-- AI modules (Codex/OpenCode) ship custom instruction strings; be aware if stacking additional prompt rules.
-- Remember to regenerate `hardware-configuration.nix` per device and keep host-specific overrides in `home.nix`/`system.nix`.
-
-## Extending Nixul (for new features)
-
-- Choose the right domain folder (`apps`, `core`, `desktop`, `dev`, `hardware`, `services`); keep folders under ~5 items or split further.
-- Create a new module file (kebab-case). Example skeleton:
-  ```nix
-  { config, pkgs, inputs, ... }:
-  {
-    environment.systemPackages = [ pkgs.my-tool ];
-    home-manager.users.${config.nixul.user}.programs.myTool.enable = true;
-  }
-  ```
-- Declare options and gating inside the module itself when needed.
-- Prefer shared modules over host-specific tweaks; keep host folders for hardware, monitors, and overrides.
-- Run `nix fmt` + `deadnix` + `nix flake check` before switching.
-
-## Behavioral expectations for LLM edits
-
-- Follow AGENTS rules embedded in `AGENTS.md`: write understandable code, avoid comments unless clarifying complex logic, keep changes modular, and ask when uncertain.
-- Use 2-space indentation for Nix, keep ASCII, and lean on `nix fmt`.
-- Respect existing changes; avoid destructive git commands.
+- Follow `AGENTS.md` and keep edits modular.
+- Prefer touching `nix/modules/**`, `nix/nixul/tags/**`, or `nix/users/**` before adding host-specific duplication.
+- Keep Nix formatting compatible with `nix fmt` (2-space style).
+- Validate with `nix fmt`, `nix develop --command deadnix --fail .`, and `nix flake check --all-systems --show-trace` when making code changes.
