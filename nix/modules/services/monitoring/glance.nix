@@ -107,7 +107,7 @@ in
       };
 
       services.nginx.virtualHosts.glance =
-        lib.mkIf (cfg.enable && config.nixul.host.modules.services.server.nginx.enable)
+        lib.mkIf (cfg.enable && nixul.host.modules.services.server.nginx.enable)
           {
             serverName = "glance.home";
             locations."/" = {
@@ -116,18 +116,18 @@ in
           };
 
       services.unbound.settings.server.local-data =
-        lib.mkIf (cfg.enable && config.nixul.host.modules.core.security.network.unbound.enable)
+        lib.mkIf (cfg.enable && nixul.host.modules.core.security.network.unbound.enable)
           [
             ''"glance.home. A 127.0.0.1"''
           ];
 
       assertions = [
         {
-          assertion = (!cfg.enable) || config.nixul.host.modules.services.server.nginx.enable;
+          assertion = (!cfg.enable) || nixul.host.modules.services.server.nginx.enable;
           message = "services.monitoring.glance requires services.server.nginx.enable = true";
         }
         {
-          assertion = (!cfg.enable) || config.nixul.host.modules.core.security.network.unbound.enable;
+          assertion = (!cfg.enable) || nixul.host.modules.core.security.network.unbound.enable;
           message = "services.monitoring.glance requires core.security.network.unbound.enable = true";
         }
       ];
