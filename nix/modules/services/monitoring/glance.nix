@@ -49,6 +49,56 @@ in
                       }
                     ];
                   }
+                  {
+                    type = "server-stats";
+                    services = [
+                      {
+                        type = "local";
+                        name = "System";
+                      }
+                    ];
+                  }
+                ];
+              }
+              {
+                size = "small";
+                widgets = [
+                  {
+                    type = "releases";
+                    show-source-icon = true;
+                    repositories = [
+                      "NixOS/nixpkgs"
+                      "nix-community/home-manager"
+                      "niri-wm/niri"
+                      "hyprwm/Hyprland"
+                      "AvengeMedia/DankMaterialShell"
+                      "noctalia-dev/noctalia-shell"
+                    ];
+                  }
+                  {
+                    type = "dns-stats";
+                    service = "adguard";
+                    url = "http://adguard.home";
+                  }
+                  {
+                    type = "monitor";
+                    cache = "1m";
+                    title = "Services";
+                    sites = [
+
+                    ]
+                    ++ (
+                      if nixul.host.modules.core.security.network.adguardhome.enable then
+                        [
+                          {
+                            title = "AdGuard";
+                            url = "http://adguard.home";
+                          }
+                        ]
+                      else
+                        [ ]
+                    );
+                  }
                 ];
               }
             ];

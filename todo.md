@@ -45,14 +45,13 @@
 - [x] feat: add vulnix
 - [x] feat: add nushell
 - [x] feat: add really really good aliases
+- [x] feat(glance): make glance great again!!!
 
 - [x] test experimental features and merge with main branch
 
 - [-] feat: universal options for many modules
 
-- [ ] fix(glance): make glance great again!!!
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
-- [ ] feat: add realse tracker to glance
 
 - [ ] feat: opencode agent orchestration
 
