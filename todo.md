@@ -47,6 +47,7 @@
 - [x] feat: add really really good aliases
 - [x] feat(glance): make glance great again!!!
 - [x] feat: opencode agent orchestration
+- [x] fix: find old modules and convert to new format
 
 - [x] test experimental features and merge with main branch
 
@@ -54,17 +55,10 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 
-- [ ] fix: find old modules and convert to new format
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
 
-- [ ] feat: add system monitoring stack
-- [ ] feat: integrate btop config module
-- [ ] feat: add grafana dashboard module
-- [ ] feat: add prometheus exporter modules
-- [ ] feat: add glance system metrics widgets
-- [ ] feat: add log viewer module (loki or lnav)
-- [ ] feat: system health command (nixul doctor)
+- [ ] feat: add log viewer module lnav
 
 - [ ] feat: project templates (node, rust, python)
 - [ ] feat: nixul new <template> command

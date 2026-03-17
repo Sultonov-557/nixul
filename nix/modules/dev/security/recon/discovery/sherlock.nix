@@ -1,4 +1,23 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  environment.defaultPackages = with pkgs; [ sherlock ];
+  system =
+    { cfg, ... }:
+    {
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ sherlock ]);
+    };
+
+  options = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Enable sherlock";
+        };
+      };
+    };
+    default = {
+      enable = false;
+    };
+  };
 }
