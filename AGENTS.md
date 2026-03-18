@@ -1,15 +1,6 @@
-## Build, Lint, and Test
-
-- **Check:** Run `nix flake check --all-systems --show-trace` to evaluate all configurations.
-- **Format:** Run `nix fmt` to format all Nix files with `nixfmt`.
-- **Lint:** Run `nix develop --command deadnix --fail .` to find and fail on dead code.
-- **Dev Shell:** Use `nix develop` to enter a shell with all required tools.
-- **Tests:** This project's checks are its tests. There are no separate unit tests.
-
 ## Code Style Guidelines
 
 - **Language:** The codebase is primarily written in the Nix language.
-- **Formatting:** Adhere to `nixfmt` (enforced by `nix fmt`). Use 2-space indentation.
 - **Naming:** Use `kebab-case` for file and directory names (e.g., `my-module.nix`).
 - **Imports:** Follow the modular structure. Inputs are managed in `flake.nix`.
 - **Modularity:** Configurations are modular via `flake-parts`. New modules should be placed in `nix/modules/`.
@@ -45,25 +36,5 @@ The codebase uses a custom module system located in `nix/modules`.
 2.  **Naming:** Use `kebab-case` for files and directories.
 3.  **Reuse:** Prioritize reusing existing folders over creating new ones.
 4.  **`default.nix`:** Only use `default.nix` for ordering or shared configuration; otherwise, rely on auto-imports.
-
-### Step-by-Step Guide
-
-1.  **Decide Location:** Choose the appropriate category based on the rules above.
-    - Example: A new AI tool goes in `nix/modules/apps/ai/`.
-2.  **Create Module:** Create a new `.nix` file (e.g., `my-tool.nix`).
-
-    ```nix
-    { pkgs, ... }:
-    {
-      environment.systemPackages = [ pkgs.my-tool ];
-    }
-    ```
-
-    _Note: Define any options and gating inside the module itself._
-
-3.  **Enable Module:** In your host configuration (e.g., `nix/hosts/nomad/default.nix`), enable the generated option.
-    ```nix
-    nixul.apps.ai.my-tool = true;
-    ```
 
 # If you need detailed information about the project look at /docs/LLM.md

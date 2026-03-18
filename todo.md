@@ -49,6 +49,7 @@
 - [x] feat: opencode agent orchestration
 - [x] fix: find old modules and convert to new format
 - [x] feat: add litellm
+- [x] feat: add llm api keys to secrets
 
 - [x] test experimental features and merge with main branch
 
@@ -59,8 +60,6 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-
-- [ ] feat: add llm api keys to secrets
 
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
@@ -101,7 +100,11 @@
 - [ ] feat(multi-user): provide reusable multi-user tags and examples for shared vs per-user module ownership
 - [ ] feat(guardrails): add assertions/checks for duplicate primary-user assumptions and unsafe host-only toggles in multi-user setups
 
+- [ ] feat: 100% declarative. no exeptions.
+
 ### maybe
+
+- [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
 
 - [ ] feat: try out mineflake
 - [ ] feat: add nixarr

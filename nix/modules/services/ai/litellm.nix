@@ -131,6 +131,15 @@
         createHome = true;
       };
 
+      sops.secrets = lib.mkIf cfg.enable {
+        litellm-api-keys = {
+          sopsFile = ../../../assets/secrets/api_keys.env;
+          format = "dotenv";
+          owner = "litellm";
+          group = "litellm";
+        };
+      };
+
       systemd.services.litellm = lib.mkIf cfg.enable {
         path = [
           prismaCli
@@ -138,20 +147,26 @@
           pkgs.nodejs
           pkgs.openssl
         ];
-        serviceConfig = {
-          ExecStart = lib.mkForce "${litellm-otel}/bin/litellm --host \"${config.services.litellm.host}\" --port ${toString config.services.litellm.port} --config \"/etc/litellm/config.json\"";
-          User = "litellm";
-          Group = "litellm";
-          DynamicUser = lib.mkForce false;
-          PrivateUsers = lib.mkForce false;
+        serviceConfig =
+          let
+            settingsFormat = pkgs.formats.yaml { };
+            configFile = settingsFormat.generate "config.yaml" config.services.litellm.settings;
+          in
+          {
+            ExecStart = lib.mkForce "${litellm-otel}/bin/litellm --host \"${config.services.litellm.host}\" --port ${toString config.services.litellm.port} --config ${configFile}";
+            User = "litellm";
+            Group = "litellm";
+            DynamicUser = lib.mkForce false;
+            PrivateUsers = lib.mkForce false;
+            EnvironmentFile = [ config.sops.secrets.litellm-api-keys.path ];
 
-          StateDirectory = [
-            "litellm"
-            "litellm/migrations"
-          ];
-          StateDirectoryMode = "0750";
-          ReadWritePaths = [ "/var/lib/litellm" ];
-        };
+            StateDirectory = [
+              "litellm"
+              "litellm/migrations"
+            ];
+            StateDirectoryMode = "0750";
+            ReadWritePaths = [ "/var/lib/litellm" ];
+          };
       };
 
       services.litellm = {
@@ -159,8 +174,31 @@
         port = 9003;
 
         settings = {
-          general_settings = {
-            master_key = "admin";
+          model_list = [
+            {
+              model_name = "main";
+              litellm_params = {
+                model = "openrouter/meta-llama/llama-3-70b-instruct";
+              };
+            }
+            {
+              model_name = "main";
+              litellm_params = {
+                model = "gemini/gemini-flash-latest";
+              };
+            }
+            {
+              model_name = "main";
+              litellm_params = {
+                model = "groq/openai/gpt-oss-120b";
+              };
+            }
+          ];
+
+          router_settings = {
+            routing_strategy = "simple-shuffle";
+            allowed_fails = 1;
+            cooldown_time = 60 * 5;
           };
         };
 
@@ -190,6 +228,7 @@
         serverName = "litellm.home";
         locations."/" = {
           proxyPass = "http://127.0.0.1:9003";
+          proxyWebsockets = true;
         };
       };
 

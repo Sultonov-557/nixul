@@ -14,6 +14,7 @@
             serverName = "open-webui.home";
             locations."/" = {
               proxyPass = "http://127.0.0.1:9004";
+              proxyWebsockets = true;
             };
           };
 

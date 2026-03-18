@@ -3,7 +3,7 @@ keys:
   - &vanguard age1hjp0g05semkv6ch484na9n6hvgp44qlsx4zxtkad3mgx0nudla5s5pkr86
 
 creation_rules:
-  - path_regex: ^nix/assets/secrets/.*\.yaml$
+  - path_regex: ^nix/assets/secrets/.*\.(yaml|env)$
     key_groups:
       - age:
           - *nomad
