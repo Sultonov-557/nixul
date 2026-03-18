@@ -63,6 +63,8 @@
 - [ ] feat: integrate sops
 - [ ] feat: add sops based ssh servers
 
+- [ ] feat: module integrations
+
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
 
@@ -79,6 +81,7 @@
 - [ ] feat: nixul list enabled modules
 
 - [ ] feat: security audit module
+- [ ] feat: add vault warden
 - [ ] feat: fail2ban module
 - [ ] feat: yubikey support
 - [ ] feat: disk encryption helpers
