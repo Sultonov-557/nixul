@@ -117,6 +117,15 @@
         "unbound"
         "enable"
       ] false nixul;
+      sopsEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "core"
+        "security"
+        "secrets"
+        "sops"
+        "enable"
+      ] false nixul;
     in
     {
       systemd.tmpfiles.rules = lib.mkIf cfg.enable [
@@ -131,13 +140,30 @@
         createHome = true;
       };
 
-      sops.secrets = lib.mkIf cfg.enable {
+      sops.secrets = lib.mkIf (cfg.enable && sopsEnabled) {
         litellm-api-keys = {
           sopsFile = ../../../assets/secrets/api_keys.env;
           format = "dotenv";
           owner = "litellm";
           group = "litellm";
         };
+
+        litellm-password = {
+          sopsFile = ../../../assets/secrets/password.yaml;
+          key = "password";
+          owner = "litellm";
+          group = "litellm";
+        };
+      };
+
+      sops.templates.litellm-runtime-env = lib.mkIf (cfg.enable && sopsEnabled) {
+        owner = "litellm";
+        group = "litellm";
+        content = ''
+          UI_PASSWORD=${config.sops.placeholder."litellm-password"}
+          LITELLM_MASTER_KEY=${config.sops.placeholder."litellm-password"}
+          DATABASE_URL=postgresql://postgres:${config.sops.placeholder."litellm-password"}@localhost:5432/litellm
+        '';
       };
 
       systemd.services.litellm = lib.mkIf cfg.enable {
@@ -158,7 +184,10 @@
             Group = "litellm";
             DynamicUser = lib.mkForce false;
             PrivateUsers = lib.mkForce false;
-            EnvironmentFile = [ config.sops.secrets.litellm-api-keys.path ];
+            EnvironmentFile = lib.optionals sopsEnabled [
+              config.sops.secrets.litellm-api-keys.path
+              config.sops.templates.litellm-runtime-env.path
+            ];
 
             StateDirectory = [
               "litellm"
@@ -209,9 +238,6 @@
           DOCS_URL = "/docs";
           ROOT_REDIRECT_URL = "/ui";
           UI_USERNAME = "admin";
-          UI_PASSWORD = "admin";
-          LITELLM_MASTER_KEY = "admin";
-          DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/litellm";
 
           PRISMA_VERSION = "6.19.1";
           PRISMA_EXPECTED_ENGINE_VERSION = "c2990dca591cba766e3b7ef5d9e8a84796e47ab7";
@@ -244,6 +270,10 @@
         {
           assertion = (!cfg.enable) || unboundEnabled;
           message = "services.ai.litellm requires core.security.network.unbound.enable = true";
+        }
+        {
+          assertion = (!cfg.enable) || sopsEnabled;
+          message = "services.ai.litellm requires core.security.secrets.sops.enable = true";
         }
       ];
     };

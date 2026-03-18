@@ -21,7 +21,7 @@ It reflects the current architecture based on host/user tags plus the module imp
 - `nix/nixul/themes/*`: theme modules loaded through `loadTheme`.
 - `nix/hosts/<host>`: host entrypoints (`default.nix`, hardware config, optional `bookmarks.nix`).
 - `nix/users/<user>`: user entrypoints (`nixul.users.<name>` plus user tags and overrides).
-- `nix/assets/public`: static assets (logo, wallpapers); `nix/assets/secrets/secrets.yaml`: encrypted secrets file.
+- `nix/assets/public`: static assets (logo, wallpapers); `nix/assets/secrets/`: encrypted secrets files.
 
 ## Build, quality, and workflows
 
@@ -70,7 +70,7 @@ It reflects the current architecture based on host/user tags plus the module imp
 - Keybind schema/adapters: `nix/nixul/universal/keybinds/**` with Hyprland and Niri adapters.
 - Bookmarks schema/adapters: `nix/nixul/universal/bookmarks/**` for browser/dashy/glance outputs.
 - Aliases: `nix/nixul/universal/aliases/**`, typically configured from user files.
-- Secrets: `nix/modules/core/security/secrets/sops.nix` with encrypted data at `nix/assets/secrets/secrets.yaml`.
+- Secrets: `nix/modules/core/security/secrets/sops.nix` with encrypted data under `nix/assets/secrets/`.
 
 ## Reliable talking points
 
@@ -100,7 +100,7 @@ It reflects the current architecture based on host/user tags plus the module imp
 
 - Network/security behavior is assembled from core modules plus host tags and explicit overrides.
 - Service modules can depend on host-level choices (for example reverse proxy or DNS conventions), so explain them as composable, not globally always-on.
-- Secrets are expected to stay encrypted in-repo (`nix/assets/secrets/secrets.yaml`) with `sops-nix` integration from module config.
+- Secrets are expected to stay encrypted in-repo (`nix/assets/secrets/`) with `sops-nix` integration from module config.
 - When documenting secret flows, include `SOPS_AGE_KEY_FILE` setup and remind readers not to commit decrypted material.
 
 ## Pros and trade-offs

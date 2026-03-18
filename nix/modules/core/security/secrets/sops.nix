@@ -13,7 +13,7 @@
       ];
 
       sops = lib.mkIf cfg.enable {
-        defaultSopsFile = ../../../assets/secrets/secrets.yaml;
+        defaultSopsFile = ../../../assets/secrets/password.yaml;
         defaultSopsFormat = "yaml";
         age.keyFile = "/home/${config.nixul.primaryUser}/.config/sops/age/keys.txt";
       };

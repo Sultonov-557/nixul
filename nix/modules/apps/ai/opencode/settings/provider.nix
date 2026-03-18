@@ -5,7 +5,7 @@
       name = "LiteLLM";
       options = {
         baseURL = "http://litellm.home/v1";
-        apiKey = "admin";
+        apiKey = "\${LITELLM_MASTER_KEY}";
       };
       models = {
         main = {

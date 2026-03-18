@@ -1,6 +1,6 @@
 # Secrets
 
-Nixul uses `sops-nix` with an encrypted repository file at `nix/assets/secrets/secrets.yaml`.
+Nixul uses `sops-nix` with encrypted repository files under `nix/assets/secrets/`.
 
 ## Current module path
 - Shared secrets integration is provided by `nix/modules/core/security/secrets/sops.nix`.
@@ -18,13 +18,15 @@ Nixul uses `sops-nix` with an encrypted repository file at `nix/assets/secrets/s
    ```
 3. Edit encrypted secrets:
    ```bash
-   sops nix/assets/secrets/secrets.yaml
+   sops nix/assets/secrets/password.yaml
    ```
+
+By default, `core.security.secrets.sops` points `defaultSopsFile` to `nix/assets/secrets/password.yaml`.
 
 ## Referencing a secret
 ```nix
 {
-  sops.secrets."myapp.env".sopsFile = ../../../assets/secrets/secrets.yaml;
+  sops.secrets."myapp.env".sopsFile = ../../../assets/secrets/password.yaml;
 
   systemd.services.myapp.serviceConfig.EnvironmentFile =
     config.sops.secrets."myapp.env".path;

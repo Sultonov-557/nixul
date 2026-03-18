@@ -80,7 +80,9 @@
           core.terminal.shells.zsh.enable = true;
 
           services.ai.ollama.enable = true;
-          services.ai.open-webui.enable = false;
+          services.ai.litellm.enable = true;
+          services.ai.openclaw.enable = true;
+          services.ai.open-webui.enable = true;
           services.containers.docker.enable = false;
           services.containers.podman.enable = true;
           services.containers.kubernetes.kind.enable = true;

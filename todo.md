@@ -51,22 +51,23 @@
 - [x] feat: add litellm
 - [x] feat: add llm api keys to secrets
 - [x] feat: add log viewer module lnav
+- [x] feat: add openclaw
 
 - [x] test experimental features and merge with main branch
 
 - [-] feat: universal options for many modules
 
-- [ ] feat: add openclaw
-
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: integrate sops
+- [x] feat: integrate sops
 - [ ] feat: add sops based ssh servers
 
 - [ ] feat: module integrations
 
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
+- [ ] feat: add kurrier
+- [ ] feat: add hoppscotch
 
 - [ ] feat: project templates (node, rust, python)
 - [ ] feat: nixul new <template> command
@@ -86,6 +87,8 @@
 - [ ] feat: yubikey support
 - [ ] feat: disk encryption helpers
 
+- [ ] feat: add metadata to modules
+- [ ] feat: add config to json extractor
 - [ ] feat: self documenting system
 - [ ] feat: generate website from config
 - [ ] feat: nixul system diagram generator
@@ -109,6 +112,7 @@
 
 - [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
 
+- [ ] feat: add Authentik
 - [ ] feat: try out mineflake
 - [ ] feat: add nixarr
 - [ ] feat: bloat vicinae with extensions
