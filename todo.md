@@ -48,12 +48,12 @@
 - [x] feat(glance): make glance great again!!!
 - [x] feat: opencode agent orchestration
 - [x] fix: find old modules and convert to new format
+- [x] feat: add litellm
 
 - [x] test experimental features and merge with main branch
 
 - [-] feat: universal options for many modules
 
-- [ ] feat: add litellm
 - [ ] feat: add openclaw
 - [ ] feat: add nullclaw
 

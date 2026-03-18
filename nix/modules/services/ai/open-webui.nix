@@ -5,7 +5,7 @@
     {
       services.open-webui = lib.mkIf cfg.enable {
         enable = true;
-        port = 9999;
+        port = 9004;
       };
 
       services.nginx.virtualHosts.open-webui =
@@ -13,7 +13,7 @@
           {
             serverName = "open-webui.home";
             locations."/" = {
-              proxyPass = "http://127.0.0.1:8080";
+              proxyPass = "http://127.0.0.1:9004";
             };
           };
 

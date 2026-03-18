@@ -17,6 +17,23 @@ in
         "adguardhome"
         "enable"
       ] false nixul;
+      liteLLMEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "ai"
+        "litellm"
+        "enable"
+      ] false nixul;
+      openWebUIEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "ai"
+        "open-webui"
+        "enable"
+      ] false nixul;
+
       nginxEnabled = lib.attrByPath [
         "host"
         "modules"
@@ -56,7 +73,7 @@ in
                   }
                   {
                     type = "weather";
-                    location = if cfg.location != null then cfg.location else nixul.host.location;
+                    location = nixul.host.location;
                   }
                 ];
               }
@@ -125,6 +142,28 @@ in
                         ]
                       else
                         [ ]
+                    )
+                    ++ (
+                      if liteLLMEnabled then
+                        [
+                          {
+                            title = "LiteLLM";
+                            url = "http://litellm.home";
+                          }
+                        ]
+                      else
+                        [ ]
+                    )
+                    ++ (
+                      if openWebUIEnabled then
+                        [
+                          {
+                            title = "Open Web UI";
+                            url = "http://open-webui.home";
+                          }
+                        ]
+                      else
+                        [ ]
                     );
                   }
                 ];
@@ -134,20 +173,16 @@ in
         ];
       };
 
-      services.nginx.virtualHosts.glance =
-        lib.mkIf (cfg.enable && nginxEnabled)
-          {
-            serverName = "glance.home";
-            locations."/" = {
-              proxyPass = "http://127.0.0.1:8080";
-            };
-          };
+      services.nginx.virtualHosts.glance = lib.mkIf (cfg.enable && nginxEnabled) {
+        serverName = "glance.home";
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8080";
+        };
+      };
 
-      services.unbound.settings.server.local-data =
-        lib.mkIf (cfg.enable && unboundEnabled)
-          [
-            ''"glance.home. A 127.0.0.1"''
-          ];
+      services.unbound.settings.server.local-data = lib.mkIf (cfg.enable && unboundEnabled) [
+        ''"glance.home. A 127.0.0.1"''
+      ];
 
       assertions = [
         {
@@ -168,11 +203,6 @@ in
           type = lib.types.bool;
           default = false;
           description = "Enable glance";
-        };
-        location = lib.mkOption {
-          type = lib.types.nullOr lib.types.str;
-          default = null;
-          description = "Location";
         };
       };
     };
