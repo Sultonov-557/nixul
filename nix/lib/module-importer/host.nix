@@ -31,6 +31,11 @@ let
           ...
         }:
         let
+          defaultCfg =
+            if module.options != null && (module.options._type or null) == "option" then
+              (module.options.default or { })
+            else
+              { };
 
           cfg0 = (
             lib.attrByPath (
@@ -40,13 +45,24 @@ let
                 "modules"
               ]
               ++ module.pathParts
-            ) (module.options.default or { }) config
+            ) defaultCfg config
           );
-          cfg = assertCfgType {
+          cfgChecked = assertCfgType {
             filePath = module.filePath;
             inherit optName;
             cfg = cfg0;
+            inherit module;
           };
+
+          defaultEnable = defaultCfg.enable or false;
+
+          cfg =
+            if cfgChecked == null then
+              { enable = defaultEnable; }
+            else if builtins.isAttrs cfgChecked && !(cfgChecked ? enable) then
+              cfgChecked // { enable = defaultEnable; }
+            else
+              cfgChecked;
 
           _ = builtins.trace (
             "nixul importer: "

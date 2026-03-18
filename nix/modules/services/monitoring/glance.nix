@@ -7,6 +7,34 @@ in
 {
   system =
     { cfg, nixul, ... }:
+    let
+      adguardEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "core"
+        "security"
+        "network"
+        "adguardhome"
+        "enable"
+      ] false nixul;
+      nginxEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "server"
+        "nginx"
+        "enable"
+      ] false nixul;
+      unboundEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "core"
+        "security"
+        "network"
+        "unbound"
+        "enable"
+      ] false nixul;
+    in
     {
       services.glance = lib.mkIf cfg.enable {
         enable = true;
@@ -28,7 +56,7 @@ in
                   }
                   {
                     type = "weather";
-                    location = cfg.location or nixul.host.location or "The Moon";
+                    location = if cfg.location != null then cfg.location else nixul.host.location;
                   }
                 ];
               }
@@ -67,12 +95,12 @@ in
                     type = "releases";
                     show-source-icon = true;
                     repositories = [
-                      "NixOS/nixpkgs"
-                      "nix-community/home-manager"
-                      "niri-wm/niri"
                       "hyprwm/Hyprland"
                       "AvengeMedia/DankMaterialShell"
                       "noctalia-dev/noctalia-shell"
+                      "niri-wm/niri"
+                      "nixos/nixpkgs"
+                      "nix-community/home-manager"
                     ];
                   }
                   {
@@ -88,7 +116,7 @@ in
 
                     ]
                     ++ (
-                      if nixul.host.modules.core.security.network.adguardhome.enable then
+                      if adguardEnabled then
                         [
                           {
                             title = "AdGuard";
@@ -107,7 +135,7 @@ in
       };
 
       services.nginx.virtualHosts.glance =
-        lib.mkIf (cfg.enable && nixul.host.modules.services.server.nginx.enable)
+        lib.mkIf (cfg.enable && nginxEnabled)
           {
             serverName = "glance.home";
             locations."/" = {
@@ -116,18 +144,18 @@ in
           };
 
       services.unbound.settings.server.local-data =
-        lib.mkIf (cfg.enable && nixul.host.modules.core.security.network.unbound.enable)
+        lib.mkIf (cfg.enable && unboundEnabled)
           [
             ''"glance.home. A 127.0.0.1"''
           ];
 
       assertions = [
         {
-          assertion = (!cfg.enable) || nixul.host.modules.services.server.nginx.enable;
+          assertion = (!cfg.enable) || nginxEnabled;
           message = "services.monitoring.glance requires services.server.nginx.enable = true";
         }
         {
-          assertion = (!cfg.enable) || nixul.host.modules.core.security.network.unbound.enable;
+          assertion = (!cfg.enable) || unboundEnabled;
           message = "services.monitoring.glance requires core.security.network.unbound.enable = true";
         }
       ];
@@ -142,7 +170,7 @@ in
           description = "Enable glance";
         };
         location = lib.mkOption {
-          type = lib.types.str;
+          type = lib.types.nullOr lib.types.str;
           default = null;
           description = "Location";
         };
