@@ -50,6 +50,7 @@
 - [x] fix: find old modules and convert to new format
 - [x] feat: add litellm
 - [x] feat: add llm api keys to secrets
+- [x] feat: add log viewer module lnav
 
 - [x] test experimental features and merge with main branch
 
@@ -64,8 +65,6 @@
 
 - [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
-
-- [ ] feat: add log viewer module lnav
 
 - [ ] feat: project templates (node, rust, python)
 - [ ] feat: nixul new <template> command
