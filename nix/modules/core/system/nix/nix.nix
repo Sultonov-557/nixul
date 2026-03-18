@@ -6,6 +6,9 @@
       nixpkgs.config = lib.mkIf cfg.enable {
         allowUnfree = true;
         separateDebugInfo = false;
+        permittedInsecurePackages = [
+          "openclaw-2026.3.12"
+        ];
       };
 
       environment.pathsToLink = lib.mkIf cfg.enable [

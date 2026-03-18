@@ -92,6 +92,8 @@
             dev.tools.env.nix-init.enable = true;
             dev.tools.quality.deadnix.enable = true;
 
+            services.ai.openclaw.enable = true;
+
             hardware.units.storage.udiskie.enable = true;
           };
     };

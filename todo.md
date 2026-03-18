@@ -56,7 +56,6 @@
 - [-] feat: universal options for many modules
 
 - [ ] feat: add openclaw
-- [ ] feat: add nullclaw
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved

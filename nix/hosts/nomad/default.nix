@@ -72,6 +72,7 @@
 
           services.ai.ollama.enable = true;
           services.ai.litellm.enable = true;
+          services.ai.openclaw.enable = true;
           services.ai.open-webui.enable = true;
           services.containers.docker.enable = true;
           services.containers.kubernetes.kind.enable = true;
