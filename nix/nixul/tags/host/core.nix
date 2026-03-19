@@ -1,6 +1,7 @@
 {
   core.maintenance.auto-upgrade.enable = true;
   core.maintenance.journald.enable = true;
+  core.security.audit.auditd.enable = true;
   core.security.network.acme.enable = true;
   core.security.network.adguardhome.enable = true;
   core.security.network.avahi.enable = true;
