@@ -56,6 +56,7 @@
 - [x] feat: add sops based ssh servers
 - [x] feat: break everything down to tags
 - [x] feat: add metadata to modules
+- [x] plan(layering): map tag/user/host precedence rules in docs with real examples
 
 - [x] test experimental features and merge with main branch
 
@@ -92,7 +93,6 @@
 
 - [ ] feat: multi-host orchestration
 
-- [ ] plan(layering): map tag/user/host precedence rules in docs with real examples and one recommended override pattern
 - [ ] feat(debug): add `nixul trace` command (or script) to show final merged values for selected option paths
 - [ ] feat(validation): add check that warns on conflicting overrides across tags, hosts, and users for the same module subtree
 - [ ] refactor(modules): add explicit `enable` + `preset` options for opinionated modules so defaults are easy to keep or override
