@@ -48,7 +48,7 @@
     {
       sops.secrets.vaultwarden-admin-token = lib.mkIf (cfg.enable && sopsEnabled) {
         sopsFile = ../../../assets/secrets/password.yaml;
-        key = "password";
+        key = "master_password";
         owner = "vaultwarden";
         group = "vaultwarden";
       };
