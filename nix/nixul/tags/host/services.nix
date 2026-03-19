@@ -10,6 +10,7 @@
   services.databases.redis.enable = true;
   services.monitoring.glance.enable = true;
   services.server.nginx.enable = true;
+  services.server.vaultwarden.enable = true;
   services.vpn.openvpn.enable = true;
   services.vpn.tailscale.enable = true;
   services.vpn.wireguard.enable = true;

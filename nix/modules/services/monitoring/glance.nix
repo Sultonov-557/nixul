@@ -46,6 +46,22 @@ in
         "open-webui"
         "enable"
       ] false nixul;
+      vaultwardenEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "server"
+        "vaultwarden"
+        "enable"
+      ] false nixul;
+      vaultwardenDomain = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "server"
+        "vaultwarden"
+        "domain"
+      ] "vault.home" nixul;
 
       nginxEnabled = lib.attrByPath [
         "host"
@@ -173,6 +189,17 @@ in
                           {
                             title = "Open Web UI";
                             url = "http://open-webui.home";
+                          }
+                        ]
+                      else
+                        [ ]
+                    )
+                    ++ (
+                      if vaultwardenEnabled then
+                        [
+                          {
+                            title = "Vaultwarden";
+                            url = "http://${vaultwardenDomain}";
                           }
                         ]
                       else
