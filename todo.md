@@ -59,6 +59,14 @@
 - [x] plan(layering): map tag/user/host precedence rules in docs with real examples
 - [x] feat: fail2ban module
 - [x] feat: language dev modules (go, rust, zig, python)
+- [x] feat: project templates (node, rust, python)
+- [x] feat: nixul new <template> command
+- [x] feat: nixul cli
+- [x] feat: nixul update
+- [x] feat: nixul doctor
+- [x] feat: nixul rebuild
+- [x] feat: nixul garbage-collect
+- [x] feat: nixul list enabled modules
 
 - [x] test experimental features and merge with main branch
 
@@ -67,16 +75,6 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-
-- [ ] feat: project templates (node, rust, python)
-- [ ] feat: nixul new <template> command
-
-- [ ] feat: nixul cli
-- [ ] feat: nixul update
-- [ ] feat: nixul doctor
-- [ ] feat: nixul rebuild
-- [ ] feat: nixul garbage-collect
-- [ ] feat: nixul list enabled modules
 
 - [ ] feat: security audit module
 - [ ] feat: add vault warden

@@ -101,6 +101,9 @@
 
       perSystem =
         { pkgs, ... }:
+        let
+          nixulCli = import ./nix/nixul/cli { inherit pkgs; };
+        in
         {
           formatter = pkgs.nixfmt;
 
@@ -111,7 +114,14 @@
             ];
           };
 
-          packages = hostBuilds;
+          packages = hostBuilds // {
+            nixul = nixulCli;
+          };
+
+          apps.nixul = {
+            type = "app";
+            program = "${nixulCli}/bin/nixul";
+          };
 
           checks = hostBuilds;
         };
