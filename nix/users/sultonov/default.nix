@@ -26,7 +26,10 @@
           ])
           {
             core.maintenance.garbage-collector.enable = true;
-            core.security.ssh.ssh.enable = true;
+            core.security.ssh.ssh = {
+              enable = true;
+              serversSecretFile = ../../assets/secrets/ssh-servers.json;
+            };
             core.terminal.tools.display.bat.enable = true;
             core.terminal.tools.display.eza.enable = true;
             core.terminal.tools.display.nix-melt.enable = true;
