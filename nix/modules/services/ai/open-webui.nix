@@ -15,6 +15,10 @@
 
   system =
     { cfg, nixul, ... }:
+    let
+      tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
+      tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
+    in
     {
       services.open-webui = lib.mkIf cfg.enable {
         enable = true;
@@ -25,6 +29,9 @@
         lib.mkIf (cfg.enable && nixul.host.modules.services.server.nginx.enable)
           {
             serverName = "open-webui.home";
+            addSSL = true;
+            sslCertificate = tlsCertificatePath;
+            sslCertificateKey = tlsCertificateKeyPath;
             locations."/" = {
               proxyPass = "http://127.0.0.1:9004";
               proxyWebsockets = true;

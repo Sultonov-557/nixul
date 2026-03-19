@@ -16,6 +16,8 @@
   system =
     { cfg, nixul, ... }:
     let
+      tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
+      tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
       nginxEnabled = lib.attrByPath [
         "host"
         "modules"
@@ -62,7 +64,7 @@
       services.vaultwarden = lib.mkIf cfg.enable {
         enable = true;
         config = {
-          DOMAIN = "http://vault.home";
+          DOMAIN = "https://vault.home";
           ROCKET_ADDRESS = "127.0.0.1";
           ROCKET_PORT = 9006;
         };
@@ -74,6 +76,9 @@
 
       services.nginx.virtualHosts.vaultwarden = lib.mkIf (cfg.enable && nginxEnabled) {
         serverName = "vault.home";
+        addSSL = true;
+        sslCertificate = tlsCertificatePath;
+        sslCertificateKey = tlsCertificateKeyPath;
         locations."/" = {
           proxyPass = "http://127.0.0.1:9006";
           proxyWebsockets = true;

@@ -4,7 +4,7 @@
       npm = "@ai-sdk/openai-compatible";
       name = "LiteLLM";
       options = {
-        baseURL = "http://litellm.home/v1";
+        baseURL = "https://litellm.home/v1";
         apiKey = "\${LITELLM_MASTER_KEY}";
       };
       models = {

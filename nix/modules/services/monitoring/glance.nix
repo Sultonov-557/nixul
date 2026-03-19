@@ -54,14 +54,6 @@ in
         "vaultwarden"
         "enable"
       ] false nixul;
-      vaultwardenDomain = lib.attrByPath [
-        "host"
-        "modules"
-        "services"
-        "server"
-        "vaultwarden"
-        "domain"
-      ] "vault.home" nixul;
 
       nginxEnabled = lib.attrByPath [
         "host"
@@ -199,7 +191,7 @@ in
                         [
                           {
                             title = "Vaultwarden";
-                            url = "http://${vaultwardenDomain}";
+                            url = "http://vault.home";
                           }
                         ]
                       else
@@ -215,6 +207,9 @@ in
 
       services.nginx.virtualHosts.glance = lib.mkIf (cfg.enable && nginxEnabled) {
         serverName = "glance.home";
+        addSSL = true;
+        sslCertificate = "/var/lib/internal-ca/certs/home-wildcard.crt";
+        sslCertificateKey = "/var/lib/internal-ca/private/home-wildcard.key";
         locations."/" = {
           proxyPass = "http://127.0.0.1:8080";
         };

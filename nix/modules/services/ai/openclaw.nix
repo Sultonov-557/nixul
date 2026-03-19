@@ -25,6 +25,8 @@
     let
       port = cfg.port or 9005;
       settings = cfg.settings or { };
+      tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
+      tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
       nginxEnabled = lib.attrByPath [
         "host"
         "modules"
@@ -102,6 +104,9 @@
 
       services.nginx.virtualHosts.openclaw = lib.mkIf (cfg.enable && nginxEnabled) {
         serverName = "openclaw.home";
+        addSSL = true;
+        sslCertificate = tlsCertificatePath;
+        sslCertificateKey = tlsCertificateKeyPath;
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString port}";
           proxyWebsockets = true;

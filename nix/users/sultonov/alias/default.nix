@@ -1,4 +1,8 @@
 [
+  "vim=nvim"
+  "vi=nvim"
+  "v=nvim"
+
   # navigation
   "..=cd .."
   "...=cd ../.."

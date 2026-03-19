@@ -25,6 +25,8 @@ in
     { cfg, ... }:
     let
       sections = mkSections config.nixul.host.bookmarks;
+      tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
+      tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
     in
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ dashy-ui ]);
@@ -40,7 +42,7 @@ in
         settings = {
           pageInfo = {
             title = "Home";
-            logo = "http://public.home/logo.png";
+            logo = "https://public.home/logo.png";
           };
           sections = sections;
 
@@ -73,6 +75,12 @@ in
           [
             ''"dashy.home. A 127.0.0.1"''
           ];
+
+      services.nginx.virtualHosts.dashy = lib.mkIf cfg.enable {
+        addSSL = true;
+        sslCertificate = tlsCertificatePath;
+        sslCertificateKey = tlsCertificateKeyPath;
+      };
 
       assertions = [
         {

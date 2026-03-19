@@ -113,6 +113,8 @@
       ...
     }:
     let
+      tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
+      tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
       nginxEnabled = lib.attrByPath [
         "host"
         "modules"
@@ -265,6 +267,9 @@
 
       services.nginx.virtualHosts.litellm = lib.mkIf (cfg.enable && nginxEnabled) {
         serverName = "litellm.home";
+        addSSL = true;
+        sslCertificate = tlsCertificatePath;
+        sslCertificateKey = tlsCertificateKeyPath;
         locations."/" = {
           proxyPass = "http://127.0.0.1:9003";
           proxyWebsockets = true;
