@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "networkmanager";
+    description = "Module for `hardware.network.networkmanager`.";
+    purpose = "Configure `hardware.network.networkmanager` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "network"
+      "networkmanager"
+    ];
+  };
+
   system =
     { cfg, config, ... }:
     {

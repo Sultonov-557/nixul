@@ -5,6 +5,19 @@
   ...
 }:
 {
+  metadata = {
+    name = "nginx";
+    description = "Module for `services.server.nginx`.";
+    purpose = "Configure `services.server.nginx` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "server"
+      "nginx"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

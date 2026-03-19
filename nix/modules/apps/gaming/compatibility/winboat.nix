@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "winboat";
+    description = "Module for `apps.gaming.compatibility.winboat`.";
+    purpose = "Configure `apps.gaming.compatibility.winboat` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "gaming"
+      "compatibility"
+      "winboat"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

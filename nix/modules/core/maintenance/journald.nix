@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "journald";
+    description = "Module for `core.maintenance.journald`.";
+    purpose = "Configure `core.maintenance.journald` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "core"
+      "maintenance"
+      "journald"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

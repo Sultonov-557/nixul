@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "lazydocker";
+    description = "Module for `dev.tools.containers.lazydocker`.";
+    purpose = "Configure `dev.tools.containers.lazydocker` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "containers"
+      "lazydocker"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

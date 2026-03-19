@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "opengl";
+    description = "Module for `hardware.units.gpu.opengl`.";
+    purpose = "Configure `hardware.units.gpu.opengl` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "units"
+      "gpu"
+      "opengl"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "ssh";
+    description = "Module for `core.security.ssh.ssh`.";
+    purpose = "Configure `core.security.ssh.ssh` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "security"
+      "ssh"
+    ];
+  };
+
   home =
     { cfg, config, ... }:
     let

@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "profiles";
+    description = "Module for `hardware.power.profiles`.";
+    purpose = "Configure `hardware.power.profiles` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "power"
+      "profiles"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "devenv";
+    description = "Module for `dev.tools.env.devenv`.";
+    purpose = "Configure `dev.tools.env.devenv` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "env"
+      "devenv"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

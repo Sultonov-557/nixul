@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "redis";
+    description = "Module for `services.databases.redis`.";
+    purpose = "Configure `services.databases.redis` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "databases"
+      "redis"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

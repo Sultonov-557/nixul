@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "sherlock";
+    description = "Module for `dev.security.recon.discovery.sherlock`.";
+    purpose = "Configure `dev.security.recon.discovery.sherlock` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "recon"
+      "discovery"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

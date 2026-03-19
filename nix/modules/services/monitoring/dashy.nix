@@ -8,6 +8,19 @@ let
   mkSections = import ../../../nixul/universal/bookmarks/adapters/dashy { inherit lib; };
 in
 {
+  metadata = {
+    name = "dashy";
+    description = "Module for `services.monitoring.dashy`.";
+    purpose = "Configure `services.monitoring.dashy` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "monitoring"
+      "dashy"
+    ];
+  };
+
   system =
     { cfg, ... }:
     let

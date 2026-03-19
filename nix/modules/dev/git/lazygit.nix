@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "lazygit";
+    description = "Module for `dev.git.lazygit`.";
+    purpose = "Configure `dev.git.lazygit` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "git"
+      "lazygit"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "python";
+    description = "Module for `dev.runtimes.python`.";
+    purpose = "Configure `dev.runtimes.python` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "runtimes"
+      "python"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

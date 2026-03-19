@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "btop";
+    description = "Module for `core.terminal.tools.monitor.btop`.";
+    purpose = "Configure `core.terminal.tools.monitor.btop` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "monitor"
+    ];
+  };
+
   home =
     {
       cfg,

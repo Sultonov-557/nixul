@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "prisma";
+    description = "Module for `dev.runtimes.javascript.prisma`.";
+    purpose = "Configure `dev.runtimes.javascript.prisma` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "runtimes"
+      "javascript"
+      "prisma"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

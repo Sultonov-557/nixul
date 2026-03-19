@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "sane";
+    description = "Module for `hardware.printing.sane`.";
+    purpose = "Configure `hardware.printing.sane` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "printing"
+      "sane"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

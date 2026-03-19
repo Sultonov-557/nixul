@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "nix";
+    description = "Module for `core.system.nix.nix`.";
+    purpose = "Configure `core.system.nix.nix` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "core"
+      "system"
+      "nix"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

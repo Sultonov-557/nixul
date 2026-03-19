@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "amd";
+    description = "Module for `hardware.units.cpu.amd`.";
+    purpose = "Configure `hardware.units.cpu.amd` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "units"
+      "cpu"
+      "amd"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

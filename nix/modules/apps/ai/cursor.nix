@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "cursor";
+    description = "Module for `apps.ai.cursor`.";
+    purpose = "Configure `apps.ai.cursor` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "ai"
+      "cursor"
+    ];
+  };
+
 
   home =
     { cfg, pkgs, ... }:

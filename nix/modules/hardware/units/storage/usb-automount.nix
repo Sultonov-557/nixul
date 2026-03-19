@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "usb-automount";
+    description = "Module for `hardware.units.storage.usb-automount`.";
+    purpose = "Configure `hardware.units.storage.usb-automount` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "units"
+      "storage"
+      "usb-automount"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "power-management";
+    description = "Module for `hardware.power.power-management`.";
+    purpose = "Configure `hardware.power.power-management` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "power"
+      "power-management"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

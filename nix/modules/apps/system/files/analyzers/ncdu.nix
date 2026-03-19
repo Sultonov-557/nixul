@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "ncdu";
+    description = "Module for `apps.system.files.analyzers.ncdu`.";
+    purpose = "Configure `apps.system.files.analyzers.ncdu` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "files"
+      "analyzers"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

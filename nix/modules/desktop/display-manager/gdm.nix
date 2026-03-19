@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "gdm";
+    description = "Module for `desktop.display-manager.gdm`.";
+    purpose = "Configure `desktop.display-manager.gdm` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "desktop"
+      "display-manager"
+      "gdm"
+    ];
+  };
+
   system =
     { cfg, nixul, ... }:
     {

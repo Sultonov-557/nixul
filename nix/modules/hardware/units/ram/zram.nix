@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "zram";
+    description = "Module for `hardware.units.ram.zram`.";
+    purpose = "Configure `hardware.units.ram.zram` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "units"
+      "ram"
+      "zram"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

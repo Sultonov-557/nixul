@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "polkit";
+    description = "Module for `desktop.components.polkit`.";
+    purpose = "Configure `desktop.components.polkit` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "desktop"
+      "components"
+      "polkit"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "gparted";
+    description = "Module for `apps.system.disk.gparted`.";
+    purpose = "Configure `apps.system.disk.gparted` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "disk"
+      "gparted"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

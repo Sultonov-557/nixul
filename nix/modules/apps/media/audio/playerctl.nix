@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "playerctl";
+    description = "Module for `apps.media.audio.playerctl`.";
+    purpose = "Configure `apps.media.audio.playerctl` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "media"
+      "audio"
+      "playerctl"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

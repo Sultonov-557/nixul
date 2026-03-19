@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "ripgrep";
+    description = "Module for `core.terminal.tools.navigation.ripgrep`.";
+    purpose = "Configure `core.terminal.tools.navigation.ripgrep` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "navigation"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

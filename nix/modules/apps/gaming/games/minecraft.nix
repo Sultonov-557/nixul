@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "minecraft";
+    description = "Module for `apps.gaming.games.minecraft`.";
+    purpose = "Configure `apps.gaming.games.minecraft` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "gaming"
+      "games"
+      "minecraft"
+    ];
+  };
+
   home =
     { cfg, inputs, ... }:
     {

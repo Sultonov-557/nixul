@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "steam";
+    description = "Module for `apps.gaming.platform.steam`.";
+    purpose = "Configure `apps.gaming.platform.steam` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "gaming"
+      "platform"
+      "steam"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

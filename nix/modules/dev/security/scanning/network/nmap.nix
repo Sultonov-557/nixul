@@ -1,5 +1,19 @@
 { pkgs, lib, ... }:
 {
+  metadata = {
+    name = "nmap";
+    description = "Module for `dev.security.scanning.network.nmap`.";
+    purpose = "Configure `dev.security.scanning.network.nmap` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "scanning"
+      "network"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

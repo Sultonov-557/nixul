@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "zip";
+    description = "Module for `apps.system.files.archives.zip`.";
+    purpose = "Configure `apps.system.files.archives.zip` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "files"
+      "archives"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

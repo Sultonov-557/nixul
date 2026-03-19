@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "starship";
+    description = "Module for `core.terminal.tools.prompt.starship`.";
+    purpose = "Configure `core.terminal.tools.prompt.starship` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "prompt"
+    ];
+  };
+
   home =
     {
       cfg,

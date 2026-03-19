@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "cpp";
+    description = "Module for `dev.runtimes.cpp`.";
+    purpose = "Configure `dev.runtimes.cpp` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "runtimes"
+      "cpp"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

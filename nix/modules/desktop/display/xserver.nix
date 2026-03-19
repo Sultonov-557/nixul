@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "xserver";
+    description = "Module for `desktop.display.xserver`.";
+    purpose = "Configure `desktop.display.xserver` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "desktop"
+      "display"
+      "xserver"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

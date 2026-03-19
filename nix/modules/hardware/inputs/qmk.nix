@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "qmk";
+    description = "Module for `hardware.inputs.qmk`.";
+    purpose = "Configure `hardware.inputs.qmk` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "inputs"
+      "qmk"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

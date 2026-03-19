@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "john";
+    description = "Module for `dev.security.attack.brute-force.john`.";
+    purpose = "Configure `dev.security.attack.brute-force.john` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "attack"
+      "brute-force"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

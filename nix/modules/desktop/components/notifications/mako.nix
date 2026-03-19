@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "mako";
+    description = "Module for `desktop.components.notifications.mako`.";
+    purpose = "Configure `desktop.components.notifications.mako` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "desktop"
+      "components"
+      "notifications"
+      "mako"
+    ];
+  };
+
   home =
     { cfg, osConfig, ... }:
     let

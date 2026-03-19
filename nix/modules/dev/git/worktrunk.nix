@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "worktrunk";
+    description = "Module for `dev.git.worktrunk`.";
+    purpose = "Configure `dev.git.worktrunk` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "git"
+      "worktrunk"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

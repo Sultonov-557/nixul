@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "ollama";
+    description = "Module for `services.ai.ollama`.";
+    purpose = "Configure `services.ai.ollama` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "ai"
+      "ollama"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

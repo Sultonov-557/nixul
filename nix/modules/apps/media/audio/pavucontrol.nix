@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "pavucontrol";
+    description = "Module for `apps.media.audio.pavucontrol`.";
+    purpose = "Configure `apps.media.audio.pavucontrol` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "media"
+      "audio"
+      "pavucontrol"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

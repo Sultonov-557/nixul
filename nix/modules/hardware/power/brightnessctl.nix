@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "brightnessctl";
+    description = "Module for `hardware.power.brightnessctl`.";
+    purpose = "Configure `hardware.power.brightnessctl` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "power"
+      "brightnessctl"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

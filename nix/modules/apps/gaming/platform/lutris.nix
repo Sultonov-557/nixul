@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "lutris";
+    description = "Module for `apps.gaming.platform.lutris`.";
+    purpose = "Configure `apps.gaming.platform.lutris` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "gaming"
+      "platform"
+      "lutris"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

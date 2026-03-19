@@ -3,6 +3,19 @@
   ...
 }:
 {
+  metadata = {
+    name = "podman";
+    description = "Module for `services.containers.podman`.";
+    purpose = "Configure `services.containers.podman` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "containers"
+      "podman"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

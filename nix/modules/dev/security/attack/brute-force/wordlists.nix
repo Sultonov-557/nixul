@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "wordlists";
+    description = "Module for `dev.security.attack.brute-force.wordlists`.";
+    purpose = "Configure `dev.security.attack.brute-force.wordlists` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "attack"
+      "brute-force"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

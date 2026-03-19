@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "openclaw";
+    description = "Module for `services.ai.openclaw`.";
+    purpose = "Configure `services.ai.openclaw` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "ai"
+      "openclaw"
+    ];
+  };
+
 
   system =
     {

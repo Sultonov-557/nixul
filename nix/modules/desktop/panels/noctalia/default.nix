@@ -1,5 +1,18 @@
 { lib, inputs, ... }:
 {
+  metadata = {
+    name = "noctalia";
+    description = "Module for `desktop.panels.noctalia`.";
+    purpose = "Configure `desktop.panels.noctalia` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "desktop"
+      "panels"
+      "noctalia"
+    ];
+  };
+
   home =
     { cfg, osConfig, ... }:
     {

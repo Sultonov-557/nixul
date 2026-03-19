@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "usql";
+    description = "Module for `dev.tools.db.usql`.";
+    purpose = "Configure `dev.tools.db.usql` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "db"
+      "usql"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

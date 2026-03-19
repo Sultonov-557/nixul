@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "amass";
+    description = "Module for `dev.security.recon.discovery.amass`.";
+    purpose = "Configure `dev.security.recon.discovery.amass` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "recon"
+      "discovery"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

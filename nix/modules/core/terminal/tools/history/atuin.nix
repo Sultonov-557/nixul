@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "atuin";
+    description = "Module for `core.terminal.tools.history.atuin`.";
+    purpose = "Configure `core.terminal.tools.history.atuin` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "history"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

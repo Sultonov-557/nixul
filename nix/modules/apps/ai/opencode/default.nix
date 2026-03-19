@@ -17,6 +17,19 @@ let
     map (
       folder:
       {
+  metadata = {
+    name = "opencode";
+    description = "Module for `apps.ai.opencode`.";
+    purpose = "Configure `apps.ai.opencode` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "ai"
+      "opencode"
+    ];
+  };
+
         name = "opencode/skills/${folder}/SKILL.md";
         value.text = builtins.readFile (skillDir + "/${folder}/SKILL.md");
       }

@@ -3,6 +3,20 @@ let
   mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix { inherit lib; };
 in
 {
+  metadata = {
+    name = "firefox";
+    description = "Module for `apps.user.internet.browsers.firefox`.";
+    purpose = "Configure `apps.user.internet.browsers.firefox` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "user"
+      "internet"
+      "browsers"
+    ];
+  };
+
   home =
     { cfg, user, ... }:
     {

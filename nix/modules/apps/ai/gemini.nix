@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "gemini";
+    description = "Module for `apps.ai.gemini`.";
+    purpose = "Configure `apps.ai.gemini` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "ai"
+      "gemini"
+    ];
+  };
+
 
   home =
     { cfg, nixul, ... }:

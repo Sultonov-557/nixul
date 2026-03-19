@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "gimp";
+    description = "Module for `apps.media.photo.gimp`.";
+    purpose = "Configure `apps.media.photo.gimp` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "media"
+      "photo"
+      "gimp"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

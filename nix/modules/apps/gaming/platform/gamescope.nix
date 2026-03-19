@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "gamescope";
+    description = "Module for `apps.gaming.platform.gamescope`.";
+    purpose = "Configure `apps.gaming.platform.gamescope` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "gaming"
+      "platform"
+      "gamescope"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

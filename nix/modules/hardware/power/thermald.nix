@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "thermald";
+    description = "Module for `hardware.power.thermald`.";
+    purpose = "Configure `hardware.power.thermald` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "power"
+      "thermald"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

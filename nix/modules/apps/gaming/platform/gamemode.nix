@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "gamemode";
+    description = "Module for `apps.gaming.platform.gamemode`.";
+    purpose = "Configure `apps.gaming.platform.gamemode` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "gaming"
+      "platform"
+      "gamemode"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

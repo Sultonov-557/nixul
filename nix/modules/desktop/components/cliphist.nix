@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "cliphist";
+    description = "Module for `desktop.components.cliphist`.";
+    purpose = "Configure `desktop.components.cliphist` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "desktop"
+      "components"
+      "cliphist"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

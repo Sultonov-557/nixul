@@ -1,5 +1,19 @@
 { lib, config, ... }:
 {
+  metadata = {
+    name = "fish";
+    description = "Module for `core.terminal.shells.fish`.";
+    purpose = "Configure `core.terminal.shells.fish` features and defaults.";
+    scope = "shared";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "shells"
+      "fish"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "qbitttorrent";
+    description = "Module for `apps.user.internet.qbitttorrent`.";
+    purpose = "Configure `apps.user.internet.qbitttorrent` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "user"
+      "internet"
+      "qbitttorrent"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "tailscale";
+    description = "Module for `services.vpn.tailscale`.";
+    purpose = "Configure `services.vpn.tailscale` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "vpn"
+      "tailscale"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "nix-init";
+    description = "Module for `dev.tools.env.nix-init`.";
+    purpose = "Configure `dev.tools.env.nix-init` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "env"
+      "nix-init"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "nix-ld";
+    description = "Module for `core.system.nix.nix-ld`.";
+    purpose = "Configure `core.system.nix.nix-ld` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "core"
+      "system"
+      "nix"
+      "nix-ld"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

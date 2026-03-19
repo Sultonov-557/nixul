@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "p7zip";
+    description = "Module for `apps.system.files.archives.p7zip`.";
+    purpose = "Configure `apps.system.files.archives.p7zip` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "files"
+      "archives"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

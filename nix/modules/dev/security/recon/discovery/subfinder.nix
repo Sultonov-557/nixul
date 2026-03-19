@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "subfinder";
+    description = "Module for `dev.security.recon.discovery.subfinder`.";
+    purpose = "Configure `dev.security.recon.discovery.subfinder` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "recon"
+      "discovery"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

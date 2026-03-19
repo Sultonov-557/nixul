@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "bettercap";
+    description = "Module for `dev.security.attack.mitm.bettercap`.";
+    purpose = "Configure `dev.security.attack.mitm.bettercap` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "attack"
+      "mitm"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

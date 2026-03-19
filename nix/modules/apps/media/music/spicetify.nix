@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "spicetify";
+    description = "Module for `apps.media.music.spicetify`.";
+    purpose = "Configure `apps.media.music.spicetify` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "media"
+      "music"
+      "spicetify"
+    ];
+  };
+
   home =
     { cfg, inputs, nixul, ... }:
     let

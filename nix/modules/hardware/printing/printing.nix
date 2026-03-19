@@ -1,5 +1,17 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "printing";
+    description = "Module for `hardware.printing.printing`.";
+    purpose = "Configure `hardware.printing.printing` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "printing"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

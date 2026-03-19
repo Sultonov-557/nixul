@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "garbage-collector";
+    description = "Module for `core.maintenance.garbage-collector`.";
+    purpose = "Configure `core.maintenance.garbage-collector` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "maintenance"
+      "garbage-collector"
+    ];
+  };
+
   home =
     { cfg, user, ... }:
     {

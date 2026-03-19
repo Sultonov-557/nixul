@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "chrome";
+    description = "Module for `apps.user.internet.browsers.chrome`.";
+    purpose = "Configure `apps.user.internet.browsers.chrome` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "user"
+      "internet"
+      "browsers"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

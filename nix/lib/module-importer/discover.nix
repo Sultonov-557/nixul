@@ -25,6 +25,7 @@ let
             mod
             hasHome
             hasSystem
+            metadata
             options
             ;
           inherit filePath;

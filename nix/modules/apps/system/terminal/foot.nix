@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "foot";
+    description = "Module for `apps.system.terminal.foot`.";
+    purpose = "Configure `apps.system.terminal.foot` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "terminal"
+      "foot"
+    ];
+  };
+
   home =
     { cfg, osConfig, ... }:
     let

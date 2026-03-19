@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "hydra";
+    description = "Module for `dev.security.attack.brute-force.hydra`.";
+    purpose = "Configure `dev.security.attack.brute-force.hydra` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "attack"
+      "brute-force"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

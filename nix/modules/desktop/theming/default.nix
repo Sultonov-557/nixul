@@ -8,6 +8,18 @@ let
   theme = config.nixul.theme;
 in
 {
+  metadata = {
+    name = "theming";
+    description = "Module for `desktop.theming`.";
+    purpose = "Configure `desktop.theming` features and defaults.";
+    scope = "shared";
+    status = "active";
+    tags = [
+      "desktop"
+      "theming"
+    ];
+  };
+
   system =
     { ... }:
     {

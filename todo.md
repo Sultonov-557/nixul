@@ -55,21 +55,18 @@
 - [x] feat: integrate sops
 - [x] feat: add sops based ssh servers
 - [x] feat: break everything down to tags
+- [x] feat: add metadata to modules
 
 - [x] test experimental features and merge with main branch
 
 - [-] feat: universal options for many modules
+- [-] feat: good, like really really good, documentation
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 
-- [ ] feat: good, like really really good, documentation
-- [ ] feat: add kurrier
-- [ ] feat: add hoppscotch
-
 - [ ] feat: project templates (node, rust, python)
 - [ ] feat: nixul new <template> command
-- [ ] feat: automatic direnv integration
 - [ ] feat: language dev modules (go, rust, zig, python)
 
 - [ ] feat: nixul cli
@@ -85,7 +82,6 @@
 - [ ] feat: yubikey support
 - [ ] feat: disk encryption helpers
 
-- [ ] feat: add metadata to modules
 - [ ] feat: add config to json extractor
 - [ ] feat: self documenting system
 - [ ] feat: generate website from config

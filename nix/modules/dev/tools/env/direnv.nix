@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "direnv";
+    description = "Module for `dev.tools.env.direnv`.";
+    purpose = "Configure `dev.tools.env.direnv` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "env"
+      "direnv"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

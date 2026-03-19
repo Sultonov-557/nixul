@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "pamixer";
+    description = "Module for `apps.media.audio.pamixer`.";
+    purpose = "Configure `apps.media.audio.pamixer` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "media"
+      "audio"
+      "pamixer"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

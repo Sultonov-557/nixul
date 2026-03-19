@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "assetfinder";
+    description = "Module for `dev.security.recon.discovery.assetfinder`.";
+    purpose = "Configure `dev.security.recon.discovery.assetfinder` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "recon"
+      "discovery"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

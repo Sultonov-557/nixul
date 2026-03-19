@@ -1,5 +1,19 @@
 { lib, config, ... }:
 {
+  metadata = {
+    name = "nushell";
+    description = "Module for `core.terminal.shells.nushell`.";
+    purpose = "Configure `core.terminal.shells.nushell` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "shells"
+      "nushell"
+    ];
+  };
+
   home =
     { cfg, ... }:
     let

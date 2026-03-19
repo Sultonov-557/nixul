@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "mission-center";
+    description = "Module for `apps.system.monitors.mission-center`.";
+    purpose = "Configure `apps.system.monitors.mission-center` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "monitors"
+      "mission-center"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

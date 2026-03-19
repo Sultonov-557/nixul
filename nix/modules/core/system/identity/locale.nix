@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "locale";
+    description = "Module for `core.system.identity.locale`.";
+    purpose = "Configure `core.system.identity.locale` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "core"
+      "system"
+      "identity"
+      "locale"
+    ];
+  };
+
   system =
     { cfg, config, ... }:
     {

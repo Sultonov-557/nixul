@@ -20,6 +20,10 @@ Nixul is built around three layers: host entrypoints, shared modules, and tag bu
 - Generated options are mounted under:
   - `nixul.host.modules.<path>`
   - `nixul.users.<user>.modules.<path>`
+- Generated module metadata is mounted under:
+  - `nixul._moduleMetadata.<path>`
+  - `nixul._hostModuleMetadata.<path>`
+  - `nixul._userModuleMetadata.<path>`
 
 ## Module contract
 - Shared modules are files under `nix/modules/**`.

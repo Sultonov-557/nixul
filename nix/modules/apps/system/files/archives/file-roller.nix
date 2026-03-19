@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "file-roller";
+    description = "Module for `apps.system.files.archives.file-roller`.";
+    purpose = "Configure `apps.system.files.archives.file-roller` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "files"
+      "archives"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

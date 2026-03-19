@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "thunderbird";
+    description = "Module for `apps.user.internet.communication.thunderbird`.";
+    purpose = "Configure `apps.user.internet.communication.thunderbird` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "apps"
+      "user"
+      "internet"
+      "communication"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "kind";
+    description = "Module for `services.containers.kubernetes.kind`.";
+    purpose = "Configure `services.containers.kubernetes.kind` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "containers"
+      "kubernetes"
+      "kind"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

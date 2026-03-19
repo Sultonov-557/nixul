@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "whatweb";
+    description = "Module for `dev.security.recon.web.whatweb`.";
+    purpose = "Configure `dev.security.recon.web.whatweb` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "security"
+      "recon"
+      "web"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

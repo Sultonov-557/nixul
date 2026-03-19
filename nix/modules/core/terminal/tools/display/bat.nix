@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "bat";
+    description = "Module for `core.terminal.tools.display.bat`.";
+    purpose = "Configure `core.terminal.tools.display.bat` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "display"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

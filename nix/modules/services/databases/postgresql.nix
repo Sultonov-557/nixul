@@ -1,5 +1,18 @@
 { lib, pkgs, config, ... }:
 {
+  metadata = {
+    name = "postgresql";
+    description = "Module for `services.databases.postgresql`.";
+    purpose = "Configure `services.databases.postgresql` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "databases"
+      "postgresql"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

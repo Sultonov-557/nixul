@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "zed";
+    description = "Module for `dev.editor.zed`.";
+    purpose = "Configure `dev.editor.zed` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "dev"
+      "editor"
+      "zed"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

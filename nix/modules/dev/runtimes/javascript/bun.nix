@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "bun";
+    description = "Module for `dev.runtimes.javascript.bun`.";
+    purpose = "Configure `dev.runtimes.javascript.bun` features and defaults.";
+    scope = "shared";
+    status = "active";
+    tags = [
+      "dev"
+      "runtimes"
+      "javascript"
+      "bun"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

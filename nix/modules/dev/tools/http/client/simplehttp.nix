@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "simplehttp";
+    description = "Module for `dev.tools.http.client.simplehttp`.";
+    purpose = "Configure `dev.tools.http.client.simplehttp` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "http"
+      "client"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

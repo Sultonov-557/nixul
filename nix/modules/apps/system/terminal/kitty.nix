@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "kitty";
+    description = "Module for `apps.system.terminal.kitty`.";
+    purpose = "Configure `apps.system.terminal.kitty` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "system"
+      "terminal"
+      "kitty"
+    ];
+  };
+
   home =
     { cfg, osConfig, ... }:
     let

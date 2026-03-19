@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "ngrok";
+    description = "Module for `dev.tools.http.server.ngrok`.";
+    purpose = "Configure `dev.tools.http.server.ngrok` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "tools"
+      "http"
+      "server"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

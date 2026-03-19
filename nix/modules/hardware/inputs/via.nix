@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "via";
+    description = "Module for `hardware.inputs.via`.";
+    purpose = "Configure `hardware.inputs.via` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "inputs"
+      "via"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

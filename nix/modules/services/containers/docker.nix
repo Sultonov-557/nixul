@@ -4,6 +4,19 @@
   ...
 }:
 {
+  metadata = {
+    name = "docker";
+    description = "Module for `services.containers.docker`.";
+    purpose = "Configure `services.containers.docker` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "containers"
+      "docker"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

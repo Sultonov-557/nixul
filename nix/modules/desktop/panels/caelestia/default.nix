@@ -1,5 +1,18 @@
 { lib, config, ... }:
 {
+  metadata = {
+    name = "caelestia";
+    description = "Module for `desktop.panels.caelestia`.";
+    purpose = "Configure `desktop.panels.caelestia` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "desktop"
+      "panels"
+      "caelestia"
+    ];
+  };
+
   home =
     {
       cfg,

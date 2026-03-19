@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "vulnix";
+    description = "Module for `core.terminal.tools.display.vulnix`.";
+    purpose = "Configure `core.terminal.tools.display.vulnix` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "display"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

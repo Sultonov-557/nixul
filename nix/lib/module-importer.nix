@@ -40,6 +40,19 @@ let
     inherit (types) mkCfgOption;
   };
 
+  metadataTrees = import ./module-importer/metadata.nix {
+    inherit lib;
+    inherit (discovery)
+      discovered
+      hostMods
+      userMods
+      ;
+    inherit (utils)
+      mkNested
+      mergeAll
+      ;
+  };
+
   host = import ./module-importer/host.nix {
     inherit
       lib
@@ -84,6 +97,27 @@ in
       internal = true;
       description = "Auto-generated per-user module options tree (internal).";
     };
+
+    nixul._moduleMetadata = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+      internal = true;
+      description = "Auto-generated metadata tree for all discovered modules (internal).";
+    };
+
+    nixul._hostModuleMetadata = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+      internal = true;
+      description = "Auto-generated metadata tree for system-capable modules (internal).";
+    };
+
+    nixul._userModuleMetadata = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+      internal = true;
+      description = "Auto-generated metadata tree for home-capable modules (internal).";
+    };
   };
 
   config = lib.mkMerge [
@@ -93,6 +127,9 @@ in
     {
       nixul._userModuleOptions = optionTrees.userOptions;
       nixul._systemModuleOptions = optionTrees.hostOptions;
+      nixul._moduleMetadata = metadataTrees.allModuleMetadata;
+      nixul._hostModuleMetadata = metadataTrees.hostModuleMetadata;
+      nixul._userModuleMetadata = metadataTrees.userModuleMetadata;
       warnings = [
         ("nixul importer discovered: " + (toString (builtins.length discovery.discovered)) + " modules")
       ];

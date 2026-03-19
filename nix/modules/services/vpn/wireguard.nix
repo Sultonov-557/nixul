@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "wireguard";
+    description = "Module for `services.vpn.wireguard`.";
+    purpose = "Configure `services.vpn.wireguard` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "vpn"
+      "wireguard"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

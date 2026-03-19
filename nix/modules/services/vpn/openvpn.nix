@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "openvpn";
+    description = "Module for `services.vpn.openvpn`.";
+    purpose = "Configure `services.vpn.openvpn` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "services"
+      "vpn"
+      "openvpn"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

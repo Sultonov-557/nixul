@@ -1,5 +1,19 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "tcpdump";
+    description = "Module for `core.terminal.tools.monitor.tcpdump`.";
+    purpose = "Configure `core.terminal.tools.monitor.tcpdump` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "core"
+      "terminal"
+      "tools"
+      "monitor"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

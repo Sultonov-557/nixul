@@ -12,11 +12,20 @@ A module file can return:
 - `options` - option schema/defaults for `cfg`.
 - `system` - function returning NixOS config.
 - `home` - function returning Home Manager config.
+- `metadata` - optional docs metadata for generated references.
 
 Typical shape:
 
 ```nix
 {
+  metadata = {
+    name = "ollama";
+    description = "Run local LLM inference service";
+    purpose = "Expose and manage the Ollama daemon";
+    scope = "system";
+    tags = [ "ai" "llm" "inference" ];
+  };
+
   options = {
     enable = lib.mkEnableOption "feature";
   };
@@ -30,6 +39,11 @@ Typical shape:
   };
 }
 ```
+
+If `metadata` is omitted, importer defaults are generated from the module path. Metadata is exposed internally at:
+- `nixul._moduleMetadata.<module-path>`
+- `nixul._hostModuleMetadata.<module-path>`
+- `nixul._userModuleMetadata.<module-path>`
 
 ## Generated option paths
 - Host side: `nixul.host.modules.<module-path>`.

@@ -65,12 +65,26 @@ let
         hasHome = mod ? home;
         hasSystem = mod ? system;
         options = mod.options or null;
+        metadataRaw = mod.metadata or { };
+        metadata =
+          if metadataRaw == null then
+            { }
+          else if builtins.isAttrs metadataRaw then
+            metadataRaw
+          else
+            throw ''
+              nixul module importer: `metadata` must be an attrset or null
+
+              File: ${toString filePath}
+              Type: ${builtins.typeOf metadataRaw}
+            '';
 
       in
       {
         inherit
           mod
           options
+          metadata
           hasHome
           hasSystem
           ;

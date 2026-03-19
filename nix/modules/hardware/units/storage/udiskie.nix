@@ -1,5 +1,19 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "udiskie";
+    description = "Module for `hardware.units.storage.udiskie`.";
+    purpose = "Configure `hardware.units.storage.udiskie` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "hardware"
+      "units"
+      "storage"
+      "udiskie"
+    ];
+  };
+
   home =
     { cfg, ... }:
     {

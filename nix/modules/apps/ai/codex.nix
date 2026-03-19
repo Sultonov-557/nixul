@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "codex";
+    description = "Module for `apps.ai.codex`.";
+    purpose = "Configure `apps.ai.codex` features and defaults.";
+    scope = "home";
+    status = "active";
+    tags = [
+      "apps"
+      "ai"
+      "codex"
+    ];
+  };
+
 
   home =
     { cfg, nixul, ... }:

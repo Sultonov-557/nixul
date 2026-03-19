@@ -1,5 +1,18 @@
 { lib, ... }:
 {
+  metadata = {
+    name = "upower";
+    description = "Module for `hardware.power.upower`.";
+    purpose = "Configure `hardware.power.upower` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "hardware"
+      "power"
+      "upower"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {

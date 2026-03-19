@@ -1,5 +1,18 @@
 { lib, pkgs, ... }:
 {
+  metadata = {
+    name = "antigravity";
+    description = "Module for `dev.editor.antigravity`.";
+    purpose = "Configure `dev.editor.antigravity` features and defaults.";
+    scope = "system";
+    status = "active";
+    tags = [
+      "dev"
+      "editor"
+      "antigravity"
+    ];
+  };
+
   system =
     { cfg, ... }:
     {
