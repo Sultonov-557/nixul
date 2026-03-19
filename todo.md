@@ -54,6 +54,7 @@
 - [x] feat: add openclaw
 - [x] feat: integrate sops
 - [x] feat: add sops based ssh servers
+- [x] feat: break everything down to tags
 
 - [x] test experimental features and merge with main branch
 
@@ -62,9 +63,6 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 
-- [ ] feat: module integrations
-
-- [ ] feat: break everything down to tags
 - [ ] feat: good, like really really good, documentation
 - [ ] feat: add kurrier
 - [ ] feat: add hoppscotch
@@ -93,6 +91,8 @@
 - [ ] feat: generate website from config
 - [ ] feat: nixul system diagram generator
 - [ ] feat: module tree visualizer
+
+- [ ] feat: module integrations
 
 - [ ] feat: multi-host orchestration
 
