@@ -3,10 +3,12 @@
   dev.git.git-extras.enable = true;
   dev.git.lazygit.enable = true;
   dev.runtimes.cpp.enable = true;
+  dev.runtimes.go.enable = true;
   dev.runtimes.javascript.nodejs.enable = true;
   dev.runtimes.javascript.prisma.enable = true;
   dev.runtimes.python.enable = true;
   dev.runtimes.rustc.enable = true;
+  dev.runtimes.zig.enable = true;
   dev.security.attack.brute-force.hashcat.enable = true;
   dev.security.attack.brute-force.hydra.enable = true;
   dev.security.attack.brute-force.john.enable = true;

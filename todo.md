@@ -57,6 +57,8 @@
 - [x] feat: break everything down to tags
 - [x] feat: add metadata to modules
 - [x] plan(layering): map tag/user/host precedence rules in docs with real examples
+- [x] feat: fail2ban module
+- [x] feat: language dev modules (go, rust, zig, python)
 
 - [x] test experimental features and merge with main branch
 
@@ -68,7 +70,6 @@
 
 - [ ] feat: project templates (node, rust, python)
 - [ ] feat: nixul new <template> command
-- [ ] feat: language dev modules (go, rust, zig, python)
 
 - [ ] feat: nixul cli
 - [ ] feat: nixul update
@@ -79,7 +80,6 @@
 
 - [ ] feat: security audit module
 - [ ] feat: add vault warden
-- [ ] feat: fail2ban module
 - [ ] feat: yubikey support
 - [ ] feat: disk encryption helpers
 

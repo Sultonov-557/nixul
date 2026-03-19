@@ -1,9 +1,9 @@
 # Nixul Tags
 
 Counter:
-- Explicit tags: `49`
-- Host tags: `31`
-- User tags: `18`
+- Explicit tags: `53`
+- Host tags: `33`
+- User tags: `20`
 - Module tags: dynamic (any module path from `nix/modules/**` can be used as a tag)
 
 ## Host tags
@@ -22,10 +22,12 @@ Counter:
 - `core`: enables core host baseline (maintenance, network/security, boot, nix stack, desktop dbus/xdg, terminal tools/shells).
 - `desktop`: enables desktop baseline (`dbus`, `xdg`, `cliphist`, `ntfy`, `polkit`, `wayland`, `xserver`, `theming`).
 - `dev/base`: enables `dev.git.git` and `dev.git.lazygit`.
+- `dev/go`: enables `dev.runtimes.go`.
 - `dev/docker`: enables `services.containers.docker`.
 - `dev/node`: enables `dev.runtimes.javascript.nodejs`.
 - `dev/python`: enables `dev.runtimes.python`.
 - `dev/rust`: enables `dev.runtimes.rustc`.
+- `dev/zig`: enables `dev.runtimes.zig`.
 - `development`: enables the main host dev/security/tooling bundle.
 - `display-manager/gdm`: enables `desktop.display-manager.gdm`.
 - `display-manager/sddm`: enables `desktop.display-manager.sddm`.
@@ -52,9 +54,11 @@ Counter:
 - `desktop`: enables user desktop baseline (components, display manager, wayland/xserver, panels, theming, wms).
 - `desktop/components/vicinae`: enables `desktop.components.vicinae`.
 - `dev/neovim`: enables `dev.editor.nixvim`.
+- `dev/go`: enables `dev.runtimes.go`.
 - `dev/node`: enables JS runtimes (`nodejs`, `bun`, `yarn`).
 - `dev/python`: enables `dev.runtimes.python`.
 - `dev/rust`: enables `dev.runtimes.rustc`.
+- `dev/zig`: enables `dev.runtimes.zig`.
 - `dev/vscode`: enables `dev.editor.zed`.
 - `development`: enables the main user dev/security/tooling bundle.
 - `git/base`: enables `dev.git.git`, `dev.git.lazygit`, and `dev.git.git-extras`.

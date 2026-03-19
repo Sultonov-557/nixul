@@ -9,12 +9,14 @@
   dev.git.worktrunk.enable = true;
   dev.multiplexers.zellij.enable = true;
   dev.runtimes.cpp.enable = true;
+  dev.runtimes.go.enable = true;
   dev.runtimes.javascript.bun.enable = true;
   dev.runtimes.javascript.nodejs.enable = true;
   dev.runtimes.javascript.prisma.enable = true;
   dev.runtimes.javascript.yarn.enable = true;
   dev.runtimes.python.enable = true;
   dev.runtimes.rustc.enable = true;
+  dev.runtimes.zig.enable = true;
   dev.security.attack.brute-force.hashcat.enable = true;
   dev.security.attack.brute-force.hydra.enable = true;
   dev.security.attack.brute-force.john.enable = true;

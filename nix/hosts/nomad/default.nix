@@ -34,6 +34,7 @@
           "services/containers/docker"
         ])
         {
+          core.security.access.fail2ban.enable = true;
           services.monitoring.dashy.enable = false;
           apps.gaming.compatibility.proton.enable = false;
           apps.media.photo.aseprite.enable = false;
