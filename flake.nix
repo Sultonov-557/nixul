@@ -78,7 +78,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       hostNames =
-        builtins.attrNames (lib.filterAttrs (_: kind: kind == "directory") (builtins.readDir ./nix/nixos/hosts));
+        builtins.attrNames (lib.filterAttrs (_: kind: kind == "directory") (builtins.readDir ./nix/hosts));
 
       mkHost =
         hostname:
@@ -86,7 +86,7 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            ./nix/nixos/hosts/${hostname}
+            ./nix/hosts/${hostname}
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {

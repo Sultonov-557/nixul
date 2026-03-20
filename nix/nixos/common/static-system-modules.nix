@@ -108,7 +108,6 @@ in
     (evalSystem ../../modules/dev/security/attack/exploit/websploit.nix)
     (evalSystem ../../modules/dev/security/attack/mitm/bettercap.nix)
     (evalSystem ../../modules/dev/security/attack/mitm/ettercap.nix)
-    (evalSystem ../../modules/dev/security/recon/discovery/amass.nix)
     (evalSystem ../../modules/dev/security/recon/discovery/assetfinder.nix)
     (evalSystem ../../modules/dev/security/recon/discovery/sherlock.nix)
     (evalSystem ../../modules/dev/security/recon/discovery/subfinder.nix)

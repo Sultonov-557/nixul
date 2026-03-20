@@ -1,18 +1,17 @@
 { ... }:
 {
   imports = [
-    ../../../hosts/nomad/hardware-configuration.nix
-    ../../common/context.nix
-    ../../common/static-system-modules.nix
+    ../../nixos/common/context.nix
+    ../../nixos/common/static-system-modules.nix
   ];
 
   nixul.host = {
-    name = "nomad";
+    name = "vanguard";
     timezone = "Asia/Tashkent";
-    location = "Urganch";
+    location = "Tashkent";
     bookmarks =
       let
-        raw = import ../../../hosts/nomad/bookmarks.nix;
+        raw = import ./bookmarks.nix;
         normalizeItem = item:
           {
             icon = null;
@@ -27,15 +26,5 @@
           };
       in
       builtins.mapAttrs (_: group: normalizeGroup group) raw;
-  };
-
-  home-manager.users.sultonov = {
-    imports = [
-      ../../../home-manager/users/sultonov
-    ];
-
-    wayland.windowManager.hyprland.settings.monitor = [
-      "eDP-1,1920x1080@60,0x0,1"
-    ];
   };
 }
