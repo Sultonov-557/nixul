@@ -21,57 +21,12 @@ in
   system =
     { cfg, nixul, ... }:
     let
-      adguardEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "core"
-        "security"
-        "network"
-        "adguardhome"
-        "enable"
-      ] false nixul;
-      liteLLMEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "services"
-        "ai"
-        "litellm"
-        "enable"
-      ] false nixul;
-      openWebUIEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "services"
-        "ai"
-        "open-webui"
-        "enable"
-      ] false nixul;
-      vaultwardenEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "services"
-        "server"
-        "vaultwarden"
-        "enable"
-      ] false nixul;
-
-      nginxEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "services"
-        "server"
-        "nginx"
-        "enable"
-      ] false nixul;
-      unboundEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "core"
-        "security"
-        "network"
-        "unbound"
-        "enable"
-      ] false nixul;
+      adguardEnabled = true;
+      liteLLMEnabled = true;
+      openWebUIEnabled = true;
+      vaultwardenEnabled = true;
+      nginxEnabled = true;
+      unboundEnabled = true;
     in
     {
       services.glance = lib.mkIf cfg.enable {
@@ -219,16 +174,6 @@ in
         ''"glance.home. A 127.0.0.1"''
       ];
 
-      assertions = [
-        {
-          assertion = (!cfg.enable) || nginxEnabled;
-          message = "services.monitoring.glance requires services.server.nginx.enable = true";
-        }
-        {
-          assertion = (!cfg.enable) || unboundEnabled;
-          message = "services.monitoring.glance requires core.security.network.unbound.enable = true";
-        }
-      ];
     };
 
   options = lib.mkOption {

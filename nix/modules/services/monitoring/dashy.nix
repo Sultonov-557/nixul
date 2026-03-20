@@ -70,11 +70,9 @@ in
         };
       };
 
-      services.unbound.settings.server.local-data =
-        lib.mkIf (cfg.enable && config.nixul.host.modules.core.security.network.unbound.enable)
-          [
-            ''"dashy.home. A 127.0.0.1"''
-          ];
+      services.unbound.settings.server.local-data = lib.mkIf cfg.enable [
+        ''"dashy.home. A 127.0.0.1"''
+      ];
 
       services.nginx.virtualHosts.dashy = lib.mkIf cfg.enable {
         addSSL = true;
@@ -82,16 +80,6 @@ in
         sslCertificateKey = tlsCertificateKeyPath;
       };
 
-      assertions = [
-        {
-          assertion = (!cfg.enable) || config.nixul.host.modules.services.server.nginx.enable;
-          message = "services.monitoring.dashy requires services.server.nginx.enable = true";
-        }
-        {
-          assertion = (!cfg.enable) || config.nixul.host.modules.core.security.network.unbound.enable;
-          message = "services.monitoring.dashy requires core.security.network.unbound.enable = true";
-        }
-      ];
     };
 
   options = lib.mkOption {

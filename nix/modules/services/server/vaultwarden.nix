@@ -14,36 +14,13 @@
   };
 
   system =
-    { cfg, nixul, ... }:
+    { cfg, ... }:
     let
       tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
       tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
-      nginxEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "services"
-        "server"
-        "nginx"
-        "enable"
-      ] false nixul;
-      unboundEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "core"
-        "security"
-        "network"
-        "unbound"
-        "enable"
-      ] false nixul;
-      sopsEnabled = lib.attrByPath [
-        "host"
-        "modules"
-        "core"
-        "security"
-        "secrets"
-        "sops"
-        "enable"
-      ] false nixul;
+      nginxEnabled = true;
+      unboundEnabled = true;
+      sopsEnabled = true;
     in
     {
       sops.secrets.vaultwarden-admin-token = lib.mkIf (cfg.enable && sopsEnabled) {
@@ -89,20 +66,6 @@
         ''"vault.home. A 127.0.0.1"''
       ];
 
-      assertions = [
-        {
-          assertion = (!cfg.enable) || nginxEnabled;
-          message = "services.server.vaultwarden requires services.server.nginx.enable = true";
-        }
-        {
-          assertion = (!cfg.enable) || unboundEnabled;
-          message = "services.server.vaultwarden requires core.security.network.unbound.enable = true";
-        }
-        {
-          assertion = (!cfg.enable) || sopsEnabled;
-          message = "services.server.vaultwarden requires core.security.secrets.sops.enable = true";
-        }
-      ];
     };
 
   options = lib.mkOption {

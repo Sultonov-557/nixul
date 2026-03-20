@@ -13,14 +13,14 @@
   };
 
   home =
-    { cfg, user, ... }:
+    { cfg, user, nixul, ... }:
     {
       programs.git = lib.mkIf cfg.enable {
         enable = true;
         settings = {
           user = {
-            name = config.nixul.users.${user}.name;
-            email = config.nixul.users.${user}.email;
+            name = nixul.users.${user}.name;
+            email = nixul.users.${user}.email;
           };
 
           delta = {

@@ -15,7 +15,7 @@
   };
 
   home =
-    { cfg, osConfig, ... }:
+    { cfg, osConfig, nixul, ... }:
     let
       palette = osConfig.nixul.theme.colors.palette;
     in
@@ -27,8 +27,8 @@
         clearDefaultKeybinds = true;
 
         settings = {
-          font-family = config.nixul.theme.fonts.monospace.name;
-          font-size = config.nixul.theme.fonts.size;
+          font-family = nixul.theme.fonts.monospace.name;
+          font-size = nixul.theme.fonts.size;
 
           window-decoration = false;
           window-padding-x = 8;

@@ -15,10 +15,7 @@
   };
 
   system =
-    { cfg, pkgs, ... }:
-    let
-      nixulCli = import ../../../../nixul/cli { inherit pkgs; };
-    in
+    { cfg, ... }:
     {
       programs.nh = lib.mkIf cfg.enable {
         enable = true;
@@ -27,7 +24,6 @@
         flake = "${../../..}";
       };
 
-      environment.systemPackages = lib.mkIf cfg.enable [ nixulCli ];
     };
 
   options = lib.mkOption {

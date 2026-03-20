@@ -18,14 +18,17 @@ in
   };
 
   home =
-    { cfg, user, ... }:
+    { cfg, user, nixul, ... }:
     {
       programs.firefox = lib.mkIf cfg.enable {
         enable = true;
         profiles."default" = {
           id = 0;
 
-          bookmarks = mkBookmarks config.nixul.users.${user}.bookmarks;
+          bookmarks = {
+            force = true;
+            settings = mkBookmarks nixul.users.${user}.bookmarks;
+          };
 
           settings = {
             "app.normandy.first_run" = false;
@@ -98,7 +101,7 @@ in
 
           userChrome =
             let
-              palette = config.nixul.theme.colors.palette;
+              palette = nixul.theme.colors.palette;
             in
             ''
               :root {
@@ -135,4 +138,3 @@ in
     };
   };
 }
-

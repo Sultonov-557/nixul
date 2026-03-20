@@ -1,8 +1,7 @@
 {
-  description = "Nixul: A modular NixOS configuration system";
+  description = "Static one-user NixOS configuration";
 
   inputs = {
-    # Core
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -10,17 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Styling
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,13 +21,11 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
-    # WM/DM
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Bar/Shell
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,11 +36,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Apps/Tools
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     zen-browser = {
@@ -68,7 +57,6 @@
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     xmcl = {
@@ -83,51 +71,53 @@
   };
 
   outputs =
-    inputs@{ ... }:
+    inputs@{ nixpkgs, ... }:
     let
-      nixulLib = import ./nix/lib {
-        inherit inputs;
-        lib = inputs.nixpkgs.lib;
-      };
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
 
-      nixosConfigurations = nixulLib.mkSystems {
-        hostsDir = ./nix/hosts;
-      };
+      hostNames =
+        builtins.attrNames (lib.filterAttrs (_: kind: kind == "directory") (builtins.readDir ./nix/nixos/hosts));
+
+      mkHost =
+        hostname:
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./nix/nixos/hosts/${hostname}
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+              };
+            }
+          ];
+        };
+
+      nixosConfigurations = builtins.listToAttrs (map (hostname: {
+        name = hostname;
+        value = mkHost hostname;
+      }) hostNames);
 
       hostBuilds = builtins.mapAttrs (_: cfg: cfg.config.system.build.toplevel) nixosConfigurations;
     in
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+    {
+      inherit nixosConfigurations;
 
-      perSystem =
-        { pkgs, ... }:
-        let
-          nixulCli = import ./nix/nixul/cli { inherit pkgs; };
-        in
-        {
-          formatter = pkgs.nixfmt;
+      formatter.${system} = pkgs.nixfmt;
 
-          devShells.default = pkgs.mkShell {
-            packages = with pkgs; [
-              deadnix
-              nixfmt
-            ];
-          };
-
-          packages = hostBuilds // {
-            nixul = nixulCli;
-          };
-
-          apps.nixul = {
-            type = "app";
-            program = "${nixulCli}/bin/nixul";
-          };
-
-          checks = hostBuilds;
-        };
-
-      flake = {
-        inherit nixosConfigurations;
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          deadnix
+          nixfmt
+        ];
       };
+
+      packages.${system} = hostBuilds;
+      checks.${system} = hostBuilds;
     };
 }

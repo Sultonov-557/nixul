@@ -24,14 +24,14 @@ in
     };
 
   home =
-    { cfg, user, ... }:
+    { cfg, user, nixul, ... }:
     {
       imports = [ ./settings.nix ];
       wayland.windowManager.hyprland = lib.mkIf cfg.enable {
         enable = true;
         xwayland.enable = true;
         systemd.enable = true;
-        settings = adapter.mkSettings config.nixul.users.${user}.keybinds;
+        settings = adapter.mkSettings nixul.users.${user}.keybinds;
       };
     };
 

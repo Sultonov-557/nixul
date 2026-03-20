@@ -29,7 +29,7 @@ in
     };
 
   home =
-    { cfg, user, ... }:
+    { cfg, user, nixul, ... }:
     {
       imports = [
         inputs.niri.homeModules.niri
@@ -37,7 +37,7 @@ in
       ];
 
       programs.niri.enable = (lib.mkIf cfg.enable true);
-      programs.niri.settings.binds = (adapter.mkSettings config.nixul.users.${user}.keybinds);
+      programs.niri.settings.binds = (adapter.mkSettings nixul.users.${user}.keybinds);
     };
 
   options = lib.mkOption {

@@ -18,7 +18,7 @@ in
   };
 
   home =
-    { cfg, inputs, user, ... }:
+    { cfg, inputs, user, nixul, ... }:
     {
       imports = [ inputs.zen-browser.homeModules.default ];
 
@@ -30,7 +30,10 @@ in
           isDefault = true;
           name = "Default";
 
-          bookmarks = mkBookmarks config.nixul.users.${user}.bookmarks;
+          bookmarks = {
+            force = true;
+            settings = mkBookmarks nixul.users.${user}.bookmarks;
+          };
 
           settings = {
             "ui.systemUsesDarkTheme" = 1;
@@ -42,7 +45,7 @@ in
 
           userChrome =
             let
-              palette = config.nixul.theme.colors.palette;
+              palette = nixul.theme.colors.palette;
             in
             ''
               :root {
@@ -74,4 +77,3 @@ in
     };
   };
 }
-
