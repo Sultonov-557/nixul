@@ -133,6 +133,42 @@ in {
 }
 ```
 
+## Configuring json extraction
+
+`nixul` can export module state as JSON for automation and docs generation.
+
+- Configure behavior per host in `nixul.host.jsonExtractor`.
+- Run `nixul extract-json <host>` to print the extractor output.
+- `nixul list-enabled-modules` now reads from this extractor config.
+- `nixul extract-json` includes a `modules` array with metadata for all discovered modules.
+
+Example:
+
+```nix
+nixul.host.jsonExtractor = {
+  enable = true;
+  includeHostModules = true;
+  includeUserModules = true;
+  onlyEnabled = true;
+  output = "tree";
+};
+```
+
+Fields:
+
+- `enable`: turns extractor commands on/off.
+- `includeHostModules`: include `nixul.host.modules` in output.
+- `includeUserModules`: include `nixul.users.<name>.modules` in output.
+- `onlyEnabled`: when true, extracted `paths` only include nodes with `enable = true`.
+- `output`: `"paths"` for compact output, `"tree"` for full module trees plus paths.
+
+`modules` entries include:
+
+- `path`: module path (for example `core.system.nix.nh`).
+- `metadata`: merged module metadata from `nixul._moduleMetadata`.
+- `state.hostEnabled`: resolved `enable` value from `nixul.host.modules` (or `null`).
+- `state.userEnabled`: per-user resolved `enable` values from `nixul.users.<name>.modules`.
+
 ## Themes and appearance
 
 Themes live under `nix/nixul/themes` and are loaded from hosts via `loadTheme`.

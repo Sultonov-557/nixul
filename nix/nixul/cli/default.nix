@@ -28,6 +28,7 @@ pkgs.writeShellApplication {
       rebuild [host]          Alias for `switch`
       garbage-collect [age]   Run `nh clean all --keep <age>` (default: 7d)
       list-enabled-modules    Print enabled host/user module paths
+      extract-json [host]     Print json extractor output
       trace <path>            Print final merged value from nixul modules
       help                    Show this help message
     EOF
@@ -55,6 +56,16 @@ pkgs.writeShellApplication {
 
     require_cmd() {
       command -v "$1" >/dev/null 2>&1 || err "required command not found: $1"
+    }
+
+    nix_eval_json() {
+      local attr="$1"
+      nix --no-warn-dirty eval --json "$attr"
+    }
+
+    nix_eval_raw() {
+      local attr="$1"
+      nix --no-warn-dirty eval --raw "$attr"
     }
 
     list_hosts() {
@@ -104,12 +115,162 @@ pkgs.writeShellApplication {
 
     modules_json() {
       local host="$1"
-      nix eval --json "$flake_path#nixosConfigurations.$host.config.nixul.host.modules"
+      nix_eval_json "$flake_path#nixosConfigurations.$host.config.nixul.host.modules"
     }
 
     user_modules_json() {
       local host="$1"
-      nix eval --json "$flake_path#nixosConfigurations.$host.config.nixul.users"
+      nix_eval_json "$flake_path#nixosConfigurations.$host.config.nixul.users"
+    }
+
+    json_extractor_config() {
+      local host="$1"
+      nix_eval_json "$flake_path#nixosConfigurations.$host.config.nixul.host.jsonExtractor"
+    }
+
+    all_module_metadata_json() {
+      local host="$1"
+      nix_eval_json "$flake_path#nixosConfigurations.$host.config.nixul._moduleMetadata"
+    }
+
+    extract_json() {
+      local host="$1"
+      local cfg
+      cfg="$(json_extractor_config "$host")"
+      local all_metadata
+      all_metadata="$(all_module_metadata_json "$host")"
+
+      if [ "$(printf '%s' "$cfg" | jq -r '.enable')" != "true" ]; then
+        err "json extractor is disabled for host: $host"
+      fi
+
+      local host_modules='{}'
+      local users='{}'
+
+      if [ "$(printf '%s' "$cfg" | jq -r '.includeHostModules')" = "true" ]; then
+        host_modules="$(modules_json "$host")"
+      fi
+
+      if [ "$(printf '%s' "$cfg" | jq -r '.includeUserModules')" = "true" ]; then
+        users="$(user_modules_json "$host")"
+      fi
+
+      jq -n \
+        --argjson cfg "$cfg" \
+        --argjson hostModules "$host_modules" \
+        --argjson users "$users" \
+        --argjson allMetadata "$all_metadata" '
+        def module_paths($node):
+          if $cfg.onlyEnabled then
+            [
+              $node
+              | paths(objects | select((.enable? // false) == true))
+              | map(tostring)
+              | join(".")
+            ]
+          else
+            [
+              $node
+              | paths(objects | select(has("enable")))
+              | map(tostring)
+              | join(".")
+            ]
+          end;
+
+        def host_paths:
+          if $cfg.includeHostModules then
+            [ module_paths($hostModules)[] | "host." + . ]
+          else
+            [ ]
+          end;
+
+        def user_paths:
+          if $cfg.includeUserModules then
+            [
+              $users
+              | to_entries[]
+              | .key as $user
+              | module_paths((.value.modules // {}))[]
+              | "user." + $user + "." + .
+            ]
+          else
+            [ ]
+          end;
+
+        def metadata_entries:
+          [
+            $allMetadata
+            | paths(objects | select(has("id") and has("optionPaths")))
+            | . as $pathParts
+            | {
+                path: ($pathParts | map(tostring) | join(".")),
+                metadata: ($allMetadata | getpath($pathParts))
+              }
+          ];
+
+        def host_enabled_for($modulePath):
+          if $cfg.includeHostModules then
+            (try ($hostModules | getpath($modulePath | split(".")) | .enable) catch null)
+          else
+            null
+          end;
+
+        def user_enabled_for($modulePath):
+          if $cfg.includeUserModules then
+            (
+              $users
+              | to_entries
+              | map({
+                  key: .key,
+                  value: (try ((.value.modules // {}) | getpath($modulePath | split(".")) | .enable) catch null)
+                })
+              | from_entries
+            )
+          else
+            {}
+          end;
+
+        (host_paths + user_paths | unique | sort) as $paths
+        | (
+            [
+              metadata_entries[]
+              | . + {
+                  state: {
+                    hostEnabled: host_enabled_for(.path),
+                    userEnabled: user_enabled_for(.path)
+                  }
+                }
+            ]
+            | sort_by(.metadata.id)
+          ) as $modules
+        | if $cfg.output == "tree" then
+            {
+              config: $cfg,
+              paths: $paths,
+              modules: $modules,
+              tree: {
+                hostModules:
+                  if $cfg.includeHostModules then
+                    $hostModules
+                  else
+                    {}
+                  end,
+                userModules:
+                  if $cfg.includeUserModules then
+                    ($users | with_entries(.value = (.value.modules // {})))
+                  else
+                    {}
+                  end
+              }
+            }
+          else
+            {
+              config: $cfg,
+              paths: $paths,
+              modules: $modules
+            }
+          end
+      '
     }
 
     create_node_template() {
@@ -234,7 +395,7 @@ pkgs.writeShellApplication {
 
         [ -d "$hosts_dir" ] || err "hosts directory not found: $hosts_dir"
 
-        nix flake metadata "$flake_path" >/dev/null
+        nix --no-warn-dirty flake metadata "$flake_path" >/dev/null
 
         host_arg=""
         if [ "$#" -gt 0 ]; then
@@ -242,8 +403,8 @@ pkgs.writeShellApplication {
         fi
         target_host="$(resolve_host "$host_arg")"
 
-        nix eval --raw "$flake_path#nixosConfigurations.$target_host.config.nixul.host.name" >/dev/null
-        nix eval --json "$flake_path#nixosConfigurations.$target_host.config.nixul.host.modules" >/dev/null
+        nix_eval_raw "$flake_path#nixosConfigurations.$target_host.config.nixul.host.name" >/dev/null
+        nix_eval_json "$flake_path#nixosConfigurations.$target_host.config.nixul.host.modules" >/dev/null
 
         printf 'doctor: flake and host %s look good\n' "$target_host"
         ;;
@@ -277,26 +438,16 @@ pkgs.writeShellApplication {
         fi
         target_host="$(resolve_host "$host_arg")"
 
-        modules_json "$target_host" |
-          jq -r '
-            paths(objects | select(has("enable") and .enable == true))
-            | map(tostring)
-            | join(".")
-            | "host." + .
-          ' |
-          sort
+        extract_json "$target_host" | jq -r '.paths[]'
+        ;;
+      extract-json)
+        host_arg=""
+        if [ "$#" -gt 0 ]; then
+          host_arg="$1"
+        fi
+        target_host="$(resolve_host "$host_arg")"
 
-        user_modules_json "$target_host" |
-          jq -r '
-            to_entries[]
-            | .key as $user
-            | (.value.modules // {})
-            | paths(objects | select(has("enable") and .enable == true))
-            | map(tostring)
-            | join(".")
-            | "user." + $user + "." + .
-          ' |
-          sort
+        extract_json "$target_host"
         ;;
       trace)
         option_path=""

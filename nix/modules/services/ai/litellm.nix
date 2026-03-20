@@ -177,7 +177,7 @@
         content = ''
           UI_PASSWORD=${config.sops.placeholder."litellm-password"}
           LITELLM_MASTER_KEY=${config.sops.placeholder."litellm-password"}
-          DATABASE_URL=postgresql://postgres:${config.sops.placeholder."litellm-password"}@localhost:5432/litellm
+          DATABASE_URL=postgresql://postgres:postgres@localhost:5432/litellm
         '';
       };
 

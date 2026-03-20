@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   metadata = {
     name = "postgresql";
@@ -19,7 +24,10 @@
       services.postgresql = lib.mkIf cfg.enable {
         enable = true;
         package = pkgs.postgresql_18;
-        ensureDatabases = [ config.nixul.host.name ];
+        ensureDatabases = [
+          config.nixul.host.name
+          "litellm"
+        ];
         ensureUsers = [
           {
             name = config.nixul.host.name;

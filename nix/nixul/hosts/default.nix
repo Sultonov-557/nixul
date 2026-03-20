@@ -37,6 +37,42 @@ in
             default = { };
             description = "list of modules";
           };
+          jsonExtractor = lib.mkOption {
+            type = lib.types.submodule {
+              options = {
+                enable = lib.mkOption {
+                  type = lib.types.bool;
+                  default = true;
+                  description = "enable json extraction helpers for nixul cli";
+                };
+                includeHostModules = lib.mkOption {
+                  type = lib.types.bool;
+                  default = true;
+                  description = "include nixul.host.modules in extracted output";
+                };
+                includeUserModules = lib.mkOption {
+                  type = lib.types.bool;
+                  default = true;
+                  description = "include nixul.users.<name>.modules in extracted output";
+                };
+                onlyEnabled = lib.mkOption {
+                  type = lib.types.bool;
+                  default = true;
+                  description = "when true, only include module paths where enable = true";
+                };
+                output = lib.mkOption {
+                  type = lib.types.enum [
+                    "paths"
+                    "tree"
+                  ];
+                  default = "paths";
+                  description = "default json extractor output shape";
+                };
+              };
+            };
+            default = { };
+            description = "config for nixul json extractor commands";
+          };
         };
       };
     };

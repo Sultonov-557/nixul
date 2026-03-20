@@ -69,6 +69,7 @@
 - [x] feat: nixul list enabled modules
 - [x] feat: security audit module
 - [x] feat: add vault warden
+- [x] feat: add config to json extractor
 
 - [x] test experimental features and merge with main branch
 
@@ -78,10 +79,6 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 
-- [ ] feat: yubikey support
-- [ ] feat: disk encryption helpers
-
-- [ ] feat: add config to json extractor
 - [ ] feat: self documenting system
 - [ ] feat: generate website from config
 - [ ] feat: nixul system diagram generator
