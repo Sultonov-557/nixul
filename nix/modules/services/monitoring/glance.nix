@@ -1,23 +1,8 @@
 { lib, config, ... }:
 let
-  mkBookmarks = import ../../../nixul/universal/bookmarks/adapters/glance/default.nix {
-    inherit lib;
-  };
+  mkBookmarks = import ../../lib/bookmarks-glance.nix { inherit lib; };
 in
 {
-  metadata = {
-    name = "glance";
-    description = "Module for `services.monitoring.glance`.";
-    purpose = "Configure `services.monitoring.glance` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "monitoring"
-      "glance"
-    ];
-  };
-
   system =
     { cfg, nixul, ... }:
     let
@@ -174,20 +159,4 @@ in
         ''"glance.home. A 127.0.0.1"''
       ];
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable glance";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

@@ -1,18 +1,5 @@
 { lib, inputs, ... }:
 {
-  metadata = {
-    name = "noctalia";
-    description = "Module for `desktop.panels.noctalia`.";
-    purpose = "Configure `desktop.panels.noctalia` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "panels"
-      "noctalia"
-    ];
-  };
-
   home =
     { cfg, osConfig, ... }:
     {
@@ -45,19 +32,4 @@
         systemd.enable = true;
       };
     };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable noctalia";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
 }

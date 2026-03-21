@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "nix";
-    description = "Module for `core.system.nix.nix`.";
-    purpose = "Configure `core.system.nix.nix` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "nix"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -59,20 +46,4 @@
         ];
       };
       system.stateVersion = lib.mkIf cfg.enable "26.05";
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable nix";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

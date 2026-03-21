@@ -5,19 +5,6 @@
   ...
 }:
 {
-  metadata = {
-    name = "nginx";
-    description = "Module for `services.server.nginx`.";
-    purpose = "Configure `services.server.nginx` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "server"
-      "nginx"
-    ];
-  };
-
   system =
     { cfg, ... }:
     let
@@ -129,20 +116,4 @@ EOF
         };
       };
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable nginx";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

@@ -1,0 +1,4 @@
+{ ... }:
+{
+  mkSettings = _keybinds: { };
+}

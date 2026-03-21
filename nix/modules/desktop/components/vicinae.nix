@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "vicinae";
-    description = "Module for `desktop.components.vicinae`.";
-    purpose = "Configure `desktop.components.vicinae` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "vicinae"
-    ];
-  };
-
   home =
     { cfg, config, ... }:
     let
@@ -59,20 +46,4 @@
           })
         ];
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable vicinae";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

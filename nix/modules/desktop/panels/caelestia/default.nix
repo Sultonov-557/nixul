@@ -1,18 +1,5 @@
 { lib, config, ... }:
 {
-  metadata = {
-    name = "caelestia";
-    description = "Module for `desktop.panels.caelestia`.";
-    purpose = "Configure `desktop.panels.caelestia` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "panels"
-      "caelestia"
-    ];
-  };
-
   home =
     {
       cfg,
@@ -50,19 +37,4 @@
         };
       };
     };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable caelestia";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
 }

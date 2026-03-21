@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "sysctl";
-    description = "Module for `core.security.sysctl`.";
-    purpose = "Configure `core.security.sysctl` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "sysctl"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -32,20 +19,4 @@
         "kernel.kptr_restrict" = 2;
         "kernel.dmesg_restrict" = 1;
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable sysctl";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

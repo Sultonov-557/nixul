@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "litellm";
-    description = "OpenAI-compatible gateway for routing and managing LLM providers.";
-    purpose = "Run a self-hosted LLM proxy with auth, routing, and observability support.";
-    scope = "system";
-    tags = [
-      "ai"
-      "llm"
-      "proxy"
-      "gateway"
-    ];
-  };
-
   #TODO: delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
   system =
     let
@@ -257,20 +244,4 @@
         ''"litellm.home. A 127.0.0.1"''
       ];
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable litellm";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

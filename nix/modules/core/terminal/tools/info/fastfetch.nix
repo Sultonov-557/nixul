@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "fastfetch";
-    description = "Module for `core.terminal.tools.info.fastfetch`.";
-    purpose = "Configure `core.terminal.tools.info.fastfetch` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "info"
-    ];
-  };
-
   home =
     {
       cfg,
@@ -62,20 +48,4 @@
           ];
         };
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable fastfetch";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "atuin";
-    description = "Module for `core.terminal.tools.history.atuin`.";
-    purpose = "Configure `core.terminal.tools.history.atuin` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "history"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -28,20 +14,4 @@
           search_mode = "fuzzy";
         };
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable atuin";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

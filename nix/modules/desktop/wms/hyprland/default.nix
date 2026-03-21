@@ -1,21 +1,8 @@
 { lib, config, ... }:
 let
-  adapter = (import ../../../../nixul/universal/keybinds/adapters/hyprland) { inherit lib; };
+  adapter = import ../../../lib/keybinds-hyprland.nix { inherit lib; };
 in
 {
-  metadata = {
-    name = "hyprland";
-    description = "Module for `desktop.wms.hyprland`.";
-    purpose = "Configure `desktop.wms.hyprland` features and defaults.";
-    scope = "shared";
-    status = "active";
-    tags = [
-      "desktop"
-      "wms"
-      "hyprland"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -34,19 +21,4 @@ in
         settings = adapter.mkSettings nixul.users.${user}.keybinds;
       };
     };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable hyprland";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
 }

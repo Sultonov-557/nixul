@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./compatibility
+    ./games
+    ./platform
+  ];
+}

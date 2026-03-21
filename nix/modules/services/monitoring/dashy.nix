@@ -5,22 +5,9 @@
   ...
 }:
 let
-  mkSections = import ../../../nixul/universal/bookmarks/adapters/dashy { inherit lib; };
+  mkSections = import ../../lib/bookmarks-dashy.nix { inherit lib; };
 in
 {
-  metadata = {
-    name = "dashy";
-    description = "Module for `services.monitoring.dashy`.";
-    purpose = "Configure `services.monitoring.dashy` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "monitoring"
-      "dashy"
-    ];
-  };
-
   system =
     { cfg, ... }:
     let
@@ -80,20 +67,4 @@ in
         sslCertificateKey = tlsCertificateKeyPath;
       };
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable dashy";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

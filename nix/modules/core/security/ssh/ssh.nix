@@ -1,44 +1,32 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "ssh";
-    description = "Module for `core.security.ssh.ssh`.";
-    purpose = "Configure `core.security.ssh.ssh` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "ssh"
-    ];
-  };
-
   home =
     { cfg, config, ... }:
     let
-      strictHostKeyChecking = cfg.strictHostKeyChecking or "accept-new";
+      strictHostKeyChecking = "accept-new";
+      serversSecretFile = null;
     in
     {
       programs.ssh = lib.mkIf cfg.enable {
         enable = true;
         enableDefaultConfig = false;
         matchBlocks."*" = { };
-        extraConfig = lib.mkIf (cfg.serversSecretFile != null) ''
+        extraConfig = lib.mkIf (serversSecretFile != null) ''
           Include ~/.ssh/config.d/99-sops-servers.conf
         '';
       };
 
-      home.packages = lib.mkIf (cfg.enable && cfg.serversSecretFile != null) [
+      home.packages = lib.mkIf (cfg.enable && serversSecretFile != null) [
         pkgs.jq
         pkgs.sops
         pkgs.sshpass
       ];
 
-      home.sessionPath = lib.mkIf (cfg.enable && cfg.serversSecretFile != null) [
+      home.sessionPath = lib.mkIf (cfg.enable && serversSecretFile != null) [
         "$HOME/.local/bin"
       ];
 
-      home.activation.sopsSshServers = lib.mkIf (cfg.enable && cfg.serversSecretFile != null) ''
+      home.activation.sopsSshServers = lib.mkIf (cfg.enable && serversSecretFile != null) ''
         set -euo pipefail
 
         ssh_dir="${config.home.homeDirectory}/.ssh"
@@ -54,8 +42,8 @@
         tmp_json=$(mktemp)
         trap 'rm -f "$tmp_json"' EXIT
 
-        if ! SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt" ${pkgs.sops}/bin/sops -d '${toString cfg.serversSecretFile}' > "$tmp_json" 2>/dev/null; then
-          cp '${toString cfg.serversSecretFile}' "$tmp_json"
+        if ! SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt" ${pkgs.sops}/bin/sops -d '${toString serversSecretFile}' > "$tmp_json" 2>/dev/null; then
+          cp '${toString serversSecretFile}' "$tmp_json"
         fi
 
         if ! ${pkgs.jq}/bin/jq -e '.servers | type == "array"' "$tmp_json" > /dev/null; then
@@ -114,38 +102,4 @@
           chmod 700 "$launcher"
         done
       '';
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable ssh";
-        };
-
-        serversSecretFile = lib.mkOption {
-          type = lib.types.nullOr lib.types.path;
-          default = null;
-          description = "SOPS-encrypted JSON file with SSH server definitions";
-        };
-
-        strictHostKeyChecking = lib.mkOption {
-          type = lib.types.enum [
-            "accept-new"
-            "yes"
-            "no"
-          ];
-          default = "accept-new";
-          description = "StrictHostKeyChecking value used for generated SSH hosts";
-        };
-      };
-    };
-    default = {
-      enable = false;
-      serversSecretFile = null;
-      strictHostKeyChecking = "accept-new";
-    };
-  };
-}
+    };}

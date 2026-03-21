@@ -1,9 +1,11 @@
 { ... }:
 {
   home-manager.users.sultonov = {
-    imports = [
-      ../../home-manager/users/sultonov
-    ];
+    home = {
+      username = "sultonov";
+      homeDirectory = "/home/sultonov";
+      stateVersion = "26.05";
+    };
 
     wayland.windowManager.hyprland.settings.monitor = [
       "DP-1,1920x1080@60,0x0,1"

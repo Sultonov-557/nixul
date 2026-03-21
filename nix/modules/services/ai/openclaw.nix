@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "openclaw";
-    description = "Module for `services.ai.openclaw`.";
-    purpose = "Configure `services.ai.openclaw` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "ai"
-      "openclaw"
-    ];
-  };
-
 
   system =
     {
@@ -22,8 +9,8 @@
       ...
     }:
     let
-      port = cfg.port or 9005;
-      settings = cfg.settings or { };
+      port = 9005;
+      settings = { };
       tlsCertificatePath = "/var/lib/internal-ca/certs/home-wildcard.crt";
       tlsCertificateKeyPath = "/var/lib/internal-ca/private/home-wildcard.key";
       nginxEnabled = true;
@@ -93,34 +80,4 @@
         ''"openclaw.home. A 127.0.0.1"''
       ];
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable openclaw";
-        };
-
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 9005;
-          description = "Openclaw gateway port";
-        };
-
-        settings = lib.mkOption {
-          type = lib.types.attrsOf lib.types.anything;
-          default = { };
-          description = "Additional Openclaw JSON config merged into generated config";
-        };
-      };
-    };
-    default = {
-      enable = false;
-      port = 9005;
-      settings = { };
-    };
-  };
-}
+    };}

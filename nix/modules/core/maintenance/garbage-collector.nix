@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "garbage-collector";
-    description = "Module for `core.maintenance.garbage-collector`.";
-    purpose = "Configure `core.maintenance.garbage-collector` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "maintenance"
-      "garbage-collector"
-    ];
-  };
-
   home =
     { cfg, user, ... }:
     {
@@ -29,20 +16,4 @@
         Timer.Persistent = true;
         Install.WantedBy = [ "timers.target" ];
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable garbage-collector";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

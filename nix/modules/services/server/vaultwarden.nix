@@ -1,18 +1,5 @@
 { lib, config, ... }:
 {
-  metadata = {
-    name = "vaultwarden";
-    description = "Module for `services.server.vaultwarden`.";
-    purpose = "Run Vaultwarden behind local reverse proxy and DNS defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "server"
-      "vaultwarden"
-    ];
-  };
-
   system =
     { cfg, ... }:
     let
@@ -66,20 +53,4 @@
         ''"vault.home. A 127.0.0.1"''
       ];
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable vaultwarden";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

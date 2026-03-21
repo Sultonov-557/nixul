@@ -1,22 +1,8 @@
 { lib, config, ... }:
 let
-  mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix { inherit lib; };
+  mkBookmarks = import ../../../../lib/bookmarks-browsers.nix { inherit lib; };
 in
 {
-  metadata = {
-    name = "firefox";
-    description = "Module for `apps.user.internet.browsers.firefox`.";
-    purpose = "Configure `apps.user.internet.browsers.firefox` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "user"
-      "internet"
-      "browsers"
-    ];
-  };
-
   home =
     { cfg, user, nixul, ... }:
     {
@@ -121,20 +107,4 @@ in
             '';
         };
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable firefox";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

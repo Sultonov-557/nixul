@@ -5,20 +5,6 @@
   ...
 }:
 {
-  metadata = {
-    name = "nix-index";
-    description = "Module for `core.system.nix.nix-index`.";
-    purpose = "Configure `core.system.nix.nix-index` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "nix"
-      "nix-index"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -40,20 +26,4 @@
       environment.systemPackages = lib.mkIf cfg.enable [ pkgs.comma ];
 
       programs.command-not-found.enable = lib.mkIf cfg.enable false;
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable nix-index";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

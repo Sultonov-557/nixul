@@ -5,19 +5,6 @@
   ...
 }:
 {
-  metadata = {
-    name = "postgresql";
-    description = "Module for `services.databases.postgresql`.";
-    purpose = "Configure `services.databases.postgresql` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "databases"
-      "postgresql"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -40,20 +27,4 @@
           host all all ::1/128 trust
         '';
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable postgresql";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

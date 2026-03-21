@@ -17,19 +17,6 @@ let
     map (
       folder:
       {
-  metadata = {
-    name = "opencode";
-    description = "Module for `apps.ai.opencode`.";
-    purpose = "Configure `apps.ai.opencode` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "ai"
-      "opencode"
-    ];
-  };
-
         name = "opencode/skills/${folder}/SKILL.md";
         value.text = builtins.readFile (skillDir + "/${folder}/SKILL.md");
       }
@@ -49,18 +36,4 @@ in
       xdg.configFile = skillConfig;
     };
 
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable opencode";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
 }

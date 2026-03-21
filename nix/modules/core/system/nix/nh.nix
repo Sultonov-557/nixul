@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "nh";
-    description = "Module for `core.system.nix.nh`.";
-    purpose = "Configure `core.system.nix.nh` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "nix"
-      "nh"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -24,20 +10,4 @@
         flake = "${../../..}";
       };
 
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable nh";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

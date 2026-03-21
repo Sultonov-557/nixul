@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "openssh";
-    description = "Module for `core.security.ssh.openssh`.";
-    purpose = "Configure `core.security.ssh.openssh` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "ssh"
-      "openssh"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -33,20 +19,4 @@
           }
         ];
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable openssh";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

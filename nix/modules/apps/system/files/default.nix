@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./analyzers
+    ./archives
+    ./managers
+  ];
+}

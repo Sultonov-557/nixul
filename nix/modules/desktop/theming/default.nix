@@ -8,18 +8,6 @@ let
   theme = config.nixul.theme;
 in
 {
-  metadata = {
-    name = "theming";
-    description = "Module for `desktop.theming`.";
-    purpose = "Configure `desktop.theming` features and defaults.";
-    scope = "shared";
-    status = "active";
-    tags = [
-      "desktop"
-      "theming"
-    ];
-  };
-
   system =
     { ... }:
     {
@@ -72,19 +60,4 @@ in
         };
       };
     };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-          description = "Enable universal theming";
-        };
-      };
-    };
-    default = {
-      enable = true;
-    };
-  };
 }

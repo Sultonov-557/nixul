@@ -1,17 +1,5 @@
 { lib, config, ... }:
 {
-  metadata = {
-    name = "git";
-    description = "Module for `dev.git.git`.";
-    purpose = "Configure `dev.git.git` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-    ];
-  };
-
   home =
     { cfg, user, nixul, ... }:
     {
@@ -24,13 +12,7 @@
           };
 
           delta = {
-            enable = true;
-            options = {
-              navigate = true;
-              line-numbers = true;
-              side-by-side = true;
-            };
-          };
+            enable = true;          };
 
           init.defaultBranch = "main";
           push.autoSetupRemote = true;
@@ -50,20 +32,4 @@
           };
         };
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable git";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

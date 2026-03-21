@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "journald";
-    description = "Module for `core.maintenance.journald`.";
-    purpose = "Configure `core.maintenance.journald` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "maintenance"
-      "journald"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -24,20 +11,4 @@
         Compress=yes
         Seal=yes
       '';
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable journald";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}

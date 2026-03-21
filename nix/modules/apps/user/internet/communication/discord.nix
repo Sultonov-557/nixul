@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "discord";
-    description = "Module for `apps.user.internet.communication.discord`.";
-    purpose = "Configure `apps.user.internet.communication.discord` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "user"
-      "internet"
-      "communication"
-    ];
-  };
-
   home =
     {
       cfg,
@@ -51,20 +37,4 @@
             }
           '';
       };
-    };
-
-  options = lib.mkOption {
-    type = lib.types.submodule {
-      options = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Enable discord (nixcord)";
-        };
-      };
-    };
-    default = {
-      enable = false;
-    };
-  };
-}
+    };}
