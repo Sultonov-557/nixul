@@ -79,19 +79,10 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 
-- [ ] feat: self documenting system
-- [ ] feat: generate website from config
-- [ ] feat: nixul system diagram generator
-- [ ] feat: module tree visualizer
-
 - [ ] feat: module integrations
 
 - [ ] feat: multi-host orchestration
 
-- [ ] feat(debug): add `nixul trace` command (or script) to show final merged values for selected option paths
-- [ ] feat(validation): add check that warns on conflicting overrides across tags, hosts, and users for the same module subtree
-- [ ] refactor(modules): add explicit `enable` + `preset` options for opinionated modules so defaults are easy to keep or override
-- [ ] docs(modules): document module default behaviors and override points in a consistent per-module template
 - [ ] perf(profiles): split heavy all-in bundles into slim/base/full profiles to reduce closure size and build time
 - [ ] perf(metrics): add flake check output for closure-size/build-time deltas to catch profile bloat early
 - [ ] feat(multi-user): provide reusable multi-user tags and examples for shared vs per-user module ownership
