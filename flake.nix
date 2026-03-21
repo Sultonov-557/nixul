@@ -77,9 +77,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      hostNames =
-        builtins.attrNames (lib.filterAttrs (_: kind: kind == "directory") (builtins.readDir ./nix/hosts));
-
       mkHost =
         hostname:
         lib.nixosSystem {
@@ -98,12 +95,15 @@
           ];
         };
 
-      nixosConfigurations = builtins.listToAttrs (map (hostname: {
-        name = hostname;
-        value = mkHost hostname;
-      }) hostNames);
+      nixosConfigurations = {
+        nomad = mkHost "nomad";
+        vanguard = mkHost "vanguard";
+      };
 
-      hostBuilds = builtins.mapAttrs (_: cfg: cfg.config.system.build.toplevel) nixosConfigurations;
+      hostBuilds = {
+        nomad = nixosConfigurations.nomad.config.system.build.toplevel;
+        vanguard = nixosConfigurations.vanguard.config.system.build.toplevel;
+      };
     in
     {
       inherit nixosConfigurations;
