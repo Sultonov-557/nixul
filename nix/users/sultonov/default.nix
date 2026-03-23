@@ -25,6 +25,7 @@
               enable = true;
               serversSecretFile = ../../assets/secrets/ssh-servers.json;
             };
+            dev.security.attack.scanning.network.nmap.enable = true;
             apps.media.music.spicetify.enable = false;
             apps.system.terminal.foot.enable = false;
             apps.system.terminal.kitty.enable = false;

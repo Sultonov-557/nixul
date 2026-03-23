@@ -13,8 +13,20 @@
         };
       };
     };
+
+    ollama = {
+      npm = "@ai-sdk/openai-compatible";
+      name = "Ollama";
+      options = {
+        baseURL = "http://192.168.3.158:11434/v1";
+      };
+      models = {
+        "llama3.1:8b" = {
+          name = "llama3.1:8b";
+        };
+      };
+    };
   };
 
-  model = "litellm/main";
-  small_model = "litellm/main";
+  model = "ollama/llama3.1:8b";
 }
