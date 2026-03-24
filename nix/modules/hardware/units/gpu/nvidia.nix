@@ -15,14 +15,22 @@
   };
 
   system =
-    { cfg, ... }:
+    { cfg, config, ... }:
     {
+      services.xserver.videoDrivers = [ "nvidia" ];
+
+      hardware.graphics.enable = true;
+
       hardware.nvidia = lib.mkIf cfg.enable {
         modesetting.enable = true;
         powerManagement.enable = false;
         open = false;
         nvidiaSettings = true;
+
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
+
+      boot.blacklistedKernelModules = [ "nouveau" ];
     };
 
   options = lib.mkOption {
