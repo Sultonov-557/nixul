@@ -14,13 +14,16 @@
     ];
   };
 
-  system =
+  home =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        nautilus
-        gvfs
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          nautilus
+          gvfs
+        ]
+      );
     };
 
   options = lib.mkOption {
