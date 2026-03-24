@@ -114,6 +114,7 @@
       apps.media.photo.lutgen.enable = true;
       apps.media.video.ffmpeg.enable = true;
       apps.system.disk.gparted.enable = true;
+      apps.system.disk.caligula.enable = true;
       apps.system.files.analyzers.baobab.enable = true;
       apps.system.files.analyzers.ncdu.enable = true;
       apps.system.files.archives.file-roller.enable = true;

@@ -70,6 +70,7 @@
 - [x] feat: security audit module
 - [x] feat: add vault warden
 - [x] feat: add config to json extractor
+- [x] feat: add caligula
 
 - [x] test experimental features and merge with main branch
 
@@ -78,8 +79,7 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: addtelevision
-- [ ] feat: add caligula
+- [ ] feat: add television
 - [ ] fix: remove tags (their pain in the ### to work with)
 
 - [ ] feat: module integrations
