@@ -25,13 +25,10 @@
               enable = true;
               serversSecretFile = ../../assets/secrets/ssh-servers.json;
             };
-            dev.security.attack.scanning.network.nmap.enable = true;
             apps.media.music.spicetify.enable = false;
-            apps.system.terminal.foot.enable = false;
-            apps.system.terminal.kitty.enable = false;
             apps.user.internet.browsers.firefox.enable = false;
             desktop.panels.caelestia.enable = false;
-            desktop.wms.niri.enable = false;
+            desktop.wms.hyprland.enable = true;
             dev.editor.zed.enable = false;
             apps.user.internet.communication.thunderbird.enable = false;
             apps.user.productivity.todoist.enable = false;

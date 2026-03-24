@@ -1,6 +1,7 @@
 keys:
   - &nomad age1n0e5a3hecpcxzeusgt4hhsg408k6h3jracgy8pae9wcz2m6p69es39t8z9
   - &vanguard age1hjp0g05semkv6ch484na9n6hvgp44qlsx4zxtkad3mgx0nudla5s5pkr86
+  - &sentinel age199jdz4vktt25k7j56amxcxu95p2rgxknsv8p56muc70gac0ntclq68u958
 
 creation_rules:
   - path_regex: ^nix/assets/secrets/.*\.(yaml|env|ini|json)$
@@ -8,3 +9,4 @@ creation_rules:
       - age:
           - *nomad
           - *vanguard
+          - *sentinel

@@ -10,6 +10,4 @@
   desktop.panels.caelestia.enable = true;
   desktop.panels.noctalia.enable = true;
   desktop.theming.enable = true;
-  desktop.wms.hyprland.enable = true;
-  desktop.wms.niri.enable = true;
 }
