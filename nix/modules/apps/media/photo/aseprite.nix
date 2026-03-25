@@ -1,23 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "aseprite";
-    description = "Module for `apps.media.photo.aseprite`.";
-    purpose = "Configure `apps.media.photo.aseprite` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "media"
-      "photo"
-      "aseprite"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ aseprite ]);
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ aseprite ]);
     };
 
   options = lib.mkOption {

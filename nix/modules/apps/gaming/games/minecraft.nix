@@ -1,21 +1,13 @@
-{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "minecraft";
-    description = "Module for `apps.gaming.games.minecraft`.";
-    purpose = "Configure `apps.gaming.games.minecraft` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "gaming"
-      "games"
-      "minecraft"
-    ];
-  };
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
 
   home =
-    { cfg, inputs, ... }:
+    { cfg, ... }:
     {
       imports = [ inputs.xmcl.homeModules.xmcl ];
 
@@ -28,6 +20,20 @@
           pkgs.temurin-jre-bin-21
         ];
       };
+    };
+
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          inputs.xmcl.packages.${pkgs.system}.xmcl
+          jre8
+          temurin-jre-bin-17
+          temurin-jre-bin-21
+        ]
+      );
     };
 
   options = lib.mkOption {

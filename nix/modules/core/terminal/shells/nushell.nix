@@ -1,18 +1,7 @@
 { lib, config, ... }:
 {
-  metadata = {
-    name = "nushell";
-    description = "Module for `core.terminal.shells.nushell`.";
-    purpose = "Configure `core.terminal.shells.nushell` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "shells"
-      "nushell"
-    ];
-  };
+
+  # TODO: system
 
   home =
     { cfg, ... }:
@@ -24,7 +13,6 @@
       programs.nushell = lib.mkIf cfg.enable {
         enable = true;
         shellAliases = universalAliases;
-
       };
     };
 
@@ -34,7 +22,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable zsh";
+          description = "Enable nushell";
         };
       };
     };

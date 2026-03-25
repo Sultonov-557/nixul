@@ -1,24 +1,13 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "kitty";
-    description = "Module for `apps.system.terminal.kitty`.";
-    purpose = "Configure `apps.system.terminal.kitty` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "terminal"
-      "kitty"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ kitty ]);
+    };
 
   home =
-    { cfg, osConfig, ... }:
-    let
-      palette = osConfig.nixul.theme.colors.palette;
-    in
+    { cfg, ... }:
     {
       programs.kitty = lib.mkIf cfg.enable {
         enable = true;

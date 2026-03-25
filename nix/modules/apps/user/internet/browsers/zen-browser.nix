@@ -1,24 +1,17 @@
 { lib, config, ... }:
 let
-  mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix { inherit lib; };
+  mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix {
+    inherit lib;
+  };
 in
 {
-  metadata = {
-    name = "zen-browser";
-    description = "Module for `apps.user.internet.browsers.zen-browser`.";
-    purpose = "Configure `apps.user.internet.browsers.zen-browser` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "user"
-      "internet"
-      "browsers"
-    ];
-  };
-
   home =
-    { cfg, inputs, user, ... }:
+    {
+      cfg,
+      inputs,
+      user,
+      ...
+    }:
     {
       imports = [ inputs.zen-browser.homeModules.default ];
 
@@ -74,4 +67,3 @@ in
     };
   };
 }
-

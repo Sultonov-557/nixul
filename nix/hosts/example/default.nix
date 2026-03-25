@@ -70,11 +70,9 @@
       apps.user.internet.browsers.chrome.enable = true;
       apps.user.internet.browsers.tor.enable = true;
       apps.user.internet.browsers.firefox.enable = true;
-      apps.user.internet.browsers.zen-browser.enable = true;
 
       apps.user.internet.communication.telegram.enable = true;
       apps.user.internet.communication.thunderbird.enable = true;
-      apps.user.internet.communication.discord.enable = true;
 
       apps.user.internet.qbitttorrent.enable = true;
 
@@ -85,7 +83,6 @@
 
       core.maintenance.auto-upgrade.enable = true;
       core.maintenance.journald.enable = true;
-      core.maintenance.garbage-collector.enable = true;
 
       core.security.access.fail2ban.enable = true;
       core.security.access.polkit.enable = true;

@@ -1,19 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "xdg";
-    description = "Module for `core.system.desktop.xdg`.";
-    purpose = "Configure `core.system.desktop.xdg` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "desktop"
-      "xdg"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

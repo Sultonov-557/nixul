@@ -1,18 +1,10 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "khal";
-    description = "Module for `apps.user.productivity.khal`.";
-    purpose = "Configure `apps.user.productivity.khal` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "user"
-      "productivity"
-      "khal"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ khal ]);
+    };
 
   home =
     { cfg, ... }:

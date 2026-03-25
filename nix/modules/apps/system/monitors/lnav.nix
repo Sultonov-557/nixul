@@ -1,23 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "lnav";
-    description = "Module for `apps.system.monitors.lnav`.";
-    purpose = "Configure `apps.system.monitors.lnav` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "monitors"
-      "lnav"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ lnav ]);
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ lnav ]);
     };
 
   options = lib.mkOption {

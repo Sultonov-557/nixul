@@ -1,18 +1,16 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "nautilus";
-    description = "Module for `apps.system.files.managers.nautilus`.";
-    purpose = "Configure `apps.system.files.managers.nautilus` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "files"
-      "managers"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          nautilus
+          gvfs
+        ]
+      );
+    };
 
   home =
     { cfg, ... }:

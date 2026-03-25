@@ -1,23 +1,15 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "gamescope";
-    description = "Module for `apps.gaming.platform.gamescope`.";
-    purpose = "Configure `apps.gaming.platform.gamescope` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "gaming"
-      "platform"
-      "gamescope"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       programs.gamescope.enable = lib.mkIf cfg.enable true;
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable [ pkgs.gamescope ];
     };
 
   options = lib.mkOption {

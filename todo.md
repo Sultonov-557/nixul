@@ -112,6 +112,7 @@
 - [ ] feat: add nixarr
 - [ ] feat: bloat vicinae with extensions
 - [ ] feat: bloat nixvim
+- [ ] feat: generated docs with vitepress
 
 ### take inspiration from
 

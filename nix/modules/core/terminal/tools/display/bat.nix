@@ -1,18 +1,12 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "bat";
-    description = "Module for `core.terminal.tools.display.bat`.";
-    purpose = "Configure `core.terminal.tools.display.bat` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "display"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.bat = lib.mkIf cfg.enable {
+        enable = true;
+      };
+    };
 
   home =
     { cfg, ... }:

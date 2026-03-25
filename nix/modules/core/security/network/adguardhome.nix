@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "adguardhome";
-    description = "Module for `core.security.network.adguardhome`.";
-    purpose = "Configure `core.security.network.adguardhome` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "network"
-      "adguardhome"
-    ];
-  };
-
   system =
     { cfg, nixul, ... }:
     let

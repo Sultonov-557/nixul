@@ -1,23 +1,15 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "gamemode";
-    description = "Module for `apps.gaming.platform.gamemode`.";
-    purpose = "Configure `apps.gaming.platform.gamemode` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "gaming"
-      "platform"
-      "gamemode"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       programs.gamemode.enable = lib.mkIf cfg.enable true;
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable [ pkgs.gamemode ];
     };
 
   options = lib.mkOption {

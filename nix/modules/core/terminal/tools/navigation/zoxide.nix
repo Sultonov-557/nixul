@@ -1,18 +1,6 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "zoxide";
-    description = "Module for `core.terminal.tools.navigation.zoxide`.";
-    purpose = "Configure `core.terminal.tools.navigation.zoxide` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "navigation"
-    ];
-  };
+  #TODO: system
 
   home =
     { cfg, ... }:

@@ -1,18 +1,6 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "fastfetch";
-    description = "Module for `core.terminal.tools.info.fastfetch`.";
-    purpose = "Configure `core.terminal.tools.info.fastfetch` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "info"
-    ];
-  };
+  # TODO: system
 
   home =
     {

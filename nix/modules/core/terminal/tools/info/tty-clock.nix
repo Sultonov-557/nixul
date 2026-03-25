@@ -1,18 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "tty-clock";
-    description = "Module for `core.terminal.tools.info.tty-clock`.";
-    purpose = "Configure `core.terminal.tools.info.tty-clock` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "info"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          tty-clock
+        ]
+      );
+    };
 
   home =
     { cfg, ... }:

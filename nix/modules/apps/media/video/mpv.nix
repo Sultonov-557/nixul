@@ -1,18 +1,10 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "mpv";
-    description = "Module for `apps.media.video.mpv`.";
-    purpose = "Configure `apps.media.video.mpv` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "media"
-      "video"
-      "mpv"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.mpv ];
+    };
 
   home =
     { cfg, ... }:

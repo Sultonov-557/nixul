@@ -1,18 +1,10 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "nix-melt";
-    description = "Module for `core.terminal.tools.display.nix-melt`.";
-    purpose = "Configure `core.terminal.tools.display.nix-melt` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "display"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ nix-melt ]);
+    };
 
   home =
     { cfg, ... }:

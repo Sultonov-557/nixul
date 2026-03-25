@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "sysctl";
-    description = "Module for `core.security.sysctl`.";
-    purpose = "Configure `core.security.sysctl` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "sysctl"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

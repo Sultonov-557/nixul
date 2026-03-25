@@ -1,24 +1,15 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "foot";
-    description = "Module for `apps.system.terminal.foot`.";
-    purpose = "Configure `apps.system.terminal.foot` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "terminal"
-      "foot"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.foot = lib.mkIf cfg.enable {
+        enable = true;
+      };
+    };
 
   home =
-    { cfg, osConfig, ... }:
-    let
-      palette = osConfig.nixul.theme.colors.palette;
-    in
+    { cfg, ... }:
     {
       programs.foot = lib.mkIf cfg.enable {
         enable = true;

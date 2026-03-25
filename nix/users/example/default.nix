@@ -74,8 +74,6 @@
         apps.user.productivity.obsidian.enable = true;
         apps.user.productivity.todoist.enable = true;
 
-        core.maintenance.auto-upgrade.enable = true;
-        core.maintenance.journald.enable = true;
         core.maintenance.garbage-collector.enable = true;
 
         core.security.access.fail2ban.enable = true;

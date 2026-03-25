@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "documentation";
-    description = "Module for `core.system.nix.documentation`.";
-    purpose = "Configure `core.system.nix.documentation` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "nix"
-      "documentation"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

@@ -1,23 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "caligula";
-    description = "Module for `apps.system.disk.caligula`.";
-    purpose = "Configure `apps.system.disk.caligula` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "disk"
-      "caligula"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ caligula ]);
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ caligula ]);
     };
 
   options = lib.mkOption {
