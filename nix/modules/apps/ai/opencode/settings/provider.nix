@@ -21,12 +21,10 @@
         baseURL = "http://192.168.3.158:11434/v1";
       };
       models = {
-        "llama3.1:8b" = {
-          name = "llama3.1:8b";
+        "gpt-oss:20b" = {
+          name = "gpt-oss:20b";
         };
       };
     };
   };
-
-  model = "ollama/llama3.1:8b";
 }
