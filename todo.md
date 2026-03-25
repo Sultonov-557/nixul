@@ -81,6 +81,16 @@
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 - [ ] feat: add television
 - [ ] fix: remove tags (their pain in the ### to work with)
+- [ ] feat: add cursor ide
+- [ ] feat: add navi
+- [ ] feat: add harlequin
+- [ ] feat: add wezterm
+- [ ] feat: add dolphon
+- [ ] feat: add thunar
+- [ ] feat: add nemo
+- [ ] feat: add hyperfine
+- [ ] feat: add dog
+- [ ] feat: add zk
 
 - [ ] feat: module integrations
 

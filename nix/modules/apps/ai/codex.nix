@@ -1,35 +1,18 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "codex";
-    description = "Module for `apps.ai.codex`.";
-    purpose = "Configure `apps.ai.codex` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "ai"
-      "codex"
-    ];
-  };
-
-
   home =
-    { cfg, nixul, ... }:
+    { cfg, ... }:
     {
       programs.codex = lib.mkIf cfg.enable {
         enable = true;
         custom-instructions = cfg.instructions or "";
-
-        settings =
-          let
-            palette = nixul.theme.colors.palette;
-          in
-          {
-            prompt_color = "#${palette.base05}";
-            highlight_color = "#${palette.base0D}";
-          };
       };
+    };
+
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.codex ];
     };
 
   options = lib.mkOption {

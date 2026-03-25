@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
   settings = import ./settings.nix;
   skillDir = ./skills;
@@ -8,32 +8,14 @@ let
       let
         folderEntries = builtins.readDir (skillDir + "/${name}");
       in
-      type == "directory"
-      && folderEntries ? "SKILL.md"
-      && folderEntries."SKILL.md" == "regular"
+      type == "directory" && folderEntries ? "SKILL.md" && folderEntries."SKILL.md" == "regular"
     ) (builtins.readDir skillDir)
   );
   skillConfig = builtins.listToAttrs (
-    map (
-      folder:
-      {
-  metadata = {
-    name = "opencode";
-    description = "Module for `apps.ai.opencode`.";
-    purpose = "Configure `apps.ai.opencode` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "ai"
-      "opencode"
-    ];
-  };
-
-        name = "opencode/skills/${folder}/SKILL.md";
-        value.text = builtins.readFile (skillDir + "/${folder}/SKILL.md");
-      }
-    ) skillFolders
+    map (folder: {
+      name = "opencode/skills/${folder}/SKILL.md";
+      value.text = builtins.readFile (skillDir + "/${folder}/SKILL.md");
+    }) skillFolders
   );
 in
 {
@@ -47,6 +29,12 @@ in
       });
 
       xdg.configFile = skillConfig;
+    };
+
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ opencode ]);
     };
 
   options = lib.mkOption {

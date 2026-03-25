@@ -22,6 +22,7 @@
 
     modules = {
       core.maintenance.auto-upgrade.enable = true;
+      core.maintenance.garbage-collector.enable = true;
       core.maintenance.journald.enable = true;
       core.security.access.fail2ban.enable = true;
       core.security.access.polkit.enable = true;

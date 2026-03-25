@@ -26,6 +26,18 @@
       );
     };
 
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          protonup-qt
+          protontricks
+        ]
+      );
+    };
+
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {
