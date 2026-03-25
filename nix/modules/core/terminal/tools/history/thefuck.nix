@@ -5,10 +5,7 @@
     {
       programs.pay-respects = lib.mkIf cfg.enable {
         enable = true;
-        options = [
-          "--alias"
-          "f"
-        ];
+        alias = "f";
       };
     };
 

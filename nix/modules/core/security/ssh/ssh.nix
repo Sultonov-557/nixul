@@ -1,12 +1,6 @@
 { lib, ... }:
 {
-  system =
-    { cfg, ... }:
-    {
-      programs.ssh = lib.mkIf cfg.enable {
-        enable = true;
-      };
-    };
+  #TODO: system
 
   home =
     { cfg, ... }:

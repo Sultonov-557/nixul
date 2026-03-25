@@ -28,7 +28,7 @@ in
             characterCount = 1;
             colorizeIcons = true;
             enableScrollWheel = true;
-            followFocusedScreen = true;
+            followFocusedScreen = false;
             groupedBorderOpacity = 0;
             hideUnoccupied = false;
             iconScale = 0.8;

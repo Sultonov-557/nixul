@@ -14,7 +14,7 @@
   };
 
   home =
-    { cfg, osConfig, ... }:
+    { cfg, ... }:
     {
       imports = [
         inputs.noctalia.homeModules.default

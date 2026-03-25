@@ -22,7 +22,7 @@
           lutgen-studio
         ]
       );
-    }
+    };
 
   options = lib.mkOption {
     type = lib.types.submodule {
