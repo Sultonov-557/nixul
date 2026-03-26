@@ -71,6 +71,8 @@
 - [x] feat: add vault warden
 - [x] feat: add config to json extractor
 - [x] feat: add caligula
+- [x] feat: add television
+- [x] fix: remove tags (their pain in the ### to work with)
 
 - [x] test experimental features and merge with main branch
 
@@ -79,8 +81,6 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: add television
-- [ ] fix: remove tags (their pain in the ### to work with)
 - [ ] feat: add cursor ide
 - [ ] feat: add navi
 - [ ] feat: add harlequin
@@ -96,13 +96,6 @@
 
 - [ ] feat: multi-host orchestration
 
-- [ ] perf(profiles): split heavy all-in bundles into slim/base/full profiles to reduce closure size and build time
-- [ ] perf(metrics): add flake check output for closure-size/build-time deltas to catch profile bloat early
-- [ ] feat(multi-user): provide reusable multi-user tags and examples for shared vs per-user module ownership
-- [ ] feat(guardrails): add assertions/checks for duplicate primary-user assumptions and unsafe host-only toggles in multi-user setups
-
-- [ ] feat: 100% declarative. no exeptions.
-
 ### maybe
 
 - [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
@@ -113,6 +106,8 @@
 - [ ] feat: bloat vicinae with extensions
 - [ ] feat: bloat nixvim
 - [ ] feat: generated docs with vitepress
+
+- [ ] feat: 100% declarative. no exeptions.
 
 ### take inspiration from
 
