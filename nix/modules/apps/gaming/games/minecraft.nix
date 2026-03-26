@@ -28,7 +28,7 @@
       environment.systemPackages = lib.mkIf cfg.enable (
         with pkgs;
         [
-          inputs.xmcl.packages.${pkgs.system}.xmcl
+          inputs.xmcl.packages.${pkgs.system}.default
           jre8
           temurin-jre-bin-17
           temurin-jre-bin-21

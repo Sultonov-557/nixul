@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "worktrunk";
-    description = "Module for `dev.git.worktrunk`.";
-    purpose = "Configure `dev.git.worktrunk` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-      "worktrunk"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -22,6 +9,12 @@
           worktrunk
         ]
       );
+    };
+
+  system =
+    { cfg, ... }:
+    {
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ worktrunk ]);
     };
 
   options = lib.mkOption {

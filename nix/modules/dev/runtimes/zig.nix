@@ -1,22 +1,17 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "zig";
-    description = "Module for `dev.runtimes.zig`.";
-    purpose = "Configure `dev.runtimes.zig` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "runtimes"
-      "zig"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
+        zig
+        zls
+      ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [
         zig
         zls
       ]);

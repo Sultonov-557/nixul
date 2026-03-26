@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "github";
-    description = "Module for `dev.git.github`.";
-    purpose = "Configure `dev.git.github` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-      "github"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -23,7 +10,6 @@
         };
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

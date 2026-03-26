@@ -5,19 +5,6 @@
   ...
 }:
 {
-  metadata = {
-    name = "nginx";
-    description = "Module for `services.server.nginx`.";
-    purpose = "Configure `services.server.nginx` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "server"
-      "nginx"
-    ];
-  };
-
   system =
     { cfg, ... }:
     let
@@ -135,6 +122,11 @@ EOF
           message = "services.server.nginx requires core.security.network.unbound.enable = true";
         }
       ];
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ nginx ]);
     };
 
   options = lib.mkOption {

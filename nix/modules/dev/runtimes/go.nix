@@ -1,22 +1,17 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "go";
-    description = "Module for `dev.runtimes.go`.";
-    purpose = "Configure `dev.runtimes.go` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "runtimes"
-      "go"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
+        go
+        gopls
+      ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [
         go
         gopls
       ]);

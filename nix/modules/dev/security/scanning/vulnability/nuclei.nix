@@ -1,23 +1,16 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "nuclei";
-    description = "Module for `dev.security.scanning.vulnability.nuclei`.";
-    purpose = "Configure `dev.security.scanning.vulnability.nuclei` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "scanning"
-      "vulnability"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
+        nuclei
+      ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [
         nuclei
       ]);
     };

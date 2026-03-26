@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "zellij";
-    description = "Module for `dev.multiplexers.zellij.zellij`.";
-    purpose = "Configure `dev.multiplexers.zellij.zellij` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "multiplexers"
-      "zellij"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -28,7 +15,6 @@
 
       xdg.configFile."zellij/config.kdl".source = ./zellij.kdl;
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

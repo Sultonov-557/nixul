@@ -1,23 +1,16 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "minikube";
-    description = "Module for `services.containers.kubernetes.minikube`.";
-    purpose = "Configure `services.containers.kubernetes.minikube` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "containers"
-      "kubernetes"
-      "minikube"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
+        minikube
+      ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [
         minikube
       ]);
     };

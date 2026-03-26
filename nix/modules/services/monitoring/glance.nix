@@ -5,19 +5,6 @@ let
   };
 in
 {
-  metadata = {
-    name = "glance";
-    description = "Module for `services.monitoring.glance`.";
-    purpose = "Configure `services.monitoring.glance` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "monitoring"
-      "glance"
-    ];
-  };
-
   system =
     { cfg, nixul, ... }:
     let
@@ -230,7 +217,6 @@ in
         }
       ];
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

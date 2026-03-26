@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "screenshots";
-    description = "Module for `desktop.components.screenshots`.";
-    purpose = "Configure `desktop.components.screenshots` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "screenshots"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -42,7 +29,6 @@
         };
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

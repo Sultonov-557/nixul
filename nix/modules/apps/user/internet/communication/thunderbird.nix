@@ -8,14 +8,6 @@
       };
     };
 
-  home =
-    { cfg, ... }:
-    {
-      programs.thunderbird = lib.mkIf cfg.enable {
-        enable = true;
-      };
-    };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

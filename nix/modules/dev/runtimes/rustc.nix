@@ -1,22 +1,22 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "rustc";
-    description = "Module for `dev.runtimes.rustc`.";
-    purpose = "Configure `dev.runtimes.rustc` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "runtimes"
-      "rustc"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
+        rustc
+        cargo
+        rustfmt
+        pkg-config
+        libxkbcommon
+        alsa-lib
+        libudev-zero
+      ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [
         rustc
         cargo
         rustfmt

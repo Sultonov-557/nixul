@@ -4,19 +4,6 @@
   ...
 }:
 {
-  metadata = {
-    name = "docker";
-    description = "Module for `services.containers.docker`.";
-    purpose = "Configure `services.containers.docker` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "containers"
-      "docker"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -31,7 +18,6 @@
 
       users.users.${config.nixul.primaryUser}.extraGroups = lib.mkIf cfg.enable [ "docker" ];
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

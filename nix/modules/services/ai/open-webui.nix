@@ -1,18 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "open-webui";
-    description = "Module for `services.ai.open-webui`.";
-    purpose = "Configure `services.ai.open-webui` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "ai"
-      "open-webui"
-    ];
-  };
-
   system =
     { cfg, nixul, ... }:
     let

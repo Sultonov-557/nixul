@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "cliphist";
-    description = "Module for `desktop.components.cliphist`.";
-    purpose = "Configure `desktop.components.cliphist` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "cliphist"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -22,6 +9,14 @@
       ];
 
       services.cliphist.enable = lib.mkIf cfg.enable true;
+    };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.cliphist
+        pkgs.wl-clipboard
+      ];
     };
 
   options = lib.mkOption {

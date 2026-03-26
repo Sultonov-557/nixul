@@ -1,18 +1,5 @@
 { lib, inputs, ... }:
 {
-  metadata = {
-    name = "nixvim";
-    description = "Module for `dev.editor.nixvim`.";
-    purpose = "Configure `dev.editor.nixvim` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "editor"
-      "nixvim"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
@@ -31,7 +18,6 @@
         withNodeJs = true;
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

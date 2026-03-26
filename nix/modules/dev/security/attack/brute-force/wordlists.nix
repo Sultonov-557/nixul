@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "wordlists";
-    description = "Module for `dev.security.attack.brute-force.wordlists`.";
-    purpose = "Configure `dev.security.attack.brute-force.wordlists` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "attack"
-      "brute-force"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
       home.packages = lib.mkIf cfg.enable (with pkgs; [ wordlists ]);
+    };
+  system =
+    { cfg, ... }:
+    {
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ wordlists ]);
     };
 
   options = lib.mkOption {

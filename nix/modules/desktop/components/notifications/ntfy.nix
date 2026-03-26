@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "ntfy";
-    description = "Module for `desktop.components.notifications.ntfy`.";
-    purpose = "Configure `desktop.components.notifications.ntfy` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "notifications"
-      "ntfy"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -24,7 +10,6 @@
         };
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {
