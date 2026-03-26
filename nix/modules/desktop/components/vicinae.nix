@@ -1,5 +1,13 @@
 { lib, pkgs, ... }:
 {
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.vicinae
+      ];
+    };
+
   home =
     { cfg, config, ... }:
     let

@@ -1,5 +1,18 @@
-{ lib, inputs, ... }:
 {
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.neovim
+      ];
+    };
+
   home =
     { cfg, ... }:
     {

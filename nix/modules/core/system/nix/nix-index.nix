@@ -28,8 +28,6 @@
       programs.command-not-found.enable = lib.mkIf cfg.enable false;
     };
 
-  # TODO: home
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

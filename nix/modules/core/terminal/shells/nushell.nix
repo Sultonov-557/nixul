@@ -1,7 +1,18 @@
-{ lib, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
 
-  # TODO: system
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.nushell
+      ];
+    };
 
   home =
     { cfg, ... }:

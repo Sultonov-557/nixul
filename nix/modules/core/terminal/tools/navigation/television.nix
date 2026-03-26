@@ -1,11 +1,21 @@
 { lib, ... }:
 {
+  system =
+    { cfg, ... }:
+    {
+      programs.television = lib.mkIf cfg.enable {
+        enable = true;
+      };
+    };
 
   home =
     { cfg, ... }:
     {
-      programs.ssh = lib.mkIf cfg.enable {
+      programs.television = lib.mkIf cfg.enable {
         enable = true;
+        enableZshIntegration = true;
+        enableFishIntegration = true;
+        enableBashIntegration = true;
       };
     };
 
@@ -15,14 +25,12 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable ssh";
+          description = "Enable fzf";
         };
       };
     };
     default = {
       enable = false;
-      serversSecretFile = null;
-      strictHostKeyChecking = "accept-new";
     };
   };
 }

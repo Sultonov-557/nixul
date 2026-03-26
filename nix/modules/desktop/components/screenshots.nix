@@ -1,5 +1,16 @@
 { lib, pkgs, ... }:
 {
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.grim
+        pkgs.slurp
+        pkgs.swappy
+        pkgs.wl-clipboard
+      ];
+    };
+
   home =
     { cfg, ... }:
     {

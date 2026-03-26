@@ -1,6 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  #TODO: system
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.zoxide
+      ];
+    };
 
   home =
     { cfg, ... }:

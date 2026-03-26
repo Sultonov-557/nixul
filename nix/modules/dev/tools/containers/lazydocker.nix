@@ -1,5 +1,13 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.lazydocker
+      ];
+    };
+
   home =
     { cfg, ... }:
     {

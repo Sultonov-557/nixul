@@ -1,5 +1,18 @@
-{ lib, config, ... }:
 {
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.git
+      ];
+    };
+
   home =
     { cfg, user, ... }:
     {
