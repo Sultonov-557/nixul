@@ -74,6 +74,7 @@
 - [x] feat: add television
 - [x] fix: remove tags (their pain in the ### to work with)
 - [x] feat: add cursor ide
+- [x] feat: add navi
 
 - [x] test experimental features and merge with main branch
 
@@ -82,8 +83,6 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: add navi
-- [ ] feat: add harlequin
 - [ ] feat: add wezterm
 - [ ] feat: add dolphon
 - [ ] feat: add thunar
@@ -92,9 +91,14 @@
 - [ ] feat: add dog
 - [ ] feat: add zk
 
+- [ ] feat: add navi cheatsheets
+- [ ] feat: add more bookmarks
+
 - [ ] feat: module integrations
 
 - [ ] feat: multi-host orchestration
+
+- [ ] feat: add harlequin (after update)
 
 ### maybe
 
