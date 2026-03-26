@@ -138,6 +138,7 @@
       core.terminal.tools.monitor.tcpdump.enable = true;
 
       core.terminal.tools.navigation.fzf.enable = true;
+      core.terminal.tools.navigation.television.enable = true;
       core.terminal.tools.navigation.ripgrep.enable = true;
       core.terminal.tools.navigation.zoxide.enable = true;
 
