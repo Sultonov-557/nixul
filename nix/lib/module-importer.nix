@@ -79,6 +79,134 @@ let
     inherit (types) assertCfgType;
   };
 
+  mkPathTree =
+    modules:
+    lib.foldl' (
+      acc: module: lib.recursiveUpdate acc (lib.setAttrByPath module.pathParts { __module = true; })
+    ) { } modules;
+
+  collectUnknownPaths =
+    {
+      configured,
+      knownTree,
+      path ? [ ],
+    }:
+    if !(builtins.isAttrs configured) then
+      [ ]
+    else
+      lib.concatMap (
+        name:
+        let
+          value = builtins.getAttr name configured;
+          nextPath = path ++ [ name ];
+        in
+        if !(builtins.hasAttr name knownTree) then
+          [ nextPath ]
+        else
+          let
+            node = builtins.getAttr name knownTree;
+          in
+          if builtins.isAttrs value && !(node ? __module) then
+            collectUnknownPaths {
+              configured = value;
+              knownTree = node;
+              path = nextPath;
+            }
+          else
+            [ ]
+      ) (builtins.attrNames configured);
+
+  pathToString = path: lib.concatStringsSep "." path;
+
+  hasPathInTree =
+    path: tree:
+    if path == [ ] then
+      true
+    else
+      let
+        key = builtins.head path;
+        rest = builtins.tail path;
+      in
+      if !(builtins.hasAttr key tree) then
+        false
+      else if rest == [ ] then
+        true
+      else
+        hasPathInTree rest (builtins.getAttr key tree);
+
+  allKnownTree = mkPathTree discovery.discovered;
+  hostKnownTree = mkPathTree discovery.hostMods;
+  userKnownTree = mkPathTree discovery.userMods;
+
+  hostInvalidPathsRaw = collectUnknownPaths {
+    configured = lib.attrByPath [ "nixul" "host" "modules" ] { } config;
+    knownTree = hostKnownTree;
+  };
+
+  userInvalidPathsRaw =
+    let
+      usersCfg = lib.attrByPath [ "nixul" "users" ] { } config;
+      userNames = builtins.attrNames usersCfg;
+    in
+    lib.concatMap (
+      user:
+      let
+        userCfg = builtins.getAttr user usersCfg;
+      in
+      map (
+        path: {
+          inherit user path;
+        }
+      ) (collectUnknownPaths {
+        configured = userCfg.modules or { };
+        knownTree = userKnownTree;
+      })
+    ) userNames;
+
+  hostUnknownPathsRaw = builtins.filter (path: !(hasPathInTree path allKnownTree)) hostInvalidPathsRaw;
+  hostWrongScopePathsRaw = builtins.filter (path: hasPathInTree path allKnownTree) hostInvalidPathsRaw;
+
+  userUnknownPathsRaw = builtins.filter (item: !(hasPathInTree item.path allKnownTree)) userInvalidPathsRaw;
+  userWrongScopePathsRaw = builtins.filter (item: hasPathInTree item.path allKnownTree) userInvalidPathsRaw;
+
+  hostUnknownModulePaths = map (path: "nixul.host.modules." + pathToString path) hostUnknownPathsRaw;
+  hostWrongScopeModulePaths = map (path: "nixul.host.modules." + pathToString path) hostWrongScopePathsRaw;
+
+  userUnknownModulePaths = map (item: "nixul.users.${item.user}.modules." + pathToString item.path) userUnknownPathsRaw;
+  userWrongScopeModulePaths = map (item: "nixul.users.${item.user}.modules." + pathToString item.path) userWrongScopePathsRaw;
+
+  unknownModulePaths = hostUnknownModulePaths ++ userUnknownModulePaths;
+  wrongScopeModulePaths = hostWrongScopeModulePaths ++ userWrongScopeModulePaths;
+  invalidModulePaths = unknownModulePaths ++ wrongScopeModulePaths;
+
+  mkList = xs: lib.concatMapStringsSep "\n" (path: "  - " + path) xs;
+
+  unknownModulesMessage =
+    let
+      unknownSection =
+        if unknownModulePaths == [ ] then
+          ""
+        else
+          ''
+            The following option paths are set, but no module exists at those paths:
+            ${mkList unknownModulePaths}
+          '';
+      wrongScopeSection =
+        if wrongScopeModulePaths == [ ] then
+          ""
+        else
+          ''
+            The following option paths point to real modules, but in the wrong scope (host vs user):
+            ${mkList wrongScopeModulePaths}
+          '';
+    in
+    ''
+      nixul module importer: invalid module option paths detected
+
+      ${unknownSection}
+      ${wrongScopeSection}
+    '';
+
 in
 {
   imports = host.hostImports;
@@ -130,6 +258,12 @@ in
       nixul._moduleMetadata = metadataTrees.allModuleMetadata;
       nixul._hostModuleMetadata = metadataTrees.hostModuleMetadata;
       nixul._userModuleMetadata = metadataTrees.userModuleMetadata;
+      assertions = [
+        {
+          assertion = invalidModulePaths == [ ];
+          message = unknownModulesMessage;
+        }
+      ];
       warnings = [
         ("nixul importer discovered: " + (toString (builtins.length discovery.discovered)) + " modules")
       ];

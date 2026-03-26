@@ -22,7 +22,6 @@
 
     modules = {
       core.maintenance.auto-upgrade.enable = true;
-      core.maintenance.garbage-collector.enable = true;
       core.maintenance.journald.enable = true;
       core.security.access.fail2ban.enable = true;
       core.security.access.polkit.enable = true;
@@ -70,7 +69,6 @@
 
       desktop.components.notifications.ntfy.enable = true;
       desktop.display-manager.gdm.enable = true;
-      desktop.display-manager.sddm.enable = true;
       desktop.display.wayland.enable = true;
       desktop.display.xserver.enable = true;
       desktop.theming.enable = true;
