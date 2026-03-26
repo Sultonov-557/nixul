@@ -127,6 +127,7 @@
 
         dev.editor.nixvim.enable = true;
         dev.editor.antigravity.enable = true;
+        dev.editor.cursor.enable = true;
         dev.editor.zed.enable = true;
 
         dev.git.git-extras.enable = true;
