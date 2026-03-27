@@ -58,6 +58,7 @@
         apps.system.files.managers.yazi.enable = true;
         apps.system.files.managers.dolphin.enable = true;
         apps.system.files.managers.thunar.enable = true;
+        apps.system.files.managers.nemo.enable = true;
 
         apps.system.monitors.lnav.enable = true;
         apps.system.monitors.mission-center.enable = true;
