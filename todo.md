@@ -89,19 +89,17 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
+- [ ] feat: add home-assistant
 
 - [ ] feat: add navi cheatsheets
 - [ ] feat: add more bookmarks
 
-- [ ] feat: module integrations
-
-- [ ] feat: multi-host orchestration
-
 - [ ] feat: add proper providers to litellm
 
-- [ ] feat: add harlequin (after update)
+- [ ] feat: module integrations
+- [ ] feat: multi-host orchestration
 
-- [ ] feat: add home-assistant
+- [ ] feat: add harlequin (after update)
 
 ### maybe
 
@@ -113,6 +111,7 @@
 - [ ] feat: bloat vicinae with extensions
 - [ ] feat: bloat nixvim
 - [ ] feat: generated docs with vitepress
+- [ ] feat: add n8n
 
 - [ ] feat: 100% declarative. no exeptions.
 

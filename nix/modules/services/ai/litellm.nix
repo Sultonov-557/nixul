@@ -210,18 +210,21 @@
               model_name = "main";
               litellm_params = {
                 model = "openrouter/meta-llama/llama-3-70b-instruct";
+                api_key = "os.environ/OPENROUTER_API_KEY";
               };
             }
             {
               model_name = "main";
               litellm_params = {
                 model = "gemini/gemini-flash-latest";
+                api_key = "os.environ/GEMINI_API_KEY";
               };
             }
             {
               model_name = "main";
               litellm_params = {
                 model = "groq/openai/gpt-oss-120b";
+                api_key = "os.environ/GROQ_API_KEY";
               };
             }
           ];
