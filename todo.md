@@ -75,6 +75,7 @@
 - [x] fix: remove tags (their pain in the ### to work with)
 - [x] feat: add cursor ide
 - [x] feat: add navi
+- [x] feat: add wezterm
 
 - [x] test experimental features and merge with main branch
 
@@ -83,7 +84,6 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: add wezterm
 - [ ] feat: add dolphon
 - [ ] feat: add thunar
 - [ ] feat: add nemo
@@ -98,7 +98,11 @@
 
 - [ ] feat: multi-host orchestration
 
+- [ ] feat: add proper providers to litellm
+
 - [ ] feat: add harlequin (after update)
+
+- [ ] feat: add home-assistant
 
 ### maybe
 

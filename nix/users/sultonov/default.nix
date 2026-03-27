@@ -63,6 +63,7 @@
         apps.system.terminal.kitty.enable = true;
         apps.system.terminal.foot.enable = true;
         apps.system.terminal.ghostty.enable = true;
+        apps.system.terminal.wezterm.enable = false;
 
         apps.user.internet.browsers.chrome.enable = true;
         apps.user.internet.browsers.tor.enable = true;
