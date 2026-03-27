@@ -243,6 +243,7 @@
 
           router_settings = {
             routing_strategy = "simple-shuffle";
+            fallbacks = [ { "main" = [ "main" ]; } ];
             allowed_fails = 1;
             cooldown_time = 60 * 5;
           };
