@@ -46,6 +46,7 @@
       core.terminal.shells.fish.enable = true;
       core.terminal.shells.zsh.enable = true;
       core.terminal.tools.monitor.tcpdump.enable = true;
+      core.terminal.tools.monitor.hyperfine.enable = true;
       core.terminal.tools.info.dog.enable = true;
       core.terminal.tools.navigation.ripgrep.enable = true;
 

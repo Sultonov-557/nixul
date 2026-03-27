@@ -108,6 +108,7 @@
         core.terminal.tools.info.tty-clock.enable = true;
 
         core.terminal.tools.monitor.btop.enable = true;
+        core.terminal.tools.monitor.hyperfine.enable = true;
         core.terminal.tools.monitor.tcpdump.enable = true;
 
         core.terminal.tools.navigation.fzf.enable = true;
