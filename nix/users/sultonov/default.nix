@@ -25,6 +25,7 @@
         apps.gaming.platform.gamescope.enable = true;
         apps.gaming.platform.steam.enable = true;
         apps.gaming.platform.gogdl.enable = true;
+        apps.gaming.platform.heroic.enable = false;
         apps.gaming.platform.lutris.enable = true;
 
         apps.media.audio.pamixer.enable = true;
