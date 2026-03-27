@@ -19,6 +19,7 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+          "litellm"
         ];
         ignoreShellProgramCheck = true;
         shell = shellPkg;

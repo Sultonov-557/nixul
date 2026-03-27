@@ -81,6 +81,7 @@
 - [x] feat: add nemo
 - [x] feat: add doggo
 - [x] feat: add hyperfine
+- [x] feat: add proper providers to litellm
 
 - [x] test experimental features and merge with main branch
 
@@ -89,12 +90,9 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: add home-assistant
 
 - [ ] feat: add navi cheatsheets
 - [ ] feat: add more bookmarks
-
-- [ ] feat: add proper providers to litellm
 
 - [ ] feat: module integrations
 - [ ] feat: multi-host orchestration
@@ -112,6 +110,8 @@
 - [ ] feat: bloat nixvim
 - [ ] feat: generated docs with vitepress
 - [ ] feat: add n8n
+- [ ] feat: add mcp servers
+- [ ] feat: add home-assistant
 
 - [ ] feat: 100% declarative. no exeptions.
 

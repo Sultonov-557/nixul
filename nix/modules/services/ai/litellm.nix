@@ -152,20 +152,22 @@
 
         litellm-password = {
           sopsFile = ../../../assets/secrets/password.yaml;
-          key = "password";
-          owner = "litellm";
-          group = "litellm";
+          format = "yaml";
+          key = "master_api_key";
+          owner = "sultonov";
         };
       };
 
-      sops.templates.litellm-runtime-env = lib.mkIf (cfg.enable && sopsEnabled) {
-        owner = "litellm";
-        group = "litellm";
-        content = ''
-          UI_PASSWORD=${config.sops.placeholder."litellm-password"}
-          LITELLM_MASTER_KEY=${config.sops.placeholder."litellm-password"}
-          DATABASE_URL=postgresql://postgres:postgres@localhost:5432/litellm
-        '';
+      sops.templates = lib.mkIf (cfg.enable && sopsEnabled) {
+        litellm-runtime-env = {
+          owner = "litellm";
+          group = "litellm";
+          content = ''
+            UI_PASSWORD=${config.sops.placeholder."litellm-password"}
+            LITELLM_MASTER_KEY=${config.sops.placeholder."litellm-password"}
+            DATABASE_URL=postgresql://postgres:postgres@localhost:5432/litellm
+          '';
+        };
       };
 
       systemd.services.litellm = lib.mkIf cfg.enable {
@@ -196,7 +198,10 @@
               "litellm/migrations"
             ];
             StateDirectoryMode = "0750";
-            ReadWritePaths = [ "/var/lib/litellm" ];
+            ReadWritePaths = [
+              "/var/lib/litellm"
+              config.sops.secrets.litellm-password.path
+            ];
           };
       };
 
@@ -205,6 +210,13 @@
         port = 9003;
 
         settings = {
+          general_settings = {
+            store_model_in_db = true;
+            store_prompts_in_spend_logs = true;
+          };
+          litellm_params = {
+            enable_preview_features = true;
+          };
           model_list = [
             {
               model_name = "main";
@@ -240,6 +252,7 @@
           HOME = "/var/lib/litellm";
           PRISMA_HOME_DIR = "/var/lib/litellm";
           LITELLM_MIGRATION_DIR = "/var/lib/litellm/migrations";
+          LITELLM_MODE = "proxy_no_auth";
           DOCS_URL = "/docs";
           ROOT_REDIRECT_URL = "/ui";
           UI_USERNAME = "admin";

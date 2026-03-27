@@ -1,6 +1,11 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
-  settings = import ./settings.nix;
+  settings = import ./settings.nix { inherit lib config; };
   skillDir = ./skills;
   skillFolders = builtins.attrNames (
     lib.filterAttrs (

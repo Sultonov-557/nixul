@@ -1,11 +1,15 @@
+{ lib, config, ... }:
+let
+  litellmEnabled = config.nixul.host.modules.services.ai.litellm.enable or false;
+in
 {
   provider = {
-    litellm = {
+    litellm = lib.mkIf litellmEnabled {
       npm = "@ai-sdk/openai-compatible";
       name = "LiteLLM";
       options = {
-        baseURL = "https://litellm.home/v1";
-        apiKey = "\${LITELLM_MASTER_KEY}";
+        baseURL = "http://litellm.home/v1";
+        apiKey = "{file:${config.sops.secrets.litellm-password.path}}";
       };
       models = {
         main = {
