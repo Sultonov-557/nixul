@@ -136,6 +136,7 @@
       core.terminal.tools.history.thefuck.enable = true;
 
       core.terminal.tools.info.fastfetch.enable = true;
+      core.terminal.tools.info.doggo.enable = true;
       core.terminal.tools.info.lsof.enable = true;
       core.terminal.tools.info.nix-tree.enable = true;
       core.terminal.tools.info.tty-clock.enable = true;
