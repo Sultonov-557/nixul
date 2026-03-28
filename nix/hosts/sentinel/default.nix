@@ -56,6 +56,7 @@
 
       apps.media.video.ffmpeg.enable = true;
       apps.media.video.mpv.enable = true;
+      apps.media.video.vlc.enable = true;
 
       apps.system.disk.gparted.enable = true;
       apps.system.disk.caligula.enable = true;

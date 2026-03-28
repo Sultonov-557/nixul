@@ -3,13 +3,13 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ blender ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ vlc ]);
     };
 
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [ blender ]);
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ vlc ]);
     };
 
   options = lib.mkOption {
@@ -18,7 +18,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable blender";
+          description = "Enable vlc";
         };
       };
     };
