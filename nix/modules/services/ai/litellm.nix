@@ -221,22 +221,22 @@
             {
               model_name = "main";
               litellm_params = {
-                model = "openrouter/meta-llama/llama-3-70b-instruct";
+                model = "openrouter/minimax/minimax-m2.5:free";
                 api_key = "os.environ/OPENROUTER_API_KEY";
               };
             }
             {
               model_name = "main";
               litellm_params = {
-                model = "gemini/gemini-flash-latest";
-                api_key = "os.environ/GEMINI_API_KEY";
+                model = "openrouter/openai/gpt-oss-120b:free";
+                api_key = "os.environ/OPENROUTER_API_KEY";
               };
             }
             {
               model_name = "main";
               litellm_params = {
-                model = "groq/openai/gpt-oss-120b";
-                api_key = "os.environ/GROQ_API_KEY";
+                model = "pollinations/glm";
+                api_key = "os.environ/POLLINATIONS_API_KEY";
               };
             }
           ];
@@ -245,7 +245,12 @@
             routing_strategy = "simple-shuffle";
             fallbacks = [ { "main" = [ "main" ]; } ];
             allowed_fails = 1;
+            num_retries = 3;
+            retry_after = 1;
             cooldown_time = 60 * 5;
+
+            redis_host = "localhost";
+            redis_port = 6379;
           };
         };
 
