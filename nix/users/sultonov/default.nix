@@ -11,6 +11,7 @@
 
       modules = {
         apps.ai.opencode.enable = true;
+        apps.ai.aider.enable = true;
         apps.ai.codex.enable = true;
         apps.ai.gemini.enable = true;
         apps.ai.cursor.enable = true;

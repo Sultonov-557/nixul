@@ -86,6 +86,8 @@
 - [x] feat: add more bookmarks
 - [x] feat: add home-assistant
 
+- [ ] feat: add more apps to every category
+
 - [x] test experimental features and merge with main branch
 
 - [-] feat: universal options for many modules

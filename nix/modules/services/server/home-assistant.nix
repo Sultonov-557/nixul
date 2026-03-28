@@ -29,7 +29,8 @@
     {
       services.home-assistant = lib.mkIf cfg.enable {
         enable = true;
-        configWriteable = true;
+        configWritable = true;
+        configDir = "/etc/home-assistant";
         extraComponents = [
           "esphome"
           "met"
