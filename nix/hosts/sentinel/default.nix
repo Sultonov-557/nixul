@@ -296,7 +296,7 @@
       services.monitoring.dashy.enable = true;
       services.monitoring.glance.enable = true;
 
-      services.server.home-assistant.enable = true;
+      services.server.home-assistant.enable = false;
       services.server.nginx.enable = true;
       services.server.vaultwarden.enable = true;
 

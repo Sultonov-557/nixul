@@ -29,6 +29,7 @@
     {
       services.home-assistant = lib.mkIf cfg.enable {
         enable = true;
+        configWriteable = true;
         extraComponents = [
           "esphome"
           "met"
