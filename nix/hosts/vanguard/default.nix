@@ -123,7 +123,6 @@
       apps.system.files.archives.file-roller.enable = true;
       apps.system.files.archives.p7zip.enable = true;
       apps.system.files.archives.unzip.enable = true;
-      apps.system.monitors.lnav.enable = true;
       apps.system.monitors.mission-center.enable = true;
       apps.user.internet.browsers.chrome.enable = true;
       apps.user.internet.browsers.tor.enable = true;
