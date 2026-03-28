@@ -7,10 +7,13 @@
     glob = "allow";
     list = "allow";
     lsp = "allow";
+    google_search = "allow";
+    websearch = "allow";
     skill = {
       "*" = "ask";
       "nix-*" = "allow";
       "git-*" = "allow";
+      "docker-*" = "allow";
     };
     task = {
       "*" = "ask";
@@ -23,5 +26,6 @@
     todoread = "allow";
     webfetch = "allow";
     question = "allow";
+    memory = "allow";
   };
 }
