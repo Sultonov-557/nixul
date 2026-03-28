@@ -33,6 +33,8 @@
         apps.media.audio.playerctl.enable = true;
         apps.media.audio.pulsemixer.enable = true;
 
+        apps.media.model.blockbench.enable = true;
+
         apps.media.music.spicetify.enable = true;
         apps.media.music.yandex.enable = true;
 
