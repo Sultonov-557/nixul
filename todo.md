@@ -82,6 +82,7 @@
 - [x] feat: add doggo
 - [x] feat: add hyperfine
 - [x] feat: add proper providers to litellm
+- [x] feat: add navi cheatsheets
 
 - [x] test experimental features and merge with main branch
 
@@ -91,7 +92,6 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 
-- [ ] feat: add navi cheatsheets
 - [ ] feat: add more bookmarks
 
 - [ ] feat: module integrations
