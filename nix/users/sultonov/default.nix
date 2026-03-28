@@ -67,9 +67,9 @@
         apps.system.files.managers.thunar.enable = true;
         apps.system.files.managers.nemo.enable = true;
 
-        apps.system.monitors.lnav.enable = true;
         apps.system.monitors.mission-center.enable = true;
 
+        apps.system.terminal.alacritty.enable = true;
         apps.system.terminal.kitty.enable = true;
         apps.system.terminal.foot.enable = true;
         apps.system.terminal.ghostty.enable = true;
@@ -115,6 +115,7 @@
         core.terminal.tools.info.tty-clock.enable = true;
 
         core.terminal.tools.monitor.btop.enable = true;
+        core.terminal.tools.monitor.lnav.enable = true;
         core.terminal.tools.monitor.hyperfine.enable = true;
         core.terminal.tools.monitor.tcpdump.enable = true;
 
