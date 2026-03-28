@@ -66,6 +66,7 @@
       apps.system.files.analyzers.dua.enable = true;
 
       apps.system.files.archives.file-roller.enable = true;
+      apps.system.files.archives.ouch.enable = true;
       apps.system.files.archives.p7zip.enable = true;
       apps.system.files.archives.unzip.enable = true;
       apps.system.files.archives.zip.enable = true;
