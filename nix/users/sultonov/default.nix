@@ -11,7 +11,7 @@
 
       modules = {
         apps.ai.opencode.enable = true;
-        apps.ai.aider.enable = true;
+        apps.ai.aider.enable = false;
         apps.ai.codex.enable = true;
         apps.ai.gemini.enable = true;
         apps.ai.cursor.enable = true;
@@ -35,6 +35,7 @@
         apps.media.audio.pulsemixer.enable = true;
 
         apps.media.model.blockbench.enable = true;
+        apps.media.model.blender.enable = false;
 
         apps.media.music.spicetify.enable = true;
         apps.media.music.yandex.enable = true;
