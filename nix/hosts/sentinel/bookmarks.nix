@@ -17,6 +17,29 @@
         url = "https://reddit.com";
         icon = "si-reddit";
       };
+      gmail = {
+        title = "Gmail";
+        url = "https://mail.google.com";
+        icon = "si-email";
+      };
+    };
+  };
+
+  ai = {
+    title = "AI";
+    items = {
+      chatgpt = {
+        title = "ChatGPT";
+        url = "https://chatgpt.com/";
+        icon = "si-chatgpt";
+        order = 1;
+      };
+      mynixos = {
+        title = "Gemini";
+        url = "https://gemini.google.com/app";
+        icon = "si-gemini";
+        order = 2;
+      };
     };
   };
 
@@ -34,6 +57,22 @@
         url = "https://mynixos.com";
         icon = "si-nixos";
         order = 2;
+      };
+    };
+  };
+
+  games = {
+    title = "Games";
+    items = {
+      steam = {
+        title = "Steam";
+        url = "https://store.steampowered.com";
+        icon = "si-steam";
+      };
+      epic = {
+        title = "Chess";
+        url = "https://chess.com";
+        icon = "si-chess";
       };
     };
   };
