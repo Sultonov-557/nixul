@@ -53,6 +53,7 @@
 
         apps.system.files.analyzers.baobab.enable = true;
         apps.system.files.analyzers.ncdu.enable = true;
+        apps.system.files.analyzers.dua.enable = true;
 
         apps.system.files.archives.file-roller.enable = true;
         apps.system.files.archives.p7zip.enable = true;
