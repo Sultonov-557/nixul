@@ -91,7 +91,6 @@
 
       apps.user.internet.communication.telegram.enable = true;
       apps.user.internet.communication.thunderbird.enable = true;
-      apps.user.internet.communication.beeper.enable = true;
 
       apps.user.internet.qbitttorrent.enable = true;
 
