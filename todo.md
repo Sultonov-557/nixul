@@ -87,6 +87,7 @@
 - [x] feat: add home-assistant
 
 - [ ] feat: add more apps to every category
+- [ ] feat: add matrix
 
 - [x] test experimental features and merge with main branch
 
