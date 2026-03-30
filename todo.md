@@ -10,9 +10,6 @@
 - [x] fix(noctalia): configure noctalia shell
 - [x] refactor(niri): split niri into multiple files
 - [x] fix(hashcat): make hashcat work
-- [x] feat: add lemurs
-- [x] feat: add ly
-- [x] feat: add sddm
 - [x] feat: add lutgen
 - [x] feat: add tty clock
 - [x] feat: papirus icons
@@ -87,6 +84,8 @@
 - [x] feat: add home-assistant
 
 - [ ] feat: add more apps to every category
+- [ ] feat: add step-ca
+- [ ] feat: add limine
 
 - [x] test experimental features and merge with main branch
 
