@@ -14,20 +14,8 @@
       enable = true;
     };
 
-    mini-surround = {
+    nvim-surround = {
       enable = true;
-      settings = {
-        mappings = {
-          add = "sa";
-          delete = "sd";
-          find = "sf";
-          find_left = "sF";
-          highlight = "sh";
-          replace = "sr";
-          suffix_last = "l";
-          suffix_next = "n";
-        };
-      };
     };
 
     ts-context-commentstring = {
