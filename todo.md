@@ -95,18 +95,6 @@
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
 
-- [ ] feat(nixvim): add LSP servers (jedi-language-server, denols, svelte, volar, gdscript, zls, terraform-ls)
-- [ ] feat(nixvim): add hop.nvim or leap.nvim for fast motion
-- [ ] feat(nixvim): add flash.nvim for enhanced search/movement
-- [ ] feat(nixvim): add nvim-ufo for modern code folding
-- [ ] feat(nixvim): add rest-nvim for REST client
-- [ ] feat(nixvim): add wilder.nvim for command-line completion
-- [ ] feat(nixvim): add persistence.nvim for session persistence
-- [ ] feat(nixvim): add virtual-types.nvim for inline type annotations
-- [ ] feat(nixvim): enable treesitter-context
-- [ ] feat(nixvim): add hlargs or highlight-undo
-- [ ] feat(nixvim): add zen-mode.nvim or twilight.nvim for focused editing
-
 - [ ] feat: module integrations
 - [ ] feat: multi-host orchestration
 
