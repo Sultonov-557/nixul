@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../users/sultonov
-    (loadTheme "gruvbox-material")
+    (loadTheme "gruvbox")
   ];
 
   home-manager.users.sultonov.wayland.windowManager.hyprland.settings.monitor = [
