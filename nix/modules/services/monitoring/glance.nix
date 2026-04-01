@@ -120,6 +120,7 @@ in
                     type = "releases";
                     show-source-icon = true;
                     repositories = [
+                      "anomalyco/opencode"
                       "hyprwm/Hyprland"
                       "AvengeMedia/DankMaterialShell"
                       "noctalia-dev/noctalia-shell"
