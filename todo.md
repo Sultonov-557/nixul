@@ -22,7 +22,6 @@
 - [x] feat: multi-users system
 - [x] feat: better options structure for modules
 - [x] fix: add options to all modules
-- [x] feat: profiles, host/user tags for module imports
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
 - [x] feat: universal options for aliases and adapters for bash, zsh, fish
 - [x] feat: option for unbound domains
