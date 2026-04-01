@@ -3,9 +3,9 @@
     { pkgs, ... }:
     {
       nixul.theme = {
-        colors.scheme = "catppuccin-mocha";
+        colors.scheme = "nord";
 
-        wallpaper = ../../assets/public/wallpapers/catppuccin.png;
+        wallpaper = ../../assets/public/wallpapers/nord.png;
 
         cursor = {
           package = pkgs.bibata-cursors;
@@ -14,10 +14,10 @@
         };
 
         opacity = {
-          applications = 0.9;
-          terminal = 0.8;
-          desktop = 1.0;
-          popups = 0.9;
+          applications = 0.7;
+          terminal = 0.7;
+          desktop = 0.7;
+          popups = 0.7;
         };
 
         icons = {
@@ -45,7 +45,9 @@
   home =
     { ... }:
     {
-      programs.nixvim.colorschemes.catppuccin.enable = true;
-      programs.nixvim.colorschemes.catppuccin.settings.flavour = "mocha";
+      programs.nixvim.colorschemes.nord = {
+        enable = true;
+        settings.disable_background = true;
+      };
     };
 }

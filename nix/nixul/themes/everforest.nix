@@ -3,7 +3,9 @@
     { pkgs, ... }:
     {
       nixul.theme = {
-        colors.scheme = "rose-pine";
+        colors.scheme = "everforest";
+
+        wallpaper = ../../assets/public/wallpapers/everforest.png;
 
         cursor = {
           package = pkgs.bibata-cursors;
@@ -12,10 +14,10 @@
         };
 
         opacity = {
-          applications = 1.0;
-          terminal = 0.9;
-          desktop = 1.0;
-          popups = 1.0;
+          applications = 0.5;
+          terminal = 0.5;
+          desktop = 0.5;
+          popups = 0.5;
         };
 
         icons = {
@@ -43,6 +45,9 @@
   home =
     { ... }:
     {
-      programs.nixvim.colorschemes.rose-pine.enable = true;
+      programs.nixvim.colorschemes.everforest = {
+        enable = true;
+        settings.transparent_background = 1;
+      };
     };
 }
