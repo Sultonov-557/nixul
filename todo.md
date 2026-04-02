@@ -111,7 +111,7 @@
 - [ ] feat: bloat opencode
 - [ ] feat: generated docs with vitepress
 - [ ] feat: add n8n
-- [ ] feat: add mcp servers
+- [ ] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
 - [ ] feat: add matrix
 
 - [ ] feat: 100% declarative. no exeptions.
