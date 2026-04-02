@@ -14,7 +14,7 @@ nix develop --command deadnix --fail .
 # Run all checks/tests
 nix flake check --all-systems --show-trace
 
-# Build a specific host
+# Build a specific host (dry-run)
 nh os build .#<host>
 
 # Test activation without applying
@@ -25,9 +25,6 @@ nh os switch .#<host>
 
 # Rollback to previous generation
 nh os rollback .#<host>
-
-# Run a single test (for specific host)
-nh os test .#<host>
 ```
 
 ## Commit Commands

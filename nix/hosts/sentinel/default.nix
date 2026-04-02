@@ -107,7 +107,7 @@
 
       core.security.network.acme.enable = true;
       core.security.network.adguardhome.enable = true;
-      core.security.network.avahi.enable = true;
+      core.security.network.avahi.enable = false;
       core.security.network.firewall.enable = true;
       core.security.network.unbound.enable = true;
 
