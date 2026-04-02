@@ -1,5 +1,6 @@
 {
   plugin = [
+    "@gotgenes/opencode-agent-identity"
     "opencode-antigravity-auth"
     "opencode-multi-openai-codex-auth"
     "opencode-agent-skills"
