@@ -11,7 +11,6 @@
     "@zenobius/opencode-skillful"
     "@plannotator/opencode"
     "@spoons-and-mirrors/subtask2"
-    "octto"
     "opencode-memory"
     "opencode-agent-memory"
     "opencode-git-context"

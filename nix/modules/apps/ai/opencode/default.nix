@@ -29,6 +29,7 @@ in
     {
       programs.opencode = lib.mkIf cfg.enable ({
         enable = true;
+        enableMcpIntegration = true;
 
         inherit settings;
       });
