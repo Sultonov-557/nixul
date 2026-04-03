@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   system =
     { cfg, ... }:
@@ -6,6 +6,7 @@
       services.ollama = lib.mkIf cfg.enable {
         enable = true;
         loadModels = [ "glm-5:cloud" ];
+        package = pkgs.ollama-cuda;
       };
     };
   options = lib.mkOption {

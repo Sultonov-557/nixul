@@ -285,8 +285,8 @@
       hardware.units.storage.usb-automount.enable = true;
 
       services.ai.litellm.enable = false;
-      services.ai.ollama.enable = false;
-      services.ai.open-webui.enable = false;
+      services.ai.ollama.enable = true;
+      services.ai.open-webui.enable = true;
       services.ai.openclaw.enable = false;
 
       services.containers.kubernetes.kind.enable = true;
