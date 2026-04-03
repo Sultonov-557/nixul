@@ -118,7 +118,8 @@
 
       core.security.sysctl.enable = true;
 
-      core.system.boot.grub.enable = true;
+      core.system.boot.grub.enable = false;
+      core.system.boot.limine.enable = true;
 
       core.system.desktop.dbus.enable = true;
       core.system.desktop.xdg.enable = true;
