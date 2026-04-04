@@ -1,8 +1,24 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   home =
     { cfg, ... }:
     {
+      imports = [ inputs.worktrunk.homeModules.default ];
+
+      programs.worktrunk = lib.mkIf cfg.enable {
+        enable = true;
+        package = pkgs.worktrunk;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+        enableFishIntegration = true;
+        enableNushellIntegration = true;
+      };
+
       home.packages = lib.mkIf cfg.enable (
         with pkgs;
         [

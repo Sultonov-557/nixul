@@ -1,5 +1,10 @@
 {
   plugins = {
+    git-worktree = {
+      enable = true;
+      enableTelescope = true;
+    };
+
     gitsigns = {
       enable = true;
       settings = {
@@ -44,7 +49,7 @@
     {
       mode = "n";
       key = "<leader>gb";
-      action = "<cmd>GITSIGNS blame_line<cr>";
+      action = "<cmd>Gitsigns blame_line<cr>";
       options.desc = "Blame Line";
     }
     {
@@ -52,6 +57,12 @@
       key = "<leader>gd";
       action = "<CMD>DiffviewOpen<CR>";
       options.desc = "Diffview Open";
+    }
+    {
+      mode = "n";
+      key = "<leader>gw";
+      action = "<CMD>Telescope git_worktree<CR>";
+      options.desc = "Git Worktrees";
     }
     {
       mode = "n";
