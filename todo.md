@@ -81,10 +81,11 @@
 - [x] feat: add navi cheatsheets
 - [x] feat: add more bookmarks
 - [x] feat: add home-assistant
+- [x] feat: add limine
+- [x] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
 
 - [ ] feat: add more apps to every category
 - [ ] feat: add step-ca
-- [ ] feat: add limine
 
 - [x] test experimental features and merge with main branch
 
@@ -111,7 +112,6 @@
 - [ ] feat: bloat opencode
 - [ ] feat: generated docs with vitepress
 - [ ] feat: add n8n
-- [ ] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
 - [ ] feat: add matrix
 
 - [ ] feat: 100% declarative. no exeptions.

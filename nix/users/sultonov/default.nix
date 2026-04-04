@@ -227,6 +227,8 @@
 
         hardware.units.storage.udiskie.enable = true;
 
+        services.ai.mcp.enable = true;
+
         services.containers.kubernetes.kind.enable = true;
         services.containers.kubernetes.kubectl.enable = true;
         services.containers.kubernetes.minikube.enable = true;
