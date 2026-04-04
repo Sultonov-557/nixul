@@ -29,6 +29,7 @@
         memory.enable = true;
         nixos.enable = true;
         sequential-thinking.enable = true;
+        context7.enable = true;
       };
     };
 

@@ -14,5 +14,8 @@
     "opencode-memory"
     "opencode-agent-memory"
     "opencode-git-context"
+    "opencode-mystatus"
+    "@ramtinj95/opencode-tokenscope"
+    "open-trees"
   ];
 }

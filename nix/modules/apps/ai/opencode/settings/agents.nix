@@ -2,7 +2,21 @@
   default_agent = "orchestrator";
   instructions = [ ../../../../../assets/public/instructions.md ];
 
+  # Disable OpenCode's built-in agents
   agent = {
+    build = {
+      disable = true;
+    };
+    plan = {
+      disable = true;
+    };
+    general = {
+      disable = true;
+    };
+    explore = {
+      disable = true;
+    };
+
     orchestrator = {
       description = "Coordinate planning, implementation, and review subagents";
       mode = "primary";
