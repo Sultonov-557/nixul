@@ -11,14 +11,21 @@
       programs.mcp.enable = lib.mkIf cfg.enable true;
 
       mcp-servers.programs = lib.mkIf cfg.enable {
-        clickup.enable = true;
-        context7.enable = true;
-        deepl.enable = true;
-        everything.enable = true;
-        fetch.enable = true;
         filesystem.enable = true;
+        fetch.enable = true;
+        chrome-devtools.enable = true;
+        clickup.enable = true;
         git.enable = true;
-        github.enable = true;
+        github = {
+          enable = true;
+          passwordCommand = {
+            GITHUB_PERSONAL_ACCESS_TOKEN = [
+              "gh"
+              "auth"
+              "token"
+            ];
+          };
+        };
         memory.enable = true;
         nixos.enable = true;
         sequential-thinking.enable = true;

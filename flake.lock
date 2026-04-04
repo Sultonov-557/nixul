@@ -296,16 +296,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1775007230,
-        "narHash": "sha256-wo4XcRNwYfM3kStNo52DcCI0CF3RPfDkqcM66FiYcmY=",
-        "owner": "natsukium",
-        "repo": "mcp-servers-nix",
-        "rev": "81aa816d486cf2df47e70cbb5629e22c5d057169",
+        "lastModified": 1774612300,
+        "narHash": "sha256-O6WOhzXWY/7AUINnSBt1eOgtzc6d/ccpQF1MPeLsOgo=",
+        "owner": "antono",
+        "repo": "mcp-servers-nix-plus",
+        "rev": "f4e0af913d6e7f352c5bb72200549b7812b4f657",
         "type": "github"
       },
       "original": {
-        "owner": "natsukium",
-        "repo": "mcp-servers-nix",
+        "owner": "antono",
+        "repo": "mcp-servers-nix-plus",
         "type": "github"
       }
     },

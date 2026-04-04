@@ -87,7 +87,7 @@
     };
 
     mcp-servers-nix = {
-      url = "github:natsukium/mcp-servers-nix";
+      url = "github:antono/mcp-servers-nix-plus";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
