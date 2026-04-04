@@ -59,5 +59,29 @@
       "XCURSOR_THEME,${osConfig.nixul.theme.cursor.name}"
       "XCURSOR_SIZE,${toString osConfig.nixul.theme.cursor.size}"
     ];
+
+    windowrule = [
+      # Firefox Picture-in-Picture
+      "float on, match:class ^Firefox$"
+      "pin on, match:class ^Firefox$"
+      "size 480 270, match:class ^Firefox$"
+      "center on, match:class ^Firefox$"
+
+      # Chrome/Chromium Picture-in-Picture
+      "float on, match:class ^chrome$"
+      "pin on, match:class ^chrome$"
+      "size 480 270, match:class ^chrome$"
+      "center on, match:class ^chrome$"
+
+      # Zen Browser Picture-in-Picture
+      "float on, match:class ^zen$"
+      "pin on, match:class ^zen$"
+      "size 480 270, match:class ^zen$"
+      "center on, match:class ^zen$"
+
+      # General Picture-in-Picture windows
+      "float on, match:title Picture-in-Picture"
+      "pin on, match:title Picture-in-Picture"
+    ];
   };
 }
