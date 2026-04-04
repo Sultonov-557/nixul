@@ -11,9 +11,11 @@
       programs.mcp.enable = lib.mkIf cfg.enable true;
 
       mcp-servers.programs = lib.mkIf cfg.enable {
-        filesystem.enable = true;
+        filesystem = {
+          enable = true;
+          args = [ "/" ];
+        };
         fetch.enable = true;
-        chrome-devtools.enable = true;
         clickup.enable = true;
         git.enable = true;
         github = {
