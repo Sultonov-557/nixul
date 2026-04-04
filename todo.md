@@ -127,3 +127,4 @@
 - [ ] https://github.com/nix-media-server/nixarr
 - [ ] https://github.com/kkkykin/nix-config
 - [ ] https://github.com/EmergentMind/nix-config
+- [ ] https://github.com/ilyamiro/nixos-configuration
