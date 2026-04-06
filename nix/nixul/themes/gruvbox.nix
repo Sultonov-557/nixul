@@ -45,6 +45,12 @@
   home =
     { ... }:
     {
-      programs.nixvim.colorschemes.gruvbox.enable = true;
+      programs.nixvim.colorschemes.gruvbox-material = {
+        enable = true;
+        settings = {
+          transparent_background = 1;
+          foreground = "original";
+        };
+      };
     };
 }
