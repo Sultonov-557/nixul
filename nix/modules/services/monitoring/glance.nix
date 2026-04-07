@@ -89,10 +89,6 @@ in
                 size = "full";
                 widgets = [
                   {
-                    type = "search";
-                    search-engine = "google";
-                  }
-                  {
                     type = "group";
                     widgets = [
                       {
@@ -108,6 +104,20 @@ in
                       {
                         type = "local";
                         name = "System";
+                      }
+                    ];
+                  }
+                  {
+                    type = "rss";
+                    title = "CVEs";
+                    feeds = [
+                      {
+                        title = "Critical CVEs";
+                        url = "https://cvedaily.com/feed-critical.xml";
+                      }
+                      {
+                        title = "CISA Exploited CVEs";
+                        url = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json";
                       }
                     ];
                   }
