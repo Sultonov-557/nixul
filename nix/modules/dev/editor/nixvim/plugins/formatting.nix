@@ -8,20 +8,31 @@
           lsp_format = "fallback";
           timeout_ms = 2000;
         };
-        formatters_by_ft = {
-          nix = [ "nixfmt" ];
-          rust = [ "rustfmt" ];
-          javascript = [ "prettier" ];
-          typescript = [ "prettier" ];
-          javascriptreact = [ "prettier" ];
-          typescriptreact = [ "prettier" ];
-          json = [ "prettier" ];
-          yaml = [ "prettier" ];
-          markdown = [ "prettier" ];
-          html = [ "prettier" ];
-          css = [ "prettier" ];
-          lua = [ "stylua" ];
-          python = [ "black" ];
+      };
+      formatters_by_ft = {
+        nix = [ "nixfmt" ];
+        rust = [ "rustfmt" ];
+        javascript = [ "prettier" ];
+        typescript = [ "prettier" ];
+        javascriptreact = [ "prettier" ];
+        typescriptreact = [ "prettier" ];
+        json = [ "prettier" ];
+        yaml = [ "prettier" ];
+        markdown = [ "prettier" ];
+        html = [ "prettier" ];
+        css = [ "prettier" ];
+        lua = [ "stylua" ];
+        python = [ "black" ];
+        caddy = [ "caddy" ];
+      };
+      formatters = {
+        caddy = {
+          command = "caddy";
+          args = [
+            "fmt"
+            "-"
+          ];
+          stdin = true;
         };
       };
     };
@@ -35,5 +46,6 @@
     statix
     deadnix
     pylint
+    caddy
   ];
 }

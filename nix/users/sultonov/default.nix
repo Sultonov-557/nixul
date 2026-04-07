@@ -233,9 +233,10 @@
         services.containers.kubernetes.kubectl.enable = true;
         services.containers.kubernetes.minikube.enable = true;
 
-        services.monitoring.dashy.enable = true;
+        services.monitoring.dashy.enable = false;
 
         services.server.nginx.enable = true;
+        services.server.caddy.enable = true;
 
         services.vpn.openvpn.enable = true;
         services.vpn.tailscale.enable = true;
