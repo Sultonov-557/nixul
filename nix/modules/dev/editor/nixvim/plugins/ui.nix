@@ -1,7 +1,9 @@
 {
-
   plugins = {
     web-devicons.enable = true;
+
+    navic.enable = true;
+    barbecue.enable = true;
 
     lualine = {
       enable = true;
