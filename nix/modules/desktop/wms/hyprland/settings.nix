@@ -15,8 +15,9 @@
     ];
 
     input = {
-      kb_layout = "us";
-      kb_options = "grp:win_space_toggle,compose:ralt,ctrl:nocaps";
+      kb_layout = "us,us";
+      kb_variant = ",colemak_dh";
+      kb_options = "grp:menu_toggle,compose:ralt,ctrl:nocaps";
 
       follow_mouse = 1;
 

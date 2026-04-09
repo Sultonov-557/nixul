@@ -85,7 +85,6 @@
 - [x] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
 
 - [ ] feat: add more apps to every category
-- [ ] feat: add step-ca
 
 - [x] test experimental features and merge with main branch
 
@@ -104,7 +103,6 @@
 
 - [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
 
-- [ ] feat: add Authentik
 - [ ] feat: try out mineflake
 - [ ] feat: add nixarr
 - [ ] feat: bloat vicinae with extensions
