@@ -85,6 +85,7 @@
 - [x] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
 
 - [ ] feat: add more apps to every category
+- [ ] feat: add uptime kuma
 
 - [x] test experimental features and merge with main branch
 

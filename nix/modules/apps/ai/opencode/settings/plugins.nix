@@ -1,13 +1,17 @@
 {
   plugin = [
+    "opencode-pty"
     "@gotgenes/opencode-agent-identity"
     "opencode-antigravity-auth"
     "opencode-multi-openai-codex-auth"
     "opencode-agent-skills"
     "opencode-websearch"
     "@nick-vi/opencode-type-inject"
+    "@0xsero/open-queue"
     "@tarquinen/opencode-dcp"
     "@morphllm/opencode-morph-plugin"
+    "@ramtinj95/opencode-tokenscope"
+    "@kdco/notify"
     "@zenobius/opencode-skillful"
     "@plannotator/opencode"
     "@spoons-and-mirrors/subtask2"
