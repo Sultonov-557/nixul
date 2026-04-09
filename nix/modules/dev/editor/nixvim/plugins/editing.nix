@@ -14,7 +14,7 @@
       enable = true;
     };
 
-    nvim-surround = {
+    vim-surround = {
       enable = true;
     };
 
