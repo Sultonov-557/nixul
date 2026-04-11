@@ -41,6 +41,14 @@ in
         "vaultwarden"
         "enable"
       ] false nixul;
+      uptimeEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "monitoring"
+        "uptime-kuma"
+        "enable"
+      ] false nixul;
 
       nginxEnabled = lib.attrByPath [
         "host"
@@ -190,6 +198,17 @@ in
                           {
                             title = "Vaultwarden";
                             url = "http://vault.home";
+                          }
+                        ]
+                      else
+                        [ ]
+                    )
+                    ++ (
+                      if uptimeEnabled then
+                        [
+                          {
+                            title = "Uptime";
+                            url = "http://uptime.home";
                           }
                         ]
                       else

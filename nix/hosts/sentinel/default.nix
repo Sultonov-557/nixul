@@ -303,6 +303,7 @@
 
       services.monitoring.dashy.enable = true;
       services.monitoring.glance.enable = true;
+      services.monitoring.uptime-kuma.enable = true;
 
       services.server.home-assistant.enable = false;
       services.server.nginx.enable = true;

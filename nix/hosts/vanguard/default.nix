@@ -64,6 +64,7 @@
       services.databases.redis.enable = true;
       services.monitoring.dashy.enable = false;
       services.monitoring.glance.enable = true;
+      services.monitoring.uptime-kuma.enable = true;
       services.server.home-assistant.enable = true;
       services.server.nginx.enable = true;
       services.server.vaultwarden.enable = true;

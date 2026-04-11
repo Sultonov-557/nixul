@@ -83,9 +83,9 @@
 - [x] feat: add home-assistant
 - [x] feat: add limine
 - [x] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
+- [x] feat: add uptime kuma
 
 - [ ] feat: add more apps to every category
-- [ ] feat: add uptime kuma
 
 - [x] test experimental features and merge with main branch
 
