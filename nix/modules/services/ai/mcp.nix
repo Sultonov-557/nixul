@@ -5,7 +5,7 @@
 }:
 {
   home =
-    { cfg, ... }:
+    { cfg, user, ... }:
     {
       imports = [ inputs.mcp-servers-nix.homeManagerModules.default ];
       programs.mcp.enable = lib.mkIf cfg.enable true;
@@ -13,7 +13,7 @@
       mcp-servers.programs = lib.mkIf cfg.enable {
         filesystem = {
           enable = true;
-          args = [ "/" ];
+          args = [ "/home/${user}" ];
         };
         fetch.enable = true;
         clickup.enable = true;

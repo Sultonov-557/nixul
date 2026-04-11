@@ -1,6 +1,6 @@
 {
   default_agent = "orchestrator";
-  instructions = [ ../../../../../assets/public/instructions.md ];
+  instructions = [ ../AGENTS.md ];
 
   # Disable OpenCode's built-in agents
   agent = {
