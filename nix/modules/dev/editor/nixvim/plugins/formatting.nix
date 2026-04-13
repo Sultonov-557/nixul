@@ -40,7 +40,6 @@
 
   extraPackages = with pkgs; [
     nixfmt
-    nodePackages.prettier
     stylua
     black
     statix

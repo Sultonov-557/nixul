@@ -16,7 +16,7 @@
 
     input = {
       kb_layout = "us,us";
-      kb_variant = ",colemak_dh";
+      kb_variant = ",workman";
       kb_options = "grp:menu_toggle,compose:ralt,ctrl:nocaps";
 
       follow_mouse = 1;

@@ -205,7 +205,7 @@
           };
       };
 
-      services.litellm = {
+      services.litellm = lib.mkIf cfg.enable {
         enable = true;
         port = 9003;
 
