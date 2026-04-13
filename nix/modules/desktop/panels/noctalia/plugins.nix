@@ -49,7 +49,6 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-        #TODO: kde conntect, paralax wallpaper, deskvis, calculator polkit agent, translate fancy audio vis, workspace overview, walcards, desktop calendar, linux-wallpaperengine
       };
       version = 1;
     };
