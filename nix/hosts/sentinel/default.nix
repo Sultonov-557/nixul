@@ -86,6 +86,8 @@
       apps.system.terminal.ghostty.enable = true;
       apps.system.terminal.wezterm.enable = false;
 
+      apps.user.kdeconnect.enable = true;
+
       apps.user.internet.browsers.chrome.enable = true;
       apps.user.internet.browsers.tor.enable = true;
       apps.user.internet.browsers.firefox.enable = true;

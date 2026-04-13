@@ -25,10 +25,6 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-        weekly-calendar = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
         currency-exchange = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -41,14 +37,6 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-        mini-docker = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        mpris-lyrics = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
         translator = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -57,6 +45,11 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        hyprland-steam-overlay = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        #TODO: kde conntect, paralax wallpaper, deskvis, calculator polkit agent, translate fancy audio vis, workspace overview, walcards, desktop calendar, linux-wallpaperengine
       };
       version = 1;
     };

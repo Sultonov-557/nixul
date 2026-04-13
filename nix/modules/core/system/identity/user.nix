@@ -19,6 +19,7 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+          "input"
           "litellm"
         ];
         ignoreShellProgramCheck = true;
