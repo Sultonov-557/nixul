@@ -34,13 +34,24 @@ in
         inherit settings;
       });
 
+      home.packages = with pkgs; [
+        opencode
+        opencode-desktop
+      ];
+
       xdg.configFile = skillConfig;
     };
 
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ opencode ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          opencode
+          opencode-desktop
+        ]
+      );
     };
 
   options = lib.mkOption {

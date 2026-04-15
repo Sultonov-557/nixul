@@ -44,10 +44,9 @@ in
               }
             '';
 
-          sine = {
-            enable = true;
-            mods = [ "Nebula" ];
-          };
+          #sine = {
+          #  enable = true;
+          #};
         };
       };
     };
