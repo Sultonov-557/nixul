@@ -252,6 +252,7 @@
       dev.tools.http.client.xh.enable = true;
 
       dev.tools.http.server.ngrok.enable = true;
+      dev.tools.http.server.zrok.enable = true;
 
       dev.tools.quality.biome.enable = true;
       dev.tools.quality.deadnix.enable = true;
@@ -264,6 +265,7 @@
 
       hardware.inputs.qmk.enable = true;
       hardware.inputs.via.enable = true;
+      hardware.inputs.ydotool.enable = true;
 
       hardware.network.networkmanager.enable = true;
 

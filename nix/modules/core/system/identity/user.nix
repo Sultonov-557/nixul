@@ -21,6 +21,7 @@
           "wheel"
           "input"
           "litellm"
+          "ydotool"
         ];
         ignoreShellProgramCheck = true;
         shell = shellPkg;
