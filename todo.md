@@ -99,6 +99,7 @@
 - [ ] feat: multi-host orchestration
 
 - [ ] feat: add harlequin (after update)
+- [ ] feat: add hermes agent
 
 ### maybe
 
