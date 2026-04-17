@@ -27,6 +27,7 @@
       apps.ai.gemini.enable = true;
       apps.ai.cursor.enable = true;
       apps.ai.kilocode.enable = true;
+      apps.ai.hermes.enable = true;
 
       apps.gaming.compatibility.proton.enable = true;
       apps.gaming.compatibility.winboat.enable = true;
