@@ -244,6 +244,7 @@
 
       dev.tools.db.dbeaver.enable = true;
       dev.tools.db.usql.enable = true;
+      dev.tools.db.harlequin.enable = true;
 
       dev.tools.env.devenv.enable = true;
 

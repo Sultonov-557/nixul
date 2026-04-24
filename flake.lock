@@ -332,6 +332,26 @@
         "type": "github"
       }
     },
+    "mcp-servers-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776586346,
+        "narHash": "sha256-m28DN+86ZxftkHVM++ov+HdRh/YMty2TRV3Jcz3EsOw=",
+        "owner": "antono",
+        "repo": "mcp-servers-nix-plus",
+        "rev": "48045b109ec0c4aa9721fc1337b693e9774e0470",
+        "type": "github"
+      },
+      "original": {
+        "owner": "antono",
+        "repo": "mcp-servers-nix-plus",
+        "type": "github"
+      }
+    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -725,6 +745,7 @@
         "flake-parts": "flake-parts",
         "hermes-agent": "hermes-agent",
         "home-manager": "home-manager",
+        "mcp-servers-nix": "mcp-servers-nix",
         "niri": "niri",
         "nix-colors": "nix-colors",
         "nix-index-database": "nix-index-database",

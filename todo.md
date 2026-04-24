@@ -85,6 +85,7 @@
 - [x] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
 - [x] feat: add uptime kuma
 - [x] feat: add hermes agent
+- [x] feat: add harlequin
 
 - [ ] feat: add more apps to every category
 
@@ -99,7 +100,6 @@
 - [ ] feat: module integrations
 - [ ] feat: multi-host orchestration
 
-- [ ] feat: add harlequin (after update)
 - [ ] feat: add cmux
 
 ### maybe
