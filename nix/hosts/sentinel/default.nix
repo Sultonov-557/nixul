@@ -27,10 +27,10 @@
       apps.ai.gemini.enable = true;
       apps.ai.cursor.enable = true;
       apps.ai.kilocode.enable = true;
-      apps.ai.hermes.enable = true;
+      apps.ai.hermes.enable = false;
 
       apps.gaming.compatibility.proton.enable = true;
-      apps.gaming.compatibility.winboat.enable = true;
+      apps.gaming.compatibility.winboat.enable = false;
       apps.gaming.compatibility.wine.enable = true;
 
       apps.gaming.games.minecraft.enable = true;
@@ -293,7 +293,7 @@
       hardware.units.storage.usb-automount.enable = true;
 
       services.ai.litellm.enable = false;
-      services.ai.ollama.enable = true;
+      services.ai.ollama.enable = false;
       services.ai.open-webui.enable = false;
       services.ai.openclaw.enable = false;
 
