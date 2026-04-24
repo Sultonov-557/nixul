@@ -197,6 +197,7 @@
       dev.git.worktrunk.enable = true;
 
       dev.multiplexers.zellij.enable = true;
+      dev.multiplexers.tmux.enable = true;
 
       dev.runtimes.javascript.bun.enable = true;
       dev.runtimes.javascript.yarn.enable = true;
