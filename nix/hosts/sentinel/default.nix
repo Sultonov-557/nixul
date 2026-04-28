@@ -180,6 +180,8 @@
       desktop.display-manager.gdm.enable = true;
       #desktop.display-manager.sddm.enable = true;
 
+      desktop.panels.ambxst.enable = false;
+
       desktop.theming.enable = true;
 
       desktop.wms.hyprland.enable = true;

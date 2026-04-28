@@ -114,6 +114,7 @@
 - [ ] feat: generated docs with vitepress
 - [ ] feat: add n8n
 - [ ] feat: add matrix
+- [ ] feat: add eqsh
 
 - [ ] feat: 100% declarative. no exeptions.
 
@@ -129,3 +130,4 @@
 - [ ] https://github.com/kkkykin/nix-config
 - [ ] https://github.com/EmergentMind/nix-config
 - [ ] https://github.com/ilyamiro/nixos-configuration
+- [ ] https://github.com/eq-desktop/eqsh
