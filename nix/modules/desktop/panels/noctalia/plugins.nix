@@ -49,9 +49,9 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        #TODO: screen toolkit, ltrueyrics fetch, Tamagochi, screen widget settings
       };
       version = 1;
     };
-
   };
 }
