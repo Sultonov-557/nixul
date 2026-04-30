@@ -14,6 +14,31 @@
     "HDMI-A-1,1920x1080@60.00,0x0,1"
   ];
 
+  home-manager.users.sultonov.programs.niri.settings.outputs = {
+    "DP-1" = {
+      mode = {
+        height = 1080;
+        width = 1920;
+        refresh = 100.00;
+      };
+      position = {
+        x = 1920;
+        y = 0;
+      };
+    };
+    "HDMI-A-1" = {
+      mode = {
+        height = 1080;
+        width = 1920;
+        refresh = 60.00;
+      };
+      position = {
+        x = 0;
+        y = 0;
+      };
+    };
+  };
+
   nixul.host = {
     name = "sentinel";
     timezone = "Asia/Tashkent";
@@ -185,7 +210,7 @@
       desktop.theming.enable = true;
 
       desktop.wms.hyprland.enable = true;
-      desktop.wms.niri.enable = false;
+      desktop.wms.niri.enable = true;
 
       dev.editor.nixvim.enable = true;
       dev.editor.antigravity.enable = true;

@@ -5,6 +5,15 @@
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable [ pkgs.lutris ];
+
+      #TODO: remove this when lutris is fixed
+      nixpkgs.overlays = [
+        (_: prev: {
+          openldap = prev.openldap.overrideAttrs {
+            doCheck = !prev.stdenv.hostPlatform.isi686;
+          };
+        })
+      ];
     };
 
   home =

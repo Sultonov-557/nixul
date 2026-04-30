@@ -2,7 +2,6 @@
 {
   plugins = {
     blink-cmp-dictionary.enable = true;
-    blink-cmp-spell.enable = true;
     blink-cmp = {
       enable = true;
       settings = {

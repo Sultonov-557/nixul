@@ -13,6 +13,7 @@
     {
       programs.zed-editor = lib.mkIf cfg.enable {
         enable = true;
+        enableMcpIntegration = true;
       };
     };
   options = lib.mkOption {
