@@ -10,10 +10,30 @@
 
   home =
     { cfg, ... }:
+    let
+      userSettings = import ./user-settings.nix;
+    in
     {
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          nil
+          nixd
+        ]
+      );
+
       programs.zed-editor = lib.mkIf cfg.enable {
         enable = true;
-        enableMcpIntegration = true;
+        extraPackages = with pkgs; [
+          nil
+          nixd
+        ];
+        mutableUserDebug = true;
+        mutableUserKeymaps = true;
+        mutableUserSettings = true;
+        mutableUserTasks = true;
+
+        userSettings = userSettings;
       };
     };
   options = lib.mkOption {
