@@ -14,6 +14,10 @@
           enable = true;
         };
 
+        nil = {
+          enable = true;
+        };
+
         # handled by typescript-tools
         #ts_ls.enable = true;
         #tsserver.enable = true;
