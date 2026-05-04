@@ -107,14 +107,15 @@
 - [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
 
 - [ ] feat: try out mineflake
-- [ ] feat: add nixarr
 - [ ] feat: bloat vicinae with extensions
 - [ ] feat: bloat nixvim
 - [ ] feat: bloat opencode
+- [ ] feat: bloat noctalia with plugins
 - [ ] feat: generated docs with vitepress
 - [ ] feat: add n8n
 - [ ] feat: add matrix
 - [ ] feat: add eqsh
+- [ ] feat: add qylock
 
 - [ ] feat: 100% declarative. no exeptions.
 
