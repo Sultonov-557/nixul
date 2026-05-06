@@ -52,7 +52,6 @@
       apps.ai.gemini.enable = true;
       apps.ai.cursor.enable = true;
       apps.ai.kilocode.enable = true;
-      apps.ai.hermes.enable = false;
 
       apps.gaming.compatibility.proton.enable = true;
       apps.gaming.compatibility.winboat.enable = false;
@@ -324,6 +323,7 @@
       services.ai.ollama.enable = false;
       services.ai.open-webui.enable = false;
       services.ai.openclaw.enable = false;
+      services.ai.hermes.enable = false;
 
       services.containers.kubernetes.kind.enable = true;
       services.containers.kubernetes.kubectl.enable = true;
