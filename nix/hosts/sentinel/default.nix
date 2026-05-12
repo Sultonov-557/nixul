@@ -213,6 +213,7 @@
 
       dev.editor.nixvim.enable = true;
       dev.editor.antigravity.enable = true;
+      dev.editor.android-studio.enable = true;
       dev.editor.cursor.enable = true;
       dev.editor.zed.enable = true;
 
