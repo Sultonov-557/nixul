@@ -3,12 +3,26 @@
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [ wordlists ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          wordlists
+          seclists
+          payloadsallthethings
+        ]
+      );
     };
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ wordlists ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          wordlists
+          seclists
+          payloadsallthethings
+        ]
+      );
     };
 
   options = lib.mkOption {

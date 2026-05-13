@@ -243,6 +243,7 @@
       dev.security.attack.brute-force.wordlists.enable = true;
 
       dev.security.attack.exploit.metasploit.enable = true;
+      dev.security.attack.exploit.jwt-hack.enable = true;
       dev.security.attack.exploit.websploit.enable = true;
 
       dev.security.attack.mitm.bettercap.enable = true;
@@ -251,6 +252,7 @@
       dev.security.recon.discovery.amass.enable = true;
       dev.security.recon.discovery.assetfinder.enable = true;
       dev.security.recon.discovery.sherlock.enable = true;
+      dev.security.recon.discovery.dnsx.enable = true;
       dev.security.recon.discovery.subfinder.enable = true;
 
       dev.security.recon.web.katana.enable = true;
