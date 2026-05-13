@@ -7,6 +7,7 @@
         with pkgs;
         [
           android-studio
+          android-tools
         ]
       );
     };
@@ -17,6 +18,7 @@
         with pkgs;
         [
           android-studio
+          android-tools
         ]
       );
     };

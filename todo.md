@@ -106,6 +106,7 @@
 
 - [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
 
+- [ ] feat: try jj (git alternative)
 - [ ] feat: try out mineflake
 - [ ] feat: bloat vicinae with extensions
 - [ ] feat: bloat nixvim
