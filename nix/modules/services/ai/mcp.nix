@@ -16,7 +16,6 @@
           args = [ "/home/${user}" ];
         };
         fetch.enable = true;
-        clickup.enable = true;
         git.enable = true;
         github = {
           enable = true;
@@ -30,8 +29,6 @@
         };
         memory.enable = true;
         nixos.enable = true;
-        sequential-thinking.enable = true;
-        context7.enable = true;
       };
     };
 
