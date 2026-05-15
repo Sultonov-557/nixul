@@ -334,6 +334,7 @@
 
       services.containers.docker.enable = true;
       services.containers.podman.enable = true;
+      services.containers.waydroid.enable = true;
 
       services.databases.postgresql.enable = true;
       services.databases.redis.enable = true;

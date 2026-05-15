@@ -18,7 +18,15 @@
           };
         };
         kernelPackages = pkgs.linuxPackages_latest;
-        kernelModules = [ "uinput" ];
+        kernelModules = [
+          "uinput"
+          "ip_tables"
+          "iptable_nat"
+          "nf_nat"
+          "bridge"
+          "br_netfilter"
+          "binder_linux"
+        ];
         supportedFilesystems = [ "ntfs" ];
       };
     };

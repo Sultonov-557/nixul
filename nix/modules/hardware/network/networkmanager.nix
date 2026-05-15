@@ -5,7 +5,9 @@
     {
       networking.networkmanager.enable = lib.mkIf cfg.enable true;
       networking.hostName = lib.mkIf cfg.enable config.nixul.host.name;
+      networking.nftables.enable = lib.mkIf cfg.enable true;
     };
+
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {
