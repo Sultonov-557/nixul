@@ -84,6 +84,7 @@
 - [x] feat: add uptime kuma
 - [x] feat: add hermes agent
 - [x] feat: add harlequin
+- [x] feat: add dank material shell
 
 - [ ] feat: add more apps to every category
 
@@ -98,7 +99,7 @@
 - [ ] feat: module integrations
 - [ ] feat: multi-host orchestration
 
-- [ ] feat: add dank material shell
+- [ ] feat: configure dank material shell
 - [ ] feat: add xonsh
 - [ ] feat: add cmux
 

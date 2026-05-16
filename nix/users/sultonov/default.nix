@@ -137,6 +137,7 @@
 
         desktop.panels.caelestia.enable = false;
         desktop.panels.noctalia.enable = true;
+        desktop.panels.dms.enable = false;
 
         desktop.theming.enable = true;
 
