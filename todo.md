@@ -4,8 +4,6 @@
 - [x] feat: add khal
 - [x] feat: some kind of theme switcher
 - [x] feat: add gruvbox-material
-- [x] feat: add cosmic-greeter
-- [x] feat: add dms-greeter
 - [x] fix(hyprland): resize and move windows with keybinds
 - [x] fix(noctalia): configure noctalia shell
 - [x] refactor(niri): split niri into multiple files
@@ -100,6 +98,8 @@
 - [ ] feat: module integrations
 - [ ] feat: multi-host orchestration
 
+- [ ] feat: add dank material shell
+- [ ] feat: add xonsh
 - [ ] feat: add cmux
 
 ### maybe
