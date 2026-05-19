@@ -165,7 +165,7 @@
 
         dev.runtimes.cpp.enable = true;
         dev.runtimes.go.enable = true;
-        dev.runtimes.python.enable = true;
+        dev.runtimes.python.enable = false;
         dev.runtimes.rustc.enable = true;
         dev.runtimes.zig.enable = true;
 
@@ -241,6 +241,7 @@
         services.server.caddy.enable = true;
 
         services.vpn.openvpn.enable = true;
+        services.vpn.cloudflare-warp.enable = true;
         services.vpn.tailscale.enable = true;
       };
     };

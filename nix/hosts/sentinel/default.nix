@@ -233,7 +233,7 @@
 
       dev.runtimes.cpp.enable = true;
       dev.runtimes.go.enable = true;
-      dev.runtimes.python.enable = true;
+      dev.runtimes.python.enable = false;
       dev.runtimes.rustc.enable = true;
       dev.runtimes.zig.enable = true;
 
