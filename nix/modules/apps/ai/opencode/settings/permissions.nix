@@ -1,7 +1,7 @@
 {
   permission = {
-    bash = "ask";
-    edit = "ask";
+    bash = "allow";
+    edit = "allow";
     read = "allow";
     grep = "allow";
     glob = "allow";
