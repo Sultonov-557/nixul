@@ -326,7 +326,7 @@
       services.ai.ollama.enable = false;
       services.ai.open-webui.enable = false;
       services.ai.openclaw.enable = false;
-      services.ai.hermes.enable = false;
+      services.ai.hermes.enable = true;
 
       services.containers.kubernetes.kind.enable = true;
       services.containers.kubernetes.kubectl.enable = true;
@@ -334,7 +334,7 @@
 
       services.containers.docker.enable = true;
       services.containers.podman.enable = true;
-      services.containers.waydroid.enable = true;
+      services.containers.waydroid.enable = false;
 
       services.databases.postgresql.enable = true;
       services.databases.redis.enable = true;

@@ -3,16 +3,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        kubectl
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          kubectl
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        kubectl
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          kubectl
+        ]
+      );
     };
 
   options = lib.mkOption {

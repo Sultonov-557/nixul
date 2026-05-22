@@ -13,9 +13,12 @@
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ bun ]);
 
-      programs.nix-ld.libraries = lib.mkIf cfg.enable (with pkgs; [
-        bun
-      ]);
+      programs.nix-ld.libraries = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          bun
+        ]
+      );
     };
 
   options = lib.mkOption {

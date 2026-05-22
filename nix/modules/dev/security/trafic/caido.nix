@@ -3,16 +3,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        caido
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          caido
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        caido
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          caido
+        ]
+      );
     };
 
   options = lib.mkOption {

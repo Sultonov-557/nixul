@@ -48,13 +48,13 @@
       core.terminal.shells.zsh.enable = true;
       core.terminal.tools.monitor.tcpdump.enable = true;
       core.terminal.tools.monitor.hyperfine.enable = true;
-      core.terminal.tools.info.dog.enable = true;
+      core.terminal.tools.info.doggo.enable = true;
       core.terminal.tools.navigation.ripgrep.enable = true;
 
       services.ai.litellm.enable = true;
       services.ai.ollama.enable = true;
       services.ai.open-webui.enable = true;
-      services.ai.openclaw.enable = true;
+      services.ai.openclaw.enable = false;
       services.containers.docker.enable = false;
       services.containers.kubernetes.kind.enable = true;
       services.containers.kubernetes.kubectl.enable = true;
@@ -74,7 +74,6 @@
 
       desktop.components.notifications.ntfy.enable = true;
       desktop.display-manager.gdm.enable = true;
-      desktop.display-manager.sddm.enable = true;
       desktop.display.wayland.enable = true;
       desktop.display.xserver.enable = true;
       desktop.theming.enable = true;

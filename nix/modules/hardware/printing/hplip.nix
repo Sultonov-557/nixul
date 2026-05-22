@@ -3,9 +3,12 @@
   system =
     { cfg, ... }:
     {
-      services.printing.drivers = lib.mkIf cfg.enable (with pkgs; [
-        hplip
-      ]);
+      services.printing.drivers = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          hplip
+        ]
+      );
     };
   options = lib.mkOption {
     type = lib.types.submodule {

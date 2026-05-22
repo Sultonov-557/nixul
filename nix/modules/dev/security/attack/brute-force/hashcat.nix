@@ -3,20 +3,26 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        hashcat
-        hashcat-utils
-        clinfo
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          hashcat
+          hashcat-utils
+          clinfo
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        hashcat
-        hashcat-utils
-        clinfo
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          hashcat
+          hashcat-utils
+          clinfo
+        ]
+      );
     };
 
   options = lib.mkOption {

@@ -3,16 +3,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        mesa
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          mesa
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        mesa
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          mesa
+        ]
+      );
     };
 
   options = lib.mkOption {

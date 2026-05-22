@@ -3,18 +3,24 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        ettercap
-        ethtool
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          ettercap
+          ethtool
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        ettercap
-        ethtool
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          ettercap
+          ethtool
+        ]
+      );
     };
 
   options = lib.mkOption {

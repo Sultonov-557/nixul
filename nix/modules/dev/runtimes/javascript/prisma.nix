@@ -3,10 +3,13 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        prisma
-        prisma-engines
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          prisma
+          prisma-engines
+        ]
+      );
       environment.variables = lib.mkIf cfg.enable {
         PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
         PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
@@ -16,10 +19,13 @@
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        prisma
-        prisma-engines
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          prisma
+          prisma-engines
+        ]
+      );
     };
 
   options = lib.mkOption {

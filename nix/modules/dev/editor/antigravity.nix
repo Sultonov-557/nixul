@@ -3,16 +3,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        antigravity
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          antigravity
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        antigravity
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          antigravity
+        ]
+      );
     };
 
   options = lib.mkOption {

@@ -3,18 +3,24 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        go
-        gopls
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          go
+          gopls
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        go
-        gopls
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          go
+          gopls
+        ]
+      );
     };
 
   options = lib.mkOption {

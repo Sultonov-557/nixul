@@ -11,18 +11,24 @@
         ];
       };
 
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        libGL
-        libGLU
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          libGL
+          libGLU
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        libGL
-        libGLU
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          libGL
+          libGLU
+        ]
+      );
     };
 
   options = lib.mkOption {

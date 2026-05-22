@@ -3,9 +3,12 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        tailscale
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          tailscale
+        ]
+      );
 
       services.tailscale = lib.mkIf cfg.enable {
         enable = true;
@@ -14,9 +17,12 @@
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        tailscale
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          tailscale
+        ]
+      );
     };
 
   options = lib.mkOption {

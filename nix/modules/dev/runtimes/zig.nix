@@ -3,18 +3,24 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        zig
-        zls
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          zig
+          zls
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        zig
-        zls
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          zig
+          zls
+        ]
+      );
     };
 
   options = lib.mkOption {

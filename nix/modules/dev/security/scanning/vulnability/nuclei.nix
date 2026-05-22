@@ -3,16 +3,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        nuclei
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          nuclei
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        nuclei
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          nuclei
+        ]
+      );
     };
 
   options = lib.mkOption {

@@ -153,27 +153,41 @@ let
       let
         userCfg = builtins.getAttr user usersCfg;
       in
-      map (
-        path: {
+      map
+        (path: {
           inherit user path;
-        }
-      ) (collectUnknownPaths {
-        configured = userCfg.modules or { };
-        knownTree = userKnownTree;
-      })
+        })
+        (collectUnknownPaths {
+          configured = userCfg.modules or { };
+          knownTree = userKnownTree;
+        })
     ) userNames;
 
-  hostUnknownPathsRaw = builtins.filter (path: !(hasPathInTree path allKnownTree)) hostInvalidPathsRaw;
-  hostWrongScopePathsRaw = builtins.filter (path: hasPathInTree path allKnownTree) hostInvalidPathsRaw;
+  hostUnknownPathsRaw = builtins.filter (
+    path: !(hasPathInTree path allKnownTree)
+  ) hostInvalidPathsRaw;
+  hostWrongScopePathsRaw = builtins.filter (
+    path: hasPathInTree path allKnownTree
+  ) hostInvalidPathsRaw;
 
-  userUnknownPathsRaw = builtins.filter (item: !(hasPathInTree item.path allKnownTree)) userInvalidPathsRaw;
-  userWrongScopePathsRaw = builtins.filter (item: hasPathInTree item.path allKnownTree) userInvalidPathsRaw;
+  userUnknownPathsRaw = builtins.filter (
+    item: !(hasPathInTree item.path allKnownTree)
+  ) userInvalidPathsRaw;
+  userWrongScopePathsRaw = builtins.filter (
+    item: hasPathInTree item.path allKnownTree
+  ) userInvalidPathsRaw;
 
   hostUnknownModulePaths = map (path: "nixul.host.modules." + pathToString path) hostUnknownPathsRaw;
-  hostWrongScopeModulePaths = map (path: "nixul.host.modules." + pathToString path) hostWrongScopePathsRaw;
+  hostWrongScopeModulePaths = map (
+    path: "nixul.host.modules." + pathToString path
+  ) hostWrongScopePathsRaw;
 
-  userUnknownModulePaths = map (item: "nixul.users.${item.user}.modules." + pathToString item.path) userUnknownPathsRaw;
-  userWrongScopeModulePaths = map (item: "nixul.users.${item.user}.modules." + pathToString item.path) userWrongScopePathsRaw;
+  userUnknownModulePaths = map (
+    item: "nixul.users.${item.user}.modules." + pathToString item.path
+  ) userUnknownPathsRaw;
+  userWrongScopeModulePaths = map (
+    item: "nixul.users.${item.user}.modules." + pathToString item.path
+  ) userWrongScopePathsRaw;
 
   unknownModulePaths = hostUnknownModulePaths ++ userUnknownModulePaths;
   wrongScopeModulePaths = hostWrongScopeModulePaths ++ userWrongScopeModulePaths;

@@ -3,16 +3,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        minikube
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          minikube
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        minikube
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          minikube
+        ]
+      );
     };
 
   options = lib.mkOption {

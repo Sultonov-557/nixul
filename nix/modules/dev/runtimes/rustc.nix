@@ -3,28 +3,34 @@
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        rustc
-        cargo
-        rustfmt
-        pkg-config
-        libxkbcommon
-        alsa-lib
-        libudev-zero
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          rustc
+          cargo
+          rustfmt
+          pkg-config
+          libxkbcommon
+          alsa-lib
+          libudev-zero
+        ]
+      );
     };
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        rustc
-        cargo
-        rustfmt
-        pkg-config
-        libxkbcommon
-        alsa-lib
-        libudev-zero
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          rustc
+          cargo
+          rustfmt
+          pkg-config
+          libxkbcommon
+          alsa-lib
+          libudev-zero
+        ]
+      );
     };
 
   options = lib.mkOption {

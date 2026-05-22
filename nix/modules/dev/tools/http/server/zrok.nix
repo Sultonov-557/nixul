@@ -18,16 +18,22 @@
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        zrok
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          zrok
+        ]
+      );
     };
 
   home =
     { cfg, ... }:
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [
-        zrok
-      ]);
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          zrok
+        ]
+      );
     };
 }
