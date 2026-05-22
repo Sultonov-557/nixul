@@ -25,12 +25,6 @@
     };
     default = {
       enable = false;
-      config = { };
-      environment = { };
-      documents = { };
-      mcpServers = { };
-      extraPackages = [ ];
     };
   };
-
 }
