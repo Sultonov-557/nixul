@@ -384,16 +384,15 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1778959310,
-        "narHash": "sha256-WzZG9NjzlCFF/cz74nNsgBV0Dtr9eeuCpGFNUUes7fQ=",
-        "owner": "yzx9",
+        "lastModified": 1779438472,
+        "narHash": "sha256-gXK39lK9TEFRZF7FIMJyh+cD9rh9KePcHVn+NmdmBLc=",
+        "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "f1aa34be72b339e4487e1a8ce3315fe3951bdd30",
+        "rev": "d617858896788aaddce77746e3bd890b3e75124c",
         "type": "github"
       },
       "original": {
-        "owner": "yzx9",
-        "ref": "feat/home-manager",
+        "owner": "NousResearch",
         "repo": "hermes-agent",
         "type": "github"
       }
@@ -1283,15 +1282,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1777530527,
-        "narHash": "sha256-EWEMj4tKScXvUD3mx7IQwrBrozKZEOy0Vdge5HwJZ+w=",
+        "lastModified": 1779413231,
+        "narHash": "sha256-ftnbnhXGApHUX6qA9SE415raqGGRvlyd0esc4EhmTZo=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "f540b026224e5218512e6fc814d1b5a10638bc1f",
+        "rev": "39b2c8f8ac6789267d0975365b2684104c05f86b",
         "type": "github"
       },
       "original": {
         "owner": "0xc000022070",
+        "ref": "feat/modern-sine-support",
         "repo": "zen-browser-flake",
         "type": "github"
       }

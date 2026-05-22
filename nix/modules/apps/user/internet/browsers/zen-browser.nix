@@ -44,9 +44,9 @@ in
               }
             '';
 
-          #sine = {
-          #  enable = true;
-          #};
+          sine = {
+            enable = true;
+          };
         };
       };
     };
