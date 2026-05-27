@@ -1,23 +1,15 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "steam";
-    description = "Module for `apps.gaming.platform.steam`.";
-    purpose = "Configure `apps.gaming.platform.steam` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "gaming"
-      "platform"
-      "steam"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       programs.steam.enable = lib.mkIf cfg.enable true;
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable [ pkgs.steam ];
     };
 
   options = lib.mkOption {

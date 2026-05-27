@@ -1,18 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "qmk";
-    description = "Module for `hardware.inputs.qmk`.";
-    purpose = "Configure `hardware.inputs.qmk` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "hardware"
-      "inputs"
-      "qmk"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
@@ -21,6 +8,11 @@
         enable = true;
         keychronSupport = true;
       };
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ qmk ]);
     };
 
   options = lib.mkOption {

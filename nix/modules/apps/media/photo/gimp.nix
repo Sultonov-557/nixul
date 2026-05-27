@@ -1,23 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "gimp";
-    description = "Module for `apps.media.photo.gimp`.";
-    purpose = "Configure `apps.media.photo.gimp` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "media"
-      "photo"
-      "gimp"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ gimp ]);
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ gimp ]);
     };
 
   options = lib.mkOption {

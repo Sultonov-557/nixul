@@ -1,19 +1,5 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "user";
-    description = "Module for `core.system.identity.user`.";
-    purpose = "Configure `core.system.identity.user` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "identity"
-      "user"
-    ];
-  };
-
   system =
     { cfg, config, ... }:
     let
@@ -33,6 +19,9 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+          "input"
+          "litellm"
+          "ydotool"
         ];
         ignoreShellProgramCheck = true;
         shell = shellPkg;

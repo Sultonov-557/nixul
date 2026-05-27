@@ -19,5 +19,6 @@
     ./trouble.nix
     ./typescipt-tools.nix
     ./ui.nix
+    ./http.nix
   ];
 }

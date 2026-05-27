@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "acme";
-    description = "Module for `core.security.network.acme`.";
-    purpose = "Configure `core.security.network.acme` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "network"
-      "acme"
-    ];
-  };
-
   system =
     { cfg, config, ... }:
     {

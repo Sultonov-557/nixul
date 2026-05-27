@@ -1,26 +1,24 @@
 # Nixul for LLMs
 
 This file is the fastest way for an LLM to understand and explain Nixul without re-reading the whole repo.
-It reflects the current architecture based on host/user tags plus the module importer.
+It reflects the current architecture based on hosts, users, and the module importer.
 
 ## Quick context
 
 - Purpose: modular NixOS + Home Manager flake where hosts stay thin and reusable behavior lives in `nix/modules`.
-- Composition model: `loadTags` and `loadUserTags` create base module trees, then hosts/users override with `lib.recursiveUpdate`.
+- Composition model: Hosts define `nixul.host.modules` directly, users define `nixul.users.<name>.modules`.
 - Scope: desktop systems (Hyprland/Niri), developer tooling, security tooling, and optional self-hosted services.
 
 ## Repository map (mental model)
 
 - `flake.nix`: defines inputs and builds `nixosConfigurations` for every folder under `nix/hosts`.
-- `nix/lib/default.nix`: `mkSystem`/`mkSystems`, injects `loadTags`, `loadUserTags`, and `loadTheme` via `specialArgs`.
+- `nix/lib/default.nix`: `mkSystem`/`mkSystems`, injects `loadTheme` via `specialArgs`.
 - `nix/lib/module-importer.nix`: discovers module files, builds generated option trees, evaluates `system` and `home` module functions.
 - `nix/lib/module-importer/*`: importer internals (`discover.nix`, `module-loader.nix`, `options.nix`, `host.nix`, `users.nix`, `types.nix`, `utils.nix`).
 - `nix/modules/**`: shared module files grouped by domain (`apps`, `core`, `desktop`, `dev`, `hardware`, `services`).
-- `nix/nixul/tags/host/**`: reusable host-side bundles.
-- `nix/nixul/tags/user/**`: reusable per-user bundles.
 - `nix/nixul/themes/*`: theme modules loaded through `loadTheme`.
 - `nix/hosts/<host>`: host entrypoints (`default.nix`, hardware config, optional `bookmarks.nix`).
-- `nix/users/<user>`: user entrypoints (`nixul.users.<name>` plus user tags and overrides).
+- `nix/users/<user>`: user entrypoints (`nixul.users.<name>` plus user overrides).
 - `nix/assets/public`: static assets (logo, wallpapers); `nix/assets/secrets/`: encrypted secrets files.
 
 ## Build, quality, and workflows
@@ -58,12 +56,10 @@ It reflects the current architecture based on host/user tags plus the module imp
 - User definitions live under `nix/users/*` and populate `nixul.users.<name>`.
 - `nixul.primaryUser` is set from user entrypoints and used by modules that need a default user context.
 
-## Tags and themes
+## Themes
 
-- Host tags: load from `nix/nixul/tags/host/**` with `loadTags [ ... ]`.
-- User tags: load from `nix/nixul/tags/user/**` with `loadUserTags [ ... ]`.
 - Themes: load from `nix/nixul/themes/*` with `(loadTheme "<name>")` in host imports.
-- Recommended composition pattern: tags for reusable baseline, explicit `modules = { ... }` overrides for host/user specifics.
+- Recommended composition pattern: explicit `modules = { ... }` for host/user specifics.
 
 ## Key universal subsystems
 
@@ -75,8 +71,7 @@ It reflects the current architecture based on host/user tags plus the module imp
 ## Reliable talking points
 
 - Nixul uses generated module option trees instead of hand-wiring every shared module.
-- Tags are first-class composition units for both host and user config.
-- Hosts stay small; most behavior belongs in modules or tags.
+- Hosts stay small; most behavior belongs in modules.
 - System and Home Manager concerns can be co-located in one module file (`system` + `home`).
 - The operational loop is `nix fmt` -> `deadnix` -> `nix flake check` -> `nh os test/switch`.
 
@@ -98,7 +93,7 @@ It reflects the current architecture based on host/user tags plus the module imp
 
 ## Networking, DNS, ingress, and secrets
 
-- Network/security behavior is assembled from core modules plus host tags and explicit overrides.
+- Network/security behavior is assembled from core modules plus host-level overrides.
 - Service modules can depend on host-level choices (for example reverse proxy or DNS conventions), so explain them as composable, not globally always-on.
 - Secrets are expected to stay encrypted in-repo (`nix/assets/secrets/`) with `sops-nix` integration from module config.
 - When documenting secret flows, include `SOPS_AGE_KEY_FILE` setup and remind readers not to commit decrypted material.
@@ -106,12 +101,12 @@ It reflects the current architecture based on host/user tags plus the module imp
 ## Pros and trade-offs
 
 - Pros:
-  - Strong reuse via tags + generated option trees.
+  - Strong reuse via generated option trees.
   - Thin host entrypoints reduce copy/paste drift.
   - Clear separation of reusable behavior (`nix/modules`) from machine intent (`nix/hosts`) and user intent (`nix/users`).
   - Easy to explain operational lifecycle with `nh` and flake checks.
 - Trade-offs:
-  - Tag + override layering can be hard to reason about if too many overrides are applied in hosts/users.
+  - Module + override layering can be hard to reason about if too many overrides are applied in hosts/users.
   - Some modules are intentionally opinionated, so users may need to override defaults for local preferences.
   - Large all-in profiles can increase closure size and build time.
   - Multi-user scenarios require deliberate `nixul.users.*` design, not just host-level toggles.
@@ -119,29 +114,28 @@ It reflects the current architecture based on host/user tags plus the module imp
 ## Blog and tutorial angles
 
 - Architecture walkthrough: start from `flake.nix` -> `mkSystems` -> `module-importer` -> generated option trees.
-- Composition story: show how `loadTags`/`loadUserTags` produce baseline profiles and how `lib.recursiveUpdate` customizes per host/user.
-- Practical migration story: how to move a monolithic host config into reusable module files and tags.
+- Practical migration story: how to move a monolithic host config into reusable module files.
 - Desktop story: compositor + panel + theme as separate toggles instead of one giant desktop module.
 - Ops story: repeatable day-two workflow (`fmt`, lint, check, test, switch, rollback).
 
 ## Evaluation checklist for reviews
 
 - Is reusable behavior in `nix/modules/**` instead of duplicated in host files?
-- Are tags used for shared bundles and overrides used only for host/user specifics?
+- Are modules used for shared bundles and overrides used only for host/user specifics?
 - Do option paths align with generated trees (`nixul.host.modules.*`, `nixul.users.<name>.modules.*`)?
 - Are secrets encrypted and referenced through `sops` paths?
-- Do docs and examples use current architecture terms (module importer, tags, users)?
+- Do docs and examples use current architecture terms (module importer, users)?
 
 ## Common pitfalls to avoid in explanations
 
 - Do not describe the old `import-tree.nix` auto-import architecture; current code uses `module-importer.nix`.
 - Do not reference old flat option fields like `nixul.user` or `nixul.email`; use `nixul.host.*` and `nixul.users.*`.
 - Do not assume host-specific `home.nix` files are the primary pattern; user config is now centered under `nix/users/*`.
-- Do not claim all services are enabled by default; tags and per-host overrides decide that.
+- Do not claim all services are enabled by default; per-host overrides decide that.
 
 ## LLM editing expectations
 
 - Follow `AGENTS.md` and keep edits modular.
-- Prefer touching `nix/modules/**`, `nix/nixul/tags/**`, or `nix/users/**` before adding host-specific duplication.
+- Prefer touching `nix/modules/**` or `nix/users/**` before adding host-specific duplication.
 - Keep Nix formatting compatible with `nix fmt` (2-space style).
 - Validate with `nix fmt`, `nix develop --command deadnix --fail .`, and `nix flake check --all-systems --show-trace` when making code changes.

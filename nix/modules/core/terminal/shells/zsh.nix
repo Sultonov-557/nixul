@@ -1,19 +1,5 @@
 { lib, config, ... }:
 {
-  metadata = {
-    name = "zsh";
-    description = "Module for `core.terminal.shells.zsh`.";
-    purpose = "Configure `core.terminal.shells.zsh` features and defaults.";
-    scope = "shared";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "shells"
-      "zsh"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

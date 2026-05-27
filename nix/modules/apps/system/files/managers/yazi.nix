@@ -1,18 +1,17 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "yazi";
-    description = "Module for `apps.system.files.managers.yazi`.";
-    purpose = "Configure `apps.system.files.managers.yazi` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "files"
-      "managers"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.yazi.enable = lib.mkIf cfg.enable true;
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          yazi
+          ueberzugpp
+        ]
+      );
+    };
 
   home =
     { cfg, ... }:

@@ -1,4 +1,3 @@
 { lib }:
 
-aliases:
-lib.mapAttrs (_name: alias: alias.command) aliases
+aliases: lib.mapAttrs (_name: alias: alias.command) aliases

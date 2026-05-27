@@ -35,12 +35,14 @@ in
 
   formatCombo =
     combo:
-    if combo == [ ] then throw "Keybind keys combo cannot be empty" else lib.concatStringsSep "+" (map mapToken combo);
+    if combo == [ ] then
+      throw "Keybind keys combo cannot be empty"
+    else
+      lib.concatStringsSep "+" (map mapToken combo);
 
-  spawnCommand =
-    cmd: [
-      "sh"
-      "-c"
-      cmd
-    ];
+  spawnCommand = cmd: [
+    "sh"
+    "-c"
+    cmd
+  ];
 }

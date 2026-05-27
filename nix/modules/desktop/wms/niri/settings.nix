@@ -24,6 +24,8 @@ in
     ];
 
     input = {
+      focus-follows-mouse.enable = true;
+      warp-mouse-to-focus.enable = true;
       keyboard = {
         xkb = {
           layout = "us";
@@ -39,7 +41,7 @@ in
     prefer-no-csd = true;
 
     layout = {
-      gaps = 16;
+      gaps = 12;
       center-focused-column = "never";
 
       default-column-width = {
@@ -47,7 +49,7 @@ in
       };
 
       focus-ring = {
-        enable = true;
+        enable = false;
         width = 2;
       };
 

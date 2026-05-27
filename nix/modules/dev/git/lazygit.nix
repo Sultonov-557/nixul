@@ -1,22 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "lazygit";
-    description = "Module for `dev.git.lazygit`.";
-    purpose = "Configure `dev.git.lazygit` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-      "lazygit"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ lazygit ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ lazygit ]);
     };
 
   options = lib.mkOption {

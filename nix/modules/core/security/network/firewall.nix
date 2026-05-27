@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "firewall";
-    description = "Module for `core.security.network.firewall`.";
-    purpose = "Configure `core.security.network.firewall` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "network"
-      "firewall"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

@@ -1,11 +1,20 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  extraPlugins = with pkgs; [
+    vimPlugins.vim-caddyfile
+    vimPlugins.nvim-treesitter-parsers.caddy
+  ];
+
   plugins = {
     lsp = {
       enable = true;
 
       servers = {
         nixd = {
+          enable = true;
+        };
+
+        nil = {
           enable = true;
         };
 

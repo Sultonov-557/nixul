@@ -1,21 +1,7 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "grub";
-    description = "Module for `core.system.boot.grub`.";
-    purpose = "Configure `core.system.boot.grub` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "boot"
-      "grub"
-    ];
-  };
-
   system =
-    { cfg, nixul, ... }:
+    { cfg, ... }:
     {
       boot = lib.mkIf cfg.enable {
         loader = {
@@ -32,7 +18,15 @@
           };
         };
         kernelPackages = pkgs.linuxPackages_latest;
-        kernelModules = [ "uinput" ];
+        kernelModules = [
+          "uinput"
+          "ip_tables"
+          "iptable_nat"
+          "nf_nat"
+          "bridge"
+          "br_netfilter"
+          "binder_linux"
+        ];
         supportedFilesystems = [ "ntfs" ];
       };
     };

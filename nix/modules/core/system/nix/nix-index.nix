@@ -5,20 +5,6 @@
   ...
 }:
 {
-  metadata = {
-    name = "nix-index";
-    description = "Module for `core.system.nix.nix-index`.";
-    purpose = "Configure `core.system.nix.nix-index` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "nix"
-      "nix-index"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

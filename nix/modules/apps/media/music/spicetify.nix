@@ -1,21 +1,12 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "spicetify";
-    description = "Module for `apps.media.music.spicetify`.";
-    purpose = "Configure `apps.media.music.spicetify` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "media"
-      "music"
-      "spicetify"
-    ];
-  };
-
   home =
-    { cfg, inputs, nixul, ... }:
+    {
+      cfg,
+      inputs,
+      nixul,
+      ...
+    }:
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
     in
@@ -33,7 +24,7 @@
         ];
 
         enabledCustomApps = with spicePkgs.apps; [ marketplace ];
-        
+
         customColorScheme =
           let
             palette = nixul.theme.colors.palette;

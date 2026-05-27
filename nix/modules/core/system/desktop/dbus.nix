@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "dbus";
-    description = "Module for `core.system.desktop.dbus`.";
-    purpose = "Configure `core.system.desktop.dbus` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "system"
-      "desktop"
-      "dbus"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

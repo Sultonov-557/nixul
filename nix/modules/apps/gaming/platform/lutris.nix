@@ -1,18 +1,20 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "lutris";
-    description = "Module for `apps.gaming.platform.lutris`.";
-    purpose = "Configure `apps.gaming.platform.lutris` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "gaming"
-      "platform"
-      "lutris"
-    ];
-  };
+
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.lutris ];
+
+      #TODO: remove this when lutris is fixed
+      nixpkgs.overlays = [
+        (_: prev: {
+          openldap = prev.openldap.overrideAttrs {
+            doCheck = !prev.stdenv.hostPlatform.isi686;
+          };
+        })
+      ];
+    };
 
   home =
     { cfg, ... }:

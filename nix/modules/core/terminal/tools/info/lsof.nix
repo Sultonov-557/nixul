@@ -1,18 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "lsof";
-    description = "Module for `core.terminal.tools.info.lsof`.";
-    purpose = "Configure `core.terminal.tools.info.lsof` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "info"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          lsof
+        ]
+      );
+    };
 
   home =
     { cfg, ... }:

@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "polkit";
-    description = "Module for `core.security.access.polkit`.";
-    purpose = "Configure `core.security.access.polkit` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "access"
-      "polkit"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

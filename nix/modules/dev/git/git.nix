@@ -1,16 +1,17 @@
-{ lib, config, ... }:
 {
-  metadata = {
-    name = "git";
-    description = "Module for `dev.git.git`.";
-    purpose = "Configure `dev.git.git` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-    ];
-  };
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.git
+      ];
+    };
 
   home =
     { cfg, user, ... }:

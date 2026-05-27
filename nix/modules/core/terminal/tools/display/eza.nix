@@ -1,18 +1,10 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "eza";
-    description = "Module for `core.terminal.tools.display.eza`.";
-    purpose = "Configure `core.terminal.tools.display.eza` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "display"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ eza ]);
+    };
 
   home =
     { cfg, ... }:

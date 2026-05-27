@@ -1,17 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "github";
-    description = "Module for `dev.git.github`.";
-    purpose = "Configure `dev.git.github` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-      "github"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.gh
+      ];
+    };
 
   home =
     { cfg, ... }:
@@ -23,7 +18,6 @@
         };
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

@@ -9,12 +9,30 @@
       largeButtonsLayout = "grid";
       showNumberLabels = true;
       powerOptions = [
-        { action = "lock"; enabled = true; }
-        { action = "suspend"; enabled = true; }
-        { action = "hibernate"; enabled = true; }
-        { action = "reboot"; enabled = true; }
-        { action = "logout"; enabled = true; }
-        { action = "shutdown"; enabled = true; }
+        {
+          action = "lock";
+          enabled = true;
+        }
+        {
+          action = "suspend";
+          enabled = true;
+        }
+        {
+          action = "hibernate";
+          enabled = true;
+        }
+        {
+          action = "reboot";
+          enabled = true;
+        }
+        {
+          action = "logout";
+          enabled = true;
+        }
+        {
+          action = "shutdown";
+          enabled = true;
+        }
       ];
     };
   };

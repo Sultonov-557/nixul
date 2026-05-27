@@ -1,25 +1,24 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "caido";
-    description = "Module for `dev.security.trafic.caido`.";
-    purpose = "Configure `dev.security.trafic.caido` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "trafic"
-      "caido"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        caido
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          caido
+        ]
+      );
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          caido
+        ]
+      );
     };
 
   options = lib.mkOption {

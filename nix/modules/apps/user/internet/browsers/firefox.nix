@@ -1,21 +1,20 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
-  mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix { inherit lib; };
+  mkBookmarks = import ../../../../../nixul/universal/bookmarks/adapters/browsers/default.nix {
+    inherit lib;
+  };
 in
 {
-  metadata = {
-    name = "firefox";
-    description = "Module for `apps.user.internet.browsers.firefox`.";
-    purpose = "Configure `apps.user.internet.browsers.firefox` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "user"
-      "internet"
-      "browsers"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ firefox ]);
+    };
 
   home =
     { cfg, user, ... }:
@@ -135,4 +134,3 @@ in
     };
   };
 }
-

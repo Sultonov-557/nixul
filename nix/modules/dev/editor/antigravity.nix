@@ -1,24 +1,24 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "antigravity";
-    description = "Module for `dev.editor.antigravity`.";
-    purpose = "Configure `dev.editor.antigravity` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "editor"
-      "antigravity"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        antigravity
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          antigravity
+        ]
+      );
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          antigravity
+        ]
+      );
     };
 
   options = lib.mkOption {

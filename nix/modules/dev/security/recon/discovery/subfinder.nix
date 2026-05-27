@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "subfinder";
-    description = "Module for `dev.security.recon.discovery.subfinder`.";
-    purpose = "Configure `dev.security.recon.discovery.subfinder` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "recon"
-      "discovery"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ subfinder ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ subfinder ]);
     };
 
   options = lib.mkOption {

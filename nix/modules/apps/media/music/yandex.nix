@@ -1,18 +1,10 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "yandex";
-    description = "Module for `apps.media.music.yandex`.";
-    purpose = "Configure `apps.media.music.yandex` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "media"
-      "music"
-      "yandex"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ yandex-music ]);
+    };
 
   home =
     { cfg, ... }:

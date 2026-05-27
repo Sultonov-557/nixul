@@ -4,6 +4,9 @@
       enable = true;
 
       settings = {
+        ensure_installed = [
+          "caddy"
+        ];
         highlight = {
           enable = true;
         };

@@ -9,19 +9,6 @@ let
 in
 
 {
-  metadata = {
-    name = "niri";
-    description = "Module for `desktop.wms.niri`.";
-    purpose = "Configure `desktop.wms.niri` features and defaults.";
-    scope = "shared";
-    status = "active";
-    tags = [
-      "desktop"
-      "wms"
-      "niri"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

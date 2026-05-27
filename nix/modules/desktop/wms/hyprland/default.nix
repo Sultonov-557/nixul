@@ -3,19 +3,6 @@ let
   adapter = (import ../../../../nixul/universal/keybinds/adapters/hyprland) { inherit lib; };
 in
 {
-  metadata = {
-    name = "hyprland";
-    description = "Module for `desktop.wms.hyprland`.";
-    purpose = "Configure `desktop.wms.hyprland` features and defaults.";
-    scope = "shared";
-    status = "active";
-    tags = [
-      "desktop"
-      "wms"
-      "hyprland"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {

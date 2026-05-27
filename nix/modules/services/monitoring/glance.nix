@@ -5,19 +5,6 @@ let
   };
 in
 {
-  metadata = {
-    name = "glance";
-    description = "Module for `services.monitoring.glance`.";
-    purpose = "Configure `services.monitoring.glance` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "services"
-      "monitoring"
-      "glance"
-    ];
-  };
-
   system =
     { cfg, nixul, ... }:
     let
@@ -54,6 +41,14 @@ in
         "vaultwarden"
         "enable"
       ] false nixul;
+      uptimeEnabled = lib.attrByPath [
+        "host"
+        "modules"
+        "services"
+        "monitoring"
+        "uptime-kuma"
+        "enable"
+      ] false nixul;
 
       nginxEnabled = lib.attrByPath [
         "host"
@@ -76,133 +71,160 @@ in
     {
       services.glance = lib.mkIf cfg.enable {
         enable = true;
-        settings.pages = [
-          {
-            name = "Home";
-            hide-desktop-navigation = false;
-            columns = [
-              {
-                size = "small";
-                widgets = [
-                  {
-                    type = "clock";
-                    hour-format = "24h";
-                  }
-                  {
-                    type = "calendar";
-                    first-day-of-week = "monday";
-                  }
-                  {
-                    type = "weather";
-                    location = nixul.host.location;
-                  }
-                ];
-              }
-              {
-                size = "full";
-                widgets = [
-                  {
-                    type = "search";
-                    search-engine = "google";
-                  }
-                  {
-                    type = "group";
-                    widgets = [
-                      {
-                        type = "bookmarks";
-                        title = "Bookmarks";
-                        groups = mkBookmarks config.nixul.host.bookmarks;
-                      }
-                    ];
-                  }
-                  {
-                    type = "server-stats";
-                    services = [
-                      {
-                        type = "local";
-                        name = "System";
-                      }
-                    ];
-                  }
-                ];
-              }
-              {
-                size = "small";
-                widgets = [
-                  {
-                    type = "releases";
-                    show-source-icon = true;
-                    repositories = [
-                      "hyprwm/Hyprland"
-                      "AvengeMedia/DankMaterialShell"
-                      "noctalia-dev/noctalia-shell"
-                      "niri-wm/niri"
-                      "nixos/nixpkgs"
-                      "nix-community/home-manager"
-                    ];
-                  }
-                  {
-                    type = "dns-stats";
-                    service = "adguard";
-                    url = "http://adguard.home";
-                  }
-                  {
-                    type = "monitor";
-                    cache = "1m";
-                    title = "Services";
-                    sites = [
+        settings = {
+          theme = {
+            custom-css-file = "https://public.home/glance/theme.css";
+          };
+          pages = [
+            {
+              name = "Home";
+              hide-desktop-navigation = false;
+              columns = [
+                {
+                  size = "small";
+                  widgets = [
+                    {
+                      type = "clock";
+                      hour-format = "24h";
+                    }
+                    {
+                      type = "calendar";
+                      first-day-of-week = "monday";
+                    }
+                    {
+                      type = "weather";
+                      location = nixul.host.location;
+                    }
+                  ];
+                }
+                {
+                  size = "full";
+                  widgets = [
+                    {
+                      type = "group";
+                      widgets = [
+                        {
+                          type = "bookmarks";
+                          title = "Bookmarks";
+                          groups = mkBookmarks config.nixul.host.bookmarks;
+                        }
+                      ];
+                    }
+                    {
+                      type = "server-stats";
+                      services = [
+                        {
+                          type = "local";
+                          name = "System";
+                        }
+                      ];
+                    }
+                    {
+                      type = "rss";
+                      title = "CVEs";
+                      feeds = [
+                        {
+                          title = "Critical CVEs";
+                          url = "https://cvedaily.com/feed-critical.xml";
+                        }
+                        {
+                          title = "CISA Exploited CVEs";
+                          url = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json";
+                        }
+                      ];
+                    }
+                  ];
+                }
+                {
+                  size = "small";
+                  widgets = [
+                    {
+                      type = "releases";
+                      show-source-icon = true;
+                      repositories = [
+                        "anomalyco/opencode"
+                        "hyprwm/Hyprland"
+                        "AvengeMedia/DankMaterialShell"
+                        "noctalia-dev/noctalia-shell"
+                        "niri-wm/niri"
+                        "nixos/nixpkgs"
+                        "nix-community/home-manager"
+                      ];
+                    }
+                    {
+                      type = "dns-stats";
+                      service = "adguard";
+                      url = "http://adguard.home";
+                    }
+                    {
+                      type = "monitor";
+                      cache = "1m";
+                      title = "Services";
+                      sites = [
 
-                    ]
-                    ++ (
-                      if adguardEnabled then
-                        [
-                          {
-                            title = "AdGuard";
-                            url = "http://adguard.home";
-                          }
-                        ]
-                      else
-                        [ ]
-                    )
-                    ++ (
-                      if liteLLMEnabled then
-                        [
-                          {
-                            title = "LiteLLM";
-                            url = "http://litellm.home";
-                          }
-                        ]
-                      else
-                        [ ]
-                    )
-                    ++ (
-                      if openWebUIEnabled then
-                        [
-                          {
-                            title = "Open Web UI";
-                            url = "http://open-webui.home";
-                          }
-                        ]
-                      else
-                        [ ]
-                    )
-                    ++ (
-                      if vaultwardenEnabled then
-                        [
-                          {
-                            title = "Vaultwarden";
-                            url = "http://vault.home";
-                          }
-                        ]
-                      else
-                        [ ]
-                    );
-                  }
-                ];
-              }
-            ];
-          }
-        ];
+                      ]
+                      ++ (
+                        if adguardEnabled then
+                          [
+                            {
+                              title = "AdGuard";
+                              url = "http://adguard.home";
+                            }
+                          ]
+                        else
+                          [ ]
+                      )
+                      ++ (
+                        if liteLLMEnabled then
+                          [
+                            {
+                              title = "LiteLLM";
+                              url = "http://litellm.home";
+                            }
+                          ]
+                        else
+                          [ ]
+                      )
+                      ++ (
+                        if openWebUIEnabled then
+                          [
+                            {
+                              title = "Open Web UI";
+                              url = "http://open-webui.home";
+                            }
+                          ]
+                        else
+                          [ ]
+                      )
+                      ++ (
+                        if vaultwardenEnabled then
+                          [
+                            {
+                              title = "Vaultwarden";
+                              url = "http://vault.home";
+                            }
+                          ]
+                        else
+                          [ ]
+                      )
+                      ++ (
+                        if uptimeEnabled then
+                          [
+                            {
+                              title = "Uptime";
+                              url = "http://uptime.home";
+                            }
+                          ]
+                        else
+                          [ ]
+                      );
+                    }
+                  ];
+                }
+              ];
+            }
+          ];
+        };
       };
 
       services.nginx.virtualHosts.glance = lib.mkIf (cfg.enable && nginxEnabled) {
@@ -230,7 +252,6 @@ in
         }
       ];
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

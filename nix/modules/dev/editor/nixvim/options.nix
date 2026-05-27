@@ -57,6 +57,16 @@
     maplocalleader = " ";
   };
 
+  # Caddyfile filetype detection
+  filetype = {
+    extension = {
+      caddy = "caddy";
+    };
+    filename = {
+      Caddyfile = "caddy";
+    };
+  };
+
   autoCmd = [
     {
       event = [ "BufWritePre" ];

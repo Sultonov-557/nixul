@@ -1,17 +1,12 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "vicinae";
-    description = "Module for `desktop.components.vicinae`.";
-    purpose = "Configure `desktop.components.vicinae` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "vicinae"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.vicinae
+      ];
+    };
 
   home =
     { cfg, config, ... }:
@@ -60,7 +55,6 @@
         ];
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

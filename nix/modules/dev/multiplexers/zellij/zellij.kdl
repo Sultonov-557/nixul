@@ -233,7 +233,9 @@ plugins {
         cwd "/"
     }
     plugin-manager location="zellij:plugin-manager"
-    session-manager location="zellij:session-manager"
+    session-manager location="zellij:session-manager" {
+      multi_screen true
+    }
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"

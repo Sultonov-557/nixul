@@ -1,7 +1,25 @@
 {
   plugin = [
+    "opencode-pty"
+    "@gotgenes/opencode-agent-identity"
     "opencode-antigravity-auth"
-    "opencode-openai-codex-auth"
+    "opencode-multi-openai-codex-auth"
     "opencode-agent-skills"
+    "opencode-websearch"
+    "@nick-vi/opencode-type-inject"
+    "@0xsero/open-queue"
+    "@tarquinen/opencode-dcp"
+    "@morphllm/opencode-morph-plugin"
+    "@ramtinj95/opencode-tokenscope"
+    "@kdco/notify"
+    "@zenobius/opencode-skillful"
+    "@plannotator/opencode"
+    "@spoons-and-mirrors/subtask2"
+    "opencode-memory"
+    "opencode-agent-memory"
+    "opencode-git-context"
+    "opencode-mystatus"
+    "@ramtinj95/opencode-tokenscope"
+    "open-trees"
   ];
 }

@@ -17,7 +17,11 @@ let
       moduleOptions
     else
       lib.mkOption {
-        type = t.nullOr (t.submodule (_: { options = moduleOptions; }));
+        type = t.nullOr (
+          t.submodule (_: {
+            options = moduleOptions;
+          })
+        );
         default = { };
         description = "Auto-imported nixul module: ${module.name}";
       };

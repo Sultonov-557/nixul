@@ -69,13 +69,11 @@ let
         direction = requireArg keybind "direction" (get "direction");
         field = resizeField direction;
         amount = requireArg keybind "amount" (get "amount");
-        sign =
-          if direction == "l" || direction == "u" then
-            "-"
-          else
-            "+";
+        sign = if direction == "l" || direction == "u" then "-" else "+";
       in
-      { action.${field} = "${sign}${toString amount}%"; }
+      {
+        action.${field} = "${sign}${toString amount}%";
+      }
     else if keybind.action == "workspace" then
       { action."focus-workspace" = requireArg keybind "workspace" (get "workspace"); }
     else if keybind.action == "movetoworkspace" then
@@ -84,4 +82,3 @@ let
       throw "Unknown keybind action: ${keybind.action}";
 in
 if keybind.repeat then base // { repeat = true; } else base
-

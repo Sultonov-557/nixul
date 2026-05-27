@@ -4,15 +4,10 @@
 - [x] feat: add khal
 - [x] feat: some kind of theme switcher
 - [x] feat: add gruvbox-material
-- [x] feat: add cosmic-greeter
-- [x] feat: add dms-greeter
 - [x] fix(hyprland): resize and move windows with keybinds
 - [x] fix(noctalia): configure noctalia shell
 - [x] refactor(niri): split niri into multiple files
 - [x] fix(hashcat): make hashcat work
-- [x] feat: add lemurs
-- [x] feat: add ly
-- [x] feat: add sddm
 - [x] feat: add lutgen
 - [x] feat: add tty clock
 - [x] feat: papirus icons
@@ -25,7 +20,6 @@
 - [x] feat: multi-users system
 - [x] feat: better options structure for modules
 - [x] fix: add options to all modules
-- [x] feat: profiles, host/user tags for module imports
 - [x] feat: universal options for bookmarks for dashboards, browsers, etc.
 - [x] feat: universal options for aliases and adapters for bash, zsh, fish
 - [x] feat: option for unbound domains
@@ -70,6 +64,29 @@
 - [x] feat: security audit module
 - [x] feat: add vault warden
 - [x] feat: add config to json extractor
+- [x] feat: add caligula
+- [x] feat: add television
+- [x] fix: remove tags (their pain in the ### to work with)
+- [x] feat: add cursor ide
+- [x] feat: add navi
+- [x] feat: add wezterm
+- [x] feat: add dolphon
+- [x] feat: add thunar
+- [x] feat: add nemo
+- [x] feat: add doggo
+- [x] feat: add hyperfine
+- [x] feat: add proper providers to litellm
+- [x] feat: add navi cheatsheets
+- [x] feat: add more bookmarks
+- [x] feat: add home-assistant
+- [x] feat: add limine
+- [x] feat: add mcp servers https://github.com/natsukium/mcp-servers-nix
+- [x] feat: add uptime kuma
+- [x] feat: add hermes agent
+- [x] feat: add harlequin
+- [x] feat: add dank material shell
+
+- [ ] feat: add more apps to every category
 
 - [x] test experimental features and merge with main branch
 
@@ -78,28 +95,31 @@
 
 - [ ] fix(zen): fix zen browser after github.com/0xc000022070/zen-browser-flake/issues/237 is resolved
 - [ ] fix(litellm): delete workaround after https://github.com/NixOS/nixpkgs/issues/432925 is resolved
-- [ ] feat: addtelevision
 
 - [ ] feat: module integrations
-
 - [ ] feat: multi-host orchestration
 
-- [ ] perf(profiles): split heavy all-in bundles into slim/base/full profiles to reduce closure size and build time
-- [ ] perf(metrics): add flake check output for closure-size/build-time deltas to catch profile bloat early
-- [ ] feat(multi-user): provide reusable multi-user tags and examples for shared vs per-user module ownership
-- [ ] feat(guardrails): add assertions/checks for duplicate primary-user assumptions and unsafe host-only toggles in multi-user setups
-
-- [ ] feat: 100% declarative. no exeptions.
+- [ ] feat: configure dank material shell
+- [ ] feat: add xonsh
+- [ ] feat: add cmux
 
 ### maybe
 
 - [ ] feat: if somehow litellm runs out of credit, https://github.com/cheahjs/free-llm-api-resources
 
-- [ ] feat: add Authentik
+- [ ] feat: try jj (git alternative)
 - [ ] feat: try out mineflake
-- [ ] feat: add nixarr
 - [ ] feat: bloat vicinae with extensions
 - [ ] feat: bloat nixvim
+- [ ] feat: bloat opencode
+- [ ] feat: bloat noctalia with plugins
+- [ ] feat: generated docs with vitepress
+- [ ] feat: add n8n
+- [ ] feat: add matrix
+- [ ] feat: add eqsh
+- [ ] feat: add qylock
+
+- [ ] feat: 100% declarative. no exeptions.
 
 ### take inspiration from
 
@@ -111,3 +131,6 @@
 - [ ] https://github.com/Stardust-kyun/calla
 - [ ] https://github.com/nix-media-server/nixarr
 - [ ] https://github.com/kkkykin/nix-config
+- [ ] https://github.com/EmergentMind/nix-config
+- [ ] https://github.com/ilyamiro/nixos-configuration
+- [ ] https://github.com/eq-desktop/eqsh

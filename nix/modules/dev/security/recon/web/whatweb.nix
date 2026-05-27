@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "whatweb";
-    description = "Module for `dev.security.recon.web.whatweb`.";
-    purpose = "Configure `dev.security.recon.web.whatweb` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "recon"
-      "web"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ whatweb ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ whatweb ]);
     };
 
   options = lib.mkOption {

@@ -1,25 +1,25 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "file-roller";
-    description = "Module for `apps.system.files.archives.file-roller`.";
-    purpose = "Configure `apps.system.files.archives.file-roller` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "system"
-      "files"
-      "archives"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
-      environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-        file-roller
-      ]);
+      environment.systemPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          file-roller
+        ]
+      );
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          file-roller
+        ]
+      );
     };
 
   options = lib.mkOption {

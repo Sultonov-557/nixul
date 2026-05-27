@@ -1,18 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "lazydocker";
-    description = "Module for `dev.tools.containers.lazydocker`.";
-    purpose = "Configure `dev.tools.containers.lazydocker` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "tools"
-      "containers"
-      "lazydocker"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.lazydocker
+      ];
+    };
 
   home =
     { cfg, ... }:
@@ -21,7 +15,6 @@
         enable = true;
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

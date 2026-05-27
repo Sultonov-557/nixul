@@ -1,18 +1,10 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "atuin";
-    description = "Module for `core.terminal.tools.history.atuin`.";
-    purpose = "Configure `core.terminal.tools.history.atuin` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "history"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.atuin ];
+    };
 
   home =
     { cfg, ... }:

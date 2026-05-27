@@ -1,23 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "pulsemixer";
-    description = "Module for `apps.media.audio.pulsemixer`.";
-    purpose = "Configure `apps.media.audio.pulsemixer` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "apps"
-      "media"
-      "audio"
-      "pulsemixer"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ pulsemixer ]);
+    };
+
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ pulsemixer ]);
     };
 
   options = lib.mkOption {

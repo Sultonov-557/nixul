@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "unbound";
-    description = "Module for `core.security.network.unbound`.";
-    purpose = "Configure `core.security.network.unbound` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "core"
-      "security"
-      "network"
-      "unbound"
-    ];
-  };
-
   system =
     { cfg, config, ... }:
     {

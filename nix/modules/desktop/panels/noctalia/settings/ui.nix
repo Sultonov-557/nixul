@@ -5,7 +5,7 @@
       fontFixedScale = 1;
       tooltipsEnabled = true;
       panelsAttachedToBar = true;
-      settingsPanelMode = "attached";
+      settingsPanelMode = "seperate_window";
       wifiDetailsViewMode = "grid";
       bluetoothDetailsViewMode = "grid";
       networkPanelView = "wifi";

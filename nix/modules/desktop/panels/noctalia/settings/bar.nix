@@ -28,7 +28,7 @@ in
             characterCount = 1;
             colorizeIcons = true;
             enableScrollWheel = true;
-            followFocusedScreen = true;
+            followFocusedScreen = false;
             groupedBorderOpacity = 0;
             hideUnoccupied = false;
             iconScale = 0.8;
@@ -53,6 +53,18 @@ in
             showSwapUsage = true;
             useMonospaceFont = true;
             usePrimaryColor = true;
+          }
+          {
+            id = "plugin:screen-toolkit";
+          }
+          {
+            id = "plugin:notes-scratchpad";
+          }
+          {
+            id = "plugin:todo";
+          }
+          {
+            id = "plugin:latency-monitor";
           }
         ];
         center = [
@@ -92,6 +104,9 @@ in
             };
             id = "plugin:weather-indicator";
           }
+          {
+            id = "plugin:lyrics-fetch";
+          }
         ];
         right = [
           {
@@ -101,6 +116,12 @@ in
             hidePassive = false;
             id = "Tray";
             pinned = [ ];
+          }
+          {
+            id = "plugin:kde-connect";
+          }
+          {
+            id = "plugin:git-companion";
           }
           {
             defaultSettings = {
@@ -140,6 +161,9 @@ in
           {
             displayMode = "onhover";
             id = "Bluetooth";
+          }
+          {
+            id = "plugin:cloudflare-warp";
           }
           {
             displayMode = "onhover";

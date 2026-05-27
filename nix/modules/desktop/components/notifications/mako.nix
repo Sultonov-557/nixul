@@ -1,18 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "mako";
-    description = "Module for `desktop.components.notifications.mako`.";
-    purpose = "Configure `desktop.components.notifications.mako` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "notifications"
-      "mako"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.mako
+      ];
+    };
 
   home =
     { cfg, osConfig, ... }:
@@ -42,7 +36,6 @@
         '';
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

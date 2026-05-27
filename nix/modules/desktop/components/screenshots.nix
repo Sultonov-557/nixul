@@ -1,17 +1,15 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "screenshots";
-    description = "Module for `desktop.components.screenshots`.";
-    purpose = "Configure `desktop.components.screenshots` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "desktop"
-      "components"
-      "screenshots"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.grim
+        pkgs.slurp
+        pkgs.swappy
+        pkgs.wl-clipboard
+      ];
+    };
 
   home =
     { cfg, ... }:
@@ -42,7 +40,6 @@
         };
       };
     };
-
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {

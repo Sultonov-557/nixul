@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "wireshark";
-    description = "Module for `dev.security.trafic.wireshark`.";
-    purpose = "Configure `dev.security.trafic.wireshark` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "trafic"
-      "wireshark"
-    ];
-  };
-
   home =
     { cfg, ... }:
     {
       home.packages = lib.mkIf cfg.enable (with pkgs; [ wireshark ]);
+    };
+  system =
+    { cfg, ... }:
+    {
+      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ wireshark ]);
     };
 
   options = lib.mkOption {

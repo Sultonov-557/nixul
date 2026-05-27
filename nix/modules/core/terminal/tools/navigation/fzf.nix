@@ -1,18 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
-  metadata = {
-    name = "fzf";
-    description = "Module for `core.terminal.tools.navigation.fzf`.";
-    purpose = "Configure `core.terminal.tools.navigation.fzf` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "navigation"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      environment.systemPackages = lib.mkIf cfg.enable [
+        pkgs.fzf
+      ];
+    };
 
   home =
     { cfg, ... }:

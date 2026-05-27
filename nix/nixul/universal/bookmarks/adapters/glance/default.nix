@@ -2,8 +2,10 @@
 
 bookmarks:
 let
-  sortedItems = group:
-    lib.sort (a: b:
+  sortedItems =
+    group:
+    lib.sort (
+      a: b:
       let
         orderA = if a.order != null then a.order else 999;
         orderB = if b.order != null then b.order else 999;
@@ -13,7 +15,7 @@ let
 
   mkGroup = name: group: {
     title = group.title;
-    same-tab = true;
+    same-tab = false;
     color = "245 50 64";
     links = map (item: {
       title = item.title;

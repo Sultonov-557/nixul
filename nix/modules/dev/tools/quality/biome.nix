@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "biome";
-    description = "Module for `dev.tools.quality.biome`.";
-    purpose = "Configure `dev.tools.quality.biome` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "tools"
-      "quality"
-      "biome"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ biome ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ biome ]);
     };
 
   options = lib.mkOption {

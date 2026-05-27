@@ -1,26 +1,26 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "ettercap";
-    description = "Module for `dev.security.attack.mitm.ettercap`.";
-    purpose = "Configure `dev.security.attack.mitm.ettercap` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "attack"
-      "mitm"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
-      environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [
-        ettercap
-        ethtool
-      ]);
+      environment.defaultPackages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          ettercap
+          ethtool
+        ]
+      );
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (
+        with pkgs;
+        [
+          ettercap
+          ethtool
+        ]
+      );
     };
 
   options = lib.mkOption {

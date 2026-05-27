@@ -1,18 +1,13 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "thefuck";
-    description = "Module for `core.terminal.tools.history.thefuck`.";
-    purpose = "Configure `core.terminal.tools.history.thefuck` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "core"
-      "terminal"
-      "tools"
-      "history"
-    ];
-  };
+  system =
+    { cfg, ... }:
+    {
+      programs.pay-respects = lib.mkIf cfg.enable {
+        enable = true;
+        alias = "f";
+      };
+    };
 
   home =
     { cfg, ... }:

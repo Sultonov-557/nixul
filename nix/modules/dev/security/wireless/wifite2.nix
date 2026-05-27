@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "wifite2";
-    description = "Module for `dev.security.wireless.wifite2`.";
-    purpose = "Configure `dev.security.wireless.wifite2` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "wireless"
-      "wifite2"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ wifite2 ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ wifite2 ]);
     };
 
   options = lib.mkOption {

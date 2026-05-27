@@ -1,22 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "git-extras";
-    description = "Module for `dev.git.git-extras`.";
-    purpose = "Configure `dev.git.git-extras` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "git"
-      "git-extras"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [ git-extras ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ git-extras ]);
     };
 
   options = lib.mkOption {

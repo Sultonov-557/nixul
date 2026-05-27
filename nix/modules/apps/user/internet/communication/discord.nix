@@ -1,19 +1,5 @@
 { lib, ... }:
 {
-  metadata = {
-    name = "discord";
-    description = "Module for `apps.user.internet.communication.discord`.";
-    purpose = "Configure `apps.user.internet.communication.discord` features and defaults.";
-    scope = "home";
-    status = "active";
-    tags = [
-      "apps"
-      "user"
-      "internet"
-      "communication"
-    ];
-  };
-
   home =
     {
       cfg,

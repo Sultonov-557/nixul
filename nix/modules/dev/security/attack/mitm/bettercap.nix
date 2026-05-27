@@ -1,23 +1,14 @@
 { lib, pkgs, ... }:
 {
-  metadata = {
-    name = "bettercap";
-    description = "Module for `dev.security.attack.mitm.bettercap`.";
-    purpose = "Configure `dev.security.attack.mitm.bettercap` features and defaults.";
-    scope = "system";
-    status = "active";
-    tags = [
-      "dev"
-      "security"
-      "attack"
-      "mitm"
-    ];
-  };
-
   system =
     { cfg, ... }:
     {
       environment.defaultPackages = lib.mkIf cfg.enable (with pkgs; [ bettercap ]);
+    };
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ bettercap ]);
     };
 
   options = lib.mkOption {
