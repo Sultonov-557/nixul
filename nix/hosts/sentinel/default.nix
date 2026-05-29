@@ -209,6 +209,7 @@
       desktop.theming.enable = true;
 
       desktop.wms.hyprland.enable = true;
+      desktop.wms.gnome.enable = true;
       desktop.wms.niri.enable = true;
 
       dev.editor.nixvim.enable = true;
