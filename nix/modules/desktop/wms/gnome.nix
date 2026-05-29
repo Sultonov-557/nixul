@@ -7,7 +7,7 @@
   system =
     { cfg, ... }:
     {
-      services.xserver.displayManager.gdm.enable = lib.mkIf cfg.enable true;
+      services.desktopManager.gnome.enable = lib.mkIf cfg.enable true;
     };
 
   options = lib.mkOption {
@@ -16,7 +16,7 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable niri";
+          description = "Enable gnome";
         };
       };
     };
