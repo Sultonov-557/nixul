@@ -72,9 +72,6 @@ in
       services.glance = lib.mkIf cfg.enable {
         enable = true;
         settings = {
-          theme = {
-            custom-css-file = "https://public.home/glance/theme.css";
-          };
           pages = [
             {
               name = "Home";
