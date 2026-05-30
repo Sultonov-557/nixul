@@ -32,6 +32,7 @@
 
         substituters = [
           "https://cache.nixos.org/"
+          "https://pi.cachix.org"
           "https://nixpkgs.cachix.org"
           "https://hyprland.cachix.org"
           "https://niri.cachix.org"
@@ -43,6 +44,7 @@
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "niri:7kPRy+bwoMP2GiLMR20qHUUiQ1Tg96YapZFsyvokm90="
+          "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
         ];
       };
       system.stateVersion = lib.mkIf cfg.enable "26.05";
