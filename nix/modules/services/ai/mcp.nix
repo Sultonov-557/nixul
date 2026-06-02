@@ -10,6 +10,20 @@
       imports = [ inputs.mcp-servers-nix.homeManagerModules.default ];
       programs.mcp.enable = lib.mkIf cfg.enable true;
 
+      mcp-servers.settings.servers = lib.mkIf cfg.enable {
+        obsidian = {
+          enable = true;
+          command = "bunx";
+          args = [
+            "obsidian-brain@latest"
+            "server"
+          ];
+          env = {
+            VAULT_PATH = "/home/${user}/notes";
+          };
+        };
+      };
+
       mcp-servers.programs = lib.mkIf cfg.enable {
         filesystem = {
           enable = true;
