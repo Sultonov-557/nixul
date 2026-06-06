@@ -17,6 +17,7 @@
           };
           dns = {
             port = 53;
+            host = "127.0.0.1";
             upstream = [
               (if nixul.host.modules.core.security.network.unbound.enable then "127.0.0.1:5335" else "1.1.1.1")
             ];

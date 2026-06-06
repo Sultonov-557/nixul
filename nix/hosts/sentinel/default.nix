@@ -334,6 +334,7 @@
       services.containers.kubernetes.minikube.enable = true;
 
       services.containers.docker.enable = true;
+      services.containers.libvirtd.enable = true;
       services.containers.podman.enable = true;
       services.containers.waydroid.enable = false;
 

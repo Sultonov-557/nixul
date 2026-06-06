@@ -1,20 +1,23 @@
 {
   lib,
   inputs,
+  pkgs,
   ...
 }:
 {
   system =
-    { cfg, ... }:
+    { cfg, config, ... }:
     {
       imports = [
         inputs.hermes-agent.nixosModules.default
       ];
 
-      services.hermes-agent = lib.mkIf cfg.enable {
-        enable = true;
-        addToSystemPackages = true;
-      };
+      environment.defaultPackages = [
+        inputs.hermes-agent.packages.${pkgs.system}.desktop
+        inputs.hermes-agent.packages.${pkgs.system}.tui
+        inputs.hermes-agent.packages.${pkgs.system}.web
+        inputs.hermes-agent.packages.${pkgs.system}.default
+      ];
     };
 
   options = lib.mkOption {
