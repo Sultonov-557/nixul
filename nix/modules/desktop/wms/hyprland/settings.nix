@@ -83,6 +83,9 @@
       # General Picture-in-Picture windows
       "float on, match:title Picture-in-Picture"
       "pin on, match:title Picture-in-Picture"
+
+      # Disable blur for deadlocked windows
+      "no_blur on, match:class ^deadlocked$"
     ];
   };
 }
