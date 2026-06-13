@@ -102,6 +102,7 @@
 - [ ] feat: configure dank material shell
 - [ ] feat: add xonsh
 - [ ] feat: add cmux
+- [ ] feat: switch to noctalia v5 once its stable
 
 ### maybe
 

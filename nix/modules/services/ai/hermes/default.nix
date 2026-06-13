@@ -6,13 +6,13 @@
 }:
 {
   system =
-    { cfg, config, ... }:
+    { cfg, ... }:
     {
       imports = [
         inputs.hermes-agent.nixosModules.default
       ];
 
-      environment.defaultPackages = [
+      environment.defaultPackages = lib.mkIf cfg.enable [
         inputs.hermes-agent.packages.${pkgs.system}.desktop
         inputs.hermes-agent.packages.${pkgs.system}.tui
         inputs.hermes-agent.packages.${pkgs.system}.web
