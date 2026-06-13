@@ -39,11 +39,6 @@
     ];
   };
 
-  fileSystems."/mnt/win" = {
-    device = "/dev/disk/by-uuid/314817a9-66a7-47af-ba6a-b621966ef891";
-    fsType = "ext4";
-  };
-
   swapDevices = [
     {
       device = "/swapfile";
