@@ -324,7 +324,7 @@
       hardware.units.storage.usb-automount.enable = true;
 
       services.ai.litellm.enable = false;
-      services.ai.ollama.enable = false;
+      services.ai.ollama.enable = true;
       services.ai.open-webui.enable = false;
       services.ai.openclaw.enable = false;
       services.ai.hermes.enable = true;
@@ -336,7 +336,7 @@
       services.containers.docker.enable = true;
       services.containers.libvirtd.enable = true;
       services.containers.podman.enable = true;
-      services.containers.waydroid.enable = false;
+      services.containers.waydroid.enable = true;
 
       services.databases.postgresql.enable = true;
       services.databases.redis.enable = true;

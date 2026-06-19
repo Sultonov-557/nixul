@@ -103,6 +103,7 @@
 - [ ] feat: add xonsh
 - [ ] feat: add cmux
 - [ ] feat: switch to noctalia v5 once its stable
+- [ ] feat: add nextcloud
 
 ### maybe
 
