@@ -18,6 +18,19 @@ in
       };
     };
 
+    "9router" = {
+      npm = "@ai-sdk/openai-compatible";
+      name = "9router";
+      options = {
+        baseURL = "http://127.0.0.1:20128/v1";
+      };
+      models = {
+        "main" = {
+          name = "main";
+        };
+      };
+    };
+
     ollama = {
       npm = "@ai-sdk/openai-compatible";
       name = "Ollama";
