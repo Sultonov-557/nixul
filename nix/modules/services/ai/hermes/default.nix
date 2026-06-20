@@ -16,6 +16,7 @@
         inputs.hermes-agent.packages.${pkgs.system}.desktop
         inputs.hermes-agent.packages.${pkgs.system}.tui
         inputs.hermes-agent.packages.${pkgs.system}.web
+        inputs.hermes-agent.packages.${pkgs.system}.messaging
         inputs.hermes-agent.packages.${pkgs.system}.default
       ];
     };
