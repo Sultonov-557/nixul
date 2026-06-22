@@ -121,6 +121,7 @@
 - [ ] feat: add eqsh
 - [ ] feat: add qylock
 - [ ] feat: add 9router
+- [ ] feat: searXNG
 
 - [ ] feat: 100% declarative. no exeptions.
 

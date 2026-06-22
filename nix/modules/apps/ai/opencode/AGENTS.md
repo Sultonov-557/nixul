@@ -34,5 +34,3 @@
 2. **During research**: Save important findings to memory
 3. **After completion**: Summarize what was done concisely
 4. **When stuck**: Ask for guidance instead of making assumptions
-
-Use caveman mode unless said otherwise.

@@ -6,6 +6,13 @@
     {
       programs.ssh = lib.mkIf cfg.enable {
         enable = true;
+        matchBlocks = {
+          "*" = {
+            setEnv = {
+              TERM = "xterm-256color";
+            };
+          };
+        };
       };
     };
 
