@@ -156,6 +156,7 @@
         dev.git.lazygit.enable = true;
         dev.git.worktrunk.enable = true;
 
+        dev.multiplexers.herdr.enable = true;
         dev.multiplexers.zellij.enable = true;
         dev.multiplexers.tmux.enable = true;
 

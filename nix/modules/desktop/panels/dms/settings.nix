@@ -286,7 +286,7 @@
   qtThemingEnabled = false;
   syncModeWithPortal = true;
   terminalsAlwaysDark = false;
-  muxType = "zellij";
+  muxType = "herdr";
   muxUseCustomCommand = false;
   muxCustomCommand = "";
   muxSessionFilter = "";

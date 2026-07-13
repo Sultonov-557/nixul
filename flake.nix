@@ -115,6 +115,21 @@
       url = "github:lukasl-dev/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    herdr = {
+      url = "github:ogulcancelik/herdr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    herdr-command-palette = {
+      url = "github:JanTvrdik/herdr-command-palette";
+      flake = false;
+    };
+
+    herdr-plus = {
+      url = "github:cloudmanic/herdr-plus";
+      flake = false;
+    };
   };
 
   outputs =

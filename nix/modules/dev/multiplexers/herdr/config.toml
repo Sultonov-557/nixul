@@ -1,0 +1,79 @@
+# Herdr configuration — migrated from zellij
+# Prefix: Ctrl+g (matches zellij toggle muscle memory)
+#
+# Key mapping (zellij → herdr):
+#   Ctrl+g (toggle lock)   → Ctrl+g (prefix)
+#   Pane mode h/j/k/l      → prefix+h/j/k/l (focus pane)
+#   Pane mode d (split)     → prefix+v (vertical split)
+#   Pane mode r (split)     → prefix+minus (horizontal split)
+#   Pane mode f (zoom)      → prefix+z (zoom)
+#   Pane mode x (close)     → prefix+x (close)
+#   Tab mode 1-9            → prefix+1..9 (switch tab)
+#   Tab mode n (new)        → prefix+c (new tab)
+#   Tab mode x (close)      → prefix+shift+x (close tab)
+#   Ctrl+Shift+Left/Right   → direct chord (tab nav)
+#   Ctrl+Shift+T            → direct chord (new tab)
+#   Ctrl+Shift+W            → direct chord (close tab)
+#   Ctrl+Shift+R            → direct chord (rename)
+#   Session d (detach)      → prefix+d (detach)
+
+onboarding = false
+
+[keys]
+# Prefix matches zellij's Ctrl+g toggle key
+prefix = "ctrl+g"
+
+# Tab navigation (mirrors locked-mode keybindings in zellij)
+previous_tab = "ctrl+shift+left"
+next_tab = "ctrl+shift+right"
+new_tab = "ctrl+shift+t"
+close_tab = "ctrl+shift+w"
+rename_tab = "ctrl+shift+r"
+
+# Detach (was session-mode d in zellij)
+detach = "prefix+d"
+
+# Command palette (fzf-based fuzzy action picker)
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "jt.command-palette.open"
+description = "Command palette"
+
+# herdr-plus: fuzzy project picker
+[[keys.command]]
+key = "prefix+up"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.projects"
+description = "Projects"
+
+# herdr-plus: fuzzy quick action launcher
+[[keys.command]]
+key = "prefix+down"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.quick-actions"
+description = "Quick actions"
+
+# herdr-keys: fuzzy keybinding cheatsheet
+[[keys.command]]
+key = "prefix+/"
+type = "plugin_action"
+command = "herdr-keys.open-keys"
+description = "Keybinding cheatsheet"
+
+[theme]
+name = "gruvbox"
+
+[ui]
+# Mirror zellij's pane_frames = false
+pane_borders = false
+
+# Show a compact collapsed sidebar
+sidebar_collapsed_mode = "compact"
+
+# Hide tab bar when only one tab exists (clean look)
+hide_tab_bar_when_single_tab = true
+
+[terminal]
+# Let herdr determine shell mode automatically
+shell_mode = "auto"

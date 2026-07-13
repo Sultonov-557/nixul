@@ -372,6 +372,59 @@
         "type": "github"
       }
     },
+    "herdr": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1783904903,
+        "narHash": "sha256-xtsu42NqPMUdBG1TmTnA/3KGxsc/TjQacLE9uZj6HW8=",
+        "owner": "ogulcancelik",
+        "repo": "herdr",
+        "rev": "64de9279e39cbdce07b97b4ded1ea439ff7192e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ogulcancelik",
+        "repo": "herdr",
+        "type": "github"
+      }
+    },
+    "herdr-command-palette": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782738461,
+        "narHash": "sha256-A43Dl365S/5w2wrttV1RnQ1g7YRJmsD3tb5EUUZcQQY=",
+        "owner": "JanTvrdik",
+        "repo": "herdr-command-palette",
+        "rev": "eab940018c2135ac23718efa11e23e9dddcd2a75",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JanTvrdik",
+        "repo": "herdr-command-palette",
+        "type": "github"
+      }
+    },
+    "herdr-plus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783270948,
+        "narHash": "sha256-++Un8povVFqkKhqLCx/DPYRxLTvkDTwWHVzFGk0exSU=",
+        "owner": "cloudmanic",
+        "repo": "herdr-plus",
+        "rev": "f32b0825f12543c1d03e54fb10d1741c40d66cdc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cloudmanic",
+        "repo": "herdr-plus",
+        "type": "github"
+      }
+    },
     "hermes-agent": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -894,6 +947,9 @@
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",
         "flake-parts": "flake-parts",
+        "herdr": "herdr",
+        "herdr-command-palette": "herdr-command-palette",
+        "herdr-plus": "herdr-plus",
         "hermes-agent": "hermes-agent",
         "home-manager": "home-manager",
         "mcp-servers-nix": "mcp-servers-nix",
@@ -914,6 +970,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "herdr",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783577481,
+        "narHash": "sha256-EWMxOWrJ031f8f/lrcEmhTRs4npw1/5N3Hcjin846c8=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "4cdea398dc491b082dccdce0fad1ed0b75fa3394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "worktrunk",
@@ -1240,7 +1317,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1777529087,

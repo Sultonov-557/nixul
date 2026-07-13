@@ -47,7 +47,13 @@ let
         mkBaseModules {
           inherit hostname hostsDir;
         }
-      );
+      ) ++ [
+        {
+          nixpkgs.overlays = [
+            inputs.herdr.overlays.default
+          ];
+        }
+      ];
     };
 in
 {
