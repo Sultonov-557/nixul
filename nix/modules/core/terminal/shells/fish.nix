@@ -15,7 +15,7 @@
     {
       programs.fish = lib.mkIf cfg.enable {
         enable = true;
-        shellInit = "set -U fish_greeting";
+        shellInit = "set -U fish_greeting \n export PATH=\"$HOME/.local/bin:$PATH\"";
         shellAliases = universalAliases;
       };
     };
