@@ -12,7 +12,7 @@
     "opencode-froggy"
     "kdco/background-agents"
     "@gotgenes/opencode-agent-identity"
-    "opencode-antigravity-auth"
+    "opencode-gemini-auth"
     "opencode-multi-openai-codex-auth"
     "opencode-websearch"
     "@nick-vi/opencode-type-inject"
