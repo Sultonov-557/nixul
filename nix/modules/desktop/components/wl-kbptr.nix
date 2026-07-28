@@ -1,20 +1,23 @@
 { lib, pkgs, ... }:
 {
+  home =
+    { cfg, ... }:
+    {
+      home.packages = lib.mkIf cfg.enable [ pkgs.wl-kbptr ];
+    };
   system =
     { cfg, ... }:
     {
-      services.ollama = lib.mkIf cfg.enable {
-        enable = true;
-        package = pkgs.ollama-cuda;
-      };
+      environment.systemPackages = lib.mkIf cfg.enable [ pkgs.wl-kbptr ];
     };
+
   options = lib.mkOption {
     type = lib.types.submodule {
       options = {
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
-          description = "Enable ollama";
+          description = "Enable wl-kbptr";
         };
       };
     };

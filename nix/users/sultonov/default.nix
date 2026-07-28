@@ -135,6 +135,7 @@
         desktop.components.polkit.enable = true;
         desktop.components.screenshots.enable = true;
         desktop.components.vicinae.enable = true;
+        desktop.components.wl-kbptr.enable = true;
 
         desktop.panels.caelestia.enable = false;
         desktop.panels.noctalia.enable = true;

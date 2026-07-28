@@ -4,6 +4,16 @@
       keys = [
         [
           "SUPER"
+          "P"
+        ]
+      ];
+      action = "spawn";
+      args.cmd = "wl-kbptr -o modes=tile,bisect -o mode_click.button=left";
+    }
+    {
+      keys = [
+        [
+          "SUPER"
           "RETURN"
         ]
       ];
